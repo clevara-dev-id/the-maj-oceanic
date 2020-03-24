@@ -1,0 +1,22 @@
+@import "tailwindcss/base";
+@font-face {
+    font-family: Sentinel SB;
+    font-style: normal;
+    src: url('../assets/font/Sentinel/Sentinel-Semibold.otf');
+}
+
+@font-face {
+    font-family: Verlag B;
+    font-style: normal;
+    src: url('../assets/font/Verlag/Verlag-Bold.ttf');
+}
+
+@font-face {
+    font-family: Ideal Sans L;
+    font-style: normal;
+    src: url('../assets/font/Ideal_Sans/IdealSans-Light-Pro.otf');
+}
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+@import "./App.css";
