@@ -1,0 +1,135 @@
+body {
+  background-color: #EEEEEE;
+}
+
+@font-face {
+  font-family: Sentinel SB;
+  font-style: normal;
+  src: url('../assets/font/Sentinel/Sentinel-Semibold.otf');
+}
+
+@font-face {
+  font-family: Verlag B;
+  font-style: normal;
+  src: url('../assets/font/Verlag/Verlag-Bold.ttf');
+}
+
+@font-face {
+  font-family: Ideal Sans L;
+  font-style: normal;
+  src: url('../assets/font/Ideal_Sans/IdealSans-Light-Pro.otf');
+}
+
+h1, h2, h3, h4 {
+  font-family: Sentinel SB;
+  font-style: normal;
+  color: #232323;
+}
+
+h5, h6 {
+  font-family: Verlag B;
+  font-style: normal;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #232323;
+}
+
+h1, h2 {
+  font-weight: bold;
+}
+
+h3, h4 {
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 34px !important;
+}
+
+h2 {
+  font-size: 22px !important;
+}
+
+h3 {
+  font-size: 17px !important;
+}
+
+h4 {
+  font-size: 15px !important;
+}
+
+h5 {
+  font-size: 14px !important;
+  line-height: 16px;
+  letter-spacing: 3px;
+}
+
+h6 {
+  font-size: 11px !important;
+  line-height: 13px;
+}
+
+p {
+  font-family: Ideal Sans L;
+  font-style: normal;
+  font-weight: normal;
+  color: #232323;
+}
+
+p.body-1 {
+  font-size: 16px !important;
+  line-height: 20px;
+}
+
+p.body-2 {
+  font-size: 13px !important;
+  line-height: 18px;
+}
+
+button {
+  font-family: Verlag B;
+  font-style: normal;
+  color: #232323;
+  text-transform: uppercase;
+}
+
+button.btn-1 {
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 22px;
+}
+
+button.btn-2 {
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 18px;
+}
+
+.primary {
+  color: #208CB2;
+}
+
+.primary-2 {
+  color: #58A9C6;
+}
+
+.primary-3 {
+  color: #C7E2EC;
+}
+
+.secondary {
+  color: #EfE1DC;
+}
+
+.secondary-2 {
+  color: #F3E9E5;
+}
+
+.secondary-3 {
+  color: #FBF7F6;
+}
+
+ul, li {
+  padding: 0;
+  margin: 0;
+}

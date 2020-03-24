@@ -1,0 +1,3 @@
+// PAGE
+export const SET_HEAD_BACKGROUND = 'SET_HEAD_BACKGROUND'
+export const SET_FOOTER = 'SET_FOOTER'
