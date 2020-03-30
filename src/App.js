@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      
-    </div>
-  );
-}
-=======
 import React, { Component, Suspense } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -33,6 +21,5 @@ class App extends Component {
     );
   };
 };
->>>>>>> master
 
 export default App;

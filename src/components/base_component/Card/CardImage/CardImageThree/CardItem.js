@@ -1,28 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Col } from 'react-bootstrap'
 
 const CardItem = props => {
     return (
-        <Container {...props} className="grid grid-rows-3 items-start">
-            <div className="bg-cover bg-center" style={{backgroundImage: `url(${props.image})`, height: "400px"}} />
-            <div>
-                <H2 margin="24px 0" border={props.border}> {props.heading} </H2>
-            </div>
-            <div> 
-                <P padding="0" border={props.border}> {props.text} </P>
-            </div>
+        <Container className="grid grid-rows-2" width="350px" height="510px">
+            <div className="bg-cover bg-no-repeat bg-center row-end-3 row-span-2" style={{backgroundImage: `url(${props.image})`, width: "350px"}} />
+            <ContainerText className="mt-6" width="350px" height="86px">
+                <H2 margin="0" border={props.border}> {props.heading} </H2>
+                <P className="mt-1" padding="0" border={props.border}> {props.text} </P>
+            </ContainerText>
         </Container>
     )
 }
 
 const Container = styled.div(
     props => ({
-        border: props.border? "1px solid": null,
-        margin: props.containerMargin,
-        padding: props.containerPadding,
-        boxSizing: "border-box",
+        width: props.width,
+        height: props.height,
+    })
+)
+
+const ContainerText = styled.div(
+    props => ({
+        width: props.width,
+        height: props.height,
     })
 )
 

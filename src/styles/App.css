@@ -106,23 +106,23 @@ button.btn-2 {
 }
 
 .primary {
-  color: #208CB2;
+  color: #208CB2 !important;
 }
 
 .primary-2 {
-  color: #58A9C6;
+  color: #58A9C6 !important;
 }
 
 .primary-3 {
-  color: #C7E2EC;
+  color: #C7E2EC !important;
 }
 
 .secondary {
-  color: #EfE1DC;
+  color: #EfE1DC !important;
 }
 
 .secondary-2 {
-  color: #F3E9E5;
+  color: #F3E9E5 !important;
 }
 
 .secondary-3 {
