@@ -52,7 +52,7 @@ class Home extends Base {
                 </section>
                 
                 <section>
-                    <div className="flex justify-center h-auto py-40 border border-solid border-black">
+                    <div className="flex justify-center h-auto py-16 border border-solid border-black">
                         <CarouselCardText />
                     </div>
                 </section>
