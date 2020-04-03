@@ -53,7 +53,7 @@ class Home extends Base {
                 
                 <section>
                     <div className="flex justify-center h-auto py-40 border border-solid border-black">
-                        <CarouselCardText className="border border-solid border-black" />
+                        <CarouselCardText />
                     </div>
                 </section>
 
@@ -92,6 +92,12 @@ class Home extends Base {
                                 <CardTextImageSmall caption={false} heading="Tabs 2" />
                             </div>
                         </Tabs>
+                    </div>
+                </section>
+
+                <section>
+                    <div className="flex justify-center py-16 border border-solid border-black">
+                        <Table />
                     </div>
                 </section>
 

@@ -1,9 +1,21 @@
-ul.slick-dots.center {
-    bottom: 40px;
-    left: -180px;
+#carousel-card-text #dot {
+    width: 12px;
+    height: 12px;
+    background: #4E5E79;
+    opacity: 0.25;
 }
 
-ul.slick-dots li.slick-active div#dot {
+#carousel-card-text .slick-dots {
+    bottom: -50px ;
+    left: -16%;
+}
+
+#carousel-card-text #dot:hover {
+    opacity: 1;
+    background: #208CB2;
+}
+
+#carousel-card-text .slick-active #dot {
     background: #208CB2;
     opacity: 1;
 }

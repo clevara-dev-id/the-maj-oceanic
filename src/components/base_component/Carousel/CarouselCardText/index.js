@@ -5,6 +5,8 @@ import styled from 'styled-components'
 
 import './style.css'
 import Img1 from '../../../../assets/img/home/slick/1.svg'
+import NextArrow from '../../Button/NextArrow'
+import PrevArrow from '../../Button/PrevArrow'
 
 const Button = lazy(() => import('../../Button'))
 
@@ -18,7 +20,11 @@ class CarouselCardText extends Component {
         this.state = {
             localStore: [],
             isLoading: true,
+            indexActive: 0,
         }
+        
+        this.next = this.next.bind(this)
+        this.prev = this.prev.bind(this)
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
@@ -31,47 +37,99 @@ class CarouselCardText extends Component {
         return null
     }
 
+    prev = () => {
+        this.carousel.slickPrev()
+    }
+
+    next = () => {
+        this.carousel.slickNext()
+    }
+
     render() {
         return (
-            <Container {...this.props} containerWidth="1110px" containerHeight="575px">
+            <div id="carousel-card-text" className="max-w-container-2" style={{width: "1110px"}}>
                 <Slider
+                    ref={ref => this.carousel = ref}
+                    arrows={false}
                     dots={true}
-                    // fade={true}
                     slidesToShow={1}
                     slidesToScroll={1}
-                    dotsClass="slick-dots center"
-                    customPaging={i => <Dot id="dot" />}
+                    dotsClass="slick-dots center outline-none"
+                    customPaging={i => <div id="dot" className="rounded-full" />
+                    }
+                    afterChange={(indexActive) => this.setState({indexActive})}
                 >
                     
                     {this.state.localStore.length && this.state.localStore.map((data, index) => {
                         return (
-                            <div key={index}>
-                                <div>
-                                    <img src={data.image} width="730px" height="493px" style={{position: "absolute"}} alt="img-slick" />
-                                    <CardItem>
-                                        <Content border={this.props.border}>
-                                            <H6 className="primary"> {data.caption} </H6>
-                                            <h1> {data.heading} </h1>
-                                            <P className="body-1" margin="29px 0 25px">
-                                                {data.text}
-                                            </P>
-
-                                            <List border={this.props.border} margin="0 0 39px">
-                                                <UL style={{padding: "0 20px"}}>
-                                                    {data.list && data.list.map((itemList, indexList) => (
-                                                        <LI className="body-1" key={indexList}> {itemList} </LI>
-                                                    ))}
-                                                </UL>
-                                            </List>
-                                            <Button className="btn-2" small outline>Learn More</Button>
-                                        </Content>
-                                    </CardItem>
-                                </div>
+                            <div key={index} className="outline-none">
+                                <img
+                                    className="outline-none"
+                                    src={data.image} 
+                                    width="730px" 
+                                    height="493px" 
+                                    alt="img-slick" 
+                                />
                             </div>
                         )
                     })}
                 </Slider>
-            </Container>
+
+                <PrevArrow 
+                    onClick={this.prev}
+                    backgroundColor="#FFFFFF"
+                    color="#208CB2"
+                    hover={{
+                        backgroundColor: "#208CB2",
+                        color: "#FFFFFF"
+                    }}
+                    style={{
+                        outline: "none",
+                        top: "-64px",
+                        left: "24px"
+                    }}
+                />
+
+                <NextArrow 
+                    onClick={this.next}
+                    backgroundColor="#FFFFFF"
+                    color="#208CB2"
+                    hover={{
+                        backgroundColor: "#208CB2",
+                        color: "#FFFFFF"
+                    }}
+                    style={{
+                        outline: "none",
+                        top: "-64px",
+                        left: "50px"
+                    }}
+                />
+
+                <CardItem>
+                    {this.state.localStore.length && this.state.localStore.map((data, index) => {
+                        if (this.state.indexActive === index) {
+                            return (
+                                <Content key={index} border={this.props.border}>
+                                    <H6 className="primary"> {data.caption} </H6>
+                                    <h1> {data.heading} </h1>
+                                    <P className="body-1" margin="29px 0 25px">
+                                        {data.text}
+                                    </P>
+    
+                                    <List border={this.props.border} margin="0 0 39px">
+                                        <UL style={{padding: "0 20px"}}>
+                                            {data.list && data.list.map((itemList, indexList) => (
+                                                <LI className="body-1" key={indexList}> {itemList} </LI>
+                                            ))}
+                                        </UL>
+                                    </List>
+                                    <Button className="btn-2" small outline>Learn More</Button>
+                                </Content>
+                            )
+                        }
+                    })}
+                </CardItem>
+            </div>
         )
     }
 }
@@ -91,10 +149,10 @@ const CardItem = styled.div(
         background: "#FFFFFF", 
         padding: "51px 29px", 
         position: "relative", 
-        top: "50px", 
-        marginLeft: "650px", 
+        top: "-44%", 
+        marginLeft: "670px", 
         width: "445px", 
-        height: "570px",
+        height: "525px",
     })
 )
 
@@ -128,7 +186,7 @@ const P = styled.p(
 
 const UL = styled.ul(
     props => ({
-        listStyleType: "circle",
+        listStyleType: "disc",
     })
 )
 
@@ -153,14 +211,14 @@ CarouselCardText.defaultProps = {
     store: [{
         id: 1,
         image: Img1,
-        caption: "spesification 1",
+        caption: "specification 1",
         heading: "Lorem Ipsum 1",
         text: "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis.",
         // list: ["Lorem ipsum dolor sit amet", "Laboris lar aliquip", "Lorem ipsum dolor sit amet", "Laboris lar aliquip"]
     },{
         id: 2,
         image: Img1,
-        caption: "spesification 2",
+        caption: "specification 2",
         heading: "Lorem Ipsum 2",
         text: "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis.",
         list: ["Lorem ipsum dolor sit amet", "Laboris lar aliquip", "Lorem ipsum dolor sit amet", "Laboris lar aliquip"]
