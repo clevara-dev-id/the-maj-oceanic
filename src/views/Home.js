@@ -5,8 +5,10 @@ import Img1 from '../assets/img/home/1.svg'
 /* Component */
 import Base from './Base'
 import CardThree from '../components/base_component/Card/CardImage/CardThree'
+import Skeleton from '../components/base_component/Skeleton/Skeleton'
 const CardTextSecondary = lazy(() => import('../components/base_component/Card/CardText/CardTextSecondary'))
 const SliderCardImage = lazy(() => import('../components/base_component/Slider/SliderCardImage/SliderCardImage'))
+const Videojs = lazy(() => import('../components/base_component/Video/video'))
 
 class Home extends Base {
     render() {
@@ -39,6 +41,16 @@ class Home extends Base {
                         />
                     </div>
                 </section>
+                {/* <section>
+                    <div className="container">
+                        <Skeleton width="300px" height="10px" />
+                    </div>
+                </section> */}
+                {/* <section>
+                    <div className="flex flex-col items-center justify-between h-auto py-24">
+                        <Videojs />
+                    </div>
+                </section> */}
             </div>
         )
     }

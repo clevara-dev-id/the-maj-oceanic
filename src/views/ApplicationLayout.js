@@ -9,6 +9,7 @@ import HeadSvg from '../assets/img/home/svg/head.svg'
 import { ContentLoader } from '../components/base_component/Loader'
 const HeadBackground = lazy(() => import('../components/HeadBackground'))
 const NavigationBar = lazy(() => import('../components/NavigationBar'))
+const SliderAwesome = lazy(() => import('../components/base_component/Slider/SliderAwesome/SliderAwesome'))
 
 const mapStateToProps = state => ({
     head_background: state.page.head_background,
@@ -20,7 +21,8 @@ class connectApplicationLayout extends Base {
             <div>
                 <header>
                     {/* <NavigationBar /> */}
-                    <HeadBackground bg={this.props.head_background.image} text={this.props.head_background.text} />
+                    {/* <HeadBackground bg={this.props.head_background.image} text={this.props.head_background.text} /> */}
+                    <SliderAwesome />
                 </header>
 
                 {this.props.children}
