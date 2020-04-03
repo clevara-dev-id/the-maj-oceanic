@@ -1,62 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import HeadingText from '../../../Heading/HeadingText'
 
 const CardItem = props => {
     return (
-        <Container className="grid grid-rows-2" width="350px" height="510px">
-            <div className="bg-cover bg-no-repeat bg-center row-end-3 row-span-2" style={{backgroundImage: `url(${props.image})`, width: "350px"}} />
-            <ContainerText className="mt-6" width="350px" height="86px">
-                <H2 margin="0" border={props.border}> {props.heading} </H2>
-                <P className="mt-1" padding="0" border={props.border}> {props.text} </P>
-            </ContainerText>
-        </Container>
+        <div className={`${props.containerClassName}`}>
+            <div className={`bg-auto bg-no-repeat bg-center w-image-1 h-image-1 ${props.containerImageClassName}`} style={{backgroundImage: `url(${props.image})`}} />
+            {props.heading && props.text? (
+                <HeadingText caption={props.caption} heading={props.heading} text={props.text} containerClassName={`${props.containerHeadingClassName} w-image-1`} center={props.center} headingClassName={`${props.headingClassName}`} textClassName={`${props.textClassName} w-image-1`} />
+            ): null}
+        </div>
     )
 }
 
-const Container = styled.div(
-    props => ({
-        width: props.width,
-        height: props.height,
-    })
-)
-
-const ContainerText = styled.div(
-    props => ({
-        width: props.width,
-        height: props.height,
-    })
-)
-
-const H2 = styled.h2(
-    props => ({
-        border: props.border? "1px solid": null,
-        fontWeight: "600",
-        lineHeight: "28px",
-        textAlign: "center",
-        margin: props.margin,
-        padding: props.padding,
-        textTransform: "uppercase",
-    })
-)
-
-const P = styled.p(
-    props => ({
-        border: props.border? "1px solid": null,
-        fontWeight: "300",
-        textAlign: "center",
-        margin: props.margin,
-        padding: props.padding,
-    })
-)
-
 CardItem.propTypes = {
+    containerClassName: PropTypes.string,
     border: PropTypes.bool,
-    containerMargin: PropTypes.string,
-    containerPadding: PropTypes.string,
     image: PropTypes.string,
     heading: PropTypes.string,
+    containerHeadingClassName: PropTypes.string,
     text: PropTypes.string,
+    textClassName: PropTypes.string,
+    center: PropTypes.bool
 }
 
 export default CardItem

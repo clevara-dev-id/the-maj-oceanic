@@ -1,4 +1,5 @@
 module.exports = {
+  important: true,
   prefix: '',
   important: false,
   separator: ':',
@@ -274,6 +275,7 @@ module.exports = {
       black: '900',
     },
     height: theme => ({
+      'image-1': "400px",
       auto: 'auto',
       ...theme('spacing'),
       full: '100%',
@@ -334,6 +336,7 @@ module.exports = {
       '5xl': '64rem',
       '6xl': '72rem',
       full: '100%',
+      'container-2': '1110px',
       ...breakpoints(theme('screens')),
     }),
     minHeight: {
@@ -380,7 +383,9 @@ module.exports = {
       '11': '11',
       '12': '12',
     },
-    padding: theme => theme('spacing'),
+    padding: (theme) => ({
+      ...theme('spacing'),
+    }),
     placeholderColor: theme => theme('colors'),
     stroke: {
       current: 'currentColor',
@@ -392,6 +397,7 @@ module.exports = {
     },
     textColor: theme => theme('colors'),
     width: theme => ({
+      'image-1': "350px",
       auto: 'auto',
       ...theme('spacing'),
       '1/2': '50%',

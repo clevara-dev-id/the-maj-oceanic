@@ -9,15 +9,11 @@ const CardItem = lazy(() => import('./CardItem'))
 const Button = lazy(() => import('../../../Button'))
 
 
+
 /**
-* @augments {Component<{    store:arrayOfobject).isRequired,    buttonName:string.isRequired,>}
+* @augments {Component<{    containerClassName:string,    store:arrayOfobject).isRequired,    buttonTitle:string.isRequired,    onClick:Function.isRequired,>}
 */
 class CardThree extends Component {
-    static propTypes = {
-        store: PropTypes.arrayOf(PropTypes.object).isRequired,
-        buttonName: PropTypes.string.isRequired,
-    }
-    
     constructor(props) {
         super(props)
     
@@ -38,32 +34,32 @@ class CardThree extends Component {
     
     render() {
         return (
-            <Container width="1110px" className={this.props.className}>
-                <div className="grid grid-cols-3 gap-6 mx-auto">
+            <div className={`max-w-container-2 ${this.props.containerclassName}`}>
+                <div className="flex flex-row">
                     {this.state.localStore.length && this.state.localStore.map((data, index) => (
                         <CardItem 
+                            caption={false}
+                            containerClassName={`${this.state.localStore.length === (index + 1)? "ml-3": (index + 1) === 1? "mr-3": "mx-3"}`}
+                            headingClassName="uppercase mt-6"
+                            textClassName="mt-4"
                             key={index}
                             image={data.image}
                             heading={data.heading}
                             text={data.text}
+                            center
                         />
                     ))}
                 </div>
                 
-                <div className="flex mt-16">
-                    <Button className="mx-auto" large outline> {this.props.buttonName} </Button>
-                </div>
-            </Container>
+                {this.props.buttonTitle? (
+                    <div className="flex mt-16">
+                        <Button className="mx-auto" large outline onClick={this.props.onClick}> {this.props.buttonTitle} </Button>
+                    </div>
+                ): null}
+            </div>
         )
     }
 }
-
-const Container = styled.div(
-    props => ({
-        width: props.width,
-        height: props.height
-    })
-)
 
 CardThree.defaultProps = {
     store : [{
@@ -82,12 +78,17 @@ CardThree.defaultProps = {
         heading: "gajah mada",
         text: "Hemmed by jungle and lulled by the lap of the Indian Ocean, the hotel is rich in island spirit"
     }],
-    buttonName: "Discover More"
+    buttonTitle: "Discover More",
+    onClick: () => {
+        alert('change in prop onClick')
+    }
 }
 
-// CardThree.propTypes = {
-//     store: PropTypes.arrayOf(PropTypes.object).isRequired,
-//     buttonName: PropTypes.string.isRequired,
-// }
+CardThree.propTypes = {
+    containerClassName: PropTypes.string,
+    store: PropTypes.arrayOf(PropTypes.object).isRequired,
+    buttonTitle: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
+}
 
 export default CardThree

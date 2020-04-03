@@ -27,13 +27,13 @@ class Tabs extends Component {
         const classNameTabcontent = `tab-content ${this.props.classNameTabcontent}`
         return (
             <div className={classNameTabs}>
-                <ul className={classNameTabUL}>
+                <ul className={`${classNameTabUL} flex py-20`}>
                     {this.props.children && this.props.children.map((child) => {
                         const { label } = child.props
                         return (
                             <Tab
-                                classNameLabelActive={this.props.classNameLabelActive}
-                                classNameTabLI={this.props.classNameTabLI}
+                                classNameLabelActive={`${this.props.classNameLabelActive} text-primary-300`}
+                                classNameTabLI={`${this.props.classNameTabLI} mr-10`}
                                 activeTab={this.state.activeTab}
                                 key={label}
                                 label={label}
@@ -43,7 +43,7 @@ class Tabs extends Component {
                     })}
                 </ul>
 
-                <div className={classNameTabcontent}>
+                <div className={`${classNameTabcontent} flex`}>
                     {this.props.children && this.props.children.map((child) => {
                         if (child.props.label !== this.state.activeTab) return undefined
                         return child.props.children

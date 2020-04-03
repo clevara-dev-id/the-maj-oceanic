@@ -4049,6 +4049,10 @@ video {
   height: 16rem;
 }
 
+.h-image-1 {
+  height: 400px;
+}
+
 .h-auto {
   height: auto;
 }
@@ -5335,6 +5339,10 @@ video {
 
 .max-w-full {
   max-width: 100%;
+}
+
+.max-w-container-2 {
+  max-width: 1110px;
 }
 
 .max-w-screen-sm {
@@ -11057,6 +11065,10 @@ video {
 
 .w-64 {
   width: 16rem;
+}
+
+.w-image-1 {
+  width: 350px;
 }
 
 .w-auto {
@@ -17025,6 +17037,10 @@ video {
     height: 16rem;
   }
 
+  .sm\:h-image-1 {
+    height: 400px;
+  }
+
   .sm\:h-auto {
     height: auto;
   }
@@ -18311,6 +18327,10 @@ video {
 
   .sm\:max-w-full {
     max-width: 100%;
+  }
+
+  .sm\:max-w-container-2 {
+    max-width: 1110px;
   }
 
   .sm\:max-w-screen-sm {
@@ -24033,6 +24053,10 @@ video {
 
   .sm\:w-64 {
     width: 16rem;
+  }
+
+  .sm\:w-image-1 {
+    width: 350px;
   }
 
   .sm\:w-auto {
@@ -30000,6 +30024,10 @@ video {
     height: 16rem;
   }
 
+  .md\:h-image-1 {
+    height: 400px;
+  }
+
   .md\:h-auto {
     height: auto;
   }
@@ -31286,6 +31314,10 @@ video {
 
   .md\:max-w-full {
     max-width: 100%;
+  }
+
+  .md\:max-w-container-2 {
+    max-width: 1110px;
   }
 
   .md\:max-w-screen-sm {
@@ -37008,6 +37040,10 @@ video {
 
   .md\:w-64 {
     width: 16rem;
+  }
+
+  .md\:w-image-1 {
+    width: 350px;
   }
 
   .md\:w-auto {
@@ -42975,6 +43011,10 @@ video {
     height: 16rem;
   }
 
+  .lg\:h-image-1 {
+    height: 400px;
+  }
+
   .lg\:h-auto {
     height: auto;
   }
@@ -44261,6 +44301,10 @@ video {
 
   .lg\:max-w-full {
     max-width: 100%;
+  }
+
+  .lg\:max-w-container-2 {
+    max-width: 1110px;
   }
 
   .lg\:max-w-screen-sm {
@@ -49983,6 +50027,10 @@ video {
 
   .lg\:w-64 {
     width: 16rem;
+  }
+
+  .lg\:w-image-1 {
+    width: 350px;
   }
 
   .lg\:w-auto {
@@ -55950,6 +55998,10 @@ video {
     height: 16rem;
   }
 
+  .xl\:h-image-1 {
+    height: 400px;
+  }
+
   .xl\:h-auto {
     height: auto;
   }
@@ -57236,6 +57288,10 @@ video {
 
   .xl\:max-w-full {
     max-width: 100%;
+  }
+
+  .xl\:max-w-container-2 {
+    max-width: 1110px;
   }
 
   .xl\:max-w-screen-sm {
@@ -62958,6 +63014,10 @@ video {
 
   .xl\:w-64 {
     width: 16rem;
+  }
+
+  .xl\:w-image-1 {
+    width: 350px;
   }
 
   .xl\:w-auto {

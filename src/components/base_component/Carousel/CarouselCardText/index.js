@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Slider from 'react-slick'
 import styled from 'styled-components'
 
-import './slider.css'
+import './style.css'
 import Img1 from '../../../../assets/img/home/slick/1.svg'
 
 const Button = lazy(() => import('../../Button'))
@@ -11,7 +11,7 @@ const Button = lazy(() => import('../../Button'))
 /**
 * @augments {Component<{    store:arrayOfobject).isRequired,    border:boolean,    containerMargin:string,    containerPadding:string,    className:string,>}
 */
-class SliderCardImage extends Component {
+class CarouselCardText extends Component {
     constructor(props) {
         super(props)
     
@@ -36,7 +36,7 @@ class SliderCardImage extends Component {
             <Container {...this.props} containerWidth="1110px" containerHeight="575px">
                 <Slider
                     dots={true}
-                    fade={true}
+                    // fade={true}
                     slidesToShow={1}
                     slidesToScroll={1}
                     dotsClass="slick-dots center"
@@ -149,14 +149,14 @@ const Dot = styled.div(
     })
 )
 
-SliderCardImage.defaultProps = {
+CarouselCardText.defaultProps = {
     store: [{
         id: 1,
         image: Img1,
         caption: "spesification 1",
         heading: "Lorem Ipsum 1",
         text: "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis.",
-        list: ["Lorem ipsum dolor sit amet", "Laboris lar aliquip", "Lorem ipsum dolor sit amet", "Laboris lar aliquip"]
+        // list: ["Lorem ipsum dolor sit amet", "Laboris lar aliquip", "Lorem ipsum dolor sit amet", "Laboris lar aliquip"]
     },{
         id: 2,
         image: Img1,
@@ -167,7 +167,7 @@ SliderCardImage.defaultProps = {
     }]
 }
 
-SliderCardImage.propTypes = {
+CarouselCardText.propTypes = {
     store: PropTypes.arrayOf(PropTypes.object).isRequired,
     border: PropTypes.bool,
     containerMargin: PropTypes.string,
@@ -175,4 +175,4 @@ SliderCardImage.propTypes = {
     className: PropTypes.string,
 }
 
-export default SliderCardImage
+export default CarouselCardText

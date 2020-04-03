@@ -129,7 +129,31 @@ button.btn-2 {
   color: #FBF7F6;
 }
 
-ul, li {
+
+/* Carousel */
+#carousel-three .slick-dots {
+  bottom: -46px;
+}
+
+#carousel-three .slick-dots li #dots {
+  width: 12px;
+  height: 12px;
+  background: #4E5E79;
+  border-radius: 6px;
+  opacity: 1;
+}
+
+#carousel-three .slick-dots li.slick-active #dots {
+  background-color: #208CB2;
+  opacity: 1;
+}
+
+#carousel-three .slick-prev {
+  left: -46px;
+}
+
+#carousel-three .slick-next {
   padding: 0;
   margin: 0;
+  right: -34px;
 }
