@@ -14,7 +14,7 @@ const ghost = {backgroundColor: "transparent", color: primary.backgroundColor, b
 const Button = props => {
 
     return (
-        <B  {...props}>
+        <Btn  {...props}>
             {
                 props.search? (
                     <> 
@@ -23,7 +23,7 @@ const Button = props => {
                     </>
                 ) : props.children
             }
-        </B>
+        </Btn>
     )
 }
 
@@ -48,16 +48,17 @@ const Btn = styled.button(
         } : props.hover,
     })
 )
-const B = styled(Btn).attrs(props => ({
-    className: `btn ${props.className}`
-}))``
 
 // PropsTypes
 
 Button.propTypes = {
     className: PropTypes.string,
+    style: PropTypes.object,
+    onClick: PropTypes.func,
     large: PropTypes.bool,
     small: PropTypes.bool,
+    ghost: PropTypes.bool,
+    outline: PropTypes.bool,
     color: PropTypes.string,
     border: PropTypes.string,
     margin: PropTypes.string,

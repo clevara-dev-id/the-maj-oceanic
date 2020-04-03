@@ -12,7 +12,7 @@ export default class Videojs extends Component {
     render(){
         return(
             <>
-                <video width="100%" >
+                <video width="100%" controls >
                     <source src={Video} type="video/mp4"  />
                     Your browser does not support the video tag.
                 </video>

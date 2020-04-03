@@ -7,7 +7,7 @@ const CardTextSecondary = props => {
         <Container className={props.className} {...props}>
             {!props.caption? null : <h5 className="primary"> {props.caption } </h5>}
             <h1>{props.title}</h1>
-            <P>{props.text}</P>
+            <P className={props.textClassName}>{props.text}</P>
         </Container>
     )
 }
@@ -37,6 +37,7 @@ CardTextSecondary.propTypes = {
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     margin: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     className: PropTypes.string,
+    textClassName: PropTypes.string,
     containerMargin: PropTypes.string,
     containerPadding: PropTypes.string,
     containerWidth: PropTypes.string,

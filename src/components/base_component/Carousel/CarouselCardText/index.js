@@ -3,12 +3,15 @@ import PropTypes from 'prop-types'
 import Slider from 'react-slick'
 import styled from 'styled-components'
 
-import './slider.css'
+import './style.css'
 import Img1 from '../../../../assets/img/home/slick/1.svg'
 
 const Button = lazy(() => import('../../Button'))
 
-class SliderCardImage extends Component {
+/**
+* @augments {Component<{    store:arrayOfobject).isRequired,    border:boolean,    containerMargin:string,    containerPadding:string,    className:string,>}
+*/
+class CarouselCardText extends Component {
     constructor(props) {
         super(props)
     
@@ -33,7 +36,7 @@ class SliderCardImage extends Component {
             <Container {...this.props} containerWidth="1110px" containerHeight="575px">
                 <Slider
                     dots={true}
-                    fade={true}
+                    // fade={true}
                     slidesToShow={1}
                     slidesToScroll={1}
                     dotsClass="slick-dots center"
@@ -54,11 +57,11 @@ class SliderCardImage extends Component {
                                             </P>
 
                                             <List border={this.props.border} margin="0 0 39px">
-                                                <ul style={{padding: "0 20px"}}>
+                                                <UL style={{padding: "0 20px"}}>
                                                     {data.list && data.list.map((itemList, indexList) => (
-                                                        <LI key={indexList}> {itemList} </LI>
+                                                        <LI className="body-1" key={indexList}> {itemList} </LI>
                                                     ))}
-                                                </ul>
+                                                </UL>
                                             </List>
                                             <Button className="btn-2" small outline>Learn More</Button>
                                         </Content>
@@ -123,6 +126,12 @@ const P = styled.p(
     })
 )
 
+const UL = styled.ul(
+    props => ({
+        listStyleType: "circle",
+    })
+)
+
 const LI = styled.li(
     props => ({
         margin: "11px 0",
@@ -140,21 +149,14 @@ const Dot = styled.div(
     })
 )
 
-SliderCardImage.propTypes = {
-    store: PropTypes.array,
-    border: PropTypes.bool,
-    containerMargin: PropTypes.string,
-    containerPadding: PropTypes.string,
-}
-
-SliderCardImage.defaultProps = {
+CarouselCardText.defaultProps = {
     store: [{
         id: 1,
         image: Img1,
         caption: "spesification 1",
         heading: "Lorem Ipsum 1",
         text: "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis.",
-        list: ["Lorem ipsum dolor sit amet", "Laboris lar aliquip", "Lorem ipsum dolor sit amet", "Laboris lar aliquip"]
+        // list: ["Lorem ipsum dolor sit amet", "Laboris lar aliquip", "Lorem ipsum dolor sit amet", "Laboris lar aliquip"]
     },{
         id: 2,
         image: Img1,
@@ -165,4 +167,12 @@ SliderCardImage.defaultProps = {
     }]
 }
 
-export default SliderCardImage
+CarouselCardText.propTypes = {
+    store: PropTypes.arrayOf(PropTypes.object).isRequired,
+    border: PropTypes.bool,
+    containerMargin: PropTypes.string,
+    containerPadding: PropTypes.string,
+    className: PropTypes.string,
+}
+
+export default CarouselCardText

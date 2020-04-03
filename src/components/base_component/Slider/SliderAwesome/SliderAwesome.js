@@ -18,7 +18,7 @@ export default class extends Component {
 
     render(){
         return(
-            <div className="relative w-screen h-screen">
+            <div>
               <AwesomeSlider 
                     animation="foldOutAnimation"
                     bullets={false}

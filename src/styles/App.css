@@ -29,7 +29,7 @@ h1, h2, h3, h4 {
 h5, h6 {
   font-family: Verlag B;
   font-style: normal;
-  font-weight: bold;
+  font-weight: bold !important;
   text-transform: uppercase;
   color: #232323;
 }
@@ -106,30 +106,54 @@ button.btn-2 {
 }
 
 .primary {
-  color: #208CB2;
+  color: #208CB2 !important;
 }
 
 .primary-2 {
-  color: #58A9C6;
+  color: #58A9C6 !important;
 }
 
 .primary-3 {
-  color: #C7E2EC;
+  color: #C7E2EC !important;
 }
 
 .secondary {
-  color: #EfE1DC;
+  color: #EfE1DC !important;
 }
 
 .secondary-2 {
-  color: #F3E9E5;
+  color: #F3E9E5 !important;
 }
 
 .secondary-3 {
   color: #FBF7F6;
 }
 
-ul, li {
+
+/* Carousel */
+#carousel-three .slick-dots {
+  bottom: -46px;
+}
+
+#carousel-three .slick-dots li #dots {
+  width: 12px;
+  height: 12px;
+  background: #4E5E79;
+  border-radius: 6px;
+  opacity: 1;
+}
+
+#carousel-three .slick-dots li.slick-active #dots {
+  background-color: #208CB2;
+  opacity: 1;
+}
+
+#carousel-three .slick-prev {
+  left: -46px;
+}
+
+#carousel-three .slick-next {
   padding: 0;
   margin: 0;
+  right: -34px;
 }
