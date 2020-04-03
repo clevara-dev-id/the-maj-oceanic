@@ -29,7 +29,7 @@ const CardTextImageSmall = props => {
                     text={props.text}
                     textClassName="mb-8"
                 >
-                    <Button small ghost onClick={props.onClick}> Learn More </Button>
+                    <Button small ghost onClick={props.onClick}> {props.buttonTitle.toUpperCase()} </Button>
                 </HeadingText>
             </>
             ) : (
@@ -41,7 +41,7 @@ const CardTextImageSmall = props => {
                     text={props.text}
                     textClassName="mb-8"
                 >
-                    <Button small ghost onClick={props.onClick}> Learn More </Button>
+                    <Button small ghost onClick={props.onClick}> {props.buttonTitle.toUpperCase()} </Button>
                 </HeadingText>
                 <div 
                     className="bg-no-repeat bg-cover bg-no-repeat" 
@@ -77,9 +77,9 @@ CardTextImageSmall.defaultProps = {
     imageWidth: "540px",
     imageHeight: "400px",
     caption: false,
-    heading: "Raja Ampat",
+    heading: "Card Text Image Small",
     text: "Sunt excepteur laborum reprehenderit duis sunt fugiat eu dolore. Laborum mollit nostrud quis proident esse cillum sint laboris in deserunt eu consectetur ad adipisicing. Mollit nulla in quis nisi elit occaecat eu dolore aliquip.",
-    buttonTitle: "learn more",
+    buttonTitle: "Button Title",
     onClick: () => {
         alert("clicked")
     }

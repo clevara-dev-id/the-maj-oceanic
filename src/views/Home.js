@@ -17,6 +17,8 @@ const CardTextImageSmall = lazy(() => import('../components/base_component/Card/
 
 const Tabs = lazy(() => import('../components/base_component/Tab/Tabs'))
 
+const Table = lazy(() => import('../components/base_component/Table'))
+
 
 class Home extends Base {
     render() {
@@ -83,16 +85,21 @@ class Home extends Base {
                 <section>
                     <div className="flex justify-center py-16 border border-solid border-black">
                         <Tabs>
-                            <div label="Raja Ampat">
-                                <CardTextImageSmall reverse caption={false} heading="raja ampat" />
+                            <div label="Tabs 1">
+                                <CardTextImageSmall caption={false} heading="Tabs 1" />
                             </div>
-                            <div label="Flores Sea">
-                                <CardTextImageSmall caption={false} heading="flores sea" />
+                            <div label="Tabs 2">
+                                <CardTextImageSmall caption={false} heading="Tabs 2" />
                             </div>
                         </Tabs>
                     </div>
                 </section>
 
+                <section>
+                    <div className="flex justify-center py-16 border border-solid border-black">
+                        <Table />
+                    </div>
+                </section>
             </div>
         )
     }

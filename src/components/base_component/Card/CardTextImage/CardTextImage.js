@@ -20,7 +20,7 @@ const CardTextImage = props => {
                         text={props.text}
                         textClassName="mb-8"
                     >
-                        <Button small ghost onClick={props.onClick}> Learn More </Button>
+                        <Button small ghost onClick={props.onClick}> {props.buttonTitle.toUpperCase()} </Button>
                     </HeadingText>
                 </>
             ) : (
@@ -63,12 +63,12 @@ CardTextImage.propTypes = {
 
 CardTextImage.defaultProps = {
     caption: "SUSTAINIBILITY",
-    heading: "Lorem Ipsum dolor",
+    heading: "Card Text Image",
     text: "Reprehenderit enim exercitation eu laboris ea deserunt sunt proident. Ut officia aliqua voluptate commodo magna officia Lorem dolor consectetur eiusmod do enim est exercitation.",
     image: Img,
     imageWidth: "540px",
     imageHeight: "730px",
-    buttonTitle: "learn more",
+    buttonTitle: "Button Title",
     onClick: () => {
         alert("clicked")
     }

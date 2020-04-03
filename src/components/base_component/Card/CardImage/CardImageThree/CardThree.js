@@ -53,7 +53,7 @@ class CardThree extends Component {
                 
                 {this.props.buttonTitle? (
                     <div className="flex mt-16">
-                        <Button className="mx-auto" large outline onClick={this.props.onClick}> {this.props.buttonTitle} </Button>
+                        <Button className="mx-auto" large outline onClick={this.props.onClick}> {this.props.buttonTitle.toUpperCase()} </Button>
                     </div>
                 ): null}
             </div>
@@ -65,20 +65,20 @@ CardThree.defaultProps = {
     store : [{
         id: 1,
         image: Img1,
-        heading: "cheng he",
+        heading: "Card Three 1",
         text: "Hemmed by jungle and lulled by the lap of the Indian Ocean, the hotel is rich in island spirit",
     },{
         id: 2, 
         image: Img1,
-        heading: "vasco da gama",
+        heading: "Card Three 2",
         text: "Hemmed by jungle and lulled by the lap of the Indian Ocean, the hotel is rich in island spirit",
     },{
         id: 3,
         image: Img1,
-        heading: "gajah mada",
+        heading: "Card Three 3",
         text: "Hemmed by jungle and lulled by the lap of the Indian Ocean, the hotel is rich in island spirit"
     }],
-    buttonTitle: "Discover More",
+    buttonTitle: "Button Title",
     onClick: () => {
         alert('change in prop onClick')
     }
