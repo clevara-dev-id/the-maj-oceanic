@@ -12,16 +12,17 @@ const CardTextImageSmall = props => {
         {
             !props.reverse? (
             <>
-                <div 
-                    className="bg-no-repeat bg-cover bg-no-repeat" 
-                    style={{
-                        backgroundImage: `url(${props.image})`, 
-                        maxWidth: "540px",
-                        maxHeight: "400px",
-                        width: props.imageWidth, 
-                        height: props.imageHeight
-                    }} 
-                />
+                <div className="w-2/4">
+                    <div 
+                        className="bg-no-repeat bg-cover bg-no-repeat" 
+                        style={{
+                            backgroundImage: `url(${props.image})`,
+                            maxHeight: "400px",
+                            width: props.imageWidth, 
+                            height: props.imageHeight
+                        }} 
+                    />
+                </div>
                 <HeadingText 
                     containerClassName="w-2/4 pl-6 self-center"
                     caption={props.caption} 
@@ -44,10 +45,9 @@ const CardTextImageSmall = props => {
                     <Button small ghost onClick={props.onClick}> {props.buttonTitle.toUpperCase()} </Button>
                 </HeadingText>
                 <div 
-                    className="bg-no-repeat bg-cover bg-no-repeat" 
+                    className="bg-no-repeat bg-cover bg-no-repeat w-2/4" 
                     style={{
-                        backgroundImage: `url(${props.image})`, 
-                        maxWidth: "540px",
+                        backgroundImage: `url(${props.image})`,
                         maxHeight: "400px",
                         width: props.imageWidth, 
                         height: props.imageHeight
@@ -63,7 +63,7 @@ const CardTextImageSmall = props => {
 CardTextImageSmall.propTypes = {
     containerClassName: PropTypes.string,
     image: PropTypes.string.isRequired,
-    imageWidth: PropTypes.string.isRequired,
+    imageWidth: PropTypes.string,
     imageHeight: PropTypes.string.isRequired,
     caption: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]).isRequired,
     heading: PropTypes.string.isRequired,
@@ -74,7 +74,7 @@ CardTextImageSmall.propTypes = {
 
 CardTextImageSmall.defaultProps = {
     image: Img1,
-    imageWidth: "540px",
+    imageWidth: "100%",
     imageHeight: "400px",
     caption: false,
     heading: "Card Text Image Small",

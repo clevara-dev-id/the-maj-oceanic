@@ -27,7 +27,7 @@ class Tabs extends Component {
         const classNameTabcontent = `tab-content ${this.props.classNameTabcontent}`
         return (
             <div className={classNameTabs}>
-                <ul className={`${classNameTabUL} flex py-20`}>
+                <ul className={`${classNameTabUL} flex pb-20`}>
                     {this.props.children && this.props.children.map((child) => {
                         const { label } = child.props
                         return (

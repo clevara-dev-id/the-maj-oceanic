@@ -1,5 +1,6 @@
 import React, { lazy } from 'react'
 import PropTypes from 'prop-types'
+import './style.scss'
 
 import Img from '../../../../assets/img/home/card-text-image/1-croped.png'
 
@@ -8,10 +9,10 @@ const HeadingText = lazy(() => import('../../Heading/HeadingText'))
 
 const CardTextImage = props => {
     return (
-        <div className={`flex max-w-container-2 ${props.containerClassName}`}>
+        <div className="flex card-text-image">
             {!props.reverse? (
                 <>
-                    <div className="bg-no-repeat bg-cover bg-no-repeat" style={{backgroundImage: `url(${props.image})`, width: props.imageWidth, height: props.imageHeight}} />
+                    <div className="w-2/4 bg-no-repeat bg-cover bg-no-repeat h-100" style={{backgroundImage: `url(${props.image})`}} />
 
                     <HeadingText 
                         containerClassName="w-2/4 pl-6 self-center"
@@ -34,7 +35,7 @@ const CardTextImage = props => {
                     >
                         <Button small ghost onClick={props.onClick}> {props.buttonTitle.toUpperCase()} </Button>
                     </HeadingText>
-                    <div className="bg-no-repeat bg-cover bg-no-repeat" style={{backgroundImage: `url(${props.image})`, width: props.imageWidth, height: props.imageHeight}} />
+                    <div className="w-2/4 bg-no-repeat bg-cover bg-no-repeat h-100" style={{backgroundImage: `url(${props.image})`}} />
                 </>
             )}
             
@@ -66,8 +67,6 @@ CardTextImage.defaultProps = {
     heading: "Card Text Image",
     text: "Reprehenderit enim exercitation eu laboris ea deserunt sunt proident. Ut officia aliqua voluptate commodo magna officia Lorem dolor consectetur eiusmod do enim est exercitation.",
     image: Img,
-    imageWidth: "540px",
-    imageHeight: "730px",
     buttonTitle: "Button Title",
     onClick: () => {
         alert("clicked")

@@ -1,0 +1,22 @@
+.carousel-card-text-component {
+    ul.slick-dots.center {
+        bottom: 40px;
+        left: -180px;
+    }
+    
+    ul.slick-dots li.slick-active div#dot {
+        background: #208CB2;
+        opacity: 1;
+    }
+    
+    .carousel-card-text-component > div > .slick-dots {
+        bottom: 10rem;
+    }
+    
+    .ml-min-12{
+        margin-left: -3rem;
+    }
+    .h-full-plus-10{
+        height: 650px;
+    }
+}

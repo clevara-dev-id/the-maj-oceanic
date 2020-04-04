@@ -3,6 +3,7 @@ import React, { lazy } from 'react'
 /* Component */
 import Base from './Base'
 import Skeleton from '../components/base_component/Skeleton/Skeleton'
+
 const Videojs = lazy(() => import('../components/base_component/Video/video'))
 
 const Heading = lazy(() => import('../components/base_component/Heading/Heading'))
@@ -22,13 +23,48 @@ const Tabs = lazy(() => import('../components/base_component/Tab/Tabs'))
 const Table = lazy(() => import('../components/base_component/Table'))
 
 
+
+const SliderAwesome = lazy(() => import('../components/base_component/Slider/SliderAwesome/SliderAwesome'))
+const TextLargeImageComponent = lazy(() => import('../components/TextLargeImageComponent'))
+const CarouselCardTextComponent = lazy(() => import('../components/CarouselCardTextComponent'))
+const TextTabComponent = lazy(() => import('../components/TextTabComponent'))
+const DeviderComponent = lazy(() => import('../components/DeviderComponent'))
+const CardTextImageComponent = lazy(() => import('../components/CardTextImageComponent'))
+const SingleButtonComponent = lazy(() => import('../components/SingleButtonComponent'))
+const CardTextImageSmallComponent = lazy(() => import('../components/CardTextImageSmallComponent'))
+
 class Home extends Base {
     render() {
         return (
             <div id="home">
+                <SliderAwesome />
 
-                <section>
-                    <div className="container mx-auto py-16 border border-solid border-black">
+                <TextLargeImageComponent />
+
+                <CarouselCardTextComponent />
+
+                <TextTabComponent />
+
+                <CardTextImageComponent reverse />
+
+                <DeviderComponent />
+
+                <CardTextImageComponent />
+
+                <CardTextImageComponent reverse />
+
+                <DeviderComponent caption="The Destinations" />
+
+                <CardTextImageSmallComponent />
+
+                <CardTextImageSmallComponent reverse />
+
+                <SingleButtonComponent buttonName="read more STORIES" />
+
+
+                
+                {/* <section>
+                    <div className="flex justify-center py-16 border border-solid border-black">
                         <div>
                             <Heading />
                         </div>
@@ -36,56 +72,56 @@ class Home extends Base {
                 </section>
 
                 <section>
-                    <div className="container mx-auto py-16 border border-solid border-black">
+                    <div className="flex justify-center py-16 border border-solid border-black">
                         <HeadingText />
                     </div>
                 </section>
 
                 <section>
-                    <div className="container mx-auto py-16 border border-solid border-black">
+                    <div className="flex justify-center py-16 border border-solid border-black">
                         <HeadingTextList />
                     </div>
                 </section>
 
                 <section>
-                    <div className="container mx-auto py-16 border border-solid border-black">
+                    <div className="flex justify-center py-16 border border-solid border-black">
                         <CarouselText />
                     </div>
                 </section>
                 
                 <section>
-                    <div className="container mx-auto h-auto py-40 border border-solid border-black">
+                    <div className="flex justify-center h-auto py-40 border border-solid border-black">
                         <CarouselCardText className="border border-solid border-black" />
                     </div>
                 </section>
 
                 <section>
-                    <div className="container mx-auto h-auto py-16 border border-solid border-black">
+                    <div className="flex justify-center h-auto py-16 border border-solid border-black">
                         <CarouselThree />
                     </div>
                 </section>
 
 
                 <section>
-                    <div className="container mx-auto h-auto py-16 border border-solid border-black">
+                    <div className="flex justify-center h-auto py-16 border border-solid border-black">
                         <CardThree />
                     </div>
                 </section>
 
                 <section>
-                    <div className="container mx-auto py-16 border border-solid border-black">
+                    <div className="flex justify-center py-16 border border-solid border-black">
                         <CardTextImage />
                     </div>
                 </section>
 
                 <section>
-                    <div className="container mx-auto py-16 border border-solid border-black">
+                    <div className="flex justify-center py-16 border border-solid border-black">
                         <CardTextImageSmall />
                     </div>
                 </section>
                 
                 <section>
-                    <div className="container mx-auto py-16 border border-solid border-black">
+                    <div className="flex justify-center py-16 border border-solid border-black">
                         <Tabs>
                             <div label="Tabs 1">
                                 <CardTextImageSmall caption={false} heading="Tabs 1" />
@@ -98,7 +134,7 @@ class Home extends Base {
                 </section>
 
                 <section>
-                    <div className="container mx-auto py-16 border border-solid border-black">
+                    <div className="flex justify-center py-16 border border-solid border-black">
                         <Table />
                     </div>
                 </section>
@@ -112,7 +148,7 @@ class Home extends Base {
                     <div className="container mx-auto px-4 py-16">
                         <Videojs />
                     </div>
-                </section>
+                </section> */}
             </div>
         )
     }

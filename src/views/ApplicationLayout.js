@@ -22,7 +22,7 @@ class connectApplicationLayout extends Base {
                 <header>
                     {/* <NavigationBar /> */}
                     {/* <HeadBackground bg={this.props.head_background.image} text={this.props.head_background.text} /> */}
-                    <SliderAwesome />
+                    
                 </header>
 
                 {this.props.children}

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Slider from 'react-slick'
 import styled from 'styled-components'
 
-import './style.css'
+import './style.scss'
 import Img1 from '../../../../assets/img/home/slick/1.svg'
 
 const Button = lazy(() => import('../../Button'))
@@ -33,12 +33,13 @@ class CarouselCardText extends Component {
 
     render() {
         return (
-            <Container {...this.props} containerWidth="1110px" containerHeight="575px">
-                <Slider
+            <Slider
+                    id="carousel-card-component"
                     dots={true}
                     // fade={true}
                     slidesToShow={1}
                     slidesToScroll={1}
+                    arrows={false}
                     dotsClass="slick-dots center"
                     customPaging={i => <Dot id="dot" />}
                 >
@@ -47,31 +48,34 @@ class CarouselCardText extends Component {
                         return (
                             <div key={index}>
                                 <div>
-                                    <img src={data.image} width="730px" height="493px" style={{position: "absolute"}} alt="img-slick" />
-                                    <CardItem>
-                                        <Content border={this.props.border}>
-                                            <H6 className="primary"> {data.caption} </H6>
-                                            <h1> {data.heading} </h1>
-                                            <P className="body-1" margin="29px 0 25px">
-                                                {data.text}
-                                            </P>
+                                    <div className="flex h-full-plus-10">
+                                        <div className="w-2/3">
+                                            <img src={data.image} className="w-full" alt="img-slick" />
+                                        </div>
+                                        <div className="w-5/12 bg-white px-6 py-16 mt-20 ml-min-12">
+                                            <Content border={this.props.border}>
+                                                <H6 className="primary"> {data.caption} </H6>
+                                                <h1> {data.heading} </h1>
+                                                <P className="body-1" margin="29px 0 25px">
+                                                    {data.text}
+                                                </P>
 
-                                            <List border={this.props.border} margin="0 0 39px">
-                                                <UL style={{padding: "0 20px"}}>
-                                                    {data.list && data.list.map((itemList, indexList) => (
-                                                        <LI className="body-1" key={indexList}> {itemList} </LI>
-                                                    ))}
-                                                </UL>
-                                            </List>
-                                            <Button className="btn-2" small outline>Learn More</Button>
-                                        </Content>
-                                    </CardItem>
+                                                <List border={this.props.border} margin="0 0 39px">
+                                                    <UL style={{padding: "0 20px"}}>
+                                                        {data.list && data.list.map((itemList, indexList) => (
+                                                            <LI className="body-1" key={indexList}> {itemList} </LI>
+                                                        ))}
+                                                    </UL>
+                                                </List>
+                                                <Button className="btn-2" small outline>Learn More</Button>
+                                            </Content>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         )
                     })}
                 </Slider>
-            </Container>
         )
     }
 }
