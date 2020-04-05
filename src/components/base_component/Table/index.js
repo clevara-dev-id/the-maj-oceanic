@@ -44,12 +44,8 @@ const Table = props => {
 
     return (
         <div className={`max-w-container-2 ${props.containerClassName}`}>
+            <h5 className="px-4 py-8"> {props.head} </h5>
             <table style={{width: "1110px"}}>
-                <thead>
-                    <tr rowSpan="2">
-                        <th className="px-4 py-2"> <h5> {props.head} </h5> </th>
-                    </tr>
-                </thead>
                 <tbody>
                     {renderTbody(props.store && props.store)}
                 </tbody>

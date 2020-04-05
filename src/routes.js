@@ -6,9 +6,9 @@ const Home = lazy(() => import('./views/Home'))
 
 const BaseRoute = () => {
     return (
-        <div>
+        <>
             <Route exact path="/" component={Home} />
-        </div>
+        </>
     )
 }
 

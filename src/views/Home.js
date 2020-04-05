@@ -2,6 +2,8 @@ import React, { lazy } from 'react'
 
 /* Component */
 import Base from './Base'
+import Skeleton from '../components/base_component/Skeleton/Skeleton'
+const Videojs = lazy(() => import('../components/base_component/Video/video'))
 
 const Heading = lazy(() => import('../components/base_component/Heading/Heading'))
 const HeadingText = lazy(() => import('../components/base_component/Heading/HeadingText'))
@@ -26,7 +28,7 @@ class Home extends Base {
             <div id="home">
 
                 <section>
-                    <div className="flex justify-center py-16 border border-solid border-black">
+                    <div className="container mx-auto py-16 border border-solid border-black">
                         <div>
                             <Heading />
                         </div>
@@ -34,56 +36,56 @@ class Home extends Base {
                 </section>
 
                 <section>
-                    <div className="flex justify-center py-16 border border-solid border-black">
+                    <div className="container mx-auto py-16 border border-solid border-black">
                         <HeadingText />
                     </div>
                 </section>
 
                 <section>
-                    <div className="flex justify-center py-16 border border-solid border-black">
+                    <div className="container mx-auto py-16 border border-solid border-black">
                         <HeadingTextList />
                     </div>
                 </section>
 
                 <section>
-                    <div className="flex justify-center py-16 border border-solid border-black">
+                    <div className="container mx-auto py-16 border border-solid border-black">
                         <CarouselText />
                     </div>
                 </section>
                 
                 <section>
-                    <div className="flex justify-center h-auto py-16 border border-solid border-black">
-                        <CarouselCardText />
+                    <div className="container mx-auto h-auto py-40 border border-solid border-black">
+                        <CarouselCardText className="border border-solid border-black" />
                     </div>
                 </section>
 
                 <section>
-                    <div className="flex justify-center h-auto py-16 border border-solid border-black">
+                    <div className="container mx-auto h-auto py-16 border border-solid border-black">
                         <CarouselThree />
                     </div>
                 </section>
 
 
                 <section>
-                    <div className="flex justify-center h-auto py-16 border border-solid border-black">
+                    <div className="container mx-auto h-auto py-16 border border-solid border-black">
                         <CardThree />
                     </div>
                 </section>
 
                 <section>
-                    <div className="flex justify-center py-16 border border-solid border-black">
+                    <div className="container mx-auto py-16 border border-solid border-black">
                         <CardTextImage />
                     </div>
                 </section>
 
                 <section>
-                    <div className="flex justify-center py-16 border border-solid border-black">
+                    <div className="container mx-auto py-16 border border-solid border-black">
                         <CardTextImageSmall />
                     </div>
                 </section>
                 
                 <section>
-                    <div className="flex justify-center py-16 border border-solid border-black">
+                    <div className="container mx-auto py-16 border border-solid border-black">
                         <Tabs>
                             <div label="Tabs 1">
                                 <CardTextImageSmall caption={false} heading="Tabs 1" />
@@ -96,8 +98,19 @@ class Home extends Base {
                 </section>
 
                 <section>
-                    <div className="flex justify-center py-16 border border-solid border-black">
+                    <div className="container mx-auto py-16 border border-solid border-black">
                         <Table />
+                    </div>
+                </section>
+                <section>
+                    <div className="container mx-auto px-4 py-16">
+                        <Skeleton width="300px" height="100px" />
+                        <Skeleton circle width="300px" height="100px" />
+                    </div>
+                </section>
+                <section>
+                    <div className="container mx-auto px-4 py-16">
+                        <Videojs />
                     </div>
                 </section>
             </div>
