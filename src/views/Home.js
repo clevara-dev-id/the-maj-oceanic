@@ -100,12 +100,6 @@ class Home extends Base {
                         <Table />
                     </div>
                 </section>
-
-                <section>
-                    <div className="flex justify-center py-16 border border-solid border-black">
-                        <Table />
-                    </div>
-                </section>
             </div>
         )
     }
