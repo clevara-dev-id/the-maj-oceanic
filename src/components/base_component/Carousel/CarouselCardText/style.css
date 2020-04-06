@@ -20,3 +20,8 @@
     opacity: 1;
 }
 
+
+#carousel-card-text div.card-text {
+    position: absolute;
+}
+

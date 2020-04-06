@@ -5,14 +5,15 @@ import styled from 'styled-components'
 
 import './style.css'
 import Img1 from '../../../../assets/img/home/slick/1.svg'
-import NextArrow from '../../Button/NextArrow'
-import PrevArrow from '../../Button/PrevArrow'
-
-const Button = lazy(() => import('../../Button'))
 
 /**
-* @augments {Component<{    store:arrayOfobject).isRequired,    border:boolean,    containerMargin:string,    containerPadding:string,    className:string,>}
-*/
+ * Component
+ */
+const PrevArrow = lazy(() => import('../../Button/PrevArrow'))
+const NextArrow = lazy(() => import('../../Button/NextArrow'))
+const Button = lazy(() => import('../../Button'))
+
+
 class CarouselCardText extends Component {
     constructor(props) {
         super(props)
@@ -105,7 +106,7 @@ class CarouselCardText extends Component {
                     }}
                 />
 
-                <CardItem>
+                <div className="card-text bg-white w-1/2">
                     {this.state.localStore.length && this.state.localStore.map((data, index) => {
                         if (this.state.indexActive === index) {
                             return (
@@ -128,21 +129,11 @@ class CarouselCardText extends Component {
                             )
                         }
                     })}
-                </CardItem>
+                </div>
             </div>
         )
     }
 }
-
-const Container = styled.div(
-    props => ({
-        border: props.border? "1px solid": null,
-        margin: props.containerMargin,
-        padding: props.containerPadding,
-        width: props.containerWidth,
-        height: props.containerHeight,
-    })
-)
 
 const CardItem = styled.div(
     props => ({

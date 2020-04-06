@@ -1,7 +1,6 @@
-import React, { lazy } from 'react'
+import React, { lazy, Component } from 'react'
 
 /* Component */
-import Base from './Base'
 import Skeleton from '../components/base_component/Skeleton/Skeleton'
 const Videojs = lazy(() => import('../components/base_component/Video/video'))
 
@@ -22,7 +21,15 @@ const Tabs = lazy(() => import('../components/base_component/Tab/Tabs'))
 const Table = lazy(() => import('../components/base_component/Table'))
 
 
-class Home extends Base {
+class Home extends Component {
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+             
+        }
+    }
+    
     render() {
         return (
             <div id="home">
