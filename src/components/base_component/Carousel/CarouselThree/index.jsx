@@ -1,10 +1,15 @@
-import React, { Component, createRef } from 'react'
+import React, { Component, createRef, lazy } from 'react'
 import PropTypes from 'prop-types'
 import Slider from 'react-slick'
 
-import CardItem from '../../Card/CardImage/CardImageThree/CardItem'
 import Img1 from '../../../../assets/img/home/slick/1.svg'
-import Button from '../../Button'
+
+/**
+ * Component
+ */
+const CardItem = lazy(() => import('../../Card/CardImage/CardImageThree/CardItem'))
+const PrevArrow = lazy(() => import('../../Button/PrevArrow'))
+const NextArrow = lazy(() => import('../../Button/NextArrow'))
 
 /**
 * @augments {Component<{    containerClassName:string,    store:arrayOfobject).isRequired,>}
@@ -40,15 +45,16 @@ class CarouselThree extends Component {
 
     render() {
         return (
-            <div id="carousel-three" className={`flex flex-col justify-center max-w-container-2 ...${this.props.containerClassName}`}>
+            <div id="carousel-three" className={`flex flex-col justify-center max-w-container-2 mx-auto ...${this.props.containerClassName}`}>
                 <Slider
-                    dots={true}
+                    arrows={false}
                     centerMode={true}
                     centerPadding="-20px"
+                    customPaging={() => <div id="dots" />}
+                    dots={true}
                     slidesToShow={3}
                     slidesToScroll={1}
-                    customPaging={() => <div id="dots" />}
-                    arrows={false}
+                    lazyLoad={true}
                     ref={c => this.carousel = c}
                 >
                     {this.state.localStore.length && this.state.localStore.map((data, index) => {
@@ -60,8 +66,28 @@ class CarouselThree extends Component {
                         )
                     })}
                 </Slider>
-                <PrevArrow onClick={this.prev} />
-                <NextArrow onClick={this.next} />
+                <PrevArrow
+                    backgroundColor="#208CB2"
+                    color="#FFFFFF"
+                    hover={{
+                        backgroundColor: "#FFFFFF",
+                        color: "#208CB2",
+                        outline: "none",
+                    }}
+                    className="prev-arrow"
+                    onClick={this.prev} 
+                />
+                <NextArrow
+                    backgroundColor="#208CB2"
+                    color="#FFFFFF"
+                    hover={{
+                        backgroundColor: "#FFFFFF",
+                        color: "#208CB2",
+                        outline: "none",
+                    }}
+                    className="next-arrow"
+                    onClick={this.next} 
+                />
             </div>
         )
     }
@@ -89,39 +115,3 @@ CarouselThree.defaultProps = {
 }
 
 export default CarouselThree
-
-const PrevArrow = props => {
-    const { className, style, onClick } = props
-    return (
-        <Button
-            primary
-            className={`w-8 h-8 relative left-0 rounded-full`}
-            onClick={onClick}
-            style={{
-                left: "-4.5%",
-                bottom: "45%",
-                outline: "none"
-            }}
-        >
-            <i className="fas fa-angle-left text-base"></i>
-        </Button>
-    )
-}
-
-const NextArrow = props => {
-    const { className, style, onClick } = props
-    return (
-        <Button
-            primary
-            className={`w-8 h-8 relative right-0 rounded-full`}
-            onClick={onClick}
-            style={{
-                left: "101.5%",
-                bottom: "54%",
-                outline: "none"
-            }}
-        >
-            <i className="fas fa-angle-right text-base"></i>
-        </Button>
-    )
-}

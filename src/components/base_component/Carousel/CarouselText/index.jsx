@@ -2,7 +2,6 @@ import React, { Component, lazy } from 'react'
 import PropTypes from 'prop-types'
 import Slider from 'react-slick'
 
-import './style.css'
 import Img1 from '../../../../assets/img/home/carousel-text/1.png'
 
 const HeadingTextList = lazy(() => import('../../Heading/HeadingTextList'))
@@ -43,7 +42,7 @@ class CarouselText extends Component {
     
     render() {
         return (
-            <div id="carousel-text" className="flex flex-row max-w-container-2 self-center items-center">
+            <div id="carousel-text" className="flex flex-row max-w-container-2 items-center mx-auto">
             {
                 this.props.reverse? (
                 <>

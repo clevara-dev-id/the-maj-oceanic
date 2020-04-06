@@ -8,7 +8,7 @@ const Button = lazy(() => import('../../Button'))
 
 const CardTextImageSmall = props => {
     return (
-        <div className={`flex max-w-container-2 ${props.containerClassName}`}>
+        <div className="flex max-w-container-2 mx-auto">
         {
             !props.reverse? (
             <>
@@ -61,7 +61,6 @@ const CardTextImageSmall = props => {
 }
 
 CardTextImageSmall.propTypes = {
-    containerClassName: PropTypes.string,
     image: PropTypes.string.isRequired,
     imageWidth: PropTypes.string.isRequired,
     imageHeight: PropTypes.string.isRequired,

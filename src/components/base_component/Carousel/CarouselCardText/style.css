@@ -21,7 +21,12 @@
 }
 
 
-#carousel-card-text div.card-text {
-    position: absolute;
+#carousel-card-text .card-text ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+#carousel-card-text .card-text ul li {
+    margin: 11px 0;
 }
 

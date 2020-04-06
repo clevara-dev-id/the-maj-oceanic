@@ -8,14 +8,14 @@ const HeadingText = lazy(() => import('../../Heading/HeadingText'))
 
 const CardTextImage = props => {
     return (
-        <div className={`flex max-w-container-2 ${props.containerClassName}`}>
+        <div className="flex max-w-container-2 mx-auto">
             {!props.reverse? (
                 <>
                     <div className="bg-no-repeat bg-cover bg-no-repeat" style={{backgroundImage: `url(${props.image})`, width: props.imageWidth, height: props.imageHeight}} />
 
                     <HeadingText 
                         containerClassName="w-2/4 pl-6 self-center"
-                        caption={props.caption} 
+                        caption={props.caption.toUpperCase()} 
                         heading={props.heading}
                         text={props.text}
                         textClassName="mb-8"
@@ -27,7 +27,7 @@ const CardTextImage = props => {
                 <>
                     <HeadingText 
                         containerClassName="w-2/4 pr-6 self-center"
-                        caption={props.caption} 
+                        caption={props.caption.toUpperCase()} 
                         heading={props.heading}
                         text={props.text}
                         textClassName="mb-8"
@@ -43,7 +43,6 @@ const CardTextImage = props => {
 }
 
 CardTextImage.propTypes = {
-    className: PropTypes.string,
     caption: PropTypes.string.isRequired,
     heading: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
@@ -62,7 +61,7 @@ CardTextImage.propTypes = {
 }
 
 CardTextImage.defaultProps = {
-    caption: "SUSTAINIBILITY",
+    caption: "sustainibility",
     heading: "Card Text Image",
     text: "Reprehenderit enim exercitation eu laboris ea deserunt sunt proident. Ut officia aliqua voluptate commodo magna officia Lorem dolor consectetur eiusmod do enim est exercitation.",
     image: Img,

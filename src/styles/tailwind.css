@@ -10896,6 +10896,10 @@ video {
   letter-spacing: 0.1em;
 }
 
+.tracking-caption2 {
+  letter-spacing: 0.188em;
+}
+
 .select-none {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -23882,6 +23886,10 @@ video {
 
   .sm\:tracking-widest {
     letter-spacing: 0.1em;
+  }
+
+  .sm\:tracking-caption2 {
+    letter-spacing: 0.188em;
   }
 
   .sm\:select-none {
@@ -36871,6 +36879,10 @@ video {
     letter-spacing: 0.1em;
   }
 
+  .md\:tracking-caption2 {
+    letter-spacing: 0.188em;
+  }
+
   .md\:select-none {
     -webkit-user-select: none;
        -moz-user-select: none;
@@ -49858,6 +49870,10 @@ video {
     letter-spacing: 0.1em;
   }
 
+  .lg\:tracking-caption2 {
+    letter-spacing: 0.188em;
+  }
+
   .lg\:select-none {
     -webkit-user-select: none;
        -moz-user-select: none;
@@ -62843,6 +62859,10 @@ video {
 
   .xl\:tracking-widest {
     letter-spacing: 0.1em;
+  }
+
+  .xl\:tracking-caption2 {
+    letter-spacing: 0.188em;
   }
 
   .xl\:select-none {

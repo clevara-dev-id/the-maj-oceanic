@@ -10,7 +10,7 @@ const HeadingTextList = lazy(() => import('../components/base_component/Heading/
 
 const CarouselText = lazy(() => import('../components/base_component/Carousel/CarouselText'))
 const CarouselCardText = lazy(() => import('../components/base_component/Carousel/CarouselCardText'))
-const CarouselThree = lazy(() => import('../components/base_component/Carousel/CarouselThree'))
+const CarouselThree = lazy(() => import('../components/base_component/Carousel/CarouselThree/index'))
 
 const CardThree = lazy(() => import('../components/base_component/Card/CardImage/CardImageThree/CardThree'))
 const CardTextImage = lazy(() => import('../components/base_component/Card/CardTextImage/CardTextImage'))
@@ -36,9 +36,7 @@ class Home extends Component {
 
                 <section>
                     <div className="container mx-auto py-16 border border-solid border-black">
-                        <div>
-                            <Heading />
-                        </div>
+                        <Heading />
                     </div>
                 </section>
 
@@ -62,7 +60,7 @@ class Home extends Component {
                 
                 <section>
                     <div className="container mx-auto h-auto py-40 border border-solid border-black">
-                        <CarouselCardText className="border border-solid border-black" />
+                        <CarouselCardText />
                     </div>
                 </section>
 

@@ -34,7 +34,7 @@ class CardThree extends Component {
     
     render() {
         return (
-            <div className={`max-w-container-2 ${this.props.containerclassName}`}>
+            <div className="max-w-container-2 mx-auto">
                 <div className="flex flex-row">
                     {this.state.localStore.length && this.state.localStore.map((data, index) => (
                         <CardItem 
@@ -80,12 +80,11 @@ CardThree.defaultProps = {
     }],
     buttonTitle: "Button Title",
     onClick: () => {
-        alert('change in prop onClick')
+        alert('clicked')
     }
 }
 
 CardThree.propTypes = {
-    containerClassName: PropTypes.string,
     store: PropTypes.arrayOf(PropTypes.object).isRequired,
     buttonTitle: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,

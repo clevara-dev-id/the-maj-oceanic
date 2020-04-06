@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from "prop-types"
 import Button from '.'
 
 const NextArrow = props => {
@@ -13,6 +14,12 @@ const NextArrow = props => {
             <i className="fas fa-angle-right text-base"></i>
         </Button>
     )
+}
+
+NextArrow.propTypes = {
+  className: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  style: PropTypes.object.isRequired
 }
 
 export default NextArrow
