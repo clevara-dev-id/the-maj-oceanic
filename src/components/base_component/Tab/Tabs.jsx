@@ -21,19 +21,15 @@ class Tabs extends Component {
     
 
     render() {
-        const classNameTabs = `tabs ${this.props.classNameTabs}`
-        const classNameTabUL = `tab-list ${this.props.classNameTabUL}`
-
-        const classNameTabcontent = `tab-content ${this.props.classNameTabcontent}`
         return (
-            <div className={classNameTabs}>
-                <ul className={`${classNameTabUL} flex pb-20 max-w-container-2 mx-auto ${this.props.center? "justify-center": null}`}>
+            <div className="tabs">
+                <ul className={`tab-list flex pb-20 max-w-container-2 mx-auto ${this.props.center? "justify-center": null}`}>
                     {this.props.children && this.props.children.map((child) => {
                         const { label } = child.props
                         return (
                             <Tab
-                                classNameLabelActive={`${this.props.classNameLabelActive} text-primary-300`}
-                                classNameTabLI={`${this.props.classNameTabLI} mr-10`}
+                                classNameLabelActive="text-primary-300"
+                                classNameTabLI="mr-10"
                                 activeTab={this.state.activeTab}
                                 key={label}
                                 label={label}
@@ -43,7 +39,7 @@ class Tabs extends Component {
                     })}
                 </ul>
 
-                <div className={`${classNameTabcontent} flex`}>
+                <div className="tab-content flex">
                     {this.props.children && this.props.children.map((child) => {
                         if (child.props.label !== this.state.activeTab) return undefined
                         return child.props.children

@@ -17,9 +17,9 @@ const NextArrow = props => {
 }
 
 NextArrow.propTypes = {
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
   onClick: PropTypes.func.isRequired,
-  style: PropTypes.object.isRequired
+  style: PropTypes.object,
 }
 
 export default NextArrow

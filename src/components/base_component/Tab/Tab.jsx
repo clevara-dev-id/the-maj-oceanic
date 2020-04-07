@@ -1,14 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 
 class Tab extends Component {
-    static propTypes = {
-        activeTab: PropTypes.string.isRequired,
-        label: PropTypes.string.isRequired,
-        onClick: PropTypes.func.isRequired,
-    }
-
     _handleClick = () => {
         const { label, onClick } = this.props
         onClick(label)
@@ -16,7 +9,7 @@ class Tab extends Component {
 
     render() {
         const { label } = this.props
-        let className = `tab-list-item ${this.props.classNameTabLI}`
+        let className = `item ${this.props.classNameTabLI}`
         if (this.props.activeTab === label) {
             className += ` active`
         }
@@ -27,29 +20,26 @@ class Tab extends Component {
                 onClick={this._handleClick}
             >
                 {this.props.activeTab === label? (
-                    <Label active classNameLabelActive={this.props.classNameLabelActive}> {label} </Label>
+                    <a 
+                        href={`#${label.toLowerCase().replace(/\s/g,"-")}`} 
+                        className={this.props.classNameLabelActive}
+                    >
+                        {label} 
+                    </a>
                 ) : (
-                    <Label> {label} </Label>
+                    <a href={`#${label.toLowerCase().replace(/\s/g,"-")}`}> {label} </a>
                 )}
             </li>
         )
     }
 }
 
-const Label = styled.p.attrs(
-    props => ({
-        active: props.active,
-        className: props.active? props.classNameLabelActive: null
-    })
-)
-(
-    props => ({
-    fontFamily: "Verlag B",
-    paddingBottom: "22px",
-    borderBottom: props.active? "1px solid": null,
-    textTransform: "capitalize",
-    cursor: "pointer"
-    })
-)
+Tab.propTypes = {
+    activeTab: PropTypes.string.isRequired,
+    classNameLabelActive: PropTypes.string,
+    classNameTabLI: PropTypes.string,
+    label: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired
+};
 
 export default Tab

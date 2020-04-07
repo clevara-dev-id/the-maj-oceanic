@@ -22,6 +22,9 @@ module.exports = {
         200: "#F3E9E5",
         300: "#efe1dc",
       },
+      dot: {
+        100: "#4E5E79",
+      },
       black: '#000',
       white: '#fff',
 

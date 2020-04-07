@@ -13,6 +13,7 @@ const BaseRoute = props => (
     <Switch>
     {routes.map((route, i) => (
         <Route
+            key={i}
             path={route.path}
             render={props => (
             <route.component {...props} routes={route.routes} />

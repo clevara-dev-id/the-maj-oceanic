@@ -9,6 +9,12 @@ body {
 }
 
 @font-face {
+  font-family: Verlag;
+  font-style: normal;
+  src: url('../assets/font/Verlag/Verlag-Light.ttf');
+}
+
+@font-face {
   font-family: Verlag B;
   font-style: normal;
   src: url('../assets/font/Verlag/Verlag-Bold.ttf');
@@ -135,4 +141,9 @@ button.btn-2 {
 @import "../components/base_component/Carousel/CarouselText/style.css";
 /* Carousel Card Text */
 @import "../components/base_component/Carousel/CarouselCardText/style.css";
+/* Carousel Tab Text */
+@import "../components/base_component/Carousel/CarouselTabText/style.css";
+
+/* Tabs */
+@import "../components/base_component/Tab/style.css";
 

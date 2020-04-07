@@ -44,7 +44,7 @@ const CardTextImageSmall = props => {
                     <Button small ghost onClick={props.onClick}> {props.buttonTitle.toUpperCase()} </Button>
                 </HeadingText>
                 <div 
-                    className="bg-no-repeat bg-cover bg-no-repeat" 
+                    className="bg-no-repeat bg-cover" 
                     style={{
                         backgroundImage: `url(${props.image})`, 
                         maxWidth: "540px",
