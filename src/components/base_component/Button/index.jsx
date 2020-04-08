@@ -18,7 +18,7 @@ const Button = props => {
             {
                 props.search? (
                     <> 
-                        <img src={SearchIcon} style={{marginRight: "8px"}} alt="seach" />
+                        <img src={!props.iconSearch? SearchIcon: props.iconSearch} style={{marginRight: "8px"}} alt="seach" />
                         {props.children} 
                     </>
                 ) : props.children

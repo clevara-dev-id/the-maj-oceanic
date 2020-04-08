@@ -25,9 +25,8 @@ class connectLayout extends Component {
     }
 
     handleScroll(args) {
-        console.log(args)
         // if (args > 323) {
-            if (args >= 547) {
+        if (args >= 350) {
             this.setState({navbarChange: true})
         } else {
             this.setState({navbarChange: false})

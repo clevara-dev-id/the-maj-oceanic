@@ -1,7 +1,9 @@
+import PropTypes from "prop-types";
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import './style.css'
+import SearchBlack from '../../assets/icons/searchBlack.svg'
 import Logo from '../../assets/logo.svg'
 
 import Button from '../base_component/Button'
@@ -11,9 +13,22 @@ export default class Navbar extends Component {
         super(props)
     
         this.state = {
+            localStore: [],
             textColor: "text-white",
             margin: "ml-32 mr-32",
+            navList: {
+                bgColor: "",
+            }
         }
+    }
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (nextProps.store !== prevState.localStore) {
+            return {
+                localStore: nextProps.store,
+            }
+        }
+        return null
     }
 
     componentDidUpdate(prevProps) {
@@ -21,19 +36,25 @@ export default class Navbar extends Component {
             if (this.state.textColor === "text-white") {
                 this.setState({
                     textColor: "text-black",
-                    margin: ""
+                    margin: "",
+                    navList: {
+                        bgColor: "bg-white"
+                    },
                 })
             } else {
                 this.setState({
                     textColor: "text-white",
                     margin: "ml-32 mr-32",
+                    navList: {
+                        bgColor: "",
+                    }
                 })
             }
         }
     }
     
     render() {
-        const { textColor, margin } = this.state
+        const { textColor, margin, navList, localStore } = this.state
         const onHover = {
             backgroundColor: "transparent",
             opacity: 0.6,
@@ -41,10 +62,15 @@ export default class Navbar extends Component {
         }
         
         return (
-            <nav className="w-full h-full bg-transparent fixed py-16 px-12 z-20">
-                <div className="mx-auto flex mb-4" style={{
+            <nav className="w-full h-auto fixed px-12 z-10" style={{
+                backgroundColor: "rgba(47, 46, 46, 0.35)",
+                transform: `translateY(${this.props.navbarChange? "-275px": "0"})`,
+                transition: "transform 1s",
+                transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)"
+            }}>
+                <div className="mx-auto flex mt-16 mb-32" style={{
                     opacity: this.props.navbarChange? 0: 1,
-                    transform: `scale(${this.props.navbarChange? "0.9,0.9": 1}) translateY(${this.props.navbarChange? "-150px": "0"})`,
+                    transform: `scale(${this.props.navbarChange? "0.9,0.9": 1})`,
                     transition: "opacity .5s, transform 1s",
                     transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)"
                 }}>
@@ -129,8 +155,9 @@ export default class Navbar extends Component {
                     </div>
                 </div>
 
-                <div id="nav-list" className="border border-solid border-white flex items-center px-12 mt-32 h-24" style={{
-                    transform: `translateY(${this.props.navbarChange? "-220px": "0"})`,
+                <div id="nav-list" className={`border-t border-solid border-white flex items-center px-12 h-24 ${navList.bgColor}`} style={{
+                    maxHeight: "100px",
+                    transform: `scale(${this.props.navbarChange? "1.05": 1})`,
                     transition: "transform 1s",
                     transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)"
                 }}>
@@ -138,7 +165,6 @@ export default class Navbar extends Component {
                         <Button
                             search
                             className={`
-                                border border-solid border-black
                                 box-border
                                 flex
                                 items-center
@@ -152,40 +178,26 @@ export default class Navbar extends Component {
                                 text-black
                                 font-bold
                             `}
+                            iconSearch={SearchBlack}
                             hover={onHover}
                         >
                             search
                         </Button>
                     </div>
 
-                    <div className={`box-border border border-solid border-black flex w-full justify-between ${margin}`}>
-                        <NavLink to="/" className={`uppercase font-bold ${textColor}`}>
-                            the vessel
-                        </NavLink>
-                        <NavLink to="" className={`uppercase font-bold ${textColor}`}>
-                            voyages
-                        </NavLink>
-                        <NavLink to="" className={`uppercase font-bold ${textColor}`}>
-                            dining
-                        </NavLink>
-                        <NavLink to="" className={`uppercase font-bold ${textColor}`}>
-                            activities
-                        </NavLink>
-                        <NavLink to="" className={`uppercase font-bold ${textColor}`}>
-                            occasions
-                        </NavLink>
-                        <NavLink to="" className={`uppercase font-bold ${textColor}`}>
-                            offers
-                        </NavLink>
-                        <NavLink to="" className={`uppercase font-bold ${textColor}`}>
-                            destinations
-                        </NavLink>
+                    <div className={`flex w-full justify-between ${margin}`}>
+                        {localStore.length && localStore.map((data) => {
+                            return (
+                                <NavLink key={data.id} to={data.to} className={`uppercase font-bold ${textColor}`}>
+                                    {data.name}
+                                </NavLink>
+                            )
+                        })}
                     </div>
 
                     <div className={`w-1/4 flex items-center justify-end ${!this.props.navbarChange? "hidden": "block"}`}>
                         <Button
-                            className={`
-                                border border-solid border-black
+                            className="
                                 box-border
                                 bg-transparent
                                 uppercase
@@ -193,28 +205,26 @@ export default class Navbar extends Component {
                                 px-8
                                 focus:outline-none
                                 text-black
-                                font-bold
-                            `}
+                                font-bold"
                             hover={onHover}
                         >
                             login
                         </Button>
                         <Button
-                            className={`
-                                box-border
-                                bg-transparent
-                                border-2
-                                border-solid
-                                border-black
-                                uppercase
-                                ml-6
-                                px-5
-                                pt-2
-                                pb-3
-                                focus:outline-none
-                                text-black
-                                font-bold
-                            `}
+                            className="
+                            box-border
+                            bg-transparent
+                            border-2
+                            border-solid
+                            border-black
+                            uppercase
+                            ml-6
+                            px-5
+                            pt-2
+                            pb-3
+                            focus:outline-none
+                            text-black
+                            font-bold"
                             hover={onHover}
                         >
                             book now
@@ -228,3 +238,42 @@ export default class Navbar extends Component {
         )
     }
 }
+
+Navbar.defaultProps = {
+    store: [{
+        id: 1,
+        name: "the vessel",
+        to: "/"
+    },{
+        id: 2,
+        name: "voyages",
+        to: "#voyages"
+    },{
+        id: 3,
+        name: "dining",
+        to: "#dining"
+    },{
+        id: 4,
+        name: "activities",
+        to: "#activities"
+    },{
+        id: 5,
+        name: "occasions",
+        to: "#occasions"
+    },{
+        id: 6,
+        name: "offers",
+        to: "#offers"
+    },{
+        id: 7,
+        name: "destinations",
+        to: "#destinations"
+    }]
+}
+
+Navbar.propTypes = {
+  navbarChange: PropTypes.bool.isRequired,
+  store: PropTypes.arrayOf(PropTypes.object).isRequired,
+}
+
+
