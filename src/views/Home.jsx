@@ -37,7 +37,7 @@ class Home extends Component {
     render() {
         return (
             <div id="home">
-
+                
                 <section>
                     <div className="container mx-auto py-16 border border-solid border-black">
                         <Heading />

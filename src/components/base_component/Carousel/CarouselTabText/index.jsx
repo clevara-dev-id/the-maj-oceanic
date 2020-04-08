@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import Slider from 'react-slick'
 
 import Img from '../../../../assets/img/home/carousel-tab/1.png'
@@ -45,7 +45,7 @@ export default class CarouselTabText extends Component {
                 {localStore.length && localStore.map((data, index) => {
                     if (indexActive === index) {
                         return (
-                            <p className="body-1 mb-12">
+                            <p key={index} className="body-1 mb-12">
                                 {data.text}
                             </p>
                         )
@@ -75,9 +75,8 @@ export default class CarouselTabText extends Component {
                 >
                     {localStore.length && localStore.map((data, index) => {
                         return (
-                            <>
+                            <Fragment key={index}>
                                 <div
-                                    key={index}
                                     className="bg-image bg-no-repeat bg-cover"
                                     style={{
                                         backgroundImage: `url(${data.image})`,
@@ -87,7 +86,7 @@ export default class CarouselTabText extends Component {
                                         height: imageHeight,
                                     }}
                                 />
-                            </>
+                            </Fragment>
                         )
                     })}
                 </Slider>
