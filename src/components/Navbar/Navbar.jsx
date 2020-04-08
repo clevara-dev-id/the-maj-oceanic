@@ -60,6 +60,9 @@ export default class Navbar extends Component {
             opacity: 0.6,
             transition: "opacity .3s"
         }
+        const onClick = (args) => {
+            alert(`clicked ${args}`)
+        }
         
         return (
             <nav className="w-full h-auto fixed px-12 z-10" style={{
@@ -91,6 +94,7 @@ export default class Navbar extends Component {
                                 mr-2
                             "
                             hover={onHover}
+                            onClick={() => onClick("search")}
                         >
                             search
                         </Button>
@@ -104,11 +108,8 @@ export default class Navbar extends Component {
                                 py-2
                                 focus:outline-none
                             "
-                            hover={{
-                                backgroundColor: "transparent",
-                                opacity: 0.6,
-                                transition: "opacity .3s"
-                            }}
+                            hover={onHover}
+                            onClick={() => onClick("the maj group")}
                         >
                             the maj group
                         </Button>
@@ -130,6 +131,7 @@ export default class Navbar extends Component {
                                 focus:outline-none
                             "
                             hover={onHover}
+                            onClick={() => onClick("login")}
                         >
                             login
                         </Button>
@@ -149,6 +151,7 @@ export default class Navbar extends Component {
                                 focus:outline-none
                             "
                             hover={onHover}
+                            onClick={() => onClick("book now")}
                         >
                             book now
                         </Button>
@@ -180,6 +183,7 @@ export default class Navbar extends Component {
                             `}
                             iconSearch={SearchBlack}
                             hover={onHover}
+                            onClick={() => onClick("navlist search")}
                         >
                             search
                         </Button>
@@ -207,6 +211,7 @@ export default class Navbar extends Component {
                                 text-black
                                 font-bold"
                             hover={onHover}
+                            onClick={() => onClick("navlist login")}
                         >
                             login
                         </Button>
@@ -226,6 +231,7 @@ export default class Navbar extends Component {
                             text-black
                             font-bold"
                             hover={onHover}
+                            onClick={() => onClick("navlist book now")}
                         >
                             book now
                         </Button>
