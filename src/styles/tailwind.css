@@ -10873,7 +10873,7 @@ video {
 }
 
 .text-5xl {
-  font-size: 3rem;
+  font-size: 3rem !important;
 }
 
 .text-6xl {
@@ -76189,7 +76189,7 @@ video {
   }
 
   .\34k\:text-5xl {
-    font-size: 3rem;
+    font-size: 3rem !important;
   }
 
   .\34k\:text-6xl {
