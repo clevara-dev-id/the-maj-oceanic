@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const HeadBackground = (props) => (
-    <div id="head-bg" className="bg-cover bg-no-repeat flex justify-center items-center" style={{
+    <div id="head-bg" className="max-w-screen-4k w-screen bg-cover bg-no-repeat flex justify-center items-center" style={{
         backgroundImage: `url(${props.bg})`,
         height: "700px"
     }}>

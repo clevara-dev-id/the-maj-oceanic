@@ -14,11 +14,6 @@ export default class Navbar extends Component {
     
         this.state = {
             localStore: [],
-            textColor: "text-white",
-            margin: "ml-32 mr-32",
-            navList: {
-                bgColor: "",
-            }
         }
     }
 
@@ -30,31 +25,9 @@ export default class Navbar extends Component {
         }
         return null
     }
-
-    componentDidUpdate(prevProps) {
-        if (this.props.navbarChange !== prevProps.navbarChange) {
-            if (this.state.textColor === "text-white") {
-                this.setState({
-                    textColor: "text-black",
-                    margin: "",
-                    navList: {
-                        bgColor: "bg-white"
-                    },
-                })
-            } else {
-                this.setState({
-                    textColor: "text-white",
-                    margin: "ml-32 mr-32",
-                    navList: {
-                        bgColor: "",
-                    }
-                })
-            }
-        }
-    }
     
     render() {
-        const { textColor, margin, navList, localStore } = this.state
+        const { localStore } = this.state
         const onHover = {
             backgroundColor: "transparent",
             opacity: 0.6,
@@ -65,19 +38,9 @@ export default class Navbar extends Component {
         }
         
         return (
-            <nav className="w-full h-auto fixed px-12 z-10" style={{
-                backgroundColor: "rgba(47, 46, 46, 0.35)",
-                transform: `translateY(${this.props.navbarChange? "-275px": "0"})`,
-                transition: "transform 1s",
-                transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)"
-            }}>
-                <div className="mx-auto flex mt-16 mb-32" style={{
-                    opacity: this.props.navbarChange? 0: 1,
-                    transform: `scale(${this.props.navbarChange? "0.9,0.9": 1})`,
-                    transition: "opacity .5s, transform 1s",
-                    transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)"
-                }}>
-                    <div className="w-1/4 flex items-center h-20">
+            <nav id="nav" className={`lg:max-w-screen-4k md:max-w-screen-md w-screen h-auto fixed flex flex-col px-12 z-10 mx-auto ${this.props.navbarChange? "scroll-active": null}`}>
+                <div className={`nav-top sm:hidden flex-grow lg:flex lg:w-auto mt-16 mb-32 ${this.props.navbarChange? "scroll-active": null}`}>
+                    <div className="w-1/4 flex-grow lg:flex items-center h-20">
                         <Button
                             search
                             className="
@@ -85,13 +48,13 @@ export default class Navbar extends Component {
                                 flex
                                 items-center
                                 justify-around
-                                w-32
+                                lg:w-32
                                 h-10
                                 text-white
                                 uppercase
                                 tracking-widest
                                 focus:outline-none
-                                mr-2
+                                lg:mr-2
                             "
                             hover={onHover}
                             onClick={() => onClick("search")}
@@ -104,7 +67,7 @@ export default class Navbar extends Component {
                                 bg-transparent
                                 text-white
                                 uppercase
-                                px-5
+                                lg:px-5
                                 py-2
                                 focus:outline-none
                             "
@@ -119,7 +82,7 @@ export default class Navbar extends Component {
                         <div className="bg-cover bg-center bg-no-repeat mx-auto" style={{backgroundImage: `url(${Logo})`, width: "450px", height: "80px"}} />
                     </div>
 
-                    <div className="w-1/4 h-20 flex items-center justify-end">
+                    <div className="w-1/4 h-20 flex-grow lg:flex items-center justify-end">
                         <Button
                             className="
                                 box-border
@@ -148,8 +111,7 @@ export default class Navbar extends Component {
                                 px-5
                                 pt-2
                                 pb-3
-                                focus:outline-none
-                            "
+                                focus:outline-none"
                             hover={onHover}
                             onClick={() => onClick("book now")}
                         >
@@ -158,84 +120,64 @@ export default class Navbar extends Component {
                     </div>
                 </div>
 
-                <div id="nav-list" className={`border-t border-solid border-white flex items-center px-12 h-24 ${navList.bgColor}`} style={{
-                    maxHeight: "100px",
-                    transform: `scale(${this.props.navbarChange? "1.05": 1})`,
-                    transition: "transform 1s",
-                    transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)"
-                }}>
-                    <div className={`w-1/6 ${!this.props.navbarChange? "hidden": "block"}`}>
-                        <Button
-                            search
-                            className={`
-                                box-border
-                                flex
-                                items-center
-                                justify-around
-                                bg-transparent
-                                w-32
-                                h-10
-                                uppercase
-                                tracking-widest
-                                focus:outline-none
-                                text-black
-                                font-bold
-                            `}
+                <div className={`nav-list sm:mt-20 lg:max-w-screen-4k md:max-w-screen-lg lg:w-auto border border-solid border-white flex items-center justify-center lg:px-12 md:px-6 h-24 ${this.props.navbarChange? "scroll-active": null}`}>
+                        <Button search 
+                            className="
+                            flex
+                            items-center
+                            justify-around
+                            bg-transparent
+                            lg:w-32
+                            h-10
+                            uppercase
+                            tracking-widest
+                            focus:outline-none
+                            text-black
+                            font-bold mr-4"
                             iconSearch={SearchBlack}
                             hover={onHover}
                             onClick={() => onClick("navlist search")}
                         >
                             search
                         </Button>
-                    </div>
 
-                    <div className={`flex w-full justify-between ${margin}`}>
-                        {localStore.length && localStore.map((data) => {
-                            return (
-                                <NavLink key={data.id} to={data.to} className={`uppercase font-bold ${textColor}`}>
-                                    {data.name}
-                                </NavLink>
-                            )
-                        })}
-                    </div>
+                        <div className="w-full h-auto flex flex-wrap">
+                            {localStore.length && localStore.map((data) => {
+                                return (
+                                    <NavLink key={data.id} to={data.to} className="flex-grow text-center uppercase font-bold">
+                                        {data.name}
+                                    </NavLink>
+                                )
+                            })}
+                        </div>
 
-                    <div className={`w-1/4 flex items-center justify-end ${!this.props.navbarChange? "hidden": "block"}`}>
                         <Button
-                            className="
-                                box-border
-                                bg-transparent
-                                uppercase
-                                py-2
-                                px-8
-                                focus:outline-none
-                                text-black
-                                font-bold"
+                            className="box-border bg-transparent uppercase focus:outline-none text-black font-bold mx-4"
                             hover={onHover}
                             onClick={() => onClick("navlist login")}
                         >
                             login
                         </Button>
+
                         <Button
                             className="
-                            box-border
                             bg-transparent
                             border-2
                             border-solid
                             border-black
                             uppercase
-                            ml-6
                             px-5
                             pt-2
                             pb-3
                             focus:outline-none
                             text-black
-                            font-bold"
+                            font-bold
+                            whitespace-no-wrap"
                             hover={onHover}
                             onClick={() => onClick("navlist book now")}
                         >
                             book now
                         </Button>
-                    </div>
                 </div>
                 <div>
 

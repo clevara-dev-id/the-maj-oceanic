@@ -48,7 +48,7 @@ class connectLayout extends Component {
         const { children, head_background } = this.props
         return (
             <div>
-                <header>
+                <header className="flex justify-center">
                     <Navbar navbarChange={this.state.navbarChange} />
                     <HeadBackground bg={head_background.image} text={head_background.text} />
                     {/* <SliderAwesome /> */}
