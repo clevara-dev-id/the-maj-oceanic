@@ -1,0 +1,12 @@
+.devider{
+        font-style: normal;
+        font-weight: 600;
+        font-size: 3rem !important;
+        line-height: 86px;
+        color: #208CB2;
+}
+@media (min-width:1024px){
+        .devider{
+                font-size: 72px !important;
+        }
+}

@@ -1,0 +1,33 @@
+header{
+    .bg-semi-transparent{
+        background-color: rgba(47, 46, 46, 0.35);
+        z-index: 99;
+        .nav-link{
+            font-size: 13px !important;
+            font-weight: 600;
+            font-family: 'Verlag Bold' ;
+            color: white;
+            transition: .2s all;
+        }
+        .nav-link:hover{
+            color: #208CB2;
+        }
+    }
+    .bg-white{
+        z-index: 99;
+        color: #232323 !important;
+    }
+    .nav-item{
+        transition: .2s all;
+        letter-spacing: 2px;
+        font-size: 13px;
+    }
+    .nav-item:hover{
+        color: #208CB2;
+    }
+}
+footer{
+    .bg-dark{
+        background-color: #232323 !important;
+    }
+}

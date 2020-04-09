@@ -1,4 +1,5 @@
 module.exports = {
+  important: true,
   prefix: '',
   important: false,
   separator: ':',
@@ -8,10 +9,23 @@ module.exports = {
       md: '768px',
       lg: '1024px',
       xl: '1280px',
+      '4k': '2560px',
     },
     colors: {
       transparent: 'transparent',
-
+      primary: {
+        100: "#C7E2EC",
+        200: "#58A9C6",
+        300: "#208CB2",
+      },
+      secondary: {
+        100: "#FBF7F6",
+        200: "#F3E9E5",
+        300: "#efe1dc",
+      },
+      dot: {
+        100: "#4E5E79",
+      },
       black: '#000',
       white: '#fff',
 
@@ -265,6 +279,7 @@ module.exports = {
       black: '900',
     },
     height: theme => ({
+      'image-1': "400px",
       auto: 'auto',
       ...theme('spacing'),
       full: '100%',
@@ -281,6 +296,7 @@ module.exports = {
       wide: '0.025em',
       wider: '0.05em',
       widest: '0.1em',
+      caption2: '0.188em',
     },
     lineHeight: {
       none: '1',
@@ -325,6 +341,7 @@ module.exports = {
       '5xl': '64rem',
       '6xl': '72rem',
       full: '100%',
+      'container-2': '1110px',
       ...breakpoints(theme('screens')),
     }),
     minHeight: {
@@ -371,7 +388,9 @@ module.exports = {
       '11': '11',
       '12': '12',
     },
-    padding: theme => theme('spacing'),
+    padding: (theme) => ({
+      ...theme('spacing'),
+    }),
     placeholderColor: theme => theme('colors'),
     stroke: {
       current: 'currentColor',
@@ -383,6 +402,7 @@ module.exports = {
     },
     textColor: theme => theme('colors'),
     width: theme => ({
+      'image-1': "350px",
       auto: 'auto',
       ...theme('spacing'),
       '1/2': '50%',

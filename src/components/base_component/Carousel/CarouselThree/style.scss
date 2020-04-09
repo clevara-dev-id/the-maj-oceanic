@@ -1,0 +1,17 @@
+#carousel-three{
+    .text-xl{
+        margin-top:22px;
+        font-size: 22px !important;
+    }
+    .slick-prev,.slick-next{
+        top: 35%;
+    }
+    .slick-prev::before{
+        color: #208CB2;
+        font-size: 32px;
+    }
+    .slick-next::before{
+        color: #208CB2;
+        font-size: 32px;
+    }
+}

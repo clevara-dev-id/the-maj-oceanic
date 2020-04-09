@@ -1,0 +1,36 @@
+.carousel-card-text-component {
+    ul.slick-dots.center {
+        bottom: 40px;
+        left: -180px;
+    }
+    
+    ul.slick-dots li.slick-active div#dot {
+        background: #208CB2;
+        opacity: 1;
+    }
+    
+    .carousel-card-text-component > div > .slick-dots {
+        bottom: 10rem;
+    }
+    
+    .ml-min-12{
+        margin-left: -3rem;
+    }
+    .h-full-plus-10{
+        height: 650px;
+    }
+}
+.card-text-image-small{
+    .primary-link{
+        color: #208CB2;
+        text-decoration: none;
+        transition: .2s all;
+        padding-bottom: 10px;
+    }
+    .primary-link:hover{
+        color: #232323;
+            text-decoration: none;
+            transition: .2s all;
+            border-bottom: #208CB2 solid 1px;
+    }
+}

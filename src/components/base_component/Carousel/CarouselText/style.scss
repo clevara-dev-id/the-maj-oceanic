@@ -1,0 +1,29 @@
+#carousel-text ul.slick-dots {
+    bottom: -65px;
+}
+
+#carousel-text #dots {
+    background: #4E5E79;
+    opacity: 0.25;
+}
+
+
+#carousel-text li.slick-active #dots {
+    background: #208CB2;
+    opacity: 1;
+}
+
+#carousel-text #dots:hover {
+    background: #208CB2;
+    opacity: 1;
+}
+#carousel-text{
+    .buttons{
+        background-color: white;
+        color: #208CB2;
+    }
+    .buttons:hover{
+        background-color: #208CB2;
+        color: white;
+    }
+}
