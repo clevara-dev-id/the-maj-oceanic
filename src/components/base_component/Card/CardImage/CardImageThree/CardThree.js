@@ -5,7 +5,6 @@ import Img1 from '../../../../../assets/img/home/card-image/1.png'
 
 /* Components */
 const CardItem = lazy(() => import('./CardItem'))
-const Button = lazy(() => import('../../../Button'))
 
 
 
@@ -23,18 +22,19 @@ class CardThree extends Component {
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
-        if (nextProps.store.length !== prevState.localStore.length) {
+        if (nextProps.properties.length !== prevState.localStore.length) {
             return {
-                localStore: nextProps.store,
+                localStore: nextProps.properties,
                 isLoading: false,
             }
         }
     }
     
     render() {
+        console.log(this.state.localStore)
         return (
-            <div className={`max-w-container-2 ${this.props.containerclassName}`}>
-                <div className="flex flex-row">
+            <div>
+                <div className="flex flex-wrap justify-center">
                     {this.state.localStore.length && this.state.localStore.map((data, index) => (
                         <CardItem 
                             caption={false}
@@ -42,19 +42,13 @@ class CardThree extends Component {
                             headingClassName="uppercase mt-6"
                             textClassName="mt-4"
                             key={index}
-                            image={data.image}
+                            image={data.images}
                             heading={data.heading}
                             text={data.text}
                             center
                         />
                     ))}
                 </div>
-                
-                {this.props.buttonTitle? (
-                    <div className="flex mt-16">
-                        <Button className="mx-auto" large outline onClick={this.props.onClick}> {this.props.buttonTitle.toUpperCase()} </Button>
-                    </div>
-                ): null}
             </div>
         )
     }
@@ -63,17 +57,17 @@ class CardThree extends Component {
 CardThree.defaultProps = {
     store : [{
         id: 1,
-        image: Img1,
+        images: Img1,
         heading: "Card Three 1",
         text: "Hemmed by jungle and lulled by the lap of the Indian Ocean, the hotel is rich in island spirit",
     },{
         id: 2, 
-        image: Img1,
+        images: Img1,
         heading: "Card Three 2",
         text: "Hemmed by jungle and lulled by the lap of the Indian Ocean, the hotel is rich in island spirit",
     },{
         id: 3,
-        image: Img1,
+        images: Img1,
         heading: "Card Three 3",
         text: "Hemmed by jungle and lulled by the lap of the Indian Ocean, the hotel is rich in island spirit"
     }],

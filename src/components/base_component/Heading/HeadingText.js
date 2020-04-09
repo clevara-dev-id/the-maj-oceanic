@@ -35,10 +35,4 @@ HeadingText.propTypes = {
     textClassName: PropTypes.string,
 }
 
-HeadingText.defaultProps = {
-    caption: "the vessel",
-    heading: "Heading Text",
-    text: "Exercitation cupidatat laboris ea pariatur irure tempor consectetur duis. Id excepteur nisi consequat labore aliqua pariatur ad dolor. Exercitation proident Lorem non proident incididunt sit. "
-}
-
 export default HeadingText

@@ -22,9 +22,9 @@ class CarouselThree extends Component {
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
-        if (nextProps.store && nextProps.store.length !== prevState.localStore.length) {
+        if (nextProps.properties.length && nextProps.store.length !== prevState.localStore.length) {
             return {
-                localStore: nextProps.store,
+                localStore: nextProps.properties,
             }
         }
         return null
@@ -40,7 +40,7 @@ class CarouselThree extends Component {
 
     render() {
         return (
-            <div id="carousel-three" className={`flex flex-col justify-center max-w-container-2 ...${this.props.containerClassName}`}>
+            <div id="carousel-three" className="flex flex-col justify-center">
                 <Slider
                     dots={true}
                     centerMode={true}
@@ -48,20 +48,23 @@ class CarouselThree extends Component {
                     slidesToShow={3}
                     slidesToScroll={1}
                     customPaging={() => <div id="dots" />}
-                    arrows={false}
+                    arrows={true}
                     ref={c => this.carousel = c}
                 >
                     {this.state.localStore.length && this.state.localStore.map((data, index) => {
                         return (
                             <CardItem
                                 key={index}
-                                image={data.image}
+                                image={data.images}
+                                heading={data.heading}
+                                text={data.text}
+                                center={data.center}
                             />
                         )
                     })}
                 </Slider>
-                <PrevArrow onClick={this.prev} />
-                <NextArrow onClick={this.next} />
+                {/* <PrevArrow onClick={this.prev} />
+                <NextArrow onClick={this.next} /> */}
             </div>
         )
     }
@@ -75,16 +78,16 @@ CarouselThree.propTypes = {
 CarouselThree.defaultProps = {
     store: [{
         id: 1,
-        image: Img1
+        images: Img1
     },{
         id: 2,
-        image: Img1
+        images: Img1
     },{
         id: 3,
-        image: Img1
+        images: Img1
     },{
         id: 4,
-        image: Img1
+        images: Img1
     }]
 }
 

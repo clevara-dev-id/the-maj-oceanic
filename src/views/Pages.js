@@ -1,6 +1,5 @@
 import React, { Component, lazy } from 'react'
 
-
 const TextHeadingComponent = lazy(() => import('../components/TextHeadingComponent'))
 const SliderAwesome = lazy(() => import('../components/base_component/Slider/SliderAwesome/SliderAwesome'))
 const TextLargeImageComponent = lazy(() => import('../components/TextLargeImageComponent'))
@@ -10,6 +9,10 @@ const DeviderComponent = lazy(() => import('../components/DeviderComponent'))
 const CardTextImageComponent = lazy(() => import('../components/CardTextImageComponent'))
 const SingleButtonComponent = lazy(() => import('../components/SingleButtonComponent'))
 const CardTextImageSmallComponent = lazy(() => import('../components/CardTextImageSmallComponent'))
+const CardThreeComponent = lazy(()=>import('../components/CardThreeComponent'))
+const HeadingComponent = lazy(() => import('../components/HeadingComponent'))
+const CarouselThreeComponent = lazy(()=>import('../components/CarouselThreeComponent'))
+
 
 class Pages extends Component {
     CommonComponent(args, props){
@@ -58,7 +61,21 @@ class Pages extends Component {
                 <CardTextImageSmallComponent properties={props} />
             )
         }
-        console.log(args)
+        if(args === 'CardThreeComponent'){
+            return(
+                <CardThreeComponent properties={props} />
+            )
+        }
+        if(args === 'HeadingComponent'){
+            return(
+                <HeadingComponent properties={props} />
+            )
+        }
+        if(args === 'CarouselThreeComponent'){
+            return(
+                <CarouselThreeComponent properties={props} />
+            )
+        }
     }
     render(){
         return(

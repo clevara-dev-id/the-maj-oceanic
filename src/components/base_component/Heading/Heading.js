@@ -4,8 +4,10 @@ import PropTypes from 'prop-types'
 const Heading = props => {
     return (
         <>
-            {props.caption? <h5 title={props.caption} className={`primary ${props.captionClassName}`}> {props.caption} </h5>: null}
-            <h1 title={props.heading} className={`${props.caption? "py-4": "pb-4"} ${props.headingClassName}`}> {props.heading} </h1>
+            <div className={props.center?"text-center":null}>
+                {props.caption? <h5 title={props.caption} className={`primary ${props.captionClassName}`}> {props.caption} </h5>: null}
+                <h1 title={props.heading} className={`${props.caption? "py-4": "pb-4"} ${props.headingClassName}`}> {props.heading} </h1>
+            </div>
         </>
     )
 }
@@ -17,9 +19,9 @@ Heading.propTypes = {
     headingClassName: PropTypes.string,
 }
 
-Heading.defaultProps = {
-    caption: "the vessel",
-    heading: "Lorem Dulur sit Amit",
-}
+// Heading.defaultProps = {
+//     caption: "the vessel",
+//     heading: "Lorem Dulur sit Amit",
+// }
 
 export default Heading
