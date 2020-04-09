@@ -41,8 +41,8 @@ export default class NavigationBar extends Component {
         return (
             <>
                 <div className={`w-full fixed ${this.state.isScroll?`bg-white`:`bg-semi-transparent`}`} id="navbar" /*className={this.state.isScroll?"bg-white":"bg-dark-transparent"}*/ >
-                    <ul className={`justify-between items-center flex-wrap pt-12 pb-20 mx-12 border-b-2 border-white lg:flex hidden ${this.state.isScroll ? `lg:hidden` : ``}`}>
-                        <div className="items-center">
+                    <ul className={`flex items-center flex-wrap pt-12 pb-20 mx-12 border-b-2 border-white lg:flex hidden ${this.state.isScroll ? `lg:hidden` : ``}`}>
+                        <div className="w-1/4 mr-auto flex justify-start">
                             <Button
                                 className="mr-6"
                                 search
@@ -73,10 +73,10 @@ export default class NavigationBar extends Component {
                                 THE MAJ GROUP
                             </Button>
                         </div>
-                        <div className="items-center">
+                        <div className="mx-auto">
                             <img src={LogoImg} alt="logo-the-maj-oceanic" />
                         </div>
-                        <div className="items-center">
+                        <div className="w-1/4 ml-auto flex justify-end">
                             <Button
                                 className="mr-6"
                                 padding="0"
@@ -152,7 +152,7 @@ export default class NavigationBar extends Component {
                             {this.props.store.map((data) => {
                                 return (
                                     <NavLink to={data.link}
-                                        className={`mr-6 uppercase nav-item ${this.state.isScroll?"text-dark":"text-white"}`}
+                                        className={`mr-10 uppercase nav-item ${this.state.isScroll?"text-dark":"text-white"}`}
                                         key={data.id}
                                     >
                                         {data.name}

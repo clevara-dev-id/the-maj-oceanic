@@ -36,12 +36,12 @@ BaseRoute.defaultProps = {
                         {
                             id:1,
                             images: `${img1}`,
-                            text:"Lorem Ipsum Dolor Sit Amet"
+                            text:"An Epicurean Journey of  the Ages"
                         },
                         {
                             id:2,
                             images: `${img2}`,
-                            text:"Lorem Ipsum Dolor Sit Amet"
+                            text:"An Epicurean Journey of  the Ages"
                         }
                     ]
                 },
