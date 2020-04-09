@@ -1,6 +1,7 @@
 import React, { Component, createRef } from 'react'
 import PropTypes from 'prop-types'
 import Slider from 'react-slick'
+import './style.scss'
 
 import CardItem from '../../Card/CardImage/CardImageThree/CardItem'
 import Img1 from '../../../../assets/img/home/slick/1.svg'
@@ -17,8 +18,8 @@ class CarouselThree extends Component {
             localStore: [],
         }
 
-        this.next = this.next.bind(this)
-        this.prev = this.prev.bind(this)
+        // this.next = this.next.bind(this)
+        // this.prev = this.prev.bind(this)
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
@@ -30,35 +31,62 @@ class CarouselThree extends Component {
         return null
     }
 
-    next = () => {
-        this.carousel.slickNext()
-    }
+    // next = () => {
+    //     this.carousel.slickNext()
+    // }
 
-    prev = () => {
-        this.carousel.slickPrev()
-    }
+    // prev = () => {
+    //     this.carousel.slickPrev()
+    // }
 
     render() {
+        const settings= {
+            dots:true,
+            centerMode:true,
+            centerPadding:"0px",
+            slidesToShow:3,
+            slidesToScroll:1,
+            customPaging: () => (<div id="dots" />),
+            arrows:true,
+            responsive:[
+                {
+                    breakpoint: 1025,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true,
+                        arrows:false
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: true,
+                        arrows:false
+                    }
+                },
+            ]
+        }
         return (
             <div id="carousel-three" className="flex flex-col justify-center">
                 <Slider
-                    dots={true}
-                    centerMode={true}
-                    centerPadding="-20px"
-                    slidesToShow={3}
-                    slidesToScroll={1}
-                    customPaging={() => <div id="dots" />}
-                    arrows={true}
-                    ref={c => this.carousel = c}
+                    {...settings}
+                    // ref={c => this.carousel = c}
                 >
                     {this.state.localStore.length && this.state.localStore.map((data, index) => {
                         return (
                             <CardItem
-                                key={index}
+                                key={data.id || index}
                                 image={data.images}
                                 heading={data.heading}
                                 text={data.text}
                                 center={data.center}
+                                headingClassName="text-xl"
+                                button={data.button_title}
                             />
                         )
                     })}

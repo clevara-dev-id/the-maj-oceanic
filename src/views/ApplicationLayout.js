@@ -36,7 +36,7 @@ connectApplicationLayout.defaultProps = {
         {
             id: 1,
             name: "the vessel",
-            link: "/#",
+            link: "/vessel",
         },
         {
             id: 2,

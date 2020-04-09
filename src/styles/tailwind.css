@@ -11068,7 +11068,7 @@ video {
 }
 
 .w-image-1 {
-  width: 350px;
+  max-width: 350px;
 }
 
 .w-auto {
@@ -22567,7 +22567,7 @@ video {
   }
 
   .sm\:text-primary-100 {
-    color: #C7E2EC;
+    color: #208CB2;
   }
 
   .sm\:text-primary-200 {

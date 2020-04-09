@@ -5,7 +5,7 @@ header{
         .nav-link{
             font-size: 13px !important;
             font-weight: 600;
-            font-family: 'Verlag Bold' !important;
+            font-family: 'Verlag Bold' ;
             color: white;
             transition: .2s all;
         }
@@ -16,6 +16,14 @@ header{
     .bg-white{
         z-index: 99;
         color: #232323 !important;
+    }
+    .nav-item{
+        transition: .2s all;
+        letter-spacing: 2px;
+        font-size: 13px;
+    }
+    .nav-item:hover{
+        color: #208CB2;
     }
 }
 footer{

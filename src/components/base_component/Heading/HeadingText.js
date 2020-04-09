@@ -4,7 +4,7 @@ import Heading from './Heading'
 
 const HeadingText = props => {
     return (
-        <div className={`${props.containerClassName} ${props.center? "text-center": null}`}>
+        <div className={`${props.containerClassName} ${props.center? "text-center mx-auto": null}`}>
             <Heading caption={props.caption} heading={props.heading} headingClassName={props.headingClassName} />
             <p title={props.text} className={`body-1 ${props.center? "mx-auto": null} ${props.textClassName? props.textClassName: "w-8/12"}`}> {props.text} </p>
             {

@@ -17,3 +17,13 @@
     background: #208CB2;
     opacity: 1;
 }
+#carousel-text{
+    .buttons{
+        background-color: white;
+        color: #208CB2;
+    }
+    .buttons:hover{
+        background-color: #208CB2;
+        color: white;
+    }
+}

@@ -1,5 +1,6 @@
 import React, { Component, lazy } from 'react'
 
+
 const TextHeadingComponent = lazy(() => import('../components/TextHeadingComponent'))
 const SliderAwesome = lazy(() => import('../components/base_component/Slider/SliderAwesome/SliderAwesome'))
 const TextLargeImageComponent = lazy(() => import('../components/TextLargeImageComponent'))
@@ -12,68 +13,74 @@ const CardTextImageSmallComponent = lazy(() => import('../components/CardTextIma
 const CardThreeComponent = lazy(()=>import('../components/CardThreeComponent'))
 const HeadingComponent = lazy(() => import('../components/HeadingComponent'))
 const CarouselThreeComponent = lazy(()=>import('../components/CarouselThreeComponent'))
+const CarouselTextComponent = lazy(()=>import('../components/CarouselTextComponent'))
 
 
 class Pages extends Component {
-    CommonComponent(args, props){
+    CommonComponent(args, props, reverse){
         if(args === 'SliderAwesome'){
             return(
-                <SliderAwesome properties={props} />
+                <SliderAwesome properties={props} reverse={reverse||null} />
             )
         }
         if(args === 'TextLargeImageComponent'){
             return(
-                <TextLargeImageComponent properties={props} />
+                <TextLargeImageComponent properties={props} reverse={reverse||null} />
             )
         }
         if(args === 'CarouselCardTextComponent'){
             return(
-                <CarouselCardTextComponent properties={props} />
+                <CarouselCardTextComponent properties={props} reverse={reverse||null} />
             )
         }
         if(args === 'TextTabComponent'){
             return(
-                <TextTabComponent properties={props} />
+                <TextTabComponent properties={props} reverse={reverse||null} />
             )
         }
         if(args === 'TextHeadingComponent'){
             return(
-                <TextHeadingComponent properties={props} />
+                <TextHeadingComponent properties={props} reverse={reverse||null} />
             )
         }
         if(args === 'DeviderComponent'){
             return(
-                <DeviderComponent properties={props} />
+                <DeviderComponent properties={props} reverse={reverse||null} />
             )
         }
         if(args === 'CardTextImageComponent'){
             return(
-                <CardTextImageComponent properties={props} />
+                <CardTextImageComponent properties={props} reverse={reverse||null} />
             )
         }
         if(args === 'SingleButtonComponent'){
             return(
-                <SingleButtonComponent properties={props} />
+                <SingleButtonComponent properties={props} reverse={reverse||null} />
             )
         }
         if(args === 'CardTextImageSmallComponent'){
             return(
-                <CardTextImageSmallComponent properties={props} />
+                <CardTextImageSmallComponent properties={props} reverse={reverse||null} />
             )
         }
         if(args === 'CardThreeComponent'){
             return(
-                <CardThreeComponent properties={props} />
+                <CardThreeComponent properties={props} reverse={reverse||null} />
             )
         }
         if(args === 'HeadingComponent'){
             return(
-                <HeadingComponent properties={props} />
+                <HeadingComponent properties={props} reverse={reverse||null} />
             )
         }
         if(args === 'CarouselThreeComponent'){
             return(
-                <CarouselThreeComponent properties={props} />
+                <CarouselThreeComponent properties={props} reverse={reverse||null} />
+            )
+        }
+        if(args === 'CarouselTextComponent'){
+            return(
+                <CarouselTextComponent properties={props} reverse={reverse||null} />
             )
         }
     }
@@ -83,7 +90,7 @@ class Pages extends Component {
                 {this.props.component.map((data, i) => {
                     return(
                         <div key={data.id || i}>
-                            {this.CommonComponent(data.name, data.properties)}
+                            {this.CommonComponent(data.name, data.properties, data.reverse)}
                         </div>
                     )
                 })}

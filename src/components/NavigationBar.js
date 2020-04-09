@@ -1,6 +1,6 @@
 import React, { Component, lazy } from 'react'
 import './style.scss'
-// import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import LogoImg from '../assets/logo.svg'
 
@@ -151,21 +151,12 @@ export default class NavigationBar extends Component {
                             ) : null}
                             {this.props.store.map((data) => {
                                 return (
-                                    <Button
-                                        className="mr-6 uppercase"
-                                        padding="0"
-                                        margin="0"
-                                        color={this.state.isScroll?`#232323`:`#FFFFFF`}
-                                        border="transparent"
-                                        height="40px"
-                                        fontSize="13px"
-                                        hover={{ color: "#208CB2" }}
-                                        letterSpacing="2px"
-                                        href="#"
+                                    <NavLink to={data.link}
+                                        className={`mr-6 uppercase nav-item ${this.state.isScroll?"text-dark":"text-white"}`}
                                         key={data.id}
                                     >
                                         {data.name}
-                                    </Button>
+                                    </NavLink>
                                 )
                             })}
                             {this.state.isScroll ? (
