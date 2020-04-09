@@ -7,6 +7,19 @@ const HeadingText = props => {
         <div className={`${props.containerClassName} ${props.center? "text-center": null}`}>
             <Heading caption={props.caption} heading={props.heading} headingClassName={props.headingClassName} />
             <p title={props.text} className={`body-1 ${props.center? "mx-auto": null} ${props.textClassName? props.textClassName: "w-8/12"}`}> {props.text} </p>
+            {
+                props.list?
+                    <>
+                        <ul className="mb-10 pl-4 list-disc">
+                            {props.list.map((data,i) => {
+                                return(
+                                    <li key={i}>{data.text}</li>
+                                )
+                            })}
+                        </ul>
+                    </>
+                : null
+            }
             {props.children && props.children}
         </div>
     )
@@ -15,10 +28,10 @@ const HeadingText = props => {
 HeadingText.propTypes = {
     containerClassName: PropTypes.string,
     center: PropTypes.bool,
-    caption: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
-    heading: PropTypes.string.isRequired,
+    caption: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+    heading: PropTypes.string,
     headingClassName: PropTypes.string,
-    text: PropTypes.string.isRequired,
+    text: PropTypes.string,
     textClassName: PropTypes.string,
 }
 

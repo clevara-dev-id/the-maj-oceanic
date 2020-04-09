@@ -1,26 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-export default class Skeleton extends Component{
-    constructor(props){
-        super(props)
-    }
-
-    render(){
-        if(this.props.circle){
-            return(
-                <>
-                    <Circle width={this.props.width} />
-                </>
-            )
-        }
+const Skeleton = props => {
+    if(props.circle){
         return(
             <>
-                <Box width={this.props.width} height={this.props.height} />
+                <Circle width={props.width} />
             </>
         )
     }
+    return(
+        <>
+            <Box width={props.width} height={props.height} />
+        </>
+    )
 }
 const Circle = styled.div(
     props => ({

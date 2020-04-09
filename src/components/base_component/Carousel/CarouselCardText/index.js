@@ -22,9 +22,9 @@ class CarouselCardText extends Component {
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
-        if (nextProps.store.length !== prevState.localStore.length) {
+        if (nextProps.properties.length !== prevState.localStore.length) {
             return {
-                localStore: nextProps.store,
+                localStore: nextProps.properties,
                 isLoading: false,
             }
         }
@@ -50,7 +50,7 @@ class CarouselCardText extends Component {
                                 <div>
                                     <div className="flex h-full-plus-10">
                                         <div className="w-2/3">
-                                            <img src={data.image} className="w-full" alt="img-slick" />
+                                            <img src={data.images} className="w-full" alt="img-slick" />
                                         </div>
                                         <div className="w-5/12 bg-white px-6 py-16 mt-20 ml-min-12">
                                             <Content border={this.props.border}>
@@ -80,27 +80,27 @@ class CarouselCardText extends Component {
     }
 }
 
-const Container = styled.div(
-    props => ({
-        border: props.border? "1px solid": null,
-        margin: props.containerMargin,
-        padding: props.containerPadding,
-        width: props.containerWidth,
-        height: props.containerHeight,
-    })
-)
+// const Container = styled.div(
+//     props => ({
+//         border: props.border? "1px solid": null,
+//         margin: props.containerMargin,
+//         padding: props.containerPadding,
+//         width: props.containerWidth,
+//         height: props.containerHeight,
+//     })
+// )
 
-const CardItem = styled.div(
-    props => ({
-        background: "#FFFFFF", 
-        padding: "51px 29px", 
-        position: "relative", 
-        top: "50px", 
-        marginLeft: "650px", 
-        width: "445px", 
-        height: "570px",
-    })
-)
+// const CardItem = styled.div(
+//     props => ({
+//         background: "#FFFFFF", 
+//         padding: "51px 29px", 
+//         position: "relative", 
+//         top: "50px", 
+//         marginLeft: "650px", 
+//         width: "445px", 
+//         height: "570px",
+//     })
+// )
 
 const Content = styled.div(
     props => ({
@@ -156,14 +156,14 @@ const Dot = styled.div(
 CarouselCardText.defaultProps = {
     store: [{
         id: 1,
-        image: Img1,
+        images: Img1,
         caption: "spesification 1",
         heading: "Lorem Ipsum 1",
         text: "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis.",
         // list: ["Lorem ipsum dolor sit amet", "Laboris lar aliquip", "Lorem ipsum dolor sit amet", "Laboris lar aliquip"]
     },{
         id: 2,
-        image: Img1,
+        images: Img1,
         caption: "spesification 2",
         heading: "Lorem Ipsum 2",
         text: "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis.",

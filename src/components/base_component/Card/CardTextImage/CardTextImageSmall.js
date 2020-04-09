@@ -1,14 +1,18 @@
 import React, { lazy } from 'react'
 import PropTypes from 'prop-types'
+import {Link} from 'react-router-dom'
+
+import './style.scss'
 
 import Img1 from '../../../../assets/img/home/card-text-image/1-small.png'
 
 const HeadingText = lazy(() => import('../../Heading/HeadingText'))
-const Button = lazy(() => import('../../Button'))
+// const Button = lazy(() => import('../../Button'))
+
 
 const CardTextImageSmall = props => {
     return (
-        <div className={`flex max-w-container-2 ${props.containerClassName}`}>
+        <div className={`card-text-image-small flex max-w-container-2 ${props.containerClassName}`}>
         {
             !props.reverse? (
             <>
@@ -30,7 +34,7 @@ const CardTextImageSmall = props => {
                     text={props.text}
                     textClassName="mb-8"
                 >
-                    <Button small ghost onClick={props.onClick}> {props.buttonTitle.toUpperCase()} </Button>
+                    <Link className="primary-link" to={props.link} onClick={props.onClick}> {props.button_title.toUpperCase()} </Link>
                 </HeadingText>
             </>
             ) : (
@@ -42,7 +46,7 @@ const CardTextImageSmall = props => {
                     text={props.text}
                     textClassName="mb-8"
                 >
-                    <Button small ghost onClick={props.onClick}> {props.buttonTitle.toUpperCase()} </Button>
+                    <Link className="primary-link" to={props.link} onClick={props.onClick}> {props.button_title.toUpperCase()} </Link>
                 </HeadingText>
                 <div 
                     className="bg-no-repeat bg-cover bg-no-repeat w-2/4" 
@@ -68,7 +72,7 @@ CardTextImageSmall.propTypes = {
     caption: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]).isRequired,
     heading: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
-    buttonTitle: PropTypes.string.isRequired,
+    button_title: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired
 }
 
@@ -79,7 +83,8 @@ CardTextImageSmall.defaultProps = {
     caption: false,
     heading: "Card Text Image Small",
     text: "Sunt excepteur laborum reprehenderit duis sunt fugiat eu dolore. Laborum mollit nostrud quis proident esse cillum sint laboris in deserunt eu consectetur ad adipisicing. Mollit nulla in quis nisi elit occaecat eu dolore aliquip.",
-    buttonTitle: "Button Title",
+    button_title: "Button Title",
+    link:"#",
     onClick: () => {
         alert("clicked")
     }

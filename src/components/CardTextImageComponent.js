@@ -6,7 +6,11 @@ const CardTextImageComponent = props => {
     return (
         <>
             <div className="container mx-auto px-4 py-32">
-                <CardTextImage {...props} />
+                {props.properties.map((data) => {
+                    return(
+                        <CardTextImage key={data.id} {...data} />
+                    )
+                })}
             </div>
         </>
     )

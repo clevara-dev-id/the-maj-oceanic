@@ -19,6 +19,7 @@ const CardTextImage = props => {
                         caption={props.caption} 
                         heading={props.heading}
                         text={props.text}
+                        list={props.list}
                         textClassName="mb-8"
                     >
                         <Button small ghost onClick={props.onClick}> {props.buttonTitle.toUpperCase()} </Button>
@@ -31,6 +32,7 @@ const CardTextImage = props => {
                         caption={props.caption} 
                         heading={props.heading}
                         text={props.text}
+                        list={props.list}
                         textClassName="mb-8"
                     >
                         <Button small ghost onClick={props.onClick}> {props.buttonTitle.toUpperCase()} </Button>
@@ -45,8 +47,8 @@ const CardTextImage = props => {
 
 CardTextImage.propTypes = {
     className: PropTypes.string,
-    caption: PropTypes.string.isRequired,
-    heading: PropTypes.string.isRequired,
+    caption: PropTypes.string,
+    heading: PropTypes.string,
     text: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     imageWidth: PropTypes.oneOfType([

@@ -1,5 +1,4 @@
 import React, { Component, lazy } from 'react'
-import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import Img1 from '../../../../../assets/img/home/card-image/1.png'

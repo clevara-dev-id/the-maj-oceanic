@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import HeadingText from '../../../Heading/HeadingText'
 
 const CardItem = props => {

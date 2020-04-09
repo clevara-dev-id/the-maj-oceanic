@@ -6,7 +6,11 @@ const DeviderComponent = props => {
     return(
         <>
             <div className="container px-4 mx-auto py-8">
-                <Devider {...props} />
+                {props.properties.map((data) => {
+                    return(
+                        <Devider key={data.id} {...data} />
+                    )
+                })}
             </div>
         </>
     )

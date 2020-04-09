@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import HeadingText from './HeadingText'
 import Button from '../Button'
-import { Alert } from 'react-bootstrap'
 
 const HeadingTextList = props => {
     return (

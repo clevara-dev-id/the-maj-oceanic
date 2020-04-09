@@ -6,7 +6,7 @@ const CarouselCardTextComponent = props => {
     return(
         <>
             <div className="container px-4 mx-auto py-32 carousel-card-text-component">
-                <CarouselCardText />
+                <CarouselCardText {...props} />
             </div>
         </>
     )
