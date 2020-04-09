@@ -7,7 +7,7 @@ import LogoImg from '../assets/logo.svg'
 // import '../css/navbar.css'
 
 /* Components */
-const Button = lazy(() => import('../components/base_component/Button'))
+const Button = lazy(() => import('./base_component/Button'))
 
 export default class NavigationBar extends Component {
     constructor(props) {
