@@ -14,7 +14,7 @@ const BaseRoute = (props) => {
         <>
             {props.pages.map((data) => {
                 return (
-                        <Route key={data.id} exact path={data.path} render={(routeProps) => (<Pages key={data.id} {...routeProps} component={data.components} id={data.page} />)} />
+                    <Route key={data.id} exact path={data.path} render={(routeProps) => (<Pages key={data.id} {...routeProps} component={data.components} id={data.page} />)} />
                 )
             })}
         </>
@@ -36,10 +36,12 @@ BaseRoute.defaultProps = {
                         {
                             id:1,
                             images: `${img1}`,
+                            text:"Lorem Ipsum Dolor Sit Amet"
                         },
                         {
                             id:2,
                             images: `${img2}`,
+                            text:"Lorem Ipsum Dolor Sit Amet"
                         }
                     ]
                 },
@@ -255,10 +257,12 @@ BaseRoute.defaultProps = {
                         {
                             id:1,
                             images: `${img1}`,
+                            text:"Lorem Ipsum Dolor Sit Amet"
                         },
                         {
                             id:2,
                             images: `${img2}`,
+                            text:"Lorem Ipsum Dolor Sit Amet"
                         }
                     ]
                 },
@@ -435,10 +439,12 @@ BaseRoute.defaultProps = {
                         {
                             id:1,
                             images: `${img1}`,
+                            text:"Lorem Ipsum Dolor Sit Amet"
                         },
                         {
                             id:2,
                             images: `${img2}`,
+                            text:"Lorem Ipsum Dolor Sit Amet"
                         }
                     ]
                 },

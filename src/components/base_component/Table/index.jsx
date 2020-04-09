@@ -43,9 +43,9 @@ const Table = props => {
     }
 
     return (
-        <div className={`max-w-container-2 ${props.containerClassName}`}>
+        <div className="max-w-container-2 mx-auto">
             <h5 className="px-4 py-8"> {props.head} </h5>
-            <table style={{width: "1110px"}}>
+            <table className="w-full">
                 <tbody>
                     {renderTbody(props.store && props.store)}
                 </tbody>
@@ -55,8 +55,7 @@ const Table = props => {
 }
 
 Table.propTypes = {
-    store: PropTypes.arrayOf(PropTypes.object),
-    containerClassName: PropTypes.string,
+    store: PropTypes.arrayOf(PropTypes.object).isRequired,
     head: PropTypes.string.isRequired,
 }
 

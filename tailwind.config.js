@@ -9,6 +9,7 @@ module.exports = {
       md: '768px',
       lg: '1024px',
       xl: '1280px',
+      '4k': '2560px',
     },
     colors: {
       transparent: 'transparent',
@@ -21,6 +22,9 @@ module.exports = {
         100: "#FBF7F6",
         200: "#F3E9E5",
         300: "#efe1dc",
+      },
+      dot: {
+        100: "#4E5E79",
       },
       black: '#000',
       white: '#fff',
@@ -292,6 +296,7 @@ module.exports = {
       wide: '0.025em',
       wider: '0.05em',
       widest: '0.1em',
+      caption2: '0.188em',
     },
     lineHeight: {
       none: '1',

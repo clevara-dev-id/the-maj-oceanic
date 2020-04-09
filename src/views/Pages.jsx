@@ -14,6 +14,7 @@ const CardThreeComponent = lazy(()=>import('../components/CardThreeComponent'))
 const HeadingComponent = lazy(() => import('../components/HeadingComponent'))
 const CarouselThreeComponent = lazy(()=>import('../components/CarouselThreeComponent'))
 const CarouselTextComponent = lazy(()=>import('../components/CarouselTextComponent'))
+const  HeadBackground = lazy(() => import('../components/HeadBackground'))
 
 
 class Pages extends Component {
@@ -81,6 +82,11 @@ class Pages extends Component {
         if(args === 'CarouselTextComponent'){
             return(
                 <CarouselTextComponent properties={props} reverse={reverse||null} />
+            )
+        }
+        if(args === 'HeadBackground'){
+            return(
+                <HeadBackground {...props} />
             )
         }
     }

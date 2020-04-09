@@ -1,0 +1,12 @@
+.tabs ul.tab-list li.item a {
+    font-family: Verlag;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 28px;
+}
+
+.tabs ul.tab-list li.item.active a {
+    padding-bottom: 16px;
+    border-bottom: 2px solid;
+}

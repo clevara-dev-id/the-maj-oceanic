@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import {device} from '../constants/DeviceWidth'
 
 const HeadBackground = (props) => (
-    <Container bg={props.bg}>
+    <Container images={props.images}>
         <Center>    
             <H1>{props.text}</H1>
         </Center>
@@ -15,12 +15,12 @@ const HeadBackground = (props) => (
 export default HeadBackground
 
 HeadBackground.propTypes = {
-    bg: PropTypes.string,
+    images: PropTypes.string,
     text: PropTypes.string,
 }
 
 const Container = styled.div`
-    background: url(${props=>props.bg});
+    background: url(${props=>props.images});
     width:100%;
     height: 700px;
     background-attachment: fixed;

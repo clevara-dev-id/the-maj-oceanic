@@ -1,21 +1,28 @@
-import React, { Component, Suspense } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import React, { Component, Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import ApplicationLayout from './views/ApplicationLayout';
-import BaseRoute from './routes';
+/**
+ * Component
+ */
+import AppLayout from './containers/AppLayout'
+import BaseRoute from './routes'
+
+// CSS
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import SuspenseLoader from './views/SuspenseLoader';
 // import './styles/App.css';
+
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <Suspense fallback={<div>Loading...</div>}>
-          <ApplicationLayout>
-              <BaseRoute />
-          </ApplicationLayout>
+        <Suspense fallback={<SuspenseLoader />}>
+          <AppLayout>
+            <BaseRoute />
+          </AppLayout>
         </Suspense>
       </Router>
     );
