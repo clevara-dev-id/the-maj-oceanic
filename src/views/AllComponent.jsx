@@ -1,7 +1,6 @@
 import React, { lazy, Component } from 'react'
 
 /** Image */
-import ImgActivity from '../assets/img/home/carousel-card-text/1.png'
 import ImgTabCarousel from '../assets/img/home/carousel-tab/1.png'
 
 /* Component */
@@ -13,8 +12,7 @@ const HeadingText = lazy(() => import('../components/base_component/Heading/Head
 const HeadingTextList = lazy(() => import('../components/base_component/Heading/HeadingTextList'))
 
 const CarouselText = lazy(() => import('../components/base_component/Carousel/CarouselText'))
-const CarouselCardText = lazy(() => import('../components/base_component/Carousel/CarouselCardText/index'))
-const CarouselCardTextSecondary = lazy(() => import('../components/base_component/Carousel/CarouselCardText/Secondary'))
+const CarouselCardText = lazy(() => import('../components/base_component/Carousel/CarouselCardText'))
 const CarouselThree = lazy(() => import('../components/base_component/Carousel/CarouselThree/index'))
 const CarouselTabText = lazy(() => import('../components/base_component/Carousel/CarouselTabText/index'))
 
@@ -27,7 +25,7 @@ const Tabs = lazy(() => import('../components/base_component/Tab/Tabs'))
 const Table = lazy(() => import('../components/base_component/Table'))
 
 
-class Home extends Component {
+class AllComponent extends Component {
     constructor(props) {
         super(props)
     
@@ -38,88 +36,17 @@ class Home extends Component {
     
     render() {
         return (
-            <div id="home">
+            <div>
                 
                 <section>
                     <div className="container mx-auto py-16 border border-solid border-black">
-                        <HeadingText heading="lorem dulur sit amet" headingClassName="capitalize" center />
-                    </div>
-                </section>
-                
-                <section>
-                    <div className="container mx-auto h-auto py-40 border border-solid border-black">
-                        <CarouselCardText small outline />
-                    </div>
-                </section>
-
-                <section>
-                    <div className="container mx-auto h-auto py-16 border border-solid border-black">
-                        <HeadingText containerClassName="mb-16" center caption="The Cabin" heading="Lorem ipsum dolor" text={false} />
-                        <CardThree  />
+                        <Heading />
                     </div>
                 </section>
 
                 <section>
                     <div className="container mx-auto py-16 border border-solid border-black">
-                        <CardTextImage headingClassName="capitalize" heading="lorem ipsum dolor" buttonTitle="learn more" />
-                    </div>
-                </section>
-                
-                <section>
-                    <div className="container mx-auto py-16 border border-solid border-black">
-                        <HeadingText containerClassName="mb-24" center caption={false} heading="voyages" headingClassName="uppercase" />
-                        <Tabs>
-                            <div label="Flores Sea">
-                                <CardTextImageSmall caption={false} heading="Explore Flores Sea" />
-                            </div>
-                            <div label="Raja Ampat">
-                                <CardTextImageSmall caption={false} heading="Explore Raja Ampat" />
-                            </div>
-                        </Tabs>
-                    </div>
-                </section>
-
-                <section>
-                    <div className="container mx-auto py-16 border border-solid border-black">
-                        <CardTextImage reverse caption="dining" headingClassName="capitalize" heading="lorem ipsum dolor" buttonTitle="learn more" />
-                    </div>
-                </section>
-                
-                <section>
-                    <div className="container mx-auto h-auto py-40 border border-solid border-black">
-                        <HeadingText center containerClassName="mb-16" caption="activities" heading="lorem ipsum dolor sit amet" />
-                        <CarouselCardTextSecondary
-                            store={[{
-                                id: 1,
-                                image: ImgActivity,
-                                heading: "Wellness",
-                                text: "Esse tempor qui enim ut aute cupidatat in dolor magna irure voluptate consequat Lorem. Occaecat ad adipisicing enim Lorem minim ea elit exercitation dolor et ad consequat aliqua.",
-                            },{
-                                id: 2,
-                                image: ImgActivity,
-                                heading: "Wellness 2",
-                                text: "Esse tempor qui enim ut aute cupidatat in dolor magna irure voluptate consequat Lorem. Occaecat ad adipisicing enim Lorem minim ea elit exercitation dolor et ad consequat aliqua.",
-                            }]}
-                        />
-                    </div>
-                </section>
-
-                <section>
-                    <div className="container mx-auto py-16 border border-solid border-black">
-                        <CardTextImage 
-                            caption="occasions" 
-                            heading="exclusive saving" 
-                            headingClassName="capitalize"
-                            text="Book in advance and enjoy great savings. It’s the perfect excuse for an unforgettable adventure."
-                            list={["Luxuri accomodation", "Booking conditions apply"]} 
-                            buttonTitle="learn more" 
-                        />
-                    </div>
-                </section>
-
-                <section>
-                    <div className="container mx-auto py-16 border border-solid border-black">
-                        <CarouselText />
+                        <HeadingText />
                     </div>
                 </section>
 
@@ -130,14 +57,52 @@ class Home extends Component {
                 </section>
 
                 <section>
+                    <div className="container mx-auto py-16 border border-solid border-black">
+                        <CarouselText />
+                    </div>
+                </section>
+                
+                <section>
+                    <div className="container mx-auto h-auto py-40 border border-solid border-black">
+                        <CarouselCardText />
+                    </div>
+                </section>
+
+                <section>
                     <div className="container mx-auto h-auto py-16 border border-solid border-black">
                         <CarouselThree />
+                    </div>
+                </section>
+
+
+                <section>
+                    <div className="container mx-auto h-auto py-16 border border-solid border-black">
+                        <CardThree />
+                    </div>
+                </section>
+
+                <section>
+                    <div className="container mx-auto py-16 border border-solid border-black">
+                        <CardTextImage />
                     </div>
                 </section>
 
                 <section>
                     <div className="container mx-auto py-16 border border-solid border-black">
                         <CardTextImageSmall />
+                    </div>
+                </section>
+                
+                <section>
+                    <div className="container mx-auto py-16 border border-solid border-black">
+                        <Tabs>
+                            <div label="Tabs 1">
+                                <CardTextImageSmall caption={false} heading="Tabs 1" />
+                            </div>
+                            <div label="Tabs 2">
+                                <CardTextImageSmall caption={false} heading="Tabs 2" />
+                            </div>
+                        </Tabs>
                     </div>
                 </section>
 
@@ -193,4 +158,4 @@ class Home extends Component {
     }
 }
 
-export default Home
+export default AllComponent

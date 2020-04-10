@@ -34,12 +34,13 @@ class CardThree extends Component {
     
     render() {
         return (
-            <div className="max-w-container-2 mx-auto">
-                <div className="flex flex-row">
+            <div className="max-w-container-2 mx-auto w-screen">
+                <div className="flex flex-row max-w-container-2">
                     {this.state.localStore.length && this.state.localStore.map((data, index) => (
                         <CardItem 
                             caption={false}
                             containerClassName={`${this.state.localStore.length === (index + 1)? "ml-3": (index + 1) === 1? "mr-3": "mx-3"}`}
+                            containerImageClassName="w-auto"
                             headingClassName="uppercase mt-6"
                             textClassName="mt-4"
                             key={index}

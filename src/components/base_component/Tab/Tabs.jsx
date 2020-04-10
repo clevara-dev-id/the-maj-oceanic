@@ -22,7 +22,7 @@ class Tabs extends Component {
 
     render() {
         return (
-            <div className="tabs">
+            <div className={`tabs max-w-container-2 w-auto mx-auto ${this.props.containerClassName}`}>
                 <ul className={`tab-list flex pb-20 max-w-container-2 mx-auto ${this.props.center? "justify-center": null}`}>
                     {this.props.children && this.props.children.map((child) => {
                         const { label } = child.props
@@ -39,12 +39,10 @@ class Tabs extends Component {
                     })}
                 </ul>
 
-                <div className="tab-content flex">
-                    {this.props.children && this.props.children.map((child) => {
-                        if (child.props.label !== this.state.activeTab) return undefined
-                        return child.props.children
-                    })}
-                </div>
+                {this.props.children && this.props.children.map((child) => {
+                    if (child.props.label !== this.state.activeTab) return undefined
+                    return child.props.children
+                })}
             </div>
         )
     }
@@ -53,6 +51,7 @@ class Tabs extends Component {
 
 Tabs.propTypes = {
     children: PropTypes.instanceOf(Array).isRequired,
+    containerClassName: PropTypes.string,
     classNameTabs: PropTypes.string,
     classNameTablist: PropTypes.string,
     classNameTabcontent: PropTypes.string,

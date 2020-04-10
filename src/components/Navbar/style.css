@@ -49,7 +49,7 @@
 
 
     #nav.scroll-active {
-        transform: translateY(-275px);
+        transform: translateY(-350px);
     }
 
     #nav div.nav-top.scroll-active {

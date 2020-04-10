@@ -17,26 +17,27 @@ const HeadingTextList = props => {
             <ul className="my-8">
                 {props.list.map((data, index) => {
                     return (
-                        <li key={index} title={data} style={{listStyleType: "disc", listStylePosition: "inside"}}> {data} </li>
+                        <li key={index} title={data} className={`list-disc list-inside ${props.listClassName}`}> {data} </li>
                     )
                 })}
             </ul>
 
-            <Button outline small title={props.buttonName} onClick={props.onClick}> {props.buttonTitle.toUpperCase()} </Button>
+            <Button outline small className="uppercase" onClick={props.onClick}> {props.buttonTitle} </Button>
         </HeadingText>
     )
 }
 
 HeadingTextList.propTypes = {
-    containerClassName: PropTypes.string,
-    center: PropTypes.bool,
-    caption: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
-    heading: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired,
-    textClassName: PropTypes.string,
-    list: PropTypes.array.isRequired,
-    buttonTitle: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired
+  buttonTitle: PropTypes.string.isRequired,
+  caption: PropTypes.string,
+  center: PropTypes.bool,
+  containerClassName: PropTypes.string,
+  heading: PropTypes.string.isRequired,
+  list: PropTypes.array.isRequired,
+  listClassName: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
+  textClassName: PropTypes.string
 }
 
 HeadingTextList.defaultProps = {

@@ -41,21 +41,20 @@ export default class CarouselTabText extends Component {
         const { localStore, indexActive } = this.state
         const { imagewidth, imageHeight } = this.props
         return (
-            <div className="mx-auto max-w-container-2">
-                {localStore.length && localStore.map((data, index) => {
-                    if (indexActive === index) {
-                        return (
-                            <p key={index} className="body-1 mb-12">
-                                {data.text}
-                            </p>
-                        )
-                    }
-                    return null
-                })}
-
+            <Fragment>
+                <div className="mb-12 whitespace-normal body-1">
+                    {localStore.length && localStore.map((data, index) => {
+                        if (indexActive === index) {
+                            return data.text
+                        }
+                        return null
+                    })}
+                </div>
+                
                 <Slider
                     afterChange={indexActive => this.setState({indexActive})}
                     arrows={false}
+                    className="border border-solid border-black max-w-5xl w-auto mx-auto"
                     dots={true}
                     lazyLoad={true}
                     slidesToShow={1}
@@ -77,13 +76,9 @@ export default class CarouselTabText extends Component {
                         return (
                             <Fragment key={index}>
                                 <div
-                                    className="bg-image bg-no-repeat bg-cover"
+                                    className={`bg-image bg-no-repeat bg-cover max-w-container-2 w-auto h-64 ${this.props.containerImageClassName}`}
                                     style={{
                                         backgroundImage: `url(${data.image})`,
-                                        maxWidth: "1106px",
-                                        maxHeight: "256px",
-                                        width: imagewidth,
-                                        height: imageHeight,
                                     }}
                                 />
                             </Fragment>
@@ -100,7 +95,7 @@ export default class CarouselTabText extends Component {
                     className="next-arrow outline-none focus:outline-none"
                     onClick={this.next}
                 />
-            </div>
+            </Fragment>
         )
     }
 }

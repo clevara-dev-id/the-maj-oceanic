@@ -45,7 +45,7 @@ class CarouselThree extends Component {
 
     render() {
         return (
-            <div id="carousel-three" className={`flex flex-col justify-center max-w-container-2 mx-auto ...${this.props.containerClassName}`}>
+            <div id="carousel-three" className={`flex flex-col justify-center max-w-container-2 lg:w-auto mx-auto ${this.props.containerClassName}`}>
                 <Slider
                     arrows={false}
                     centerMode={true}
@@ -61,6 +61,7 @@ class CarouselThree extends Component {
                         return (
                             <CardItem
                                 key={index}
+                                containerImageClassName="w-image-1"
                                 image={data.image}
                             />
                         )

@@ -46,12 +46,12 @@ class CarouselCardText extends Component {
 
     render() {
         return (
-            <div id="carousel-card-text" className="max-w-container-2 relative mx-auto" style={{width: "1110px"}}>
+            <div id="carousel-card-text" className="max-w-container-2 w-auto relative mx-auto">
                 <Slider
                     afterChange={(indexActive) => this.setState({indexActive})}
                     arrows={false}
                     dots={true}
-                    customPaging={i => <div id="dot" className="rounded-full" />
+                    customPaging={i => <div className="dot rounded-full" />
                     }
                     fade={true}
                     lazyLoad={true}
@@ -125,7 +125,7 @@ class CarouselCardText extends Component {
                                             ))}
                                         </ul>
                                     ): null}
-                                    <Button className="btn-2 mb-12" small outline onClick={this.props.onClick}> {this.props.buttonTitle.toUpperCase()} </Button>
+                                    <Button className="btn-2 mb-12" {...this.props} onClick={this.props.onClick}> {this.props.buttonTitle.toUpperCase()} </Button>
                                 </div>
                             )
                         }
