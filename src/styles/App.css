@@ -5,13 +5,13 @@ body {
 @font-face {
   font-family: Sentinel SB;
   font-style: normal;
-  src: url('../assets/font/Sentinel/Sentinel-Semibold.otf');
+  src: url('../assets/font/Sentinel/Sentinel-Book.otf');
 }
 
 @font-face {
   font-family: Verlag B;
   font-style: normal;
-  src: url('../assets/font/Verlag/Verlag-Bold.ttf');
+  src: url('../assets/font/Verlag/Verlag-Book.ttf');
 }
 
 @font-face {
@@ -23,13 +23,14 @@ body {
 h1, h2, h3, h4 {
   font-family: Sentinel SB;
   font-style: normal;
+  font-weight: 400;
   color: #232323;
 }
 
 h5, h6 {
   font-family: Verlag B;
   font-style: normal;
-  font-weight: bold !important;
+  font-weight: bold;
   text-transform: uppercase;
   color: #232323;
 }
@@ -127,6 +128,9 @@ button.btn-2 {
 
 .secondary-3 {
   color: #FBF7F6;
+}
+button{
+  outline: none !important;
 }
 
 

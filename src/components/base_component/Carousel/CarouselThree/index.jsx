@@ -18,12 +18,12 @@ class CarouselThree extends Component {
             localStore: [],
         }
 
-        // this.next = this.next.bind(this)
-        // this.prev = this.prev.bind(this)
+        this.next = this.next.bind(this)
+        this.prev = this.prev.bind(this)
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
-        if (nextProps.properties.length && nextProps.store.length !== prevState.localStore.length) {
+        if (nextProps.properties.length !== prevState.localStore.length) {
             return {
                 localStore: nextProps.properties,
             }
@@ -31,24 +31,23 @@ class CarouselThree extends Component {
         return null
     }
 
-    // next = () => {
-    //     this.carousel.slickNext()
-    // }
+    next = () => {
+        this.carousel.slickNext()
+    }
 
-    // prev = () => {
-    //     this.carousel.slickPrev()
-    // }
+    prev = () => {
+        this.carousel.slickPrev()
+    }
 
     render() {
-        const settings= {
-            dots:true,
-            centerMode:true,
-            centerPadding:"0px",
-            slidesToShow:3,
-            slidesToScroll:1,
+        const settings = {
+            dots: true,
+            slidesToShow: 3,
+            slidesToScroll: 1,
             customPaging: () => (<div id="dots" />),
-            arrows:true,
-            responsive:[
+            arrows: false,
+            centerPadding: "30px",
+            responsive: [
                 {
                     breakpoint: 1025,
                     settings: {
@@ -56,26 +55,48 @@ class CarouselThree extends Component {
                         slidesToScroll: 3,
                         infinite: true,
                         dots: true,
-                        arrows:false
+                        arrows: false
                     }
                 },
                 {
                     breakpoint: 768,
                     settings: {
-                        slidesToShow: 1,
+                        slidesToShow: 2,
                         slidesToScroll: 1,
                         infinite: true,
                         dots: true,
-                        arrows:false
+                        arrows: false
+                    }
+                },
+                {
+                    breakpoint: 426,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        centerMode: true,
+                        centerPadding: "0px",
+                        infinite: true,
+                        dots: true,
+                        arrows: false
                     }
                 },
             ]
         }
         return (
-            <div id="carousel-three" className="flex flex-col justify-center">
+            <div id="carousel-three" className="">
+                <button className="absolute w-8 h-8 rounded-full arrows arrow-left mr-3"
+                    onClick={this.prev}
+                >
+                    <i className="fas fa-angle-left text-base"></i>
+                </button>
+                <button className="absolute w-8 h-8 rounded-full arrows arrow-right"
+                    onClick={this.next}
+                >
+                    <i className="fas fa-angle-right text-base"></i>
+                </button>
                 <Slider
                     {...settings}
-                    // ref={c => this.carousel = c}
+                ref={c => this.carousel = c}
                 >
                     {this.state.localStore.length && this.state.localStore.map((data, index) => {
                         return (
@@ -85,14 +106,13 @@ class CarouselThree extends Component {
                                 heading={data.heading}
                                 text={data.text}
                                 center={data.center}
+                                containerClassName="px-2"
                                 headingClassName="text-xl"
                                 button={data.button_title}
                             />
                         )
                     })}
                 </Slider>
-                {/* <PrevArrow onClick={this.prev} />
-                <NextArrow onClick={this.next} /> */}
             </div>
         )
     }
@@ -101,22 +121,6 @@ class CarouselThree extends Component {
 CarouselThree.propTypes = {
     containerClassName: PropTypes.string,
     store: PropTypes.arrayOf(PropTypes.object).isRequired,
-}
-
-CarouselThree.defaultProps = {
-    store: [{
-        id: 1,
-        images: Img1
-    },{
-        id: 2,
-        images: Img1
-    },{
-        id: 3,
-        images: Img1
-    },{
-        id: 4,
-        images: Img1
-    }]
 }
 
 export default CarouselThree

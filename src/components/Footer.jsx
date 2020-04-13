@@ -14,9 +14,10 @@ const Footer = props => {
                     <div className="lg:w-1/4 w-full">
                         <img src={ImgLogo} alt="Logo The MAJ Oceanic" />
                         <div className="text-white mt-8 mb-10 lg:mb-24">
-                            <i className="fa fa-instagram mr-5"></i>
-                            <i className="fa fa-facebook mr-5"></i>
-                            <i className="fa fa-twitter mr-5"></i>
+                            <a href="https://instagram.com/themajbekasi?igshid=4qhtyng01dj0"><i className="fa fa-instagram mr-5"></i></a>
+                            <a href="https://m.facebook.com/themajbekasi"><i className="fa fa-facebook mr-5"></i></a>
+                            <a href="https://mobile.twitter.com/themajbekasi" ><i className="fa fa-twitter mr-5"></i></a>
+                            <a href="https://www.youtube.com/channel/UCWZI1rSfvLMLKBWpTEgGbXg"><i className="fa fa-youtube"></i></a>
                         </div>
                         <div>
                             <h6 className="text-white mb-3">PART OF</h6>

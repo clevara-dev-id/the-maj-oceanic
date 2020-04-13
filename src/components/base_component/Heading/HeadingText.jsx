@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Heading from './Heading'
+import './style.scss'
 
 const HeadingText = props => {
     return (
-        <div className={`${props.containerClassName} ${props.center? "text-center mx-auto": null}`}>
+        <div className={`${props.containerClassName} ${props.center? "text-center": null} heading-text`}>
             <Heading caption={props.caption} heading={props.heading} headingClassName={props.headingClassName} />
-            <p title={props.text} className={`body-1 ${props.center? "mx-auto": null} ${props.textClassName? props.textClassName: "w-8/12"}`}> {props.text} </p>
+            <p title={props.text} className={`body-1 ${props.center? "mx-auto": null} ${props.textClassName? props.textClassName: "lg:w-8/12 w-full"}`}> {props.text} </p>
             {
                 props.list?
                     <>

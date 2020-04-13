@@ -42,22 +42,11 @@ export default class NavigationBar extends Component {
             <>
                 <div className={`w-full fixed ${this.state.isScroll?`bg-white`:`bg-semi-transparent`}`} id="navbar" /*className={this.state.isScroll?"bg-white":"bg-dark-transparent"}*/ >
                     <ul className={`flex items-center flex-wrap pt-12 pb-20 mx-12 border-b-2 border-white lg:flex hidden ${this.state.isScroll ? `lg:hidden` : ``}`}>
-                        <div className="w-1/4 mr-auto flex justify-start">
-                            <Button
-                                className="mr-6"
-                                search
-                                padding="0"
-                                margin="0"
-                                color={this.state.isScroll?`#232323`:`#FFFFFF`}
-                                border="transparent"
-                                height="40px"
-                                fontSize="13px"
-                                hover={{ color: "#208CB2" }}
-                                letterSpacing="2px"
-                                href="#"
-                            >
-                                SEARCH
-                            </Button>
+                        <div className="w-1/3 mr-auto flex justify-start">
+                            <div className="search-input">
+                                <label for="search-input" className="text-white fa fa-search"></label>
+                                <input id="search-input" type="text" className="bg-transparent outline-none text-white w-16 ml-3" placeholder="SEARCH" />
+                            </div>
                             <Button
                                 className="mr-6"
                                 padding="0"
@@ -66,7 +55,7 @@ export default class NavigationBar extends Component {
                                 border="transparent"
                                 height="40px"
                                 fontSize="13px"
-                                hover={{ color: "#208CB2" }}
+                                hover={{ color: "#ffffff" }}
                                 letterSpacing="2px"
                                 href="#"
                             >
@@ -74,9 +63,11 @@ export default class NavigationBar extends Component {
                             </Button>
                         </div>
                         <div className="mx-auto">
-                            <img src={LogoImg} alt="logo-the-maj-oceanic" />
+                            <NavLink to="/" >
+                                <img src={LogoImg} alt="logo-the-maj-oceanic" />
+                            </NavLink>
                         </div>
-                        <div className="w-1/4 ml-auto flex justify-end">
+                        <div className="w-1/3 ml-auto flex justify-end">
                             <Button
                                 className="mr-6"
                                 padding="0"
@@ -85,7 +76,7 @@ export default class NavigationBar extends Component {
                                 border="transparent"
                                 height="40px"
                                 fontSize="13px"
-                                hover={{ color: "#208CB2" }}
+                                hover={{ color: "#ffffff" }}
                                 letterSpacing="2px"
                                 href="#"
                             >
@@ -96,14 +87,14 @@ export default class NavigationBar extends Component {
                                 padding="0"
                                 margin="0"
                                 color={this.state.isScroll?`#232323`:`#FFFFFF`}
-                                border="2px solid #FFFFFF"
+                                border="1px solid #FFFFFF"
                                 height="40px"
                                 fontSize="13px"
-                                hover={{ color: "#208CB2" }}
+                                hover={{ color: "#208CB2", backgroundColor:"#ffffff" }}
                                 letterSpacing="2px"
                                 href="#"
                             >
-                                BOOK
+                                BOOK NOW
                             </Button>
                         </div>
                     </ul>
@@ -127,7 +118,7 @@ export default class NavigationBar extends Component {
                             </Button>
                         </div>
                         <div className="mx-auto lg:hidden">
-                            <img src={LogoImg} alt="logo-the-maj-oceanic" />
+                            <a href="/"><img src={LogoImg} alt="logo-the-maj-oceanic" className="w-1/2 mx-auto" /></a>
                         </div>
                         <div className="lg:block hidden">
                             {this.state.isScroll ? (
@@ -152,7 +143,7 @@ export default class NavigationBar extends Component {
                             {this.props.store.map((data) => {
                                 return (
                                     <NavLink to={data.link}
-                                        className={`mr-10 uppercase nav-item ${this.state.isScroll?"text-dark":"text-white"}`}
+                                        className={`mr-10 uppercase ${this.state.isScroll?"text-dark nav-item-dark":"text-white nav-item"}`}
                                         key={data.id}
                                     >
                                         {data.name}
@@ -180,14 +171,14 @@ export default class NavigationBar extends Component {
                                         padding="0"
                                         margin="0"
                                         color={this.state.isScroll?`#232323`:`#FFFFFF`}
-                                        border={this.state.isScroll?`2px solid #232323`:`2px solid #FFFFFF`}
+                                        border={this.state.isScroll?`1px solid #232323`:`1px solid #FFFFFF`}
                                         height="40px"
                                         fontSize="13px"
-                                        hover={{ color: "#208CB2" }}
+                                        hover={{ color: "#ffffff", backgroundColor:"#208CB2", borderColor:"#208CB2" }}
                                         letterSpacing="2px"
                                         href="#"
                                     >
-                                        BOOK
+                                        BOOK NOW
                                     </Button>
                                 </>
                             ) : null}

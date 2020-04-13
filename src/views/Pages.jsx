@@ -15,10 +15,16 @@ const HeadingComponent = lazy(() => import('../components/HeadingComponent'))
 const CarouselThreeComponent = lazy(()=>import('../components/CarouselThreeComponent'))
 const CarouselTextComponent = lazy(()=>import('../components/CarouselTextComponent'))
 const  HeadBackground = lazy(() => import('../components/HeadBackground'))
+const Breadcrumb = lazy(()=>import('../components/BreadcrumbComponent'))
 
 
 class Pages extends Component {
-    CommonComponent(args, props, reverse){
+    CommonComponent(args, props, reverse, page){
+        if(args === 'Breadcrumb'){
+            return(
+                <Breadcrumb page={page} />
+            )
+        }
         if(args === 'SliderAwesome'){
             return(
                 <SliderAwesome properties={props} reverse={reverse||null} />
@@ -96,7 +102,7 @@ class Pages extends Component {
                 {this.props.component.map((data, i) => {
                     return(
                         <div key={data.id || i}>
-                            {this.CommonComponent(data.name, data.properties, data.reverse)}
+                            {this.CommonComponent(data.name, data.properties, data.reverse, this.props.page)}
                         </div>
                     )
                 })}

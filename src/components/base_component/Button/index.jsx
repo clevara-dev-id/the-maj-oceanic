@@ -12,7 +12,7 @@ const ghost = {backgroundColor: "transparent", color: primary.backgroundColor, b
 const Button = props => {
 
     return (
-        <Btn  {...props}>
+        <Btn className="uppercase" {...props}>
             {
                 props.search? (
                     <> 

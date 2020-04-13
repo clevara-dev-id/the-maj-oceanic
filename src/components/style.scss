@@ -10,19 +10,42 @@ header{
             transition: .2s all;
         }
         .nav-link:hover{
-            color: #208CB2;
+            color: #ffffff;
+        }
+    }
+    .search-input{
+        padding: 11px 0px;
+        font-size: 13px !important;
+        ::-webkit-input-placeholder { /* Edge */
+        color: white;
+        }
+        
+        :-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: white;
+        }
+        
+        ::placeholder {
+        color: white;
         }
     }
     .bg-white{
         z-index: 99;
         color: #232323 !important;
     }
-    .nav-item{
+    .nav-item, .nav-item-dark{
         transition: .2s all;
         letter-spacing: 2px;
         font-size: 13px;
     }
     .nav-item:hover{
+        color: #ffffff;
+    }
+    .nav-item-dark:hover{
+        color: #208CB2;
+    }
+}
+.breadcrumb{
+    .text-primary{
         color: #208CB2;
     }
 }

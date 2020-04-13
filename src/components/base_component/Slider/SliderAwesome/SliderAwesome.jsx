@@ -13,13 +13,13 @@ const SliderAwesome = props => {
                 bullets={false}
                 cssModule={[CoreStyles, AnimationStyles]}
                 infinite={false}
-                className="h-screen awesome-slider aws-btn"
+                className="lg:h-screen awesome-slider aws-btn"
             >
                 {props.properties.map((data,d) => {
                     return(
                         <div key={d} data-src={data.images} className="z-10" >
                             {data.text?(
-                                <h1 className="text-5xl text-white text-center max-w-md capitalize">{data.text}</h1>
+                                <h1 className="text-white text-center max-w-2xl capitalize">{data.text}</h1>
                             ):null}
                         </div>
                     )

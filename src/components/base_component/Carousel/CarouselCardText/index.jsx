@@ -14,11 +14,20 @@ const Button = lazy(() => import('../../Button'))
 class CarouselCardText extends Component {
     constructor(props) {
         super(props)
-    
+
         this.state = {
             localStore: [],
             isLoading: true,
         }
+        this.prev = this.prev.bind(this)
+        this.next = this.next.bind(this)
+    }
+    prev = () => {
+        this.carousel.slickPrev()
+    }
+
+    next = () => {
+        this.carousel.slickNext()
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
@@ -34,85 +43,74 @@ class CarouselCardText extends Component {
     render() {
         return (
             <Slider
-                    id="carousel-card-component"
-                    dots={true}
-                    // fade={true}
-                    slidesToShow={1}
-                    slidesToScroll={1}
-                    arrows={false}
-                    dotsClass="slick-dots center"
-                    customPaging={i => <Dot id="dot" />}
-                >
-                    
-                    {this.state.localStore.length && this.state.localStore.map((data, index) => {
-                        return (
-                            <div key={index}>
-                                <div>
-                                    <div className="flex h-full-plus-10">
-                                        <div className="w-2/3">
-                                            <img src={data.images} className="w-full" alt="img-slick" />
-                                        </div>
-                                        <div className="w-5/12 bg-white px-6 py-16 mt-20 ml-min-12">
-                                            <Content border={this.props.border}>
-                                                <H6 className="primary"> {data.caption} </H6>
-                                                <h1> {data.heading} </h1>
-                                                <P className="body-1" margin="29px 0 25px">
-                                                    {data.text}
-                                                </P>
+                id="carousel-card-component"
+                dots={true}
+                fade={true}
+                slidesToShow={1}
+                slidesToScroll={1}
+                arrows={false}
+                ref={ref => this.carousel = ref}
+                dotsClass="slick-dots center"
+                customPaging={i => <Dot id="dot" />}
+            >
 
-                                                <List border={this.props.border} margin="0 0 39px">
-                                                    <UL style={{padding: "0 20px"}}>
-                                                        {data.list && data.list.map((itemList, indexList) => (
-                                                            <LI className="body-1" key={indexList}> {itemList} </LI>
-                                                        ))}
-                                                    </UL>
-                                                </List>
-                                                <Button className="btn-2" small outline>Learn More</Button>
-                                            </Content>
-                                        </div>
+                {this.state.localStore.length && this.state.localStore.map((data, index) => {
+                    return (
+                        <div key={index}>
+                            <div className="flex lg:flex-no-wrap flex-wrap h-full h-full-plus-10">
+                                <div className="w-full lg:w-2/3 carousel-card-text-component">
+                                    <img src={data.images} className="w-full" alt="img-slick" />
+                                    <div className="absolute arrows-container">
+                                        <button className="w-8 h-8 relative left-0 rounded-full arrows mr-3"
+                                            onClick={this.prev}
+                                        >
+                                            <i className="fas fa-angle-left text-base"></i>
+                                        </button>
+                                        <button className="w-8 h-8 relative left-0 rounded-full arrows"
+                                            onClick={this.next}
+                                        >
+                                            <i className="fas fa-angle-right text-base"></i>
+                                        </button>
                                     </div>
                                 </div>
+                                <div className="w-full lg:w-5/12 bg-white px-6 py-16 mt-20 ml-min-12">
+                                    <Content border={this.props.border}>
+                                        <H6 className="primary mb-3"> {data.caption} </H6>
+                                        <h1> {data.heading} </h1>
+                                        <P className="body-1" margin="29px 0 25px">
+                                            {data.text}
+                                        </P>
+
+                                        <List border={this.props.border} margin="0 0 39px">
+                                            <UL style={{ padding: "0 20px" }}>
+                                                {data.list && data.list.map((itemList, indexList) => (
+                                                    <LI className="body-1" key={indexList}> {itemList} </LI>
+                                                ))}
+                                            </UL>
+                                        </List>
+                                        <Button small outline>Learn More</Button>
+                                    </Content>
+                                </div>
                             </div>
-                        )
-                    })}
-                </Slider>
+                        </div>
+                    )
+                })}
+            </Slider>
         )
     }
 }
-
-// const Container = styled.div(
-//     props => ({
-//         border: props.border? "1px solid": null,
-//         margin: props.containerMargin,
-//         padding: props.containerPadding,
-//         width: props.containerWidth,
-//         height: props.containerHeight,
-//     })
-// )
-
-// const CardItem = styled.div(
-//     props => ({
-//         background: "#FFFFFF", 
-//         padding: "51px 29px", 
-//         position: "relative", 
-//         top: "50px", 
-//         marginLeft: "650px", 
-//         width: "445px", 
-//         height: "570px",
-//     })
-// )
 
 const Content = styled.div(
     props => ({
         width: props.width,
         height: props.height,
-        border: props.border? "1px solid" : null,
+        border: props.border ? "1px solid" : null,
     })
 )
 
 const List = styled.div(
     props => ({
-        border: props.border? "1px solid" : null,
+        border: props.border ? "1px solid" : null,
         margin: props.margin,
         padding: props.padding,
     })
@@ -127,6 +125,7 @@ const H6 = styled.h6(
 const P = styled.p(
     props => ({
         margin: props.margin,
+        lineHeight: "25px !important"
     })
 )
 
@@ -140,7 +139,7 @@ const LI = styled.li(
     props => ({
         margin: "11px 0",
     })
-        
+
 )
 
 const Dot = styled.div(
@@ -153,23 +152,23 @@ const Dot = styled.div(
     })
 )
 
-CarouselCardText.defaultProps = {
-    store: [{
-        id: 1,
-        images: Img1,
-        caption: "spesification 1",
-        heading: "Lorem Ipsum 1",
-        text: "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis.",
-        // list: ["Lorem ipsum dolor sit amet", "Laboris lar aliquip", "Lorem ipsum dolor sit amet", "Laboris lar aliquip"]
-    },{
-        id: 2,
-        images: Img1,
-        caption: "spesification 2",
-        heading: "Lorem Ipsum 2",
-        text: "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis.",
-        list: ["Lorem ipsum dolor sit amet", "Laboris lar aliquip", "Lorem ipsum dolor sit amet", "Laboris lar aliquip"]
-    }]
-}
+// CarouselCardText.defaultProps = {
+//     store: [{
+//         id: 1,
+//         images: Img1,
+//         caption: "spesification 1",
+//         heading: "Lorem Ipsum 1",
+//         text: "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis.",
+//         // list: ["Lorem ipsum dolor sit amet", "Laboris lar aliquip", "Lorem ipsum dolor sit amet", "Laboris lar aliquip"]
+//     }, {
+//         id: 2,
+//         images: Img1,
+//         caption: "spesification 2",
+//         heading: "Lorem Ipsum 2",
+//         text: "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis.",
+//         list: ["Lorem ipsum dolor sit amet", "Laboris lar aliquip", "Lorem ipsum dolor sit amet", "Laboris lar aliquip"]
+//     }]
+// }
 
 CarouselCardText.propTypes = {
     store: PropTypes.arrayOf(PropTypes.object).isRequired,

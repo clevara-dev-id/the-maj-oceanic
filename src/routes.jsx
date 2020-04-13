@@ -14,7 +14,7 @@ const BaseRoute = (props) => {
         <>
             {props.pages.map((data) => {
                 return (
-                    <Route key={data.id} exact path={data.path} render={(routeProps) => (<Pages key={data.id} {...routeProps} component={data.components} id={data.page} />)} />
+                    <Route key={data.id} exact path={data.path} render={(routeProps) => (<Pages key={data.id} {...routeProps} component={data.components} id={data.page} page={data.page} />)} />
                 )
             })}
         </>
@@ -36,7 +36,7 @@ BaseRoute.defaultProps = {
                         {
                             id:1,
                             images: `${img1}`,
-                            text:"An Epicurean Journey of  the Ages"
+                            text:"Know where you want to be. Else is secondary."
                         },
                         {
                             id:2,
@@ -70,7 +70,7 @@ BaseRoute.defaultProps = {
                             images: `${img3}`,
                             caption: "spesification 1",
                             heading: "Text Ipsum 1",
-                            text: "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis.",
+                            text: "Do pariatur velit minim quis est culpa labore quis adipisicing incididunt minim. Eiusmod dolor sint adipisicing mollit. Laboris do consequat ullamco labore ullamco et eu eu consectetur duis cupidatat. \r \n \r \n Do enim magna non quis officia deserunt laborum ipsum mollit. Nisi exercitation est dolore cillum consectetur. Dolor fugiat ea consectetur nisi. Eu ullamco ex commodo nulla cillum aliqua adipisicing incididunt Lorem sint ullamco deserunt.",
                         },
                         {
                             id: 2,
@@ -246,7 +246,7 @@ BaseRoute.defaultProps = {
 
         {
             id: 2,
-            page: "vessel",
+            page: "the vessel",
             path: "/vessel",
             components: [
                 {
@@ -265,6 +265,12 @@ BaseRoute.defaultProps = {
                             text:"Lorem Ipsum Dolor Sit Amet"
                         }
                     ]
+                },
+                {
+                    id:123,
+                    ordering:123,
+                    name:"Breadcrumb",
+                    properties:[]
                 },
                 {
                     id: 2,
@@ -360,7 +366,7 @@ BaseRoute.defaultProps = {
                     properties:[
                         {
                             id:1,
-                            caption:"THE CABIN",
+                            caption:"THE TEAM",
                             center:true,
                             text:"Exercitation cupidatat laboris ea pariatur irure tempor consectetur duis. Id excepteur nisi consequat labore aliqua pariatur ad dolor. Exercitation proident Lorem non proident incididunt sit.",
                             heading:"Lorem Text",
@@ -428,8 +434,8 @@ BaseRoute.defaultProps = {
 
         {
             id: 2,
-            page: "cabin",
-            path: "/cabin",
+            page: "the cabin",
+            path: "/vessel/cabin",
             components: [
                 {
                     id: 1,
@@ -447,6 +453,12 @@ BaseRoute.defaultProps = {
                             text:"Lorem Ipsum Dolor Sit Amet"
                         }
                     ]
+                },
+                {
+                    id:123,
+                    ordering:123,
+                    name:"Breadcrumb",
+                    properties:[]
                 },
                 {
                     id: 2,
@@ -504,7 +516,6 @@ BaseRoute.defaultProps = {
                             center:true,
                             text:null,
                             heading:"Lorem Ipsum Text",
-                            images: `${img1}`,
                         }
                     ]
                 },

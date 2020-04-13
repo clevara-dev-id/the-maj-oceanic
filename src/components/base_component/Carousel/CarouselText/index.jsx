@@ -42,7 +42,6 @@ class CarouselText extends Component {
     }
     
     render() {
-        console.log(this.props)
         return (
             <div id="carousel-text" className="flex flex-row self-center items-center">
             {
@@ -67,6 +66,7 @@ class CarouselText extends Component {
                         ref={ref => this.carousel = ref}
                         arrows={false}
                         dots={true}
+                        fade={true}
                         slidesToShow={1}
                         slidesToScroll={1}
                         className="w-4/12"
@@ -79,19 +79,33 @@ class CarouselText extends Component {
                     >
                     {this.state.localStore && this.state.localStore.map((data, index) => {
                         return (
-                            <img
-                                key={index}
-                                src={data.images}
-                                width="445px"
-                                height="716px"
-                                alt="img-data-text"
-                            />
+                            <>
+                                <img
+                                    key={index}
+                                    src={data.images}
+                                    width="445px"
+                                    height="716px"
+                                    alt="img-data-text"
+                                />
+                                <div className="absolute arrows-container">
+                                    <button className="w-8 h-8 relative left-0 rounded-full arrows mr-3"
+                                        onClick={this.prev}
+                                    >
+                                        <i className="fas fa-angle-left text-base"></i>
+                                    </button>
+                                    <button className="w-8 h-8 relative left-0 rounded-full arrows"
+                                        onClick={this.next}
+                                    >
+                                        <i className="fas fa-angle-right text-base"></i>
+                                    </button>
+                                </div>
+                            </>
                         )
     
                     })}
                     </Slider>
 
-                    <PrevArrow 
+                    {/* <PrevArrow 
                         onClick={this.prev}
                         left="-115px"
                         bottom="-300px"
@@ -100,7 +114,7 @@ class CarouselText extends Component {
                         onClick={this.next}
                         left="-90px"
                         bottom="-300px"
-                    />
+                    /> */}
                 </>
                 ) : (
                 <> 

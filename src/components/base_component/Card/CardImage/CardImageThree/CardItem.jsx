@@ -3,12 +3,14 @@ import PropTypes from 'prop-types'
 import HeadingText from '../../../Heading/HeadingText'
 import Button from '../../../Button'
 
+import './style.scss'
+
 const CardItem = props => {
     return (
-        <div className={`${props.containerClassName}`}>
-            <div className={`bg-auto bg-no-repeat bg-center w-image-1 mx-auto h-image-1 ${props.containerImageClassName}`} style={{backgroundImage: `url(${props.image})`}} />
+        <div className={`${props.containerClassName} card-item`}>
+            <div className={`bg-auto bg-no-repeat bg-center w-full h-64 lg:h-image-1 ${props.containerImageClassName}`} style={{backgroundImage: `url(${props.image})`}} />
             {props.heading && props.text? (
-                <HeadingText caption={props.caption} heading={props.heading} text={props.text} containerClassName={`${props.containerHeadingClassName} w-image-1`} center={props.center} headingClassName={`${props.headingClassName}`} textClassName={`${props.textClassName} w-image-1`} />
+                <HeadingText caption={props.caption} heading={props.heading} text={props.text} containerClassName={`mx-auto w-full ${props.containerHeadingClassName} `} center={props.center} headingClassName={`${props.headingClassName}`} textClassName={` w-full ${props.textClassName} `} />
             ): null}
             {props.button?
             (

@@ -2,6 +2,7 @@ import React, { Component, lazy } from 'react'
 import PropTypes from 'prop-types'
 
 import Img1 from '../../../../../assets/img/home/card-image/1.png'
+import './style.scss'
 
 /* Components */
 const CardItem = lazy(() => import('./CardItem'))
@@ -34,12 +35,11 @@ class CardThree extends Component {
         console.log(this.state.localStore)
         return (
             <div>
-                <div className="flex flex-wrap justify-center">
+                <div className="flex flex-wrap">
                     {this.state.localStore.length && this.state.localStore.map((data, index) => (
-                        <CardItem 
-                            caption={false}
-                            containerClassName={`${this.state.localStore.length === (index + 1)? "ml-3": (index + 1) === 1? "mr-3": "mx-3"}`}
-                            headingClassName="uppercase mt-6"
+                        <CardItem
+                            containerClassName={`w-full md:w-1/3 lg:w-1/3 px-2 pb-8`}
+                            headingClassName="uppercase mt-3 text-xl w-full"
                             textClassName="mt-4"
                             key={index}
                             image={data.images}

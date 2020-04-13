@@ -45,8 +45,9 @@ const Label = styled.p.attrs(
 (
     props => ({
     fontFamily: "Verlag B",
+    transition:".2s all",
     paddingBottom: "22px",
-    borderBottom: props.active? "1px solid": null,
+    borderBottom: props.active? "2px solid": null,
     textTransform: "capitalize",
     cursor: "pointer"
     })

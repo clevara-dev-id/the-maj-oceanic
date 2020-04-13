@@ -3,15 +3,35 @@
         margin-top:22px;
         font-size: 22px !important;
     }
-    .slick-prev,.slick-next{
-        top: 35%;
+    .slick-dots{
+        bottom: -90px;
     }
-    .slick-prev::before{
-        color: #208CB2;
-        font-size: 32px;
+    .arrows{
+        background-color: #208CB2;
+        color: white;
+        z-index: 9;
     }
-    .slick-next::before{
-        color: #208CB2;
-        font-size: 32px;
+    .arrow-left{
+        left: 3rem;
+    }
+    .arrow-right{
+        right: 3rem;
+    }
+    .arrows:hover{
+        background-color: #208CB2;
+        color: white;
+    }
+    .arrow-right,.arrow-left{
+        visibility: visible;
+        margin-top: 12rem;
+    }
+    @media screen and (max-width:1024px) {
+        .arrow-left,.arrow-right{
+            visibility: hidden;
+        }
+    }
+    .arrows-container{
+        margin-top: -3rem;
+        margin-left: 1rem;
     }
 }
