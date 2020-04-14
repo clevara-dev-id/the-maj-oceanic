@@ -12,7 +12,7 @@ const CardTextImage = props => {
         <div className="flex flex-wrap card-text-image">
             {!props.reverse? (
                 <>
-                    <div className="w-full lg:w-2/4 bg-no-repeat bg-cover bg-no-repeat h-64 mb-5 lg:h-100 lg:order-none order-first" style={{backgroundImage: `url(${props.image})`}} />
+                    <div className="w-full lg:w-2/4 bg-no-repeat bg-cover bg-no-repeat mb-5 max-h-full h-100 lg:order-none order-first" style={{backgroundImage: `url(${props.image})`}} />
 
                     <HeadingText 
                         containerClassName="w-full lg:w-2/4 pl-6 self-center"
@@ -37,7 +37,7 @@ const CardTextImage = props => {
                     >
                         <Button small ghost onClick={props.onClick}> {props.buttonTitle.toUpperCase()} </Button>
                     </HeadingText>
-                    <div className="w-full lg:w-2/4 bg-no-repeat bg-cover bg-no-repeat h-64 mb-5 lg:h-100 lg:order-none order-first" style={{backgroundImage: `url(${props.image})`}} />
+                    <div className="w-full lg:w-2/4 bg-no-repeat bg-cover bg-no-repeat mb-5 max-h-full h-100 lg:order-none order-first" style={{backgroundImage: `url(${props.image})`}} />
                 </>
             )}
             

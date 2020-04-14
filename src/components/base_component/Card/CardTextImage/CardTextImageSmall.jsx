@@ -12,11 +12,11 @@ const HeadingText = lazy(() => import('../../Heading/HeadingText'))
 
 const CardTextImageSmall = props => {
     return (
-        <div className={`card-text-image-small flex max-w-container-2 ${props.containerClassName}`}>
+        <div className={`card-text-image-small flex flex-wrap max-w-container-2 ${props.containerClassName}`}>
         {
             !props.reverse? (
             <>
-                <div className="w-2/4">
+                <div className="order-first w-full lg:w-2/4">
                     <div 
                         className="bg-no-repeat bg-cover bg-no-repeat" 
                         style={{
@@ -28,7 +28,7 @@ const CardTextImageSmall = props => {
                     />
                 </div>
                 <HeadingText 
-                    containerClassName="w-2/4 pl-6 self-center"
+                    containerClassName="w-full lg:w-2/4 pl-6 self-center"
                     caption={props.caption} 
                     heading={props.heading}
                     text={props.text}
@@ -40,7 +40,7 @@ const CardTextImageSmall = props => {
             ) : (
             <>
                 <HeadingText 
-                    containerClassName="w-2/4 pr-6 self-center"
+                    containerClassName="w-full lg:w-2/4 pr-6 self-center"
                     caption={props.caption} 
                     heading={props.heading}
                     text={props.text}
@@ -49,7 +49,7 @@ const CardTextImageSmall = props => {
                     <Link className="primary-link" to={props.link} onClick={props.onClick}> {props.button_title.toUpperCase()} </Link>
                 </HeadingText>
                 <div 
-                    className="bg-no-repeat bg-cover bg-no-repeat w-2/4" 
+                    className="bg-no-repeat bg-cover bg-no-repeat order-first w-full lg:w-2/4" 
                     style={{
                         backgroundImage: `url(${props.image})`,
                         maxHeight: "400px",

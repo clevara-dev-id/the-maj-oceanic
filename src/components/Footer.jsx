@@ -66,7 +66,7 @@ const Footer = props => {
                             <div className="grid grid-cols-12 gap-2 mb-4" id="firstrowform">
                                 <div className="col-span-4">
                                     <div className="relative">
-                                        <select defaultValue="Title" className="block appearance-none w-full bg-gray-200 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                                        <select defaultValue="Title" className="rounded-none block appearance-none w-full bg-gray-200 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                                         <option disabled="disabled" className="titleformselect" placeholder="Title">Title</option>
                                         <option value="mr" onClick={props.onClickTitle}>Mr.</option>
                                         <option value="ms" onClick={props.onClickTitle}>Ms.</option>
