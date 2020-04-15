@@ -19,81 +19,55 @@ const Breadcrumb = lazy(()=>import('../components/BreadcrumbComponent'))
 
 
 class Pages extends Component {
-    CommonComponent(args, props, reverse, page){
-        if(args === 'Breadcrumb'){
-            return(
-                <Breadcrumb page={page} />
-            )
-        }
-        if(args === 'SliderAwesome'){
-            return(
-                <SliderAwesome properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'TextLargeImageComponent'){
-            return(
-                <TextLargeImageComponent properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'CarouselCardTextComponent'){
-            return(
-                <CarouselCardTextComponent properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'TextTabComponent'){
-            return(
-                <TextTabComponent properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'TextHeadingComponent'){
-            return(
-                <TextHeadingComponent properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'DeviderComponent'){
-            return(
-                <DeviderComponent properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'CardTextImageComponent'){
-            return(
-                <CardTextImageComponent properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'SingleButtonComponent'){
-            return(
-                <SingleButtonComponent properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'CardTextImageSmallComponent'){
-            return(
-                <CardTextImageSmallComponent properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'CardThreeComponent'){
-            return(
-                <CardThreeComponent properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'HeadingComponent'){
-            return(
-                <HeadingComponent properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'CarouselThreeComponent'){
-            return(
-                <CarouselThreeComponent properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'CarouselTextComponent'){
-            return(
-                <CarouselTextComponent properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'HeadBackground'){
-            return(
-                <HeadBackground {...props} />
-            )
+    CommonComponent(args, props, reverse = null, page) {
+        switch (args) {
+            case "Breadcrumb":
+                return <Breadcrumb page={page} />;
+        
+            case "SliderAwesome":
+                return <SliderAwesome properties={props} reverse={reverse} />;
+            
+            case "TextLargeImageComponent":
+                return <TextLargeImageComponent properties={props} reverse={reverse} />;
+            
+            case "CarouselCardTextComponent":
+                return <CarouselCardTextComponent properties={props} reverse={reverse} />;
+            
+            case "TextTabComponent":
+                return <TextTabComponent properties={props} reverse={reverse} />;
+            
+            case "TextHeadingComponent":
+                return <TextHeadingComponent properties={props} reverse={reverse} />;
+            
+            case "DeviderComponent":
+                return <DeviderComponent properties={props} reverse={reverse} />;
+            
+            case "CardTextImageComponent":
+                return <CardTextImageComponent properties={props} reverse={reverse} />;
+
+            case "SingleButtonComponent":
+                return <SingleButtonComponent properties={props} reverse={reverse} />;
+
+            case "CardTextImageSmallComponent":
+                return <CardTextImageSmallComponent properties={props} reverse={reverse} />;
+            
+            case "CardThreeComponent":
+                return <CardThreeComponent properties={props} reverse={reverse} />;
+            
+            case "HeadingComponent":
+                return <HeadingComponent properties={props} reverse={reverse} />;
+            
+            case "CarouselThreeComponent":
+                return <CarouselThreeComponent properties={props} reverse={reverse} />;
+            
+            case "CarouselTextComponent":
+                return <CarouselTextComponent properties={props} reverse={reverse} />
+            
+            case "HeadBackground":
+                return <HeadBackground properties={props} reverse={reverse} />
+                
+            default:
+                return console.log(`${args} not found`);
         }
     }
     render(){
