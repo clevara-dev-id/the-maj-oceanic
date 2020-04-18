@@ -2,6 +2,7 @@ import React, { Component, lazy, useState } from 'react';
 import styled from 'styled-components'
 import { Container, Row, Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import $ from 'jquery';
 
 import Button from '../../Button'
 import logo from '../../../../assets/icons/footer/logooceanic.svg';
@@ -18,6 +19,66 @@ const FooterDesktop = props => {
     // const [name,setName]=useState('');
     // const [email,setEmail]=useState('');
     // const [errors,setError]=useState({});
+    const nameValidation = () => {
+        let valueInput, text, formIsValid=true;
+      
+        // Get the value of the input field with id="numb"
+        valueInput = document.getElementById("grid-full-name").value;
+          
+        // If x is Not a Number or less than one or greater than 10
+        if (!valueInput) {
+          text = "Name cannot be empty !";
+          formIsValid=false;
+        } 
+        else {
+          text = "";
+        }
+        document.getElementById("errorValueName").innerHTML = text;
+        return formIsValid;
+    }
+
+    const emailValidation = () => {
+        let valueInput, text="", formIsValid=true;
+      
+        // Get the value of the input field with id="numb"
+        valueInput = document.getElementById("grid-email").value;
+        if (!valueInput) {
+            text = "e-Mail cannot be empty !";
+            formIsValid=false;
+        }
+        else if(typeof valueInput !== "undefined"){
+            let lastAtPos = valueInput.lastIndexOf('@');
+            let lastDotPos = valueInput.lastIndexOf('.');
+
+            if (!(lastAtPos < lastDotPos && lastAtPos > 0 && valueInput.indexOf('@@') == -1 && lastDotPos > 2 && (valueInput.length - lastDotPos) > 2)) {
+                text = "Invalid Format";
+                formIsValid=false;
+            }
+        }
+  
+        document.getElementById("errorValueEmail").innerHTML = text;
+        return formIsValid;
+    }
+
+    const onClickHandle = () => {
+        let formIsValid= true;
+        if(emailValidation()===false){
+            formIsValid=false;
+        }
+        if(nameValidation()===false){
+            formIsValid=false;
+        }
+        return formIsValid;
+    }
+
+    $(document).ready(()=> {
+        $("#buttonFormFooter").click(()=>{
+            if(onClickHandle()){
+                $("#buttonFormFooter").attr("onclick",props.onClickButton);
+            }
+
+        });
+    });
 
     return (
         <>
@@ -55,7 +116,7 @@ const FooterDesktop = props => {
                         <div className="grid grid-rows-1"><DivTitleSecondCol>Terms and Conditions</DivTitleSecondCol></div>
                     </div>
                     <div className="col-span-4">
-                        <div className="grid grid-rows-1"><TitleCol>Sign up for news {`&`} Offers</TitleCol></div>
+                        <div className="grid grid-rows-1"><TitleCol>Subscribe For Exclusive News {`&`} Offers</TitleCol></div>
                         <div className="grid grid-rows-1" id="childOurFamily">
                             <div className="grid grid-cols-12 gap-2" id="firstrowform">
                                 <div className="col-span-4">
@@ -72,38 +133,40 @@ const FooterDesktop = props => {
                                 </div>
                                 <div className="col-span-8">
                                     <input className="appearance-none block w-full bg-gray-200 text-gray-700 py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
-                                    id="grid-last-name" 
+                                    id="grid-full-name" 
                                     type="text" 
                                     placeholder="Fullname"
-                                    value={props.valueName}
                                     onChange={props.onChangeName}
-                                    onBlur={props.onBlurName}
+                                    onBlur={()=>{nameValidation()}}
                                     />
-                                    {(props.nameError) ? <p class="text-red-500 text-xs italic">{props.nameError}</p> : ""}
+                                    <p id="errorValueName" class="text-red-500 text-xs italic"></p>
                                 </div>
                             </div>
                         </div>
                         <div className="grid grid-rows-1" id="secondrowrform">
                             <div className="col-span-12">
                                 <input className="appearance-none block w-full bg-gray-200 text-gray-700 py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
-                                id="grid-last-name" 
+                                id="grid-email" 
                                 type="text" 
                                 placeholder="Email Address"
-                                value={props.valueEmail}
                                 onChange={props.onChangeEmail}
-                                onBlur={props.onBlurEmail}
+                                onBlur={()=>{emailValidation()}}
                                 />
-                                {(props.emailError) ? <p class="text-red-500 text-xs italic">{props.emailError}</p> : ""}
+                                <p id="errorValueEmail" class="text-red-500 text-xs italic"></p>
                             </div>
                         </div>
                         <div className="grid grid-rows-1" id="buttonrowrform">
-                            <Button className="btn-2" small onClick={props.onClickButton}>SUBSRIBE</Button>
+                            <Button 
+                                id="buttonFormFooter"
+                                className="btn-2" small >
+                                    SUBSRIBE
+                                </Button>
                         </div>
                         <div className="grid grid-rows-1" id="creditrowrform">
                             <div className="grid grid-cols-12">
                                 <div className="col-span-11">
-                                    By entering your details you consent to be contacted via email by the Maj group with offers
-                                    and updates. To opt out, use the unsubscribe link or email themaj@mail.com.
+                                    By entering your details you consent to be contacted via email by The MAJ Group with offers and updates. 
+                                    To opt out, use the unsubscribe link or email unsubsribe@themajgroup.com.
                                 </div>
                             </div>
                         </div>
@@ -162,14 +225,8 @@ const DivTitleSecondCol = styled.div`
 
 FooterDesktop.propTypes = {
     onClickTitle  : PropTypes.func,
-    valueName     : PropTypes.func,
     onChangeName  : PropTypes.func,
-    onBlurName    : PropTypes.func,
-    nameError     : PropTypes.string,
-    valueEmail    : PropTypes.func,
     onChangeEmail : PropTypes.func,
-    onBlurEmail   : PropTypes.func,
-    emailError    : PropTypes.string,
     onClickButton : PropTypes.func
 }
 

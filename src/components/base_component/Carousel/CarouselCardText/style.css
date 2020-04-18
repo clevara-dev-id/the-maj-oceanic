@@ -1,0 +1,62 @@
+
+#carousel-card-text .slick-dots {
+    bottom: -50px ;
+    left: -16%;
+}
+
+#carousel-card-text .card-text ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+#carousel-card-text .card-text ul li {
+    margin: 11px 0;
+}
+
+#carousel-card-text-secondary .slick-dots {
+    bottom: -15%;
+    left: -12%;
+}
+
+#carousel-card-text-secondary .slick-prev {
+    left: -45px;
+}
+
+#carousel-card-text-secondary .slick-next {
+    right: -45px;
+}
+
+#carousel-card-text-secondary .slick-prev, .slick-next {
+    color: #208CB2;
+    background-color: #ffffff;
+}
+
+#carousel-card-text-secondary .slick-prev:hover, .slick-next:hover {
+    color: #ffffff;
+    background-color: #208CB2;
+}
+
+#carousel-card-text-secondary .slick-prev::before, .slick-next::before {
+    content: none;
+}
+
+.card-text-secondary {
+    max-height: 300px;
+}
+
+.dot:hover {
+    opacity: 1;
+    background: #208CB2;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: #4E5E79;
+    opacity: 0.25;
+}
+
+.slick-active .dot {
+    background: #208CB2;
+    opacity: 1;
+}

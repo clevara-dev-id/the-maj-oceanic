@@ -1,15 +1,25 @@
 
 import React, { lazy } from 'react'
-import { Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 const Home = lazy(() => import('./views/Home'))
 
-const BaseRoute = () => {
-    return (
-        <div>
-            <Route exact path="/" component={Home} />
-        </div>
-    )
-}
+const routes = [{
+    path: "/",
+    component: Home
+}]
 
+const BaseRoute = props => (
+    <Switch>
+    {routes.map((route, i) => (
+        <Route
+            key={i}
+            path={route.path}
+            render={props => (
+            <route.component {...props} routes={route.routes} />
+            )}
+        />
+        ))}
+    </Switch>
+)
 export default BaseRoute

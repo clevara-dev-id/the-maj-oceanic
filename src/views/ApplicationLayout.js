@@ -43,13 +43,13 @@ class connectApplicationLayout extends Base {
         }
 
         if(typeof fields["email"] !== "undefined"){
-        let lastAtPos = fields["email"].lastIndexOf('@');
-        let lastDotPos = fields["email"].lastIndexOf('.');
+            let lastAtPos = fields["email"].lastIndexOf('@');
+            let lastDotPos = fields["email"].lastIndexOf('.');
 
-        if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') == -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2)) {
-            formIsValid = false;
-            errors["email"] = "Email is not valid";
-            }
+            if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') == -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2)) {
+                formIsValid = false;
+                errors["email"] = "Email is not valid";
+                }
         }  
 
         this.setState({errors: errors});

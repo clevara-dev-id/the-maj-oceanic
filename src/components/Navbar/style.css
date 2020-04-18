@@ -1,0 +1,74 @@
+
+#nav {
+    background-color: rgba(47, 46, 46, 0.35);
+    /* transition: transform 1s ease-in-out, opacity .5s ease-in-out, scale 1s ease-in-out; */
+    /* transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important; */
+}
+
+@media screen and (min-width: 1024px) {
+    #nav {
+        transform: translateY(1px);
+        -webkit-transition: transform 1s ease-in-out;
+        -moz-transition: transform 1s ease-in-out;
+        -o-transition: transform 1s ease-in-out;
+        transition: transform 1s ease-in-out;
+    }
+    
+    #nav div.nav-top {
+        opacity: 1;
+        transform: scale(1);
+        -webkit-transition: opacity .3s ease-in-out, transform 1s ease-in-out;
+        -moz-transition: opacity .3s ease-in-out, transform 1s ease-in-out;
+        -o-transition: opacity .3s ease-in-out, transform 1s ease-in-out;
+        transition: opacity .3s ease-in-out, transform 1s ease-in-out;
+    }
+
+    #nav div.nav-list {
+        background-color: transparent;
+        max-height: 100px;
+        transform: scaleX(1);
+        -webkit-transition: background-color 1s ease-in-out, transform 1s ease-in-out;
+        -moz-transition: background-color 1s ease-in-out, transform 1s ease-in-out;
+        -o-transition: background-color 1s ease-in-out, transform 1s ease-in-out;
+        transition: background-color 1s ease-in-out, transform 1s ease-in-out;
+    }
+
+    #nav div.nav-list button {
+        display: none;
+        -webkit-transition: display -1s;
+        -moz-transition: display -1s;
+        -o-transition: display -1s;
+        transition: display -1s;
+    }
+
+    #nav div.nav-list a {
+        color: #ffffff;
+        transition: color .5s ease-in-out;
+    }
+
+
+
+    #nav.scroll-active {
+        transform: translateY(-350px);
+    }
+
+    #nav div.nav-top.scroll-active {
+        opacity: 0;
+        transform: scale(0.9, 0.9);
+    }
+
+
+    #nav div.nav-list.scroll-active {
+        background-color: #ffffff;
+        transform: scaleX(1.05);
+    }
+
+    #nav div.nav-list.scroll-active button {
+        display: flex;
+    }
+
+    #nav div.nav-list.scroll-active a {
+        color: #000000;
+    }
+
+}
