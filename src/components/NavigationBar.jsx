@@ -1,10 +1,9 @@
 import React, { Component, lazy } from 'react'
 import './style.scss'
 import { NavLink } from 'react-router-dom'
-
+import rafSchedule from 'raf-schd'
 import LogoImg from '../assets/logo.svg'
 
-// import '../css/navbar.css'
 
 /* Components */
 const Button = lazy(() => import('./base_component/Button'))
@@ -15,22 +14,25 @@ export default class NavigationBar extends Component {
         this.state = {
             isScroll: false
         }
-        this.handleScroll = this.handleScroll.bind(this);
+
+        this.scheduleUpdate = rafSchedule(this.handleScroll);
     }
 
     componentDidMount() {
-        window.addEventListener('scroll', this.handleScroll);
-    }
+        let onScroll = args => this.scheduleUpdate(args);
+        window.addEventListener('scroll', function() {
+            onScroll(window.scrollY)
+        });
+    };
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
-    }
+        this.scheduleUpdate.cancel();
+    };
 
-    handleScroll = () => {
-        let lastScroll = 100;
-        const currentScroll = window.scrollY;
-        // console.log(window.scrollY)
-        if (currentScroll > lastScroll) {
+    handleScroll = (args) => {
+        const lastScroll = 100;
+
+        if (args > lastScroll) {
             this.setState({ isScroll: true });
         } else if (this.state.isScroll) {
             this.setState({ isScroll: false });
