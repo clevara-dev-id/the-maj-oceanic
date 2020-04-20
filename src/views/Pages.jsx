@@ -19,7 +19,7 @@ const Breadcrumb = lazy(()=>import('../components/BreadcrumbComponent'))
 
 
 class Pages extends Component {
-    CommonComponent(args, props, reverse = null, page) {
+    CommonComponent = (args, props, reverse = null, page) => {
         switch (args) {
             case "Breadcrumb":
                 return <Breadcrumb page={page} />;
@@ -68,20 +68,34 @@ class Pages extends Component {
                 
             default:
                 return console.log(`${args} not found`);
-        }
-    }
-    render(){
+        };
+    };
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return nextProps.component !== this.props.component ||
+            nextProps.page !== this.props.page;
+    };
+
+    renderComponent = (args, index) => {
+        return (
+            <div key={args.id || index}>
+                {this.CommonComponent(
+                    args.name,
+                    args.properties,
+                    args.reverse,
+                    this.props.page
+                )}
+            </div>
+        );
+    };
+
+    render() {
         return(
             <div id={this.props.id}>
-                {this.props.component.map((data, i) => {
-                    return(
-                        <div key={data.id || i}>
-                            {this.CommonComponent(data.name, data.properties, data.reverse, this.props.page)}
-                        </div>
-                    )
-                })}
+                {this.props.component.map(this.renderComponent)}
             </div>
         )
-    }
-}
-export default Pages
+    };
+};
+
+export default Pages;
