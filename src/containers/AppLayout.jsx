@@ -1,7 +1,6 @@
 import React, { Component, lazy } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import rafSchedule from 'raf-schd'
 
 import Head from '../assets/img/home/1.svg'
 
@@ -40,6 +39,7 @@ class connectLayout extends Component {
 connectLayout.propTypes = {
   children: PropTypes.element.isRequired,
 }
+
 connectLayout.defaultProps = {
     properties:[
         {
@@ -83,7 +83,7 @@ connectLayout.defaultProps = {
 
 const mapStateToProps = state => ({
     head_background: state.page.head_background
-})
+});
 
 const AppLayout = connect(mapStateToProps)(connectLayout)
 export default AppLayout
