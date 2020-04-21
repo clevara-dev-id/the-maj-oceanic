@@ -40,23 +40,25 @@ const CardTextImageSmall = props => {
             ) : (
             <>
                 <HeadingText 
-                    containerClassName="w-full lg:w-2/4 pr-6 self-center"
+                    containerClassName="w-full lg:w-2/4 pl-6 self-center"
                     caption={props.caption} 
                     heading={props.heading}
                     text={props.text}
                     textClassName="mb-8"
                 >
-                    <Link className="primary-link" to={props.link} onClick={props.onClick}> {props.button_title.toUpperCase()} </Link>
+                    <Link className="primary-link text-sm" to={props.link} onClick={props.onClick}> {props.button_title.toUpperCase()} </Link>
                 </HeadingText>
-                <div 
-                    className="bg-no-repeat bg-cover bg-no-repeat order-first w-full lg:w-2/4" 
-                    style={{
-                        backgroundImage: `url(${props.image})`,
-                        maxHeight: "400px",
-                        width: props.imageWidth, 
-                        height: props.imageHeight
-                    }} 
-                />
+                <div className="order-last w-full lg:w-2/4">
+                    <div 
+                        className="bg-no-repeat bg-cover bg-no-repeat" 
+                        style={{
+                            backgroundImage: `url(${props.image})`,
+                            maxHeight: "400px",
+                            width: props.imageWidth, 
+                            height: props.imageHeight
+                        }} 
+                    />
+                </div>
             </>
             )
         }
