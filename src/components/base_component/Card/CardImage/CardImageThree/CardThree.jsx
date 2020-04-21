@@ -32,7 +32,6 @@ class CardThree extends Component {
     }
     
     render() {
-        console.log(this.state.localStore)
         return (
             <div>
                 <div className="flex flex-wrap">

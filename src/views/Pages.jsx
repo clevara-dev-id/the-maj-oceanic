@@ -20,100 +20,86 @@ const SpesificationComponent = lazy(() => import('../components/SpesificationCom
 
 
 class Pages extends Component {
-    CommonComponent(args, props, reverse, page){
-        if(args === 'Breadcrumb'){
-            return(
-                <Breadcrumb page={page} />
-            )
-        }
-        if(args === 'SliderAwesome'){
-            return(
-                <SliderAwesome properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'TextLargeImageComponent'){
-            return(
-                <TextLargeImageComponent properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'CarouselCardTextComponent'){
-            return(
-                <CarouselCardTextComponent properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'TextTabComponent'){
-            return(
-                <TextTabComponent properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'TextHeadingComponent'){
-            return(
-                <TextHeadingComponent properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'DeviderComponent'){
-            return(
-                <DeviderComponent properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'CardTextImageComponent'){
-            return(
-                <CardTextImageComponent properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'SingleButtonComponent'){
-            return(
-                <SingleButtonComponent properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'CardTextImageSmallComponent'){
-            return(
-                <CardTextImageSmallComponent properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'CardThreeComponent'){
-            return(
-                <CardThreeComponent properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'HeadingComponent'){
-            return(
-                <HeadingComponent properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'CarouselThreeComponent'){
-            return(
-                <CarouselThreeComponent properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'CarouselTextComponent'){
-            return(
-                <CarouselTextComponent properties={props} reverse={reverse||null} />
-            )
-        }
-        if(args === 'HeadBackground'){
-            return(
-                <HeadBackground {...props} />
-            )
-        }
-        if(args === 'SpesificationComponent'){
-            return(
-                <SpesificationComponent properties={props} reverse={reverse||null} />
-            )
-        }
-    }
-    render(){
+    CommonComponent = (args, props, reverse = null, page) => {
+        switch (args) {
+            case "Breadcrumb":
+                return <Breadcrumb page={page} />;
+        
+            case "SliderAwesome":
+                return <SliderAwesome properties={props} reverse={reverse} />;
+            
+            case "TextLargeImageComponent":
+                return <TextLargeImageComponent properties={props} reverse={reverse} />;
+            
+            case "CarouselCardTextComponent":
+                return <CarouselCardTextComponent properties={props} reverse={reverse} />;
+            
+            case "TextTabComponent":
+                return <TextTabComponent properties={props} reverse={reverse} />;
+            
+            case "TextHeadingComponent":
+                return <TextHeadingComponent properties={props} reverse={reverse} />;
+            
+            case "DeviderComponent":
+                return <DeviderComponent properties={props} reverse={reverse} />;
+            
+            case "CardTextImageComponent":
+                return <CardTextImageComponent properties={props} reverse={reverse} />;
+
+            case "SingleButtonComponent":
+                return <SingleButtonComponent properties={props} reverse={reverse} />;
+
+            case "CardTextImageSmallComponent":
+                return <CardTextImageSmallComponent properties={props} reverse={reverse} />;
+            
+            case "CardThreeComponent":
+                return <CardThreeComponent properties={props} reverse={reverse} />;
+            
+            case "HeadingComponent":
+                return <HeadingComponent properties={props} reverse={reverse} />;
+            
+            case "CarouselThreeComponent":
+                return <CarouselThreeComponent properties={props} reverse={reverse} />;
+            
+            case "CarouselTextComponent":
+                return <CarouselTextComponent properties={props} reverse={reverse} />
+            
+            case "HeadBackground":
+                return <HeadBackground properties={props} reverse={reverse} />
+
+            case "SpesificationComponent":
+                return <SpesificationComponent properties={props} reverse={reverse} />
+                
+            default:
+                return console.log(`${args} not found`);
+        };
+    };
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return nextProps.component !== this.props.component ||
+            nextProps.page !== this.props.page;
+    };
+
+    renderComponent = (args, index) => {
+        return (
+            <div key={args.id || index}>
+                {this.CommonComponent(
+                    args.name,
+                    args.properties,
+                    args.reverse,
+                    this.props.page
+                )}
+            </div>
+        );
+    };
+
+    render() {
         return(
             <div id={this.props.id}>
-                {this.props.component.map((data, i) => {
-                    return(
-                        <div key={data.id || i}>
-                            {this.CommonComponent(data.name, data.properties, data.reverse, this.props.page)}
-                        </div>
-                    )
-                })}
+                {this.props.component.map(this.renderComponent)}
             </div>
         )
-    }
-}
-export default Pages
+    };
+};
+
+export default Pages;

@@ -7,13 +7,6 @@ import img2 from '../assets/img/header/2.png'
 
 
 class Home extends Component {
-    constructor(props) {
-        super(props)
-    
-        this.state = {
-             
-        }
-    }
     
     render() {
         return (

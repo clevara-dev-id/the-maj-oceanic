@@ -1,7 +1,12 @@
-import { SET_HEAD_BACKGROUND, SET_FOOTER } from "../action/actionTypes"
+import { SET_HEAD_BACKGROUND, SET_FOOTER, SET_PAGES } from "../action/actionTypes"
 import HeadBg from '../../assets/img/header/1.png'
 
 const initalState = {
+    pages: {
+        status: "",
+        received_at: "",
+        data: []
+    },
     head_background: {
         image: HeadBg,
         text: "An Epicurean Journey of the Ages",
@@ -11,6 +16,12 @@ const initalState = {
 
 const pageReducers = (state = initalState, action) => {
     switch (action.type) {
+        case SET_PAGES:
+            return {
+                ...state,
+                pages: action.payload
+            }
+
         case SET_HEAD_BACKGROUND:
             return {
                 ...state,

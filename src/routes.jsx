@@ -9,17 +9,26 @@ import Img4 from './assets/img/home/carousel-text/1.png'
 
 const Pages = lazy(() => import('./views/Pages'))
 
-const BaseRoute = (props) => {
-    return (
-        <>
-            {props.pages.map((data) => {
-                return (
-                    <Route key={data.id} exact path={data.path} render={(routeProps) => (<Pages key={data.id} {...routeProps} component={data.components} id={data.page} page={data.page} />)} />
-                )
-            })}
-        </>
-    )
-}
+const BaseRoute = props => (
+    props.pages.map(data => {
+        return (
+            <Route 
+                key={data.id} 
+                exact 
+                path={data.path} 
+                render={routeProps => (
+                    <Pages key={data.id} 
+                        {...routeProps} 
+                        component={data.components}
+                        id={data.page}
+                        page={data.page} 
+                    />
+                )} 
+            />
+        )
+    })
+)
+
 
 BaseRoute.defaultProps = {
     pages: [
