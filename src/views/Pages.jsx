@@ -14,8 +14,9 @@ const CardThreeComponent = lazy(()=>import('../components/CardThreeComponent'))
 const HeadingComponent = lazy(() => import('../components/HeadingComponent'))
 const CarouselThreeComponent = lazy(()=>import('../components/CarouselThreeComponent'))
 const CarouselTextComponent = lazy(()=>import('../components/CarouselTextComponent'))
-const  HeadBackground = lazy(() => import('../components/HeadBackground'))
+const HeadBackground = lazy(() => import('../components/HeadBackground'))
 const Breadcrumb = lazy(()=>import('../components/BreadcrumbComponent'))
+const SpesificationComponent = lazy(() => import('../components/SpesificationComponent'))
 
 
 class Pages extends Component {
@@ -93,6 +94,11 @@ class Pages extends Component {
         if(args === 'HeadBackground'){
             return(
                 <HeadBackground {...props} />
+            )
+        }
+        if(args === 'SpesificationComponent'){
+            return(
+                <SpesificationComponent properties={props} reverse={reverse||null} />
             )
         }
     }
