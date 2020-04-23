@@ -25,34 +25,9 @@ export const getPages = () => (
         .catch(e => reject(e));
     })    
 );
+
 export const setActivePage = args => (
     new Promise((resolve, reject) => {
         resolve(args)
     })
 );
-
-export const setComponentsPage = (pageName = "no name", allPages = []) => dispatch => {
-    const getComponents = urls => (
-        new Promise((resolve, reject) => {
-            axios()
-            .then(res => resolve(res))
-            .catch(e => reject(e));
-        })
-    );
-
-    const switchLinkUrls = data => {
-        console.log(pageName);
-        console.log(data);
-        // switch (pageName) {
-        //     case data.page:
-        //         return "test"
-        
-        //     default:
-        //         break;
-        // };
-    };
-
-    if (allPages.length) {
-        allPages.map(switchLinkUrls);
-    };
-}

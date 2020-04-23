@@ -60,8 +60,7 @@ CardTextImage.propTypes = {
         PropTypes.number
     ]),
     buttonTitle: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
-    reverse: PropTypes.bool
+    onClick: PropTypes.func.isRequired
 }
 
 CardTextImage.defaultProps = {

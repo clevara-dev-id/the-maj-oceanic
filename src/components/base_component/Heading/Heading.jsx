@@ -11,9 +11,9 @@ const Heading = props => {
 }
 
 Heading.propTypes = {
-    caption: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
+    caption: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     captionClassName: PropTypes.string,
-    heading: PropTypes.string.isRequired,
+    heading: PropTypes.string,
     headingClassName: PropTypes.string,
 }
 

@@ -1,32 +1,70 @@
-import React, { Component, lazy } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-
-import Head from '../assets/img/home/1.svg'
-import { setPages } from '../redux/action/actionCreators'
+import React, { lazy, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import rafSchedule from 'raf-schd';
+import { setPages, getPages } from '../redux/action/actionCreators';
 
 /* Component */
-const NavigationBar = lazy(() => import('../components/NavigationBar'))
-const Footer = lazy(()=>import('../components/Footer'))
 // const  HeadBackground = lazy(() => import('../components/HeadBackground'))
 // const SliderAwesome = lazy(() => import('../components/base_component/Slider/SliderAwesome/SliderAwesome'))
+const NavigationBar = lazy(() => import('../components/NavigationBar'));
+const Footer = lazy(()=>import('../components/Footer'));
 
-export default function AppLayout(props) {
-    const { children } = props;
+function ConnectAppLayout(props) {
+    const [isScroll, setScroll] = useState(false);
+
+    const onScroll = args => {
+        const lastScroll = 100;
+
+        if (args > lastScroll) {
+            return setScroll(true);
+        };
+
+        return setScroll(false);
+    };
+    const scheduleUpdate = rafSchedule(onScroll);
+
+    useEffect(() => {
+        window.addEventListener("scroll", function() {
+            scheduleUpdate(window.scrollY)
+        });
+
+        getPages()
+        .then(res => props.dispatchPages(res.data.status, res.data.pages))
+        .catch(err => props.dispatchPages(err.response && err.response.statusText, []));
+
+        return () => {
+            scheduleUpdate.cancel();
+        };
+    },[]);
+
     return (
         <>
             <header className="flex justify-center">
-                <NavigationBar />
+                <NavigationBar isScroll={isScroll} store={props.store} />
             </header>
 
-            {children}
+            {props.children}
 
             <footer>
                 <Footer store="" />
             </footer>
         </>
+    );
+};
+
+const mapStateToProps = state => ({
+    store: state.occeanic.pages.data,
+});
+
+const mapDispatchToProps = dispatch => ({
+    dispatchPages: (a, b) => (
+        dispatch(setPages(a, b))
     )
-}
+});
+
+const AppLayout = connect(mapStateToProps, mapDispatchToProps)(ConnectAppLayout);
+export default AppLayout;
 
 AppLayout.propTypes = {
   children: PropTypes.element.isRequired,

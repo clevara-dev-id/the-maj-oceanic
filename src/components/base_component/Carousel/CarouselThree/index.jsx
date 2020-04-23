@@ -1,15 +1,12 @@
-import React, { Component, createRef } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Slider from 'react-slick'
 import './style.scss'
 
 import CardItem from '../../Card/CardImage/CardImageThree/CardItem'
-import Img1 from '../../../../assets/img/home/slick/1.svg'
-import Button from '../../Button'
+// import Img1 from '../../../../assets/img/home/slick/1.svg'
+// import Button from '../../Button'
 
-/**
-* @augments {Component<{    containerClassName:string,    store:arrayOfobject).isRequired,>}
-*/
 class CarouselThree extends Component {
     constructor(props) {
         super(props)
@@ -120,43 +117,43 @@ class CarouselThree extends Component {
 
 CarouselThree.propTypes = {
     containerClassName: PropTypes.string,
-    store: PropTypes.arrayOf(PropTypes.object).isRequired,
+    store: PropTypes.arrayOf(PropTypes.object),
 }
 
 export default CarouselThree
 
-const PrevArrow = props => {
-    const { className, style, onClick } = props
-    return (
-        <Button
-            primary
-            className={`w-8 h-8 relative left-0 rounded-full`}
-            onClick={onClick}
-            style={{
-                left: "-4.5%",
-                bottom: "45%",
-                outline: "none"
-            }}
-        >
-            <i className="fas fa-angle-left text-base"></i>
-        </Button>
-    )
-}
+// const PrevArrow = props => {
+//     const { className, style, onClick } = props
+//     return (
+//         <Button
+//             primary
+//             className={`w-8 h-8 relative left-0 rounded-full`}
+//             onClick={onClick}
+//             style={{
+//                 left: "-4.5%",
+//                 bottom: "45%",
+//                 outline: "none"
+//             }}
+//         >
+//             <i className="fas fa-angle-left text-base"></i>
+//         </Button>
+//     )
+// }
 
-const NextArrow = props => {
-    const { className, style, onClick } = props
-    return (
-        <Button
-            primary
-            className={`w-8 h-8 relative right-0 rounded-full`}
-            onClick={onClick}
-            style={{
-                left: "101.5%",
-                bottom: "54%",
-                outline: "none"
-            }}
-        >
-            <i className="fas fa-angle-right text-base"></i>
-        </Button>
-    )
-}
+// const NextArrow = props => {
+//     const { className, style, onClick } = props
+//     return (
+//         <Button
+//             primary
+//             className={`w-8 h-8 relative right-0 rounded-full`}
+//             onClick={onClick}
+//             style={{
+//                 left: "101.5%",
+//                 bottom: "54%",
+//                 outline: "none"
+//             }}
+//         >
+//             <i className="fas fa-angle-right text-base"></i>
+//         </Button>
+//     )
+// }

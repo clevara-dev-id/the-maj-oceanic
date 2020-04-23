@@ -4,15 +4,15 @@ import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 // dummy data
-import img1 from './assets/img/header/1.png'
-import img2 from './assets/img/header/2.png'
-import img3 from './assets/img/home/slick/1.svg'
-import Img4 from './assets/img/home/carousel-text/1.png'
-import { getPages } from "./redux/action/actionCreators";
+// import img1 from './assets/img/header/1.png'
+// import img2 from './assets/img/header/2.png'
+// import img3 from './assets/img/home/slick/1.svg'
+// import Img4 from './assets/img/home/carousel-text/1.png'
+// import { getPages } from "./redux/action/actionCreators";
 
 const Pages = lazy(() => import('./views/Pages'))
 
-const connectBaseRoute = props => {
+const ConnectBaseRoute = props => {
     const { pages } = props;
 
     return (
@@ -35,7 +35,8 @@ const connectBaseRoute = props => {
         })
     );
 };
-connectBaseRoute.propTypes = {
+
+ConnectBaseRoute.propTypes = {
     pages: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
@@ -43,5 +44,5 @@ const mapStateToProps = state => ({
     pages: state.occeanic.pages.data,
 });
 
-const BaseRoute = connect(mapStateToProps, null)(connectBaseRoute);
+const BaseRoute = connect(mapStateToProps, null)(ConnectBaseRoute);
 export default BaseRoute

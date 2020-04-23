@@ -7,7 +7,7 @@ const HeadingComponent = props => {
         <>
             {props.properties.map((data, i) => {
                 return(
-                    <div className="container mx-auto px-4 pt-10">
+                    <div key={i} className="container mx-auto px-4 pt-10">
                         <Heading key={data.id || i} {...data} />
                     </div>
                 )

@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react'
 import Slider from 'react-slick'
 
 import Img from '../../../../assets/img/home/carousel-tab/1.png'
-import style from './style.css'
+import  './style.css'
 import PrevArrow from "../../Button/PrevArrow";
 import NextArrow from "../../Button/NextArrow";
 

@@ -39,8 +39,7 @@ CardItem.propTypes = {
     heading: PropTypes.string,
     containerHeadingClassName: PropTypes.string,
     text: PropTypes.string,
-    textClassName: PropTypes.string,
-    center: PropTypes.bool
+    textClassName: PropTypes.string
 }
 
 export default CardItem

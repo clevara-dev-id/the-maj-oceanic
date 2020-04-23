@@ -6,11 +6,8 @@ import './style.scss'
 import Img1 from '../../../../assets/img/home/carousel-text/1.png'
 
 const HeadingTextList = lazy(() => import('../../Heading/HeadingTextList'))
-const Button = lazy(() => import('../../Button'))
+// const Button = lazy(() => import('../../Button'))
 
-/**
-* @augments {Component<{    store:arrayOfobject).isRequired,    imageWidth:string.isRequired,    imageHeight:string.isRequired,    buttonTitle:string.isRequired,>}
-*/
 class CarouselText extends Component {
     constructor(props) {
         super(props)

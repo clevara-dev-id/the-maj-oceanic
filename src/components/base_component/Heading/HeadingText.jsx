@@ -28,7 +28,6 @@ const HeadingText = props => {
 
 HeadingText.propTypes = {
     containerClassName: PropTypes.string,
-    center: PropTypes.bool,
     caption: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     heading: PropTypes.string,
     headingClassName: PropTypes.string,

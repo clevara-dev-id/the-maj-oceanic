@@ -4,13 +4,10 @@ import Slider from 'react-slick'
 import styled from 'styled-components'
 
 import './style.scss'
-import Img1 from '../../../../assets/img/home/slick/1.svg'
+// import Img1 from '../../../../assets/img/home/slick/1.svg'
 
 const Button = lazy(() => import('../../Button'))
 
-/**
-* @augments {Component<{    store:arrayOfobject).isRequired,    border:boolean,    containerMargin:string,    containerPadding:string,    className:string,>}
-*/
 class CarouselCardText extends Component {
     constructor(props) {
         super(props)
@@ -171,7 +168,7 @@ const Dot = styled.div(
 // }
 
 CarouselCardText.propTypes = {
-    store: PropTypes.arrayOf(PropTypes.object).isRequired,
+    store: PropTypes.arrayOf(PropTypes.object),
     border: PropTypes.bool,
     containerMargin: PropTypes.string,
     containerPadding: PropTypes.string,
