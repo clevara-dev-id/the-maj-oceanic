@@ -62,13 +62,13 @@ class Pages extends Component {
                 return <CarouselThreeComponent properties={props} reverse={reverse} />;
             
             case "CarouselTextComponent":
-                return <CarouselTextComponent properties={props} reverse={reverse} />
+                return <CarouselTextComponent properties={props} reverse={reverse} />;
             
             case "HeadBackground":
-                return <HeadBackground properties={props} reverse={reverse} />
+                return <HeadBackground properties={props} reverse={reverse} />;
 
             case "SpesificationComponent":
-                return <SpesificationComponent properties={props} reverse={reverse} />
+                return <SpesificationComponent properties={props} reverse={reverse} />;
                 
             default:
                 return console.log(`${args} not found`);
@@ -76,8 +76,7 @@ class Pages extends Component {
     };
 
     shouldComponentUpdate(nextProps, nextState) {
-        return nextProps.component !== this.props.component ||
-            nextProps.page !== this.props.page;
+        return nextProps.component !== this.props.component 
     };
 
     renderComponent = (args, index) => {
@@ -96,7 +95,7 @@ class Pages extends Component {
     render() {
         return(
             <div id={this.props.id}>
-                {this.props.component.map(this.renderComponent)}
+                {this.props.component && this.props.component.map(this.renderComponent)}
             </div>
         )
     };

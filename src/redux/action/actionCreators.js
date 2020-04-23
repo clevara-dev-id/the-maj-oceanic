@@ -1,7 +1,12 @@
-import Axios from 'axios';
+import axios, { BaseUrl, TimeOut } from "../../helper/axios";
 import { SET_HEAD_BACKGROUND, SET_FOOTER, SET_PAGES } from "./actionTypes";
 
-// PAGE
+export const setPages = (args1, args2) => ({
+    type: SET_PAGES,
+    status: args1,
+    data: args2
+});
+
 export const setHeadBackground = (args) => ({
     type: SET_HEAD_BACKGROUND,
     payload: args
@@ -12,36 +17,42 @@ export const setFooter = (args) => ({
     payload: args
 });
 
-export const setPages = () => dispatch => {
-    let event = new Date();
-    const option = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    const getPages = (args) => {
-        return new Promise((resolve, reject) => {
-            Axios(args)
+
+export const getPages = () => (
+    new Promise((resolve, reject) => {
+        axios.get(BaseUrl, { timeout: TimeOut })
+        .then(res => resolve(res))
+        .catch(e => reject(e));
+    })    
+);
+export const setActivePage = args => (
+    new Promise((resolve, reject) => {
+        resolve(args)
+    })
+);
+
+export const setComponentsPage = (pageName = "no name", allPages = []) => dispatch => {
+    const getComponents = urls => (
+        new Promise((resolve, reject) => {
+            axios()
             .then(res => resolve(res))
             .catch(e => reject(e));
-        });
+        })
+    );
+
+    const switchLinkUrls = data => {
+        console.log(pageName);
+        console.log(data);
+        // switch (pageName) {
+        //     case data.page:
+        //         return "test"
+        
+        //     default:
+        //         break;
+        // };
     };
 
-    getPages('https://backend.themajbekasi.com/api/oceanic/get_all_page')
-    .then(res => {
-        dispatch({
-            type: SET_PAGES,
-            payload: {
-                status: res.statusText,
-                received_at: event.toLocaleDateString('id', option),
-                data: res.data.pages
-            }
-        });
-    })
-    .catch(e => {
-        dispatch({
-            type: SET_PAGES,
-            payload: {
-                status: e.response.statusText,
-                received_at: event.toLocaleDateString('id', option),
-                data: []
-            }
-        });
-    });
-};
+    if (allPages.length) {
+        allPages.map(switchLinkUrls);
+    };
+}

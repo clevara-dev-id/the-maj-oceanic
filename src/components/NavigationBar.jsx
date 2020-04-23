@@ -1,14 +1,16 @@
 import React, { Component, lazy } from 'react'
+import { connect } from 'react-redux';
 import './style.scss'
 import { NavLink } from 'react-router-dom'
 import rafSchedule from 'raf-schd'
 import LogoImg from '../assets/logo.svg'
+import { getPages, setPages } from '../redux/action/actionCreators';
 
 
 /* Components */
 const Button = lazy(() => import('./base_component/Button'))
 
-export default class NavigationBar extends Component {
+class ConnectNavigationBar extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -16,9 +18,13 @@ export default class NavigationBar extends Component {
         }
 
         this.scheduleUpdate = rafSchedule(this.handleScroll);
+        
+        this.dispatchPages = (a, b) => this.props.dispatchPages(a, b);
     }
 
     componentDidMount() {
+        this._getPages();
+
         let onScroll = args => this.scheduleUpdate(args);
         window.addEventListener('scroll', function() {
             onScroll(window.scrollY)
@@ -28,6 +34,22 @@ export default class NavigationBar extends Component {
     componentWillUnmount() {
         this.scheduleUpdate.cancel();
     };
+
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     return nextProps.store.length != this.props.store.length 
+    // };
+
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (this.props.store.length !== prevProps.store.length) {
+    //         this._getPages();
+    //     };
+    // };
+
+    _getPages = () => (
+        getPages()
+        .then(res => this.dispatchPages(res.statusText, res.data.pages))
+        .catch(err => this.dispatchPages(err.response && err.response.statusText, []))
+    );
 
     handleScroll = (args) => {
         const lastScroll = 100;
@@ -142,13 +164,20 @@ export default class NavigationBar extends Component {
                                     </Button>
                                 </>
                             ) : null}
-                            {this.props.store.map((data) => {
+                            {this.props.store && this.props.store.map((data) => {
                                 return (
-                                    <NavLink to={data.link}
+                                    <NavLink 
+                                        to={data.path}
+                                        isActive={(match, location) => {
+                                            // console.log("match: "+ JSON.stringify(match),"location: "+ JSON.stringify(location));
+                                            if (match) {
+                                                console.log(location);
+                                            } 
+                                        }}
                                         className={`mr-10 uppercase ${this.state.isScroll?"text-dark nav-item-dark":"text-white nav-item"}`}
-                                        key={data.id}
+                                        keyexport default ={data.id}
                                     >
-                                        {data.name}
+                                        {data.page}
                                     </NavLink>
                                 )
                             })}
@@ -190,4 +219,17 @@ export default class NavigationBar extends Component {
             </>
         )
     }
-}
+};
+
+const mapStateToProps = state => ({
+    store: state.occeanic.pages.data,
+});
+
+const mapDispatchToProps = dispatch => ({
+    dispatchPages: (status, data) => (
+        dispatch(setPages(status, data))
+    ),
+});
+
+const NavigationBar = connect(mapStateToProps, mapDispatchToProps)(ConnectNavigationBar)
+export default NavigationBar;
