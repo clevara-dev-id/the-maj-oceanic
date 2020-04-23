@@ -34,7 +34,7 @@ const CardTextImageSmall = props => {
                     text={props.text}
                     textClassName="mb-8"
                 >
-                    <Link className="primary-link text-sm" to={props.link} onClick={props.onClick}> {props.button_title.toUpperCase()} </Link>
+                    <Link className="primary-link text-sm uppercase" to={props.link} onClick={props.onClick}> {props.button_title} </Link>
                 </HeadingText>
             </>
             ) : (
@@ -46,7 +46,7 @@ const CardTextImageSmall = props => {
                     text={props.text}
                     textClassName="mb-8"
                 >
-                    <Link className="primary-link text-sm" to={props.link} onClick={props.onClick}> {props.button_title.toUpperCase()} </Link>
+                    <Link className="primary-link text-sm uppercase" to={props.link} onClick={props.onClick}> {props.button_title} </Link>
                 </HeadingText>
                 <div className="order-last w-full lg:w-2/4">
                     <div 
