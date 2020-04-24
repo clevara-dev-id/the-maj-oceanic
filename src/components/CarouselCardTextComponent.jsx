@@ -1,14 +1,15 @@
-import React, { lazy } from 'react'
+import React, { lazy, Fragment } from 'react';
 
-const CarouselCardText = lazy(() => import('./base_component/Carousel/CarouselCardText'))
+const CarouselCardText = lazy(() => import('./base_component/Carousel/CarouselCardText'));
 
 const CarouselCardTextComponent = props => {
-    return(
-        <>
+    return (
+        <Fragment>
             <div className="container px-4 mx-auto py-32 carousel-card-text-component">
                 <CarouselCardText {...props} />
             </div>
-        </>
-    )
-}
-export default CarouselCardTextComponent
+        </Fragment>
+    );
+};
+
+export default CarouselCardTextComponent;

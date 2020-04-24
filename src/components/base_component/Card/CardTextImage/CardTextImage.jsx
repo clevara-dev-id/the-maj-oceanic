@@ -1,18 +1,20 @@
-import React, { lazy } from 'react'
-import PropTypes from 'prop-types'
-import './style.scss'
+import React, { lazy, Fragment, memo } from 'react';
+import PropTypes from 'prop-types';
+import './style.scss';
 
-import Img from '../../../../assets/img/home/card-text-image/1-croped.png'
+import Img from '../../../../assets/img/home/card-text-image/1-croped.png';
+import { BaseUrlImage } from '../../../../helper/axios';
 
-const Button = lazy(() => import('../../Button'))
-const HeadingText = lazy(() => import('../../Heading/HeadingText'))
+const Button = lazy(() => import('../../Button'));
+const HeadingText = lazy(() => import('../../Heading/HeadingText'));
 
 const CardTextImage = props => {
+    const Image = BaseUrlImage + props.images.replace(/\\/g, "/");
     return (
         <div className="flex flex-wrap card-text-image">
             {!props.reverse? (
-                <>
-                    <div className="w-full lg:w-2/4 bg-no-repeat bg-cover bg-no-repeat mb-5 max-h-full h-100 lg:order-none order-first" style={{backgroundImage: `url(${props.image})`}} />
+                <Fragment>
+                    <div className="w-full lg:w-2/4 bg-no-repeat bg-cover bg-no-repeat mb-5 max-h-full h-100 lg:order-none order-first" style={{backgroundImage: `url(${Image})`}} />
 
                     <HeadingText 
                         containerClassName="w-full lg:w-2/4 pl-6 self-center"
@@ -24,9 +26,9 @@ const CardTextImage = props => {
                     >
                         <Button small ghost onClick={props.onClick}> {props.buttonTitle.toUpperCase()} </Button>
                     </HeadingText>
-                </>
+                </Fragment>
             ) : (
-                <>
+                <Fragment>
                     <HeadingText 
                         containerClassName="w-full lg:w-2/4 pr-6 self-center"
                         caption={props.caption} 
@@ -37,13 +39,13 @@ const CardTextImage = props => {
                     >
                         <Button small ghost onClick={props.onClick}> {props.buttonTitle.toUpperCase()} </Button>
                     </HeadingText>
-                    <div className="w-full lg:w-2/4 bg-no-repeat bg-cover bg-no-repeat mb-5 max-h-full h-100 lg:order-none order-first" style={{backgroundImage: `url(${props.image})`}} />
-                </>
+                    <div className="w-full lg:w-2/4 bg-no-repeat bg-cover bg-no-repeat mb-5 max-h-full h-100 lg:order-none order-first" style={{backgroundImage: `url(${Image})`}} />
+                </Fragment>
             )}
             
         </div>
-    )
-}
+    );
+};
 
 CardTextImage.propTypes = {
     className: PropTypes.string,
@@ -61,7 +63,7 @@ CardTextImage.propTypes = {
     ]),
     buttonTitle: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired
-}
+};
 
 CardTextImage.defaultProps = {
     caption: "SUSTAINIBILITY",
@@ -72,6 +74,6 @@ CardTextImage.defaultProps = {
     onClick: () => {
         alert("clicked")
     }
-}
+};
 
-export default CardTextImage
+export default memo(CardTextImage);

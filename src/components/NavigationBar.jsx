@@ -1,4 +1,4 @@
-import React, { lazy, memo } from 'react';
+import React, { lazy, memo, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
@@ -69,8 +69,6 @@ const NavigationBar = memo(({isScroll = false, store = []}) => (
             </div>
         </ul>
 
-
-
         <ul className="flex lg:justify-center items-center flex-wrap my-5 uppercase">
             <div className="absolute lg:hidden">
                 <Button
@@ -88,27 +86,27 @@ const NavigationBar = memo(({isScroll = false, store = []}) => (
                 </Button>
             </div>
             <div className="mx-auto lg:hidden">
-                <a href="/"><img src={LogoImg} alt="logo-the-maj-oceanic" className="w-1/2 mx-auto" /></a>
+                <a href="/">
+                    <img src={LogoImg} alt="logo-the-maj-oceanic" className="w-1/2 mx-auto" />
+                </a>
             </div>
             <div className="lg:block hidden">
                 {isScroll ? (
-                    <>
-                        <Button
-                            search
-                            className="mr-6 uppercase"
-                            padding="0"
-                            margin="0"
-                            color={isScroll?`#232323`:`#FFFFFF`}
-                            border="transparent"
-                            height="40px"
-                            fontSize="13px"
-                            hover={{ color: "#208CB2" }}
-                            letterSpacing="2px"
-                            href="#"
-                        >
-                            search
-                        </Button>
-                    </>
+                    <Button
+                        search
+                        className="mr-6 uppercase"
+                        padding="0"
+                        margin="0"
+                        color={isScroll?`#232323`:`#FFFFFF`}
+                        border="transparent"
+                        height="40px"
+                        fontSize="13px"
+                        hover={{ color: "#208CB2" }}
+                        letterSpacing="2px"
+                        href="#"
+                    >
+                        search
+                    </Button>
                 ) : null}
                 {store.map((data, index) => {
                     return (
@@ -116,14 +114,13 @@ const NavigationBar = memo(({isScroll = false, store = []}) => (
                             key={index}
                             to={data.path}
                             className={`mr-10 uppercase ${isScroll?"text-dark nav-item-dark":"text-white nav-item"}`}
-                            default={data.id}
-                        >
+                            default={data.id}>
                             {data.page}
                         </NavLink>
                     )
                 })}
                 {isScroll ? (
-                    <>
+                    <Fragment>
                         <Button
                             className="mr-6"
                             padding="0"
@@ -134,8 +131,7 @@ const NavigationBar = memo(({isScroll = false, store = []}) => (
                             fontSize="13px"
                             hover={{ color: "#208CB2" }}
                             letterSpacing="2px"
-                            href="#"
-                        >
+                            href="#">
                             LOGIN
                         </Button>
                         <Button
@@ -148,11 +144,10 @@ const NavigationBar = memo(({isScroll = false, store = []}) => (
                             fontSize="13px"
                             hover={{ color: "#ffffff", backgroundColor:"#208CB2", borderColor:"#208CB2" }}
                             letterSpacing="2px"
-                            href="#"
-                        >
+                            href="#">
                             BOOK NOW
                         </Button>
-                    </>
+                    </Fragment>
                 ) : null}
             </div>
         </ul>
