@@ -12,27 +12,31 @@ import { connect } from 'react-redux';
 
 const Blogs = lazy(() => import('./views/Blogs'))
 const Pages = lazy(() => import('./views/Pages'))
+const Cabin = lazy(() => import('./views/Cabin'))
 
 const ConnectBaseRoute = props => {
     const { pages } = props;
 
-    return pages && pages.map(data => {
-        return (
-            <>
-                <Route key={data.id} exact path={data.path}
-                    render={routeProps => (
-                        <Pages key={data.id} 
-                            {...routeProps} 
-                            component={data.components}
-                            id={data.page}
-                            page={data.page} 
-                        />
-                    )} 
-                />
-                <Route exact path="/blog/raja-ampat" component={Blogs} />
-            </>
-        )
-    });
+    return(
+        <>
+            {pages && pages.map(data => {
+                return (
+                    <Route key={data.id} exact path={data.path}
+                        render={routeProps => (
+                            <Pages key={data.id} 
+                                {...routeProps} 
+                                component={data.components}
+                                id={data.page}
+                                page={data.page} 
+                            />
+                        )} 
+                    />
+                )
+            })}
+            <Route exact path="/blog/raja-ampat" component={Blogs} />
+            <Route exact path="/cabin/zheng-he-cabin" component={Cabin} />
+        </>
+    )
 };
 
 ConnectBaseRoute.propTypes = {
