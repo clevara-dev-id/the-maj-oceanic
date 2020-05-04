@@ -10,29 +10,33 @@ import { connect } from 'react-redux';
 // import Img4 from './assets/img/home/carousel-text/1.png'
 // import { getPages } from "./redux/action/actionCreators";
 
+const Blogs = lazy(() => import('./views/Blogs'))
 const Pages = lazy(() => import('./views/Pages'))
 
 const ConnectBaseRoute = props => {
     const { pages } = props;
 
     return (
-        pages && pages.map(data => {
-            return (
-                <Route 
-                    key={data.id} 
-                    exact 
-                    path={data.path} 
-                    render={routeProps => (
-                        <Pages key={data.id} 
-                            {...routeProps} 
-                            component={data.components}
-                            id={data.page}
-                            page={data.page} 
-                        />
-                    )} 
-                />
-            )
-        })
+        <>
+            {pages && pages.map(data => {
+                return (
+                    <Route 
+                        key={data.id} 
+                        exact 
+                        path={data.path} 
+                        render={routeProps => (
+                            <Pages key={data.id} 
+                                {...routeProps} 
+                                component={data.components}
+                                id={data.page}
+                                page={data.page} 
+                            />
+                        )} 
+                    />
+                )
+            })}
+            <Route exact path="/blog/raja-ampat" component={Blogs} />
+        </>
     );
 };
 
