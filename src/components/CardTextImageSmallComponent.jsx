@@ -1,19 +1,19 @@
-import React, { lazy } from 'react'
+import React, { lazy, Fragment } from 'react';
 
-const CardTextImageSmall = lazy(() => import('./base_component/Card/CardTextImage/CardTextImageSmall'))
+const CardTextImageSmall = lazy(() => import('./base_component/Card/CardTextImage/CardTextImageSmall'));
 
 const CardTextImageSmallComponent = props => {
-    return (
-        <>
-            <div className="container mx-auto px-4 py-32">
-                {props.properties.map((data) =>{
-                    return(
-                        <CardTextImageSmall key={data.id} {...data} />
-                    )
-                })}
-            </div>
-        </>
-    )
-}
+    const _renderItem = data => (
+        <CardTextImageSmall key={data.id} {...data} />
+    );
 
-export default CardTextImageSmallComponent
+    return (
+        <Fragment>
+            <div className="container mx-auto px-4 py-32">
+                {props.properties.map(_renderItem)}
+            </div>
+        </Fragment>
+    );
+};
+
+export default CardTextImageSmallComponent;

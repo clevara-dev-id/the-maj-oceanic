@@ -1,17 +1,12 @@
-import React, { Component, lazy } from 'react'
-import PropTypes from 'prop-types'
-
-import Img1 from '../../../../../assets/img/home/card-image/1.png'
-import './style.scss'
+import React, { Component, lazy } from 'react';
+import PropTypes from 'prop-types';
+import Img1 from '../../../../../assets/img/home/card-image/1.png';
+import './style.scss';
 
 /* Components */
 const CardItem = lazy(() => import('./CardItem'))
 
 
-
-/**
-* @augments {Component<{    containerClassName:string,    store:arrayOfobject).isRequired,    buttonTitle:string.isRequired,    onClick:Function.isRequired,>}
-*/
 class CardThree extends Component {
     constructor(props) {
         super(props)
@@ -19,17 +14,35 @@ class CardThree extends Component {
         this.state = {
             localStore: [],
             isLoading: true,
-        }
-    }
+        };
+    };
 
     static getDerivedStateFromProps(nextProps, prevState) {
         if (nextProps.properties.length !== prevState.localStore.length) {
             return {
                 localStore: nextProps.properties,
                 isLoading: false,
-            }
-        }
-    }
+            };
+        };
+        return null;
+    };
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return nextProps.properties.length !== this.props.properties.length ||
+            this.state.localStore.length !== nextProps.properties.length
+    };
+
+    componentDidUpdate(prevProps, prevState) {
+        this.setState({ isLoading: true });
+        if (prevProps.properties.length !== this.props.propTypes.length) {
+            return this.setState({
+                localStore: this.props.properties,
+                isLoading: false
+            });
+        };
+
+        return this.setState({ isLoading: false });
+    };
     
     render() {
         return (
@@ -49,9 +62,9 @@ class CardThree extends Component {
                     ))}
                 </div>
             </div>
-        )
-    }
-}
+        );
+    };
+};
 
 CardThree.defaultProps = {
     store : [{
@@ -81,6 +94,6 @@ CardThree.propTypes = {
     store: PropTypes.arrayOf(PropTypes.object).isRequired,
     buttonTitle: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
-}
+};
 
-export default CardThree
+export default CardThree;

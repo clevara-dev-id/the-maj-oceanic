@@ -1,34 +1,30 @@
-import React from 'react'
-import styled from 'styled-components'
-import PropTypes from 'prop-types'
+import React, { Fragment, memo } from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 
-const large = {width: "auto", height: "48px", fontSize: "17px"} 
-const small = {width: "auto", height: "40px"}
-const primary = {backgroundColor: "#208CB2", color: "#FFFFFF", border: "1px solid #208CB2"}
-const secondary = {backgroundColor: "#C7E2EC", color: "#232323", border: "1px solid #C7E2EC"}
-const ghost = {backgroundColor: "transparent", color: primary.backgroundColor, border: `1px solid ${primary.backgroundColor}`}
+const large = {width: "auto", height: "48px", fontSize: "17px"};
+const small = {width: "auto", height: "40px"};
+const primary = {backgroundColor: "#208CB2", color: "#FFFFFF", border: "1px solid #208CB2"};
+const secondary = {backgroundColor: "#C7E2EC", color: "#232323", border: "1px solid #C7E2EC"};
+const ghost = {backgroundColor: "transparent", color: primary.backgroundColor, border: `1px solid ${primary.backgroundColor}`};
 
 const Button = props => {
-
     return (
         <Btn className="uppercase" {...props}>
-            {
-                props.search? (
-                    <> 
-                        {/* <img src={SearchIcon} style={{marginRight: "8px"}} alt="seach" /> */}
-                        <i className="fa fa-search mr-3"></i>
-                        {props.children} 
-                    </>
-                ) : props.collapse? (
-                    <>
-                        <i className="fa fa-bars mr-3"></i>
-                    </>
-                ) : props.children
-            }
+            {props.search? (
+                <Fragment> 
+                    <i className="fa fa-search mr-3"></i>
+                    {props.children} 
+                </Fragment>
+            ) : props.collapse? (
+                <Fragment>
+                    <i className="fa fa-bars mr-3"></i>
+                </Fragment>
+            ) : props.children}
         </Btn>
-    )
-}
+    );
+};
 
 // Style
 
@@ -52,7 +48,7 @@ const Btn = styled.button(
             border: props.ghost || props.outline? "0": props.primary? primary.backgroundColor: props.secondary? secondary.backgroundColor: null,
         } : props.hover,
     })
-)
+);
 
 // PropsTypes
 
@@ -75,6 +71,6 @@ Button.propTypes = {
     letterSpacing: PropTypes.string,
     display: PropTypes.string,
     visibility: PropTypes.string,
-}
+};
 
-export default Button
+export default memo(Button);
