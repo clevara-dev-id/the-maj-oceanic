@@ -15,11 +15,11 @@ const Table = props => {
                             borderRight: "none"
                         }}
                     > 
-                        <h6 style={{letterSpacing: "3px"}}> {data.title} </h6> 
+                        <h6 className="tracking-widest leading-normal"> {data.title} </h6> 
                     </td>
 
                     <td 
-                        className="px-4 py-2 w-1/2" 
+                        className={`px-4 py-2 w-1/2 ${props.dataTableClassName}`} 
                         style={{
                             border: "1px solid #EFE1DC", 
                             borderLeft: "none", 
@@ -30,7 +30,7 @@ const Table = props => {
                             data.value.map((d, i) => (
                                 <p 
                                     key={i}
-                                    className={`body-1 ${!i? "mb-2": i === data.value.length? "mt-2": "my-2"}`}
+                                    className={`body-1 ${!i % 2 ? `mb-${props.marginValueList}` : `mt-${props.marginValueList}`}`}
                                 > {d} </p>
                             ))
                         ) : (
@@ -43,8 +43,8 @@ const Table = props => {
     }
 
     return (
-        <div className="max-w-container-2 mx-auto">
-            <h5 className="px-4 py-8"> {props.head} </h5>
+        <div className={`max-w-container-2 mx-auto ${props.containerClassName}`}>
+            <h5 className={`px-4 py-8 ${props.headClassName}`}> {props.head} </h5>
             <table className="w-full">
                 <tbody>
                     {renderTbody(props.store && props.store)}
@@ -55,8 +55,12 @@ const Table = props => {
 }
 
 Table.propTypes = {
+    containerClassName: PropTypes.string,
     store: PropTypes.arrayOf(PropTypes.object).isRequired,
     head: PropTypes.string.isRequired,
+    headClassName: PropTypes.string,
+    dataTableClassName: PropTypes.string,
+    marginValueList: PropTypes.number
 }
 
 Table.defaultProps = {

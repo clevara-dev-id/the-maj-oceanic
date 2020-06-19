@@ -161,3 +161,16 @@ button{
   margin: 0;
   right: -34px;
 }
+
+#home img#image-stamps {
+  display: inline-block;
+}
+
+/* SailingSoon View */
+
+/* style for for viewport 320px or iPhone 5/SE  */
+@media (min-width: 20em) and (max-width: 20em) {
+  #home img#image-stamps {
+    display: none;
+  }
+}

@@ -33,7 +33,7 @@ class Tabs extends Component {
                         return (
                             <Tab
                                 classNameLabelActive={`${this.props.classNameLabelActive} text-primary-300`}
-                                classNameTabLI={`${this.props.classNameTabLI} mr-10`}
+                                classNameTabLI={`${this.props.classNameTabLI} xl:mr-10 lg:mr-10`}
                                 activeTab={this.state.activeTab}
                                 key={label}
                                 label={label}

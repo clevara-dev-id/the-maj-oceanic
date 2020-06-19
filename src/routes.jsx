@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { lazy } from 'react'
+import * as React from 'react'
 import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -10,9 +10,13 @@ import { connect } from 'react-redux';
 // import Img4 from './assets/img/home/carousel-text/1.png'
 // import { getPages } from "./redux/action/actionCreators";
 
-const Blogs = lazy(() => import('./views/Blogs'))
-const Pages = lazy(() => import('./views/Pages'))
-const Cabin = lazy(() => import('./views/Cabin'))
+const Home = React.lazy(() => import("./views/Home"));
+const Blogs = React.lazy(() => import('./views/Blogs'));
+const Pages = React.lazy(() => import('./views/Pages'));
+const Cabin = React.lazy(() => import('./views/Cabin'));
+const Spesification = React.lazy(() => import('./views/Spesification'));
+const Contact = React.lazy(() => import('./views/Contact'));
+const Sailing = React.lazy(() => import('./views/SailingSoon'));
 
 const ConnectBaseRoute = props => {
     const { pages } = props;
@@ -33,8 +37,12 @@ const ConnectBaseRoute = props => {
                     />
                 )
             })}
+            <Route exact path="/" component={Home} />
             <Route exact path="/blog/raja-ampat" component={Blogs} />
             <Route exact path="/cabin/zheng-he-cabin" component={Cabin} />
+            <Route exact path="/spesification" component={Spesification} />
+            <Route exact path="/contact-us" component={Contact} />
+            <Route exact path="/sailing-soon" component={Sailing} />
         </>
     )
 };
