@@ -1,4 +1,5 @@
-import React, { lazy, memo, Fragment } from 'react';
+import * as React from 'react';
+import _ from 'lodash';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
@@ -7,9 +8,13 @@ import './style.scss';
 
 
 /* Components */
-const Button = lazy(() => import('./base_component/Button'))
+const Button = React.lazy(() => import('./base_component/Button'))
 
-const NavigationBar = memo(({isScroll = false, store = []}) => (
+export interface NavigationBarProps {
+    isScroll: boolean;
+    store: Array<any>;
+};
+const NavigationBar: React.FC<NavigationBarProps> = ({isScroll = false, store = []}): JSX.Element => (
     <div className={`w-full fixed ${isScroll?`bg-white`:`bg-semi-transparent`}`} id="navbar" /*className={this.state.isScroll?"bg-white":"bg-dark-transparent"}*/ >
         <ul className={`flex items-center flex-wrap pt-12 pb-20 mx-12 border-b-2 border-white lg:flex hidden ${isScroll ? `lg:hidden` : ``}`}>
             <div className="w-1/3 mr-auto flex justify-start">
@@ -18,9 +23,7 @@ const NavigationBar = memo(({isScroll = false, store = []}) => (
                     <input id="search-input" type="text" className="bg-transparent outline-none text-white w-16 ml-3" placeholder="SEARCH" />
                 </div>
                 <Button
-                    className="mr-6"
-                    padding="0"
-                    margin="0"
+                    className="mr-6 p-0"
                     color={isScroll?`#232323`:`#FFFFFF`}
                     border="transparent"
                     height="40px"
@@ -39,9 +42,7 @@ const NavigationBar = memo(({isScroll = false, store = []}) => (
             </div>
             <div className="w-1/3 ml-auto flex justify-end">
                 <Button
-                    className="mr-6"
-                    padding="0"
-                    margin="0"
+                    className="mr-6 p-0"
                     color={isScroll?`#232323`:`#FFFFFF`}
                     border="transparent"
                     height="40px"
@@ -53,9 +54,7 @@ const NavigationBar = memo(({isScroll = false, store = []}) => (
                     LOGIN
                 </Button>
                 <Button
-                    className=""
-                    padding="0"
-                    margin="0"
+                    className="p-0 m-0"
                     color={isScroll?`#232323`:`#FFFFFF`}
                     border="1px solid #FFFFFF"
                     height="40px"
@@ -72,10 +71,8 @@ const NavigationBar = memo(({isScroll = false, store = []}) => (
         <ul className="flex lg:justify-center items-center flex-wrap my-5 uppercase">
             <div className="absolute lg:hidden">
                 <Button
-                    className="mr-6"
+                    className="mr-6 p-0 m-0"
                     collapse
-                    padding="0"
-                    margin="0"
                     color={isScroll?`#232323`:`#FFFFFF`}
                     border="transparent"
                     height="40px"
@@ -94,9 +91,7 @@ const NavigationBar = memo(({isScroll = false, store = []}) => (
                 {isScroll ? (
                     <Button
                         search
-                        className="mr-6 uppercase"
-                        padding="0"
-                        margin="0"
+                        className="mr-6 uppercase p-0"
                         color={isScroll?`#232323`:`#FFFFFF`}
                         border="transparent"
                         height="40px"
@@ -113,18 +108,15 @@ const NavigationBar = memo(({isScroll = false, store = []}) => (
                         <NavLink 
                             key={index}
                             to={data.path}
-                            className={`mr-10 uppercase ${isScroll?"text-dark nav-item-dark":"text-white nav-item"}`}
-                            default={data.id}>
+                            className={`mr-10 uppercase ${isScroll?"text-dark nav-item-dark":"text-white nav-item"}`}>
                             {data.page}
                         </NavLink>
                     )
                 })}
                 {isScroll ? (
-                    <Fragment>
+                    <React.Fragment>
                         <Button
-                            className="mr-6"
-                            padding="0"
-                            margin="0"
+                            className="mr-6 p-0"
                             color={isScroll?`#232323`:`#FFFFFF`}
                             border="transparent"
                             height="40px"
@@ -135,9 +127,7 @@ const NavigationBar = memo(({isScroll = false, store = []}) => (
                             LOGIN
                         </Button>
                         <Button
-                            className="mr-6"
-                            padding="0"
-                            margin="0"
+                            className="mr-6 p-0"
                             color={isScroll?`#232323`:`#FFFFFF`}
                             border={isScroll?`1px solid #232323`:`1px solid #FFFFFF`}
                             height="40px"
@@ -147,16 +137,16 @@ const NavigationBar = memo(({isScroll = false, store = []}) => (
                             href="#">
                             BOOK NOW
                         </Button>
-                    </Fragment>
+                    </React.Fragment>
                 ) : null}
             </div>
         </ul>
     </div>
-));
+);
 
 NavigationBar.propTypes = {
     isScroll: PropTypes.bool.isRequired,
     store: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-export default NavigationBar;
+export default React.memo(NavigationBar, (prev, next) => _.isEqual(prev, next));

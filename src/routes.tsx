@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
 import * as React from 'react'
+import PropTypes from "prop-types";
 import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -18,42 +18,17 @@ const Spesification = React.lazy(() => import('./views/Spesification'));
 const Contact = React.lazy(() => import('./views/Contact'));
 const Sailing = React.lazy(() => import('./views/SailingSoon'));
 
-const ConnectBaseRoute = props => {
-    const { pages } = props;
-
-    return(
-        <>
-            {pages && pages.map(data => {
-                return (
-                    <Route key={data.id} exact path={data.path}
-                        render={routeProps => (
-                            <Pages key={data.id} 
-                                {...routeProps} 
-                                component={data.components}
-                                id={data.page}
-                                page={data.page} 
-                            />
-                        )} 
-                    />
-                )
-            })}
+const BaseRoute: React.FC = () => {
+    return( 
+        <React.Fragment>
             <Route exact path="/" component={Home} />
             <Route exact path="/blog/raja-ampat" component={Blogs} />
             <Route exact path="/cabin/zheng-he-cabin" component={Cabin} />
             <Route exact path="/spesification" component={Spesification} />
             <Route exact path="/contact-us" component={Contact} />
             <Route exact path="/sailing-soon" component={Sailing} />
-        </>
+        </React.Fragment>
     )
 };
 
-ConnectBaseRoute.propTypes = {
-    pages: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
-
-const mapStateToProps = state => ({
-    pages: state.occeanic.pages.data,
-});
-
-const BaseRoute = withRouter(connect(mapStateToProps, null)(ConnectBaseRoute));
-export default BaseRoute
+export default withRouter(BaseRoute);

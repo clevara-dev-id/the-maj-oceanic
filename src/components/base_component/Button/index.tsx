@@ -1,6 +1,7 @@
 import * as React from 'react';
 import _ from 'lodash';
 import styled, { CSSObject } from 'styled-components';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 
@@ -38,26 +39,18 @@ const ghost = {backgroundColor: "transparent", color: primary.backgroundColor, b
  * @param hover boolean (optional)
  * 
  */
-export interface ButtonTypes {
+export interface ButtonTypes extends PropButton {
+    className?: string;
     search?: boolean;
     collapse?: boolean;
     onClick?: () => void;
     children?: any;
-
-    large?: boolean;
-    small?: boolean;
-    primary?: boolean;
-    secondary?: boolean;
-    ghost?: boolean;
-    outline?: boolean;
-
-    letterSpacing?: number;
-    display?: string;
-    visibility?: "visible" | "hidden";
-    hover?: boolean;
+    href?: string;
 };
 
 /**
+ * 
+ * @param className strong (optional)
  * 
  * @param search boolean    (optional)
  * 
@@ -81,13 +74,13 @@ export interface ButtonTypes {
  * 
  * @param visibility CSSProperties string one of "visible" or "hidden"
  * 
- * @param hover boolean
+ * @param hover CSSObject
  */
 
 const Button: React.FC<ButtonTypes> = (props): JSX.Element => {
-    const { search, collapse, children } = props
+    const { search, collapse, children, href, className } = props;
     return (
-        <Btn className="uppercase" {...props}>
+        <Btn to={href || "#"} className={`uppercase ${className}`} {...props}>
             {search
                 ? (
                     <React.Fragment> 
@@ -116,18 +109,19 @@ interface PropButton {
     ghost?: boolean;
     outline?: boolean;
 
-    width?: number;
-    height?: number;
+    fontSize?: number | string;
+    width?: number | string;
+    height?: number | string;
     color?: string;
     backgroundColor?: string;
     border?: string | number;
-    letterSpacing?: number;
+    letterSpacing?: number | string;
     display?: string;
     visibility?: "visible" | "hidden";
     hover?: CSSObject | { };
 };
 
-const Btn = styled.button(
+const Btn = styled(Link)(
     (props: PropButton) => ({
         width: props.large? large.width: props.small? small.width: props.width,
         height: props.large? large.height: props.small? small.height: props.height,
@@ -139,7 +133,7 @@ const Btn = styled.button(
         padding:"11px 20px",
         letterSpacing: props.letterSpacing,
         display: props.display,
-        fontSize:"12px",
+        fontSize: props.fontSize || "12px",
         visibility: props.visibility,
         ":hover": !props.hover? {
             backgroundColor: props.ghost || props.outline? primary.backgroundColor: "#FFFFFF",

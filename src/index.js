@@ -3,16 +3,14 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import './styles/tailwind.css'
-import { Provider } from 'react-redux'
-import configureStore from './redux/store'
-const store = configureStore()
-
+import './styles/tailwind.css';
+import StoreProvider from './helper/providers/StoreProvider';
+console.log(process.env)
 
 ReactDOM.render(
-    <Provider store={store}>
+    <StoreProvider>
         <App />
-    </Provider>, 
+    </StoreProvider>, 
     document.getElementById('root')
 );
 
