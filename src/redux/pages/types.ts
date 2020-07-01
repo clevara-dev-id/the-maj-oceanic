@@ -38,27 +38,31 @@ export type CarouselInterface = Array<{
     created_at: string;
     updated_at: string;
 }>;
+
+export interface PageItem {
+    id: number;
+    page_name: string;
+    heading: string;
+    text: string;
+    images: string;
+    slider?: SliderInterface;
+    carousel?: CarouselInterface;
+    data?: Array<{
+        id: number;
+        title: string;
+        value: string;
+        created_at?: string;
+        updated_at?: string;
+    }>
+};
 /**
  * PageState Interface
  * 
  * Is interface reducer of page reducer
  */
 export interface PageState {
-    page_name: "home" | "spesification" | string;
-    data?: {
-        heading: string;
-        text: string;
-        images: string;
-        slider?: SliderInterface;
-        carousel?: CarouselInterface;
-        data?: Array<{
-            id: number;
-            title: string;
-            value: string;
-            created_at?: string;
-            updated_at?: string;
-        }>;
-    };
+    activePage?: PageItem;
+    pages: Array<PageItem>;
     loading: string,
 };
 

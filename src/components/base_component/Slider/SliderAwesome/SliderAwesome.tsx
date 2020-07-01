@@ -91,7 +91,7 @@ const SliderAwesome: React.FC<SliderProps> = (props): JSX.Element => {
     function _renderItem(data: SliderItem, index: number): JSX.Element {
         const images = isStaticImage
             ? data.images
-            : BaseUrlImage + data.images 
+            : `${process.env.REACT_APP_BASE_URL_IMAGE}/${data.images}` 
         return (
             <div key={index}
                 data-src={images}

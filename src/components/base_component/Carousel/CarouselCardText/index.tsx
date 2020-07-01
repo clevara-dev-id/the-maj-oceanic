@@ -79,6 +79,20 @@ const CarouselCardText: React.FC<T> = props => {
         };
     }, [props.store]);
 
+    const CardItem = React.useMemo(
+        () => (data: any, index: number): JSX.Element => (
+            <CardTextItem 
+                key={index}
+                {...data}
+                {...props.className}
+                onClickNext={next}
+                onClickPrev={prev}
+                onClick={() => alert("clicked")}
+                buttonTitle="Learn More"
+            />
+        ),
+    [localStore])
+
     return (
         <div id="carousel-card-text-component" className={props.containerClassName}>
             <Slider 
@@ -99,20 +113,7 @@ const CarouselCardText: React.FC<T> = props => {
                     />
                 }>
                     
-                {localStore.length && _.map(
-                    localStore, (data, index) => (
-                        <CardTextItem 
-                            key={index}
-                            isStaticImage={true}
-                            {...data}
-                            {...props.className}
-                            onClickNext={next}
-                            onClickPrev={prev}
-                            onClick={() => alert("clicked")}
-                            buttonTitle="Learn More"
-                        />
-                    )
-                )}
+                {localStore.length && _.map(localStore, CardItem)}
             </Slider>
         </div>
     )

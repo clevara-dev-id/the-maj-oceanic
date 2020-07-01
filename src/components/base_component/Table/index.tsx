@@ -1,11 +1,32 @@
-import React from 'react'
+import * as React from 'react';
+import _ from 'lodash';
 import PropTypes from 'prop-types'
 
-const Table = props => {
+/**
+ * @type Table Item
+ * 
+ * @param id number
+ * @param title string
+ * @param value string
+ */
+export type TableItem = {id: number, title: string, value: string};
+/**
+ *
+ * @interface TableProps
+ * 
+ * @param store `Array<TableItem>`
+ */
+export interface TableProps {
+    containerClassName?: string;
+    headClassName?: string;
+    dataTableClassName?: string;
+    store: Array<TableItem>
+}
+const Table: React.FC<TableProps> = (props) => {
 
-    const renderTbody = (args) => {
-        return args && args.map((data, index) => {
-            return (
+    const RenderItem = React.useMemo(
+        () => 
+            (args: TableItem, index: number): JSX.Element => (
                 <tr key={index}>
                     <td 
                         className="px-4 py-2 w-1/2" 
@@ -15,7 +36,7 @@ const Table = props => {
                             borderRight: "none"
                         }}
                     > 
-                        <h6 className="tracking-widest leading-normal"> {data.title} </h6> 
+                        <h6 className="tracking-widest leading-normal">{args.title}</h6> 
                     </td>
 
                     <td 
@@ -26,45 +47,27 @@ const Table = props => {
                             borderRight: "none"
                         }}
                     > 
-                        {typeof(data.value) === 'object'? (
-                            data.value.map((d, i) => (
-                                <p 
-                                    key={i}
-                                    className={`body-1 ${!i % 2 ? `mb-${props.marginValueList}` : `mt-${props.marginValueList}`}`}
-                                > {d} </p>
-                            ))
-                        ) : (
-                            <p className="body-1"> {data.value} </p>
-                        )} 
+                        {args.value && _.map(args.value.split('\n'), (item, i) => (
+                            <p key={i} className="body-1">{item}</p>
+                        ))}
                     </td>
                 </tr>
-            )
-        })
-    }
+            ),
+    [])
 
     return (
         <div className={`max-w-container-2 mx-auto ${props.containerClassName}`}>
-            <h5 className={`px-4 py-8 ${props.headClassName}`}> {props.head} </h5>
+            <h5 className={`px-4 py-8 ${props.headClassName}`}>Table Of Spesifications</h5>
             <table className="w-full">
                 <tbody>
-                    {renderTbody(props.store && props.store)}
+                    {_.map(props.store, RenderItem)}
                 </tbody>
             </table>
         </div>
     )
 }
 
-Table.propTypes = {
-    containerClassName: PropTypes.string,
-    store: PropTypes.arrayOf(PropTypes.object).isRequired,
-    head: PropTypes.string.isRequired,
-    headClassName: PropTypes.string,
-    dataTableClassName: PropTypes.string,
-    marginValueList: PropTypes.number
-}
-
 Table.defaultProps = {
-    head: "Table Of Specification",
     store: [{
         id: 1,
         title: "Build",
@@ -84,13 +87,7 @@ Table.defaultProps = {
     },{
         id: 5,
         title: "Watersports Equipment",
-        value: [
-            "6 Paddle board",
-            "6 Sea Kayaks",
-            "Fishing Gear",
-            "Complete diving equipment",
-            "Complete snorkeling equipment"
-        ]
+        value: `6 Paddle board\n6 Sea Kayaks \nFishing Gear \nComplete diving equipment\nComplete snorkeling equipment`
     }]
 }
 

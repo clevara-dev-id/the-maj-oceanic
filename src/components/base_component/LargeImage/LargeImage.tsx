@@ -60,7 +60,7 @@ export default class LargeImage extends React.PureComponent<LargeImageProps, {}>
         return <img 
             className={`w-full h-auto ${imageClassName}`}
             style={imageStyle}
-            src={isStaticImage ? images : BaseUrlImage + images}
+            src={isStaticImage ? images :  `${process.env.REACT_APP_BASE_URL_IMAGE}/${images}`}
             alt={alt ? alt : "large-image"}
         />
     };

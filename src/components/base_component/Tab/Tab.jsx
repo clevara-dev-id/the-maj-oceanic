@@ -1,9 +1,12 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import * as React from 'react';
+import _ from 'lodash';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-class Tab extends Component {
+class Tab extends React.Component {
     static propTypes = {
+        classNameLabelActive: PropTypes.string,
+        classNameTabLI: PropTypes.string,
         activeTab: PropTypes.string.isRequired,
         label: PropTypes.string.isRequired,
         onClick: PropTypes.func.isRequired,
@@ -53,4 +56,4 @@ const Label = styled.p.attrs(
     })
 )
 
-export default Tab
+export default React.memo(Tab, (prev, next) => _.isEqual(prev.activeTab, next.activeTab))
