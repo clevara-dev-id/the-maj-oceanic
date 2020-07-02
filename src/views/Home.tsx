@@ -22,12 +22,17 @@ const Home: React.FC<HomeProps> = (props): JSX.Element =>  {
     const [source, setSource] = React.useState<PageItem|undefined>(undefined);
 
     React.useLayoutEffect(() =>  {
-        if (!source && props.page.activePage?.page_name !== 'home') {
+        if (!source) {
             const find = _.find(props.page.pages, {page_name: 'home'});
             setSource(find);
-            dispatch(pageSetActive(find));
         };
     }, [props.page.pages]);
+
+    React.useEffect(() => {
+        if (!_.isEqual(source, props.page.activePage)) {
+            dispatch(pageSetActive(source));
+        }
+    }, [source]);
 
     /**e
      * Slider
