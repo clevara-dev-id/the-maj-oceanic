@@ -1,118 +1,132 @@
-import React, { Component, createRef, lazy } from 'react'
-import PropTypes from 'prop-types'
-import Slider from 'react-slick'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Slider from 'react-slick';
+import './style.scss'
 
-import Img1 from '../../../../assets/img/home/slick/1.svg'
+import CardItem from '../../Card/CardImage/CardImageThree/CardItem';
+// import Img1 from '../../../../assets/img/home/slick/1.svg'
+// import Button from '../../Button'
 
-/**
- * Component
- */
-const CardItem = lazy(() => import('../../Card/CardImage/CardImageThree/CardItem'))
-const PrevArrow = lazy(() => import('../../Button/PrevArrow'))
-const NextArrow = lazy(() => import('../../Button/NextArrow'))
-
-/**
-* @augments {Component<{    containerClassName:string,    store:arrayOfobject).isRequired,>}
-*/
 class CarouselThree extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
             localStore: [],
-        }
+        };
 
         this.next = this.next.bind(this)
         this.prev = this.prev.bind(this)
-    }
+
+        this.settings = {
+            dots: true,
+            lazyLoad: true,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            customPaging: () => (<div id="dots" />),
+            arrows: false,
+            centerPadding: "30px",
+            responsive: [{
+                breakpoint: 1025,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true,
+                    arrows: false
+                }
+            },{
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true,
+                    arrows: false
+                }
+            },{
+                breakpoint: 426,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    centerMode: true,
+                    centerPadding: "0px",
+                    infinite: true,
+                    dots: true,
+                    arrows: false
+                }
+            }],
+        };
+    };
 
     static getDerivedStateFromProps(nextProps, prevState) {
-        if (nextProps.store && nextProps.store.length !== prevState.localStore.length) {
+        if (nextProps.properties.length !== prevState.localStore.length) {
             return {
-                localStore: nextProps.store,
-            }
-        }
-        return null
-    }
+                localStore: nextProps.properties,
+            };
+        };
+        return null;
+    };
 
-    next = () => {
+    shouldComponentUpdate(nextProps, nextState) {
+        return nextProps.properties.length !== this.props.properties.length ||
+            this.state.localStore !== nextProps.properties
+    };
+
+    componentDidUpdate(prevProps, nextProps) {
+        if (prevProps.properties.length !== this.props.properties.length) {
+            this.setState({ localStore: this.props.properties });
+        };
+    };
+
+    next() {
         this.carousel.slickNext()
-    }
+    };
 
-    prev = () => {
+    prev() {
         this.carousel.slickPrev()
-    }
+    };
 
     render() {
         return (
-            <div id="carousel-three" className={`flex flex-col justify-center max-w-container-2 lg:w-auto mx-auto ${this.props.containerClassName}`}>
+            <div id="carousel-three" className="">
+                <button className="absolute w-8 h-8 rounded-full arrows arrow-left mr-3"
+                    onClick={this.prev}
+                >
+                    <i className="fas fa-angle-left text-base"></i>
+                </button>
+                <button className="absolute w-8 h-8 rounded-full arrows arrow-right"
+                    onClick={this.next}
+                >
+                    <i className="fas fa-angle-right text-base"></i>
+                </button>
                 <Slider
-                    arrows={false}
-                    centerMode={true}
-                    centerPadding="-20px"
-                    customPaging={() => <div id="dots" />}
-                    dots={true}
-                    slidesToShow={3}
-                    slidesToScroll={1}
-                    lazyLoad={true}
-                    ref={c => this.carousel = c}
+                    {...this.settings}
+                ref={c => this.carousel = c}
                 >
                     {this.state.localStore.length && this.state.localStore.map((data, index) => {
                         return (
                             <CardItem
-                                key={index}
-                                containerImageClassName="w-image-1"
-                                image={data.image}
+                                key={data.id || index}
+                                image={data.images}
+                                heading={data.heading}
+                                text={data.text}
+                                center={data.center}
+                                containerClassName="px-2"
+                                headingClassName="text-xl"
+                                button={data.button_title}
                             />
                         )
                     })}
                 </Slider>
-                <PrevArrow
-                    backgroundColor="#208CB2"
-                    color="#FFFFFF"
-                    hover={{
-                        backgroundColor: "#FFFFFF",
-                        color: "#208CB2",
-                        outline: "none",
-                    }}
-                    className="prev-arrow"
-                    onClick={this.prev} 
-                />
-                <NextArrow
-                    backgroundColor="#208CB2"
-                    color="#FFFFFF"
-                    hover={{
-                        backgroundColor: "#FFFFFF",
-                        color: "#208CB2",
-                        outline: "none",
-                    }}
-                    className="next-arrow"
-                    onClick={this.next} 
-                />
             </div>
-        )
-    }
-}
+        );
+    };
+};
 
 CarouselThree.propTypes = {
     containerClassName: PropTypes.string,
-    store: PropTypes.arrayOf(PropTypes.object).isRequired,
-}
+    store: PropTypes.arrayOf(PropTypes.object),
+};
 
-CarouselThree.defaultProps = {
-    store: [{
-        id: 1,
-        image: Img1
-    },{
-        id: 2,
-        image: Img1
-    },{
-        id: 3,
-        image: Img1
-    },{
-        id: 4,
-        image: Img1
-    }]
-}
-
-export default CarouselThree
+export default CarouselThree;

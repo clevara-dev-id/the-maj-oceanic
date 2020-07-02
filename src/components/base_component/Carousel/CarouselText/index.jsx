@@ -2,14 +2,12 @@ import React, { Component, lazy } from 'react'
 import PropTypes from 'prop-types'
 import Slider from 'react-slick'
 
+import './style.scss'
 import Img1 from '../../../../assets/img/home/carousel-text/1.png'
 
 const HeadingTextList = lazy(() => import('../../Heading/HeadingTextList'))
-const Button = lazy(() => import('../../Button'))
+// const Button = lazy(() => import('../../Button'))
 
-/**
-* @augments {Component<{    store:arrayOfobject).isRequired,    imageWidth:string.isRequired,    imageHeight:string.isRequired,    buttonTitle:string.isRequired,>}
-*/
 class CarouselText extends Component {
     constructor(props) {
         super(props)
@@ -24,9 +22,9 @@ class CarouselText extends Component {
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
-        if (nextProps.store.length !== prevState.localStore.length) {
+        if (nextProps.properties.length !== prevState.localStore.length) {
             return {
-                localStore: nextProps.store,
+                localStore: nextProps.properties,
             }
         }
         return null
@@ -42,7 +40,7 @@ class CarouselText extends Component {
     
     render() {
         return (
-            <div id="carousel-text" className="flex flex-row max-w-container-2 items-center mx-auto">
+            <div id="carousel-text" className="flex flex-row self-center items-center">
             {
                 this.props.reverse? (
                 <>
@@ -65,40 +63,55 @@ class CarouselText extends Component {
                         ref={ref => this.carousel = ref}
                         arrows={false}
                         dots={true}
+                        fade={true}
                         slidesToShow={1}
                         slidesToScroll={1}
                         className="w-4/12"
                         afterChange={(indexActive) => this.setState({indexActive})}
                         customPaging={() => <div 
                                 id="dots" 
-                                className="w-3 h-3 rounded-full"
+                                className="w-3 h-3 p-0 rounded-full"
                             />
                         }
                     >
                     {this.state.localStore && this.state.localStore.map((data, index) => {
                         return (
-                            <img
-                                key={index}
-                                src={data.image}
-                                width="445px"
-                                height="716px"
-                                alt="img-data-text"
-                            />
+                            <>
+                                <img
+                                    key={index}
+                                    src={data.images}
+                                    width="445px"
+                                    height="716px"
+                                    alt="img-data-text"
+                                />
+                                <div className="absolute arrows-container">
+                                    <button className="w-8 h-8 relative left-0 rounded-full arrows mr-3"
+                                        onClick={this.prev}
+                                    >
+                                        <i className="fas fa-angle-left text-base"></i>
+                                    </button>
+                                    <button className="w-8 h-8 relative left-0 rounded-full arrows"
+                                        onClick={this.next}
+                                    >
+                                        <i className="fas fa-angle-right text-base"></i>
+                                    </button>
+                                </div>
+                            </>
                         )
     
                     })}
                     </Slider>
 
-                    <PrevArrow 
+                    {/* <PrevArrow 
                         onClick={this.prev}
-                        left="-115.3px"
-                        bottom="-255px"
+                        left="-115px"
+                        bottom="-300px"
                     />
                     <NextArrow 
                         onClick={this.next}
-                        left="-91.3px"
-                        bottom="-255px"
-                    />
+                        left="-90px"
+                        bottom="-300px"
+                    /> */}
                 </>
                 ) : (
                 <> 
@@ -120,7 +133,7 @@ class CarouselText extends Component {
                         return (
                             <img
                                 key={index}
-                                src={data.image}
+                                src={data.images}
                                 width="445px"
                                 height="716px"
                                 alt="img-data-text"
@@ -132,13 +145,13 @@ class CarouselText extends Component {
 
                     <PrevArrow 
                         onClick={this.prev}
-                        left="-115.3px"
-                        bottom="-255px"
+                        left="-115px"
+                        bottom="-300px"
                     />
                     <NextArrow 
                         onClick={this.next}
-                        left="-91.3px"
-                        bottom="-255px"
+                        left="-90px"
+                        bottom="-300px"
                     />
 
                     {this.state.localStore && this.state.localStore.map((data, index) => {
@@ -151,7 +164,7 @@ class CarouselText extends Component {
                                 text={data.text}
                                 textClassName="w-full"
                                 list={data.list}
-                                buttonTitle={this.props.buttonTitle}
+                                buttonTitle={data.button_title}
                             />
                         }
                         return null
@@ -206,15 +219,8 @@ export default CarouselText
 
 const PrevArrow = props => {
     return (
-        <Button
-            border="transparent"
-            color="#208CB2"
-            hover={{
-                color: "#FFFFFF",
-                backgroundColor: "#208CB2"
-            }}
-            backgroundColor="#FFFFFF"
-            className="w-8 h-8 relative left-0 rounded-full"
+        <button
+            className="w-8 h-8 relative left-0 rounded-full buttons"
             onClick={props.onClick}
             style={{
                 left: props.left,
@@ -223,21 +229,14 @@ const PrevArrow = props => {
             }}
         >
             <i className="fas fa-angle-left text-base"></i>
-        </Button>
+        </button>
     )
 }
 
 const NextArrow = props => {
     return (
-        <Button
-            border="transparent"
-            color="#208CB2"
-            hover={{
-                color: "#FFFFFF",
-                backgroundColor: "#208CB2"
-            }}
-            backgroundColor="#FFFFFF"
-            className="w-8 h-8 relative right-0 rounded-full"
+        <button
+            className="w-8 h-8 relative left-0 rounded-full buttons"
             onClick={props.onClick}
             style={{
                 left: props.left,
@@ -246,6 +245,6 @@ const NextArrow = props => {
             }}
         >
             <i className="fas fa-angle-right text-base"></i>
-        </Button>
+        </button>
     )
 }

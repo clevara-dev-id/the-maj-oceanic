@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 import pageReducers from './pageReducers'
 
 const rootReducer = combineReducers({
-    page: pageReducers,
+    occeanic: pageReducers,
 })
 
 export default rootReducer

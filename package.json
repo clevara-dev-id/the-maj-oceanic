@@ -3,12 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.4.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@types/lodash": "^4.14.155",
+    "@types/normalizr": "^2.0.18",
+    "@types/raf-schd": "^4.0.0",
+    "@types/react-redux": "^7.1.9",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/react-slick": "^0.23.4",
+    "@types/styled-components": "^5.1.0",
+    "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
+    "chalk": "^4.1.0",
     "jquery": "^3.4.1",
     "node-sass": "^4.13.1",
+    "normalizr": "^3.6.0",
     "popper.js": "^1.16.1",
     "prop-types": "^15.7.2",
     "raf-schd": "^4.0.2",
@@ -52,7 +63,10 @@
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.9.0",
+    "@manaflair/redux-batch": "^1.0.0",
+    "@types/redux-logger": "^3.0.8",
     "autoprefixer": "^9.7.4",
-    "postcss-cli": "^7.1.0"
+    "postcss-cli": "^7.1.0",
+    "redux-logger": "^3.0.6"
   }
 }

@@ -1,34 +1,17 @@
 body {
-  background-color: #EEEEEE;
-}
-
-@font-face {
-  font-family: Sentinel L;
-  font-style: normal;
-  src: url('../assets/font/Sentinel/Sentinel-Light.otf');
-}
-
-@font-face {
-  font-family: Sentinel LI;
-  src: url('../assets/font/Sentinel/Sentinel-LightItalic.otf');
+  background-color: #fafafa;
 }
 
 @font-face {
   font-family: Sentinel SB;
   font-style: normal;
-  src: url('../assets/font/Sentinel/Sentinel-Semibold.otf');
-}
-
-@font-face {
-  font-family: Verlag;
-  font-style: normal;
-  src: url('../assets/font/Verlag/Verlag-Light.ttf');
+  src: url('../assets/font/Sentinel/Sentinel-Book.otf');
 }
 
 @font-face {
   font-family: Verlag B;
   font-style: normal;
-  src: url('../assets/font/Verlag/Verlag-Bold.ttf');
+  src: url('../assets/font/Verlag/Verlag-Book.ttf');
 }
 
 @font-face {
@@ -40,13 +23,14 @@ body {
 h1, h2, h3, h4 {
   font-family: Sentinel SB;
   font-style: normal;
+  font-weight: 400;
   color: #232323;
 }
 
 h5, h6 {
   font-family: Verlag B;
   font-style: normal;
-  font-weight: bold !important;
+  font-weight: bold;
   text-transform: uppercase;
   color: #232323;
 }
@@ -145,26 +129,48 @@ button.btn-2 {
 .secondary-3 {
   color: #FBF7F6;
 }
-
-#head-bg strong {
-  font-family: Sentinel L;
-  font-weight: bold;
-  line-height: 80px;
-  font-size: 48px;
-  text-align: center;
-  color: #ffffff;
-  text-shadow: 0px 20px 60px rgba(138, 149, 158, 0.2);
+button{
+  outline: none !important;
 }
 
-/* Carousel Three */
-@import "../components/base_component/Carousel/CarouselThree/style.css";
-/* Carousel Text */
-@import "../components/base_component/Carousel/CarouselText/style.css";
-/* Carousel Card Text */
-@import "../components/base_component/Carousel/CarouselCardText/style.css";
-/* Carousel Tab Text */
-@import "../components/base_component/Carousel/CarouselTabText/style.css";
 
-/* Tabs */
-@import "../components/base_component/Tab/style.css";
+/* Carousel */
+#carousel-three .slick-dots {
+  bottom: -46px;
+}
 
+#carousel-three .slick-dots li #dots {
+  width: 12px;
+  height: 12px;
+  background: #4E5E79;
+  border-radius: 6px;
+  opacity: 1;
+}
+
+#carousel-three .slick-dots li.slick-active #dots {
+  background-color: #208CB2;
+  opacity: 1;
+}
+
+#carousel-three .slick-prev {
+  left: -46px;
+}
+
+#carousel-three .slick-next {
+  padding: 0;
+  margin: 0;
+  right: -34px;
+}
+
+#home img#image-stamps {
+  display: inline-block;
+}
+
+/* SailingSoon View */
+
+/* style for for viewport 320px or iPhone 5/SE  */
+@media (min-width: 20em) and (max-width: 20em) {
+  #home img#image-stamps {
+    display: none;
+  }
+}

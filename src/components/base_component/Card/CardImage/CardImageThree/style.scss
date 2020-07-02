@@ -1,0 +1,12 @@
+.card-item{
+    .text-xl{
+        margin-top:22px;
+        font-size: 22px !important;
+    }
+}
+
+@media screen and (max-width:426px){
+    .card-three{
+        flex-wrap: wrap;
+    }
+}

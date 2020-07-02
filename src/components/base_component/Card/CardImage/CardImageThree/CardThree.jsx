@@ -1,18 +1,12 @@
-import React, { Component, lazy } from 'react'
-import styled from 'styled-components'
-import PropTypes from 'prop-types'
-
-import Img1 from '../../../../../assets/img/home/card-image/1.png'
+import React, { Component, lazy } from 'react';
+import PropTypes from 'prop-types';
+import Img1 from '../../../../../assets/img/home/card-image/1.png';
+import './style.scss';
 
 /* Components */
 const CardItem = lazy(() => import('./CardItem'))
-const Button = lazy(() => import('../../../Button'))
 
 
-
-/**
-* @augments {Component<{    containerClassName:string,    store:arrayOfobject).isRequired,    buttonTitle:string.isRequired,    onClick:Function.isRequired,>}
-*/
 class CardThree extends Component {
     constructor(props) {
         super(props)
@@ -20,75 +14,86 @@ class CardThree extends Component {
         this.state = {
             localStore: [],
             isLoading: true,
-        }
-    }
+        };
+    };
 
     static getDerivedStateFromProps(nextProps, prevState) {
-        if (nextProps.store.length !== prevState.localStore.length) {
+        if (nextProps.properties.length !== prevState.localStore.length) {
             return {
-                localStore: nextProps.store,
+                localStore: nextProps.properties,
                 isLoading: false,
-            }
-        }
-    }
+            };
+        };
+        return null;
+    };
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return nextProps.properties.length !== this.props.properties.length ||
+            this.state.localStore.length !== nextProps.properties.length
+    };
+
+    componentDidUpdate(prevProps, prevState) {
+        this.setState({ isLoading: true });
+        if (prevProps.properties.length !== this.props.propTypes.length) {
+            return this.setState({
+                localStore: this.props.properties,
+                isLoading: false
+            });
+        };
+
+        return this.setState({ isLoading: false });
+    };
     
     render() {
         return (
-            <div className="max-w-container-2 mx-auto w-screen">
-                <div className="flex flex-row max-w-container-2">
+            <div>
+                <div className="flex flex-wrap">
                     {this.state.localStore.length && this.state.localStore.map((data, index) => (
-                        <CardItem 
-                            caption={false}
-                            containerClassName={`${this.state.localStore.length === (index + 1)? "ml-3": (index + 1) === 1? "mr-3": "mx-3"}`}
-                            containerImageClassName="w-auto"
-                            headingClassName="uppercase mt-6"
+                        <CardItem
+                            containerClassName={`w-full md:w-1/3 lg:w-1/3 px-2 pb-8`}
+                            headingClassName="uppercase mt-3 text-xl w-full"
                             textClassName="mt-4"
                             key={index}
-                            image={data.image}
+                            image={data.images}
                             heading={data.heading}
                             text={data.text}
                             center
                         />
                     ))}
                 </div>
-                
-                {this.props.buttonTitle? (
-                    <div className="flex mt-16">
-                        <Button className="mx-auto" large outline onClick={this.props.onClick}> {this.props.buttonTitle.toUpperCase()} </Button>
-                    </div>
-                ): null}
             </div>
-        )
-    }
-}
+        );
+    };
+};
 
 CardThree.defaultProps = {
     store : [{
         id: 1,
-        image: Img1,
+        images: Img1,
         heading: "Card Three 1",
         text: "Hemmed by jungle and lulled by the lap of the Indian Ocean, the hotel is rich in island spirit",
     },{
         id: 2, 
-        image: Img1,
+        images: Img1,
         heading: "Card Three 2",
         text: "Hemmed by jungle and lulled by the lap of the Indian Ocean, the hotel is rich in island spirit",
     },{
         id: 3,
-        image: Img1,
+        images: Img1,
         heading: "Card Three 3",
         text: "Hemmed by jungle and lulled by the lap of the Indian Ocean, the hotel is rich in island spirit"
     }],
     buttonTitle: "Button Title",
     onClick: () => {
-        alert('clicked')
+        alert('change in prop onClick')
     }
 }
 
 CardThree.propTypes = {
+    containerClassName: PropTypes.string,
     store: PropTypes.arrayOf(PropTypes.object).isRequired,
     buttonTitle: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
-}
+};
 
-export default CardThree
+export default CardThree;

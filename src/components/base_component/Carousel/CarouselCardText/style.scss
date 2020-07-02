@@ -1,0 +1,69 @@
+.carousel-card-text-component {
+    ul.slick-dots.center {
+        bottom: 4rem;
+        left: -15rem;
+    }
+    
+    ul.slick-dots li.slick-active div#dot {
+        background: #208CB2;
+        opacity: 1;
+    }
+    
+    .carousel-card-text-component > div > .slick-dots {
+        bottom: 10rem;
+    }
+    
+    .ml-min-12{
+        margin-left: -3rem;
+    }
+    .h-full-plus-10{
+        height: 650px;
+    }
+    .arrows{
+        background-color: white;
+        color: #208CB2;
+        z-index: 9;
+        display: inline;
+    }
+    .arrows:hover{
+        background-color: #208CB2;
+        color: white;
+    }
+    .arrows-container{
+        margin-top: -3rem;
+        margin-left: 1rem;
+    }
+    @media (max-width:768px) {
+        .ml-min-12{
+            margin-left: 0;
+        }
+        .h-full-plus-10{
+            height: 100%;
+        }
+        ul.slick-dots.center {
+            bottom: 25rem;
+            left: 0px;
+        }
+        .arrows{
+            display: none;
+        }
+    }
+    @media (max-width:426px) {
+        ul.slick-dots.center {
+            bottom: 30rem;
+            left: 0px;
+        }
+        .arrows{
+            display: none;
+        }
+    }
+    @media (max-width:320px) {
+        ul.slick-dots.center {
+            bottom: 33rem;
+            left: 0px;
+        }
+        .arrows{
+            display: none;
+        }
+    }
+}

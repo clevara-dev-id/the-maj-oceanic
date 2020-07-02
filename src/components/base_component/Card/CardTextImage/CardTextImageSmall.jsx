@@ -1,87 +1,96 @@
-import React, { lazy } from 'react'
-import PropTypes from 'prop-types'
+import React, { lazy, Fragment, memo } from 'react';
+import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
-import Img1 from '../../../../assets/img/home/card-text-image/1-small.png'
+import './style.scss';
+import Img1 from '../../../../assets/img/home/card-text-image/1-small.png';
+import { BaseUrlImage } from '../../../../helper/axios';
 
-const HeadingText = lazy(() => import('../../Heading/HeadingText'))
-const Button = lazy(() => import('../../Button'))
+const HeadingText = lazy(() => import('../../Heading/HeadingText'));
+// const Button = lazy(() => import('../../Button'))
+
 
 const CardTextImageSmall = props => {
+    const Image = BaseUrlImage + props.images.replace(/\\/g, "/");
+
     return (
-        <div className="flex max-w-container-2 mx-auto">
-        {
-            !props.reverse? (
-            <>
-                <div 
-                    className="bg-no-repeat bg-cover bg-no-repeat" 
-                    style={{
-                        backgroundImage: `url(${props.image})`, 
-                        maxWidth: "540px",
-                        maxHeight: "400px",
-                        width: props.imageWidth, 
-                        height: props.imageHeight
-                    }} 
-                />
+        <div className={`card-text-image-small flex flex-wrap max-w-container-2 ${props.containerClassName}`}>
+        {!props.reverse? (
+            <Fragment>
+                <div className="order-first w-full lg:w-2/4">
+                    <div 
+                        className="bg-no-repeat bg-cover bg-no-repeat" 
+                        style={{
+                            backgroundImage: `url(${Image})`,
+                            maxHeight: "400px",
+                            width: props.imageWidth, 
+                            height: props.imageHeight
+                        }} 
+                    />
+                </div>
                 <HeadingText 
-                    containerClassName="w-2/4 pl-6 self-center"
+                    containerClassName="w-full lg:w-2/4 pl-6 self-center"
                     caption={props.caption} 
                     heading={props.heading}
                     text={props.text}
                     textClassName="mb-8"
                 >
-                    <Button small ghost onClick={props.onClick}> {props.buttonTitle.toUpperCase()} </Button>
+                    <Link className="primary-link text-sm uppercase" to={props.link} onClick={props.onClick}> {props.button_title} </Link>
                 </HeadingText>
-            </>
+            </Fragment>
             ) : (
-            <>
+            <Fragment>
                 <HeadingText 
-                    containerClassName="w-2/4 pr-6 self-center"
+                    containerClassName="w-full lg:w-2/4 pl-6 self-center"
                     caption={props.caption} 
                     heading={props.heading}
                     text={props.text}
                     textClassName="mb-8"
                 >
-                    <Button small ghost onClick={props.onClick}> {props.buttonTitle.toUpperCase()} </Button>
+                    <Link className="primary-link text-sm uppercase" to={props.link} onClick={props.onClick}> {props.button_title} </Link>
                 </HeadingText>
-                <div 
-                    className="bg-no-repeat bg-cover" 
-                    style={{
-                        backgroundImage: `url(${props.image})`, 
-                        maxWidth: "540px",
-                        maxHeight: "400px",
-                        width: props.imageWidth, 
-                        height: props.imageHeight
-                    }} 
-                />
-            </>
+                <div className="order-last w-full lg:w-2/4">
+                    <div 
+                        className="bg-no-repeat bg-cover bg-no-repeat" 
+                        style={{
+                            backgroundImage: `url(${Image})`,
+                            maxHeight: "400px",
+                            width: props.imageWidth, 
+                            height: props.imageHeight
+                        }} 
+                    />
+                </div>
+            </Fragment>
             )
         }
         </div>
-    )
-}
+    );
+};
 
 CardTextImageSmall.propTypes = {
-    image: PropTypes.string.isRequired,
-    imageWidth: PropTypes.string.isRequired,
+    containerClassName: PropTypes.string,
+    images: PropTypes.string.isRequired,
+    imageWidth: PropTypes.string,
     imageHeight: PropTypes.string.isRequired,
     caption: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]).isRequired,
     heading: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
-    buttonTitle: PropTypes.string.isRequired,
+    button_title: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired
 }
 
 CardTextImageSmall.defaultProps = {
-    image: Img1,
-    imageWidth: "540px",
+    images: Img1,
+    imageWidth: "100%",
     imageHeight: "400px",
     caption: false,
     heading: "Card Text Image Small",
     text: "Sunt excepteur laborum reprehenderit duis sunt fugiat eu dolore. Laborum mollit nostrud quis proident esse cillum sint laboris in deserunt eu consectetur ad adipisicing. Mollit nulla in quis nisi elit occaecat eu dolore aliquip.",
-    buttonTitle: "Button Title",
+    button_title: "Button Title",
+    link:"#",
     onClick: () => {
         alert("clicked")
     }
 }
 
-export default CardTextImageSmall
+export default memo(CardTextImageSmall)

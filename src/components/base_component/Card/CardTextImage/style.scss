@@ -1,0 +1,24 @@
+.card-text-image{
+    .h-100{
+        height: 16rem;
+    }
+    @media (min-width:1024px) {
+        .h-100{
+            height: 730px;
+        }
+    }
+}
+.card-text-image-small{
+    .primary-link{
+        color: #208CB2;
+        text-decoration: none;
+        transition: .2s all;
+        padding-bottom: 10px;
+    }
+    .primary-link:hover{
+        color: #208CB2;
+            text-decoration: none;
+            transition: .2s all;
+            border-bottom: #208CB2 solid 1px;
+    }
+}

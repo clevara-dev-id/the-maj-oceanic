@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import HeadingText from './HeadingText'
 import Button from '../Button'
-import { Alert } from 'react-bootstrap'
 
 const HeadingTextList = props => {
     return (
@@ -17,27 +16,26 @@ const HeadingTextList = props => {
             <ul className="my-8">
                 {props.list.map((data, index) => {
                     return (
-                        <li key={index} title={data} className={`list-disc list-inside ${props.listClassName}`}> {data} </li>
+                        <li key={index} title={data} style={{listStyleType: "disc", listStylePosition: "inside"}}> {data} </li>
                     )
                 })}
             </ul>
 
-            <Button outline small className="uppercase" onClick={props.onClick}> {props.buttonTitle} </Button>
+            <Button outline small title={props.buttonName} onClick={props.onClick}> {props.buttonTitle.toUpperCase()} </Button>
         </HeadingText>
     )
 }
 
 HeadingTextList.propTypes = {
-  buttonTitle: PropTypes.string.isRequired,
-  caption: PropTypes.string,
-  center: PropTypes.bool,
-  containerClassName: PropTypes.string,
-  heading: PropTypes.string.isRequired,
-  list: PropTypes.array.isRequired,
-  listClassName: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
-  text: PropTypes.string.isRequired,
-  textClassName: PropTypes.string
+    containerClassName: PropTypes.string,
+    center: PropTypes.bool,
+    caption: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
+    heading: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    textClassName: PropTypes.string,
+    list: PropTypes.array.isRequired,
+    buttonTitle: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired
 }
 
 HeadingTextList.defaultProps = {

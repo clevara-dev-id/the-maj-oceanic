@@ -1,8 +1,85 @@
+/* carousel dots */
+#carousel-card-text-component ul li #dot {
+    width: 12px;
+    height: 12px;
+    background-color: #4E5E79;
+    opacity: 0.25;
+}
 
-#carousel-card-text .slick-dots {
-    bottom: -50px ;
+#carousel-card-text-component ul li #dot:hover {
+    background-color: #208CB2;
+    opacity: 1;
+}
+
+#carousel-card-text-component ul li.slick-active #dot {
+    background-color: #208CB2;
+    opacity: 1;
+};
+
+#carousel-card-text-component .slick-dots {
+    bottom: -20rem ;
     left: -16%;
 }
+
+/* style for viewports greater then 1280px or XL */
+@media (min-width: 80em) {
+    #carousel-card-text-component .slick-dots {
+        bottom: 3.75rem !important;
+        right: 8rem !important;
+    }
+
+    #carousel-card-text-component #card-text {
+        max-height: 900px !important;
+    }
+}
+
+/* style for viewport greater then 768px or iPad Mini or MD */
+@media (min-width: 48em) {
+    #carousel-card-text-component .slick-dots {
+        bottom: 26rem;
+    }
+}
+
+/* style for viewport greater then 414px or iPhone 6/7/8 Plus ios 11 */
+@media (min-width: 25.875em) and (max-width: 25.875em) {
+    #carousel-card-text-component .slick-dots {
+        bottom: 27rem !important;
+        left: auto;
+        right: auto;
+    }
+}
+
+/* style for viewport greater then 375px or iPhone 6/7/8 ios 11 */
+@media (min-width: 23.438em) and (max-width: 23.438em) {
+    #carousel-card-text-component {
+        margin-top: 2rem;
+    }
+
+    #carousel-card-text-component .slick-dots {
+        bottom: 30.75rem !important;
+        left: auto;
+        right: auto;
+    }
+
+    #carousel-card-text-component #card-text {
+        padding: 3.25rem 2.25rem;
+    }
+
+    #carousel-card-text-component #card-text p {
+        line-height: 1.5rem;
+    }
+}
+
+#carousel-card-text #dot:hover {
+    opacity: 1;
+    background: #208CB2;
+}
+
+#carousel-card-text .slick-active #dot {
+    background: #208CB2;
+    opacity: 1;
+}
+
 
 #carousel-card-text .card-text ul {
     list-style-type: disc;
@@ -13,50 +90,3 @@
     margin: 11px 0;
 }
 
-#carousel-card-text-secondary .slick-dots {
-    bottom: -15%;
-    left: -12%;
-}
-
-#carousel-card-text-secondary .slick-prev {
-    left: -45px;
-}
-
-#carousel-card-text-secondary .slick-next {
-    right: -45px;
-}
-
-#carousel-card-text-secondary .slick-prev, .slick-next {
-    color: #208CB2;
-    background-color: #ffffff;
-}
-
-#carousel-card-text-secondary .slick-prev:hover, .slick-next:hover {
-    color: #ffffff;
-    background-color: #208CB2;
-}
-
-#carousel-card-text-secondary .slick-prev::before, .slick-next::before {
-    content: none;
-}
-
-.card-text-secondary {
-    max-height: 300px;
-}
-
-.dot:hover {
-    opacity: 1;
-    background: #208CB2;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    background: #4E5E79;
-    opacity: 0.25;
-}
-
-.slick-active .dot {
-    background: #208CB2;
-    opacity: 1;
-}
