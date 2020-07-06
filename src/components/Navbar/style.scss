@@ -1,0 +1,258 @@
+
+$layout-min-mobile-s: 320px;
+$layout-max-mobile-s: 620px;
+
+// iphone 6/7/8
+$layout-min-iphone678: 375px;
+
+// tablet md
+$layout-max-md: 767px;
+$layout-min-md: 768px;
+
+// laptop lg
+$layout-max-lg: 1023px;
+$layout-min-lg: 1024px;
+
+// desktop xl
+$layout-max-xl: 1279px;
+$layout-min-xl: 1280px;
+
+$layout-min-laptop-l-to-4k: 1795px;
+
+#nav {
+    background-color: rgba(47, 46, 46, 0.35);
+
+    // transform: translateY(1px);
+
+    input {
+        font-size: 13px;
+        letter-spacing: 2px;
+        font-weight: bold;
+    };
+
+    svg { display: inline-block };
+    
+
+    a {
+        font-size: 13px;
+        letter-spacing: 2px;
+        font-weight: bold;
+    };
+
+
+    // laptop l to 4k
+    @media (min-width: $layout-min-laptop-l-to-4k) {
+        padding: {
+            left: 20rem;
+            right: 20rem;
+        };
+    };
+
+    // desktop or xl
+    @media (min-width: $layout-min-xl) {
+        padding: {
+            left: 4rem;
+            right: 4rem;
+        };
+
+        div.nav-list {
+            padding: {
+                left: 4rem;
+                right: 4rem;
+            };
+        };
+    };
+    
+    // laptop or lg
+    @media (min-width: $layout-min-lg) {
+        -webkit-transition: transform .8s ease-in-out, padding 1s ease-in-out;
+        -moz-transition: transform .8s ease-in-out, padding 1s ease-in-out;
+        -o-transition: transform .8s ease-in-out, padding 1s ease-in-out;
+        transition: transform .8s ease-in-out, padding 1s ease-in-out;
+        padding: {
+            left: 3rem;
+            right: 3rem;
+        };
+
+        div.nav-list {
+            padding: {
+                left: 3rem;
+                right: 3rem;
+            };
+        };
+
+        a.button, div.button {
+            display: none;
+            opacity: 0;
+            transition: display .8s ease-in-out, opacity 2s ease-in-out;
+        };
+
+        div.nav-top {
+            opacity: 1;
+            transform: scale(1);
+            -webkit-transition: opacity .3s ease-in-out, transform 1s ease-in-out;
+            -moz-transition: opacity .3s ease-in-out, transform 1s ease-in-out;
+            -o-transition: opacity .3s ease-in-out, transform 1s ease-in-out;
+            transition: opacity .3s ease-in-out, transform 1s ease-in-out;
+        };
+
+        div.nav-list {
+            background-color: transparent;
+            width: 92vw;
+            padding: {
+                left: 9rem; 
+                right: 7rem;
+            }
+            align-self: center;
+            justify-self: center;
+            max-height: 100px;
+            max-width: 100vw;
+            -webkit-transition: background-color .8s ease-in-out, width .8s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding .8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            -moz-transition: background-color .8s ease-in-out, width .8s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding .8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            -o-transition: background-color .8s ease-in-out, width .8s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding .8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: background-color .8s ease-in-out, width .8s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding .8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+            button {
+                display: none;
+                -webkit-transition: display -1s;
+                -moz-transition: display -1s;
+                -o-transition: display -1s;
+                transition: display -1s;
+            };
+
+            a {
+                color: #ffffff;
+                transition: color .5s ease-in-out;
+                -moz-transition: color .5s ease-in-out;
+                -webkit-transition: color .5s ease-in-out;
+                -o-transition: color .5s ease-in-out;
+            };
+
+            a.button {
+                border-color: #ffffff;
+                transition: border-color .5s ease-in-out;
+                -moz-transition: border-color .5s ease-in-out;
+                -webkit-transition: border-color .5s ease-in-out;
+                -o-transition: border-color .5s ease-in-out;
+            }
+        };
+
+        svg.logo-second {
+            display: none;
+        };
+    };
+
+    // md
+    @media (min-width: 768px) and (max-width: 1023px) {
+    };
+
+    @media (min-width: $layout-min-mobile-s) and (max-width: $layout-max-mobile-s) {
+        svg.logo-second {
+            // margin-left: 2rem;
+            position: absolute;
+            align-self: center;
+        };
+
+        a.book-link {
+            position: absolute;
+            right: 3%;
+        }
+    };
+};
+
+#nav.scroll-active {
+    // transform: translateY(-2rem);
+    padding-bottom: 0;
+
+
+    @media (min-width: $layout-min-laptop-l-to-4k) {
+        div.nav-list.scroll-active {
+            padding: {
+                left: 20rem !important;
+                right: 20rem !important;
+            };
+        };
+    };
+
+    // desktop or xl
+    @media (min-width: $layout-min-xl) {
+        div.nav-list.scroll-active {
+            padding: {
+                left: 4rem;
+                right: 4rem;
+            };
+        };
+    };
+    
+    // laptop or lg
+    @media (min-width: $layout-min-lg) {
+        transform: translateY(-17.2rem);
+
+        a.button, div.button {
+            display: inline-block;
+            opacity: 1;
+        };
+    
+        div.nav-top.scroll-active {
+            opacity: 0;
+            transform: scale(0.9, 0.9);
+        };
+
+        div.nav-list.scroll-active {
+            background-color: #ffffff;
+            width: 100vw;
+            padding: {
+                left: 3rem;
+                right: 3rem;
+            };
+    
+            button { display: flex };
+    
+            a { color: #000000 };
+
+            a.button { 
+                border-color: #000000;
+
+                &:hover {
+                    border-color: transparent;
+                    color: #ffffff;
+                    background-color: #000000;
+                }
+            }
+        };
+    };
+
+    // md
+    @media (min-width: $layout-min-md) {
+        div.nav-list.scroll-active {
+            background-color: #ffffff;
+
+            a.button { 
+                // border-width: 0;
+                border-color: #000000;
+                color: #000000;
+
+                &:hover {
+                    border-color: transparent;
+                    color: #ffffff;
+                    background-color: #000000;
+                }
+            }
+        };
+        
+    };
+
+    // iphone 6/7/8
+    @media (min-width: $layout-min-iphone678) {
+        div.nav-list.scroll-active {
+            background-color: #ffffff;
+        };
+    };
+
+    // iphone 5/se
+    @media (min-width: $layout-min-mobile-s) {
+        div.nav-list.scroll-active {
+            background-color: #ffffff;
+        };
+    };
+};

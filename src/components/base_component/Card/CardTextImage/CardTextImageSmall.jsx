@@ -19,7 +19,7 @@ const CardTextImageSmall = props => {
             <Fragment>
                 <div className="order-first w-full lg:w-2/4">
                     <div 
-                        className="bg-no-repeat bg-cover bg-no-repeat" 
+                        className="bg-no-repeat bg-cover" 
                         style={{
                             backgroundImage: `url(${Image})`,
                             maxHeight: "400px",
@@ -51,7 +51,7 @@ const CardTextImageSmall = props => {
                 </HeadingText>
                 <div className="order-last w-full lg:w-2/4">
                     <div 
-                        className="bg-no-repeat bg-cover bg-no-repeat" 
+                        className="bg-no-repeat bg-cover" 
                         style={{
                             backgroundImage: `url(${Image})`,
                             maxHeight: "400px",

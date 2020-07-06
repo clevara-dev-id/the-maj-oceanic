@@ -4,16 +4,17 @@ import rafSchedule from 'raf-schd';
 import { RootState } from '../redux';
 import axios from '../helper/axios';
 import { pageNavigationsReceived, pageStatus, pageHomeReceived, pageSpecReceived } from '../redux/pages/reducers';
-import { useLocation } from 'react-router-dom';
+import ErrorBoundary from '../helper/ErrorBoundary';
 
 /* Component */
 const NavigationBar = React.lazy(() => import('../components/NavigationBar'));
+const Navbar = React.lazy(() => import('../components/Navbar/Navbar'));
 const Footer = React.lazy(()=> import('../components/Footer'));
+const Sidebar = React.lazy(() => import('../components/Sidebar'));
 
 export interface AppLayoutProp extends mapStateProps {};
 const AppLayout: React.FC<AppLayoutProp> = (props): JSX.Element => {
     const dispatch = useDispatch();
-    const location = useLocation();
     const [isScroll, setScroll] = React.useState<boolean>(false);
 
     const onScroll = (args: number) => {
@@ -25,13 +26,18 @@ const AppLayout: React.FC<AppLayoutProp> = (props): JSX.Element => {
 
         return setScroll(false);
     };
-    const scheduleUpdate = rafSchedule<(args: number) => void>(onScroll);
-
+    // const onScroll = React.useCallback((args: number) => {
+    //     let lastScroll = 100;
+    //     args > lastScroll 
+    //         ? setScroll(true)
+    //         : setScroll(false);
+    // }, []);
+    
     React.useLayoutEffect(() => {
+        const scheduleUpdate = rafSchedule<(args: number) => void>(onScroll);
         window.addEventListener("scroll", function() {
             scheduleUpdate(window.scrollY)
         });
-        console.log(props.navigation)
         /** 
          * get navigation route
          */
@@ -65,22 +71,44 @@ const AppLayout: React.FC<AppLayoutProp> = (props): JSX.Element => {
         };
     },[]);
 
+    const NavStore = React.useMemo(() => props.navigation, [props.navigation]);
     const Navigation = React.useMemo<JSX.Element>(
-        () => <NavigationBar isScroll={isScroll} store={props.navigation} />,
-    [isScroll, props.navigation])
+        () => <Navbar navbarChange={isScroll} store={NavStore} />,
+    [isScroll, NavStore]);
+
+    /**
+     * searching
+     */
+    const [search, setSearch] = React.useState<string>("");
+    const searching = React.useCallback((e) => setSearch(e.target.value), []);
+
+    /**
+     * side bar
+     */
+    const NavigationSide = React.useMemo<JSX.Element>(
+        () => (
+            <Sidebar
+                store={NavStore}
+                styles={{bmBurgerBars: { background: isScroll ? "#000000" : "#ffffff" }}}
+                value={search}
+                onChange={searching}
+            />
+        ), 
+    [isScroll]);
 
     return (
-        <React.Fragment>
-            <header className="flex justify-center">
-                {Navigation}
-            </header>
+        <ErrorBoundary>
+            {NavigationSide}
+            {Navigation}
 
-            {props.children}
+            <main id="page-wrap">
+                {props.children}
+            </main>
 
             <footer>
                 <Footer store="" />
             </footer>
-        </React.Fragment>
+        </ErrorBoundary>
     );
 };
 

@@ -3,20 +3,20 @@ import _ from 'lodash';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
-import LogoImg from '../assets/logo.svg';
+import Logo from '../assets/Logo';
 import './style.scss';
 
 
 /* Components */
-const Button = React.lazy(() => import('./base_component/Button'))
+const Button = React.lazy(() => import('./base_component/Button'));
 
 export interface NavigationBarProps {
     isScroll: boolean;
     store: Array<any>;
 };
 const NavigationBar: React.FC<NavigationBarProps> = ({isScroll = false, store = []}): JSX.Element => (
-    <div className={`w-full fixed ${isScroll?`bg-white`:`bg-semi-transparent`}`} id="navbar" /*className={this.state.isScroll?"bg-white":"bg-dark-transparent"}*/ >
-        <ul className={`flex items-center flex-wrap pt-12 pb-20 mx-12 border-b-2 border-white lg:flex hidden ${isScroll ? `lg:hidden` : ``}`}>
+    <div className={`w-full fixed shadow-lg ${isScroll?`bg-white`:`bg-semi-transparent`}`} id="navbar" /*className={this.state.isScroll?"bg-white":"bg-dark-transparent"}*/ >
+        <ul className={`flex items-center flex-wrap pt-12 pb-20 mx-12 border-b-2 border-white lg:flex ${isScroll ? `lg:hidden` : ``}`}>
             <div className="w-1/3 mr-auto flex justify-start">
                 <div className="search-input">
                     <label htmlFor="search-input" className="text-white fa fa-search"></label>
@@ -37,7 +37,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({isScroll = false, store = 
             </div>
             <div className="mx-auto">
                 <NavLink to="/" >
-                    <img src={LogoImg} alt="logo-the-maj-oceanic" />
+                    <Logo />
                 </NavLink>
             </div>
             <div className="w-1/3 ml-auto flex justify-end">
@@ -84,7 +84,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({isScroll = false, store = 
             </div>
             <div className="mx-auto lg:hidden">
                 <a href="/">
-                    <img src={LogoImg} alt="logo-the-maj-oceanic" className="w-1/2 mx-auto" />
+                    <Logo className="w-1/2 mx-auto" />
                 </a>
             </div>
             <div className="lg:block hidden">
@@ -149,4 +149,4 @@ NavigationBar.propTypes = {
     store: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-export default React.memo(NavigationBar, (prev, next) => _.isEqual(prev, next));
+export default React.memo(NavigationBar);

@@ -69,7 +69,6 @@ const CardTextImage: React.FC<T> = props => {
                         lg:w-2/4
                         bg-no-repeat
                         bg-cover
-                        bg-no-repeat
                         mb-5
                         max-h-full
                         h-100
@@ -131,7 +130,6 @@ const CardTextImage: React.FC<T> = props => {
                         lg:w-2/4
                         bg-no-repeat
                         bg-cover
-                        bg-no-repeat
                         mb-5
                         max-h-full
                         h-100
