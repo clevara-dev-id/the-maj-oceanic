@@ -24,7 +24,7 @@ const BaseRoute: React.FC = () => {
             <Route exact path="/" component={Home} />
             <Route exact path="/blog/raja-ampat" component={Blogs} />
             <Route exact path="/cabin/zheng-he-cabin" component={Cabin} />
-            <Route exact path="/spesification" component={Spesification} />
+            <Route exact path="/the-vessel/spesification" component={Spesification} />
             <Route exact path="/contact-us" component={Contact} />
             <Route exact path="/sailing-soon" component={Sailing} />
         </React.Fragment>
