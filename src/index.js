@@ -5,7 +5,6 @@ import * as serviceWorker from './serviceWorker';
 
 import './styles/tailwind.css';
 import StoreProvider from './helper/providers/StoreProvider';
-console.log(process.env)
 
 ReactDOM.render(
     <StoreProvider>
