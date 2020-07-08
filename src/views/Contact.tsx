@@ -39,13 +39,15 @@ export class Contact extends React.Component<DataContact.ContactProps, S> {
                     <SliderAwesome isStaticImage={true} store={this.props.slider} />
                 </section>
 
-                <Breadcrumb page="contact us" />
+                <section className="text-left px-4 md:px-6 xl:px-0 lg:px-0">
+                    <Breadcrumb page="contact us" />
+                </section>
 
                 <section>
-                    <div className="container flex flex-wrap mx-auto justify-between xl:mt-48 lg:mt-48 mt-10 mb-40">
-                        <div className="w-full px-12 lg:w-1/2 mb-12">
-                            <Heading heading={this.props.title} headingClassName="font-bold" />
-                            <p className="text-base font-light w-3/4">
+                    <div className="container flex flex-wrap mx-auto justify-between xl:mt-48 lg:mt-48 mt-10 mb-40 px-4 md:px-6 xl:px-0 lg:px-0" >
+                        <div className="w-full px-12 lg:w-1/2 md:w-1/2 mb-12 text-left xl:pt-20 lg:pt-20 md:pt-20">
+                            <Heading heading={this.props.title} headingClassName="" />
+                            <p className="text-base font-light xl:w-3/5 lg:w-4/5 md:w-11/12">
                                 {this.props.text}
                             </p>
 
@@ -61,8 +63,8 @@ export class Contact extends React.Component<DataContact.ContactProps, S> {
                             ))}
                         </div>
 
-                        <div className="w-full lg:w-1/2 bg-white py-20 px-12" style={{ height: 702, maxHeight: 702}}>
-                        <p className="uppercase font-bold mb-4" style={{ fontSize: "14px !important", fontFamily: "Verlag"}}>make an enquiry</p>
+                        <div className="container-form w-full lg:w-1/2 md:w-1/2 bg-white py-20 px-12 text-left shadow-xl">
+                            <p className="uppercase font-bold mb-10">make an enquiry</p>
                             <form onSubmit={this.onSubmit}>
                                 <div className="mb-5">
                                     <label className="block text-gray-700 mb-2">Name</label>

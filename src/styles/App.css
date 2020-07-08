@@ -170,3 +170,15 @@ button{
 #sailing-soons section {
   background: #f3e9e5;
 }
+
+/* contact us */
+#contact h6 {
+  letter-spacing: 3px;
+}
+
+#contact div.container-form p {
+  font-size: "14px !important";
+  font-family: "Verlag";
+  letter-spacing: 3px;
+  font-weight: bold;
+}

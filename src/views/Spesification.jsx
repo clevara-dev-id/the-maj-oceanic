@@ -11,6 +11,7 @@ import LargeImage from '../components/base_component/LargeImage/LargeImage';
 import Table from '../components/base_component/Table';
 import SuspenseLoader from './SuspenseLoader';
 import { pageSetActive } from '../redux/pages/reducers';
+import Breadcrumb from '../components/BreadcrumbComponent';
 
 const DefaultProps = Static.default;
 const Spesification = (props) => {
@@ -37,6 +38,10 @@ const Spesification = (props) => {
         <div id="spesification">
             <section>
                 <SliderAwesome store={source.slider} />
+            </section>
+
+            <section className="text-left px-4 md:px-6 xl:px-0 lg:px-0">
+                <Breadcrumb page='spesification' />
             </section>
 
             <section>
