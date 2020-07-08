@@ -1,5 +1,6 @@
 import * as React from 'react';
 import _ from 'lodash';
+import './styles.css';
 
 /**
  * @type Table Item
@@ -27,25 +28,11 @@ const Table: React.FC<TableProps> = (props) => {
         () => 
             (args: TableItem, index: number): JSX.Element => (
                 <tr key={index}>
-                    <td 
-                        className="px-4 py-2 w-1/2" 
-                        style={{
-                            border: "1px solid #EFE1DC", 
-                            borderLeft: "none", 
-                            borderRight: "none"
-                        }}
-                    > 
+                    <td className="px-4 py-2 w-1/2"> 
                         <h6 className="tracking-widest leading-normal text-left">{args.title}</h6> 
                     </td>
 
-                    <td 
-                        className={`px-4 py-2 w-1/2 ${props.dataTableClassName}`} 
-                        style={{
-                            border: "1px solid #EFE1DC", 
-                            borderLeft: "none", 
-                            borderRight: "none"
-                        }}
-                    > 
+                    <td className={`px-4 py-2 w-1/2 ${props.dataTableClassName}`}> 
                         {args.value && _.map(args.value.split('\n'), (item, i) => (
                             <p key={i} className={`body-1 text-left ${i? 'mt-4' : 'mt-0'}`}>{item}</p>
                         ))}
@@ -56,7 +43,7 @@ const Table: React.FC<TableProps> = (props) => {
 
     return (
         <div className={`max-w-container-2 mx-auto ${props.containerClassName}`}>
-            <h5 className={`px-4 py-8 ${props.headClassName}`}>Table Of Spesifications</h5>
+            <h5 className={`px-4 py-8 ${props.headClassName} text-left`}>Table Of Spesification</h5>
             <table className="w-full">
                 <tbody>
                     {_.map(props.store, RenderItem)}
