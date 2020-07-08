@@ -167,10 +167,6 @@ button{
 }
 
 /* SailingSoon View */
-
-/* style for for viewport 320px or iPhone 5/SE  */
-@media (min-width: 20em) and (max-width: 20em) {
-  #home img#image-stamps {
-    display: none;
-  }
+#sailing-soons section {
+  background: #f3e9e5;
 }
