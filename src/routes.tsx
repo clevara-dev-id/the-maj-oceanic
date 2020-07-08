@@ -27,7 +27,7 @@ const BaseRoute: React.FC = () => {
             <Route exact path="/the-vessel/spesification" component={Spesification} />
             <Route exact path="/contact-us" component={Contact} />
             <Route exact path="/sailing-soon" component={Sailing} />
-            {/* <Route path="*" component={Sailing} /> */}
+            <Route path="*" component={Sailing} />
         </React.Fragment>
     )
 };
