@@ -42,10 +42,10 @@ const Spesification = (props) => {
             <section>
                 <HeadingText
                     containerClassName="container flex flex-col items-center justify-center mx-auto lg:max-w-4xl text-center p-8"
-                    headingClassName="lg:max-w-xl text-center leading-none"
+                    headingClassName=" text-center leading-none"
                     heading={source.heading}
                     text={source.text}
-                    textClassName="mt-8 lg:max-w-xl leading-6"
+                    textClassName="mt-8 xl:px-16 lg:px-16 md:px-10 leading-6"
                 />
                 <LargeImage
                     images={source.images}
