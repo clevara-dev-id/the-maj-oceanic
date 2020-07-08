@@ -18604,6 +18604,8 @@ video {
 
 @import "./App.css";
 
+@import "../components//base_component//Carousel/CarouselCardText/style.scss";
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;

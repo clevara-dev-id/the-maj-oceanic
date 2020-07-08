@@ -10,26 +10,13 @@ const Tabs: React.FC<any> = (props) => {
     
     const _handleClickTabItem = (tab: string) => setActiveTab(tab);
 
-    const TabItem = React.useMemo<(child: {props: { label: string}}, index: number) => JSX.Element>(
-        () => (child, index): JSX.Element => (
-            <Tab
-                classNameLabelActive={`${props.classNameLabelActive} text-primary-300`}
-                classNameTabLI={`${props.classNameTabLI} xl:mr-10 lg:mr-10`}
-                activeTab={activeTab}
-                key={index}
-                label={child.props.label}
-                onClick={_handleClickTabItem}
-            />
-        ),
-    [props]);
-
     return (
         <div className={`tabs ${props.classNameTabs}`}>
             <ul className={`tab-list ${props.classNameTabUL} flex pb-20`}>
                 {props.children && _.map(props.children, (child, index) => (
                     <Tab
                         classNameLabelActive={`${props.classNameLabelActive} text-primary-300`}
-                        classNameTabLI={`${props.classNameTabLI} xl:mr-10 lg:mr-10`}
+                        classNameTabLI={`${props.classNameTabLI} xl:mr-10 lg:mr-10 md:mr-10`}
                         activeTab={activeTab}
                         key={index}
                         label={child.props.label}

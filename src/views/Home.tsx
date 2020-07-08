@@ -88,10 +88,6 @@ const Home: React.FC<HomeProps> = (props): JSX.Element =>  {
             <section className="h-full">
                 <div className="relative container mx-auto px-6 xl:px-0 lg:px-0 md:px-0 xl:py-40 lg:py-32 md:py-24 py-20 xl:max-w-container-2 border-2 border-solid">
                     {Carousel}
-                    {/* <img id="image-stamps" src={require("../assets/tmo-stamps-brown.png")}
-                        className="absolute max-w-sm top-0 right-0 xl:mt-32 lg:mt-24 z-10"
-                        alt="the-maj-oceanic-stamps-bromn"
-                    /> */}
                 </div>
             </section>
         </div>

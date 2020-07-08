@@ -1,6 +1,5 @@
 import * as React from 'react';
 import _ from 'lodash';
-import PropTypes from 'prop-types'
 
 /**
  * @type Table Item
@@ -36,7 +35,7 @@ const Table: React.FC<TableProps> = (props) => {
                             borderRight: "none"
                         }}
                     > 
-                        <h6 className="tracking-widest leading-normal">{args.title}</h6> 
+                        <h6 className="tracking-widest leading-normal text-left">{args.title}</h6> 
                     </td>
 
                     <td 
@@ -48,7 +47,7 @@ const Table: React.FC<TableProps> = (props) => {
                         }}
                     > 
                         {args.value && _.map(args.value.split('\n'), (item, i) => (
-                            <p key={i} className="body-1">{item}</p>
+                            <p key={i} className={`body-1 text-left ${i? 'mt-4' : 'mt-0'}`}>{item}</p>
                         ))}
                     </td>
                 </tr>
