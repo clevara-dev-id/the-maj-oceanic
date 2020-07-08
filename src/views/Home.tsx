@@ -86,7 +86,7 @@ const Home: React.FC<HomeProps> = (props): JSX.Element =>  {
             </section>
 
             <section className="h-full">
-                <div className="relative container mx-auto px-6 xl:px-0 lg:px-0 md:px-0 xl:py-40 lg:py-32 md:py-24 py-20 xl:max-w-container-2 border-2 border-solid">
+                <div className="relative container mx-auto px-6 xl:px-0 lg:px-0 md:px-0 xl:py-40 lg:py-32 md:py-24 py-20 xl:max-w-container-2">
                     {Carousel}
                 </div>
             </section>
