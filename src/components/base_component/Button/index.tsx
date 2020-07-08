@@ -7,8 +7,8 @@ import PropTypes from 'prop-types';
 
 const large = {width: "auto", height: "48px", fontSize: "17px"};
 const small = {width: "auto", height: "40px"};
-const primary = {backgroundColor: "#208CB2", color: "#FFFFFF", border: "1px solid #208CB2"};
-const secondary = {backgroundColor: "#C7E2EC", color: "#232323", border: "1px solid #C7E2EC"};
+const primary = {backgroundColor: "#208CB2", color: "#FFFFFF", border: "2px solid #208CB2 !important"};
+const secondary = {backgroundColor: "#C7E2EC", color: "#232323", border: "2px solid #C7E2EC !important"};
 const ghost = {backgroundColor: "transparent", color: primary.backgroundColor, border: `1px solid ${primary.backgroundColor}`};
 
 /**
@@ -94,7 +94,9 @@ const Button: React.FC<ButtonTypes> = (props): JSX.Element => {
                     <React.Fragment>
                         <i className="fa fa-bars mr-3"></i>
                     </React.Fragment>
-                ) : children}
+                ) 
+                :
+            children}
         </Btn>
     );
 };

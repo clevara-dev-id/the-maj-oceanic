@@ -2,9 +2,7 @@ import * as React from 'react';
 import _ from 'lodash';
 import Slider from 'react-slick';
 
-import './style.scss';
 import './style.css';
-import { BaseUrlImage } from '../../../../helper/axios';
 import Img1 from '../../../../assets/img/header/3.png';
 const Button = React.lazy(() => import('../../Button'));
 
@@ -71,7 +69,7 @@ type T = {
 const CarouselCardText: React.FC<T> = props => {
     const carousel = React.useRef<any>(null);
     const [localStore, setLocalStore] = React.useState<Array<ItemSlide>>([])
-    const [idxActive, setIdxActive] = React.useState<number>(0);
+    const [indexActive, setIndexActive] = React.useState<number>(0);
 
     React.useLayoutEffect(() => {
         if (!_.isEqual(localStore, props.store)) {
@@ -79,19 +77,55 @@ const CarouselCardText: React.FC<T> = props => {
         };
     }, [props.store]);
 
-    const CardItem = React.useMemo(
-        () => (data: any, index: number): JSX.Element => (
-            <CardTextItem 
-                key={index}
-                {...data}
-                {...props.className}
-                onClickNext={next}
-                onClickPrev={prev}
-                onClick={() => alert("clicked")}
-                buttonTitle="Learn More"
-            />
-        ),
-    [localStore])
+    /** 
+     * Image memo
+     */
+    const ImageContain = React.useMemo(() => 
+        (image: string) => <img src={image} className="w-full" alt="carousel-card-text-image"/>
+    ,[]);
+
+    /**
+     * Render Slide Item
+     */
+    function _renderSlideItem(data: ItemSlide, index: number): JSX.Element {
+        const Images: string = props.isStaticImage ? data.images : `${process.env.REACT_APP_BASE_URL_IMAGE}/${data.images}`;
+
+        return (
+            <div id="slide-item" key={index} className="focus:outline-none flex lg:flex-no-wrap flex-wrap">
+                    <div className="w-full lg:w-2/3 md:w-2/3 carousel-card-text-component">
+                        {ImageContain(Images)}
+
+                        <div className="absolute hidden xl:inline lg:inline arrows-container bottom-0 left-0 mb-5 ml-5">
+                            <ButtonSlick mode="prev" onClick={_prev}>
+                                <i className="fas fa-angle-left text-base"></i>
+                            </ButtonSlick>
+                            
+                            <ButtonSlick mode="next" onClick={_next}>
+                                <i className="fas fa-angle-right text-base"></i>
+                            </ButtonSlick>
+                        </div>
+                    </div>
+            </div>
+        );
+    };
+
+    /** 
+     * Render Card Item
+     */
+    const _onButtonClick = React.useCallback(() => alert("push to location"), []);
+    function _renderCardItem(data: ItemSlide, index: number): JSX.Element | null {
+        if (indexActive === index) {
+            return <CardTextItem key={index} {...data} buttonTitle="discover" onButtonClick={_onButtonClick} />
+        };
+
+        return null;
+    };
+
+    /** 
+     * Prev and Next Button Action
+     */
+    const _prev = React.useCallback(function() { carousel.current.slickPrev() }, []);
+    const _next = React.useCallback(function() { carousel.current.slickNext() }, []);
 
     return (
         <div id="carousel-card-text-component" className={props.containerClassName}>
@@ -105,140 +139,84 @@ const CarouselCardText: React.FC<T> = props => {
                 ref={carousel}
                 dotsClass="slick-dots center"
                 useCSS={true}
-                afterChange={(currentSlide: number) => setIdxActive(currentSlide)}
-                customPaging={(i: any) => 
-                    <div 
-                        id="dot"
-                        className="rounded-full"
-                    />
-                }>
-                    
-                {localStore.length && _.map(localStore, CardItem)}
+                customPaging={i => <div 
+                    className="dots hidden xl:inline-flex lg:inline-flex md:inline-flex rounded-full w-3 h-3 bg-dot-100 opacity-25 hover:bg-primary-300 hover:opacity-100" 
+                />}
+                afterChange={(currentSlide: number) => setIndexActive(currentSlide)}>
+                {!_.isEmpty(localStore) && _.map(localStore, _renderSlideItem)}
             </Slider>
+
+            <img src={require("../../../../assets/tmo-stamps-brown.png")}
+                alt="tmo-stamps-brown"
+                className="tmo-stamps-brown absolute mx-w-sm top-0 right-0 -mt-20 -mr-3 hidden xl:inline lg:inline md:inline"
+            />
+            {localStore && _.map(localStore, _renderCardItem)}
         </div>
-    )
-
-    function prev(): void {
-        carousel.current.slickPrev();
-    };
-
-    function next(): void {
-        carousel.current.slickNext();
-    };
+    );
 };
 
-/**
- * @property CardTextItem
- * 
- * @param cardClassName ` string ` (optional)
- * 
- * @param imageClassName ` string ` (optional)
- * 
- * @param key ` string | number `
- * 
- * @param isStaticImage ` boolean ` (optional)
- * 
- * @param onClickPrev ` () => void ` // button slider left
- * 
- * @param onClickNext ` () => void ` // button slider right
- * 
- * @param onClick ` () => void ` button card
- * 
- * @param buttonTitle ` string `
- * 
- * @description properties extends ItemSlide
- * 
- * @param id ` number `
- * 
- * @param images ` string `
- * 
- * @param caption ` string ` (optional)
- * block
- * 
- * @param list ` string ` (optional)
- */
+
 interface CardTextItemProps extends ItemSlide {
-    key?: number | string;
-    
-    isStaticImage?: boolean;
-
     cardClassName?: string;
-
-    imageClassName?: string;
-
-    onClickPrev?: () => void;
-
-    onClickNext?: () => void;
-
-    onClick?: () => void;
-
+    onButtonClick?: () => void;
     buttonTitle: string;
 };
-
+/**
+ * CardTextItem
+ * 
+ * @param id ` number `
+ * @param images ` string `
+ * @param caption ` string ` (optional)
+ * @param heading  ` string `
+ * @param text ` string ` (optional)
+ * @param list ` Array<string> `
+ * @param cardClassName `string`
+ * @param onButtonClick `() => void`
+ * @param buttonTitle `string`
+ */
 const CardTextItem: React.FC<CardTextItemProps> = (props): JSX.Element => {
     const { 
-        images, caption, heading,
-        text, list, isStaticImage,
-        key, onClickPrev, onClickNext,
-        onClick, buttonTitle,
-        cardClassName, imageClassName
+        caption, heading,
+        text, list, onButtonClick, 
+        buttonTitle, cardClassName,
     } = props;
+    
+    const ButtonTitle = React.useMemo(() => 
+        <Button 
+            className="uppercase leading-7 inline-block font-bold text-center align-middle mt-12"
+            width={160}
+            // height={40}
+            outline
+            onClick={onButtonClick}>
+            {buttonTitle || "discover"}
+        </Button>
+    ,[])
 
-    let Image = isStaticImage ? images : BaseUrlImage + images;
-
-    const ImageSlide = React.useMemo(() => (
-        <div className="w-full lg:w-2/3 carousel-card-text-component">
-            <img src={Image} className={`w-full ${imageClassName}`} alt="img-slick" />
-
-            <div className="absolute arrows-container">
-                <ButtonSlick mode="prev" onClick={onClickPrev}>
-                    <i className="fas fa-angle-left text-base"></i>
-                </ButtonSlick>
-                
-                <ButtonSlick mode="next" onClick={onClickNext}>
-                    <i className="fas fa-angle-right text-base"></i>
-                </ButtonSlick>
-            </div>
-        </div>
-    ), [images]);
-
-    const CardSlide = React.useMemo(() => (
-        <div id="card-text" className={`container mx-auto w-full xl:w-5/12 lg:w-5/12 bg-white px-6 py-16 mt-20 ml-min-12 shadow-xl z-20 xl:left-0 lg:left-0 ${cardClassName}`}
-            style={{
-                maxWidth: 445,
-                maxHeight: 506
-            }}>
-            <div className="h-full">
-                <h6 className="primary mb-3">{caption}</h6>
+    return (
+        <div id="card-text" 
+            className={`container w-full h-full sm:h-full md:h-screen lg:h-full xl:h-full xl:w-5/12 lg:w-5/12 md:w-5/12 bg-white shadow-xl z-20 flex xl:absolute lg:absolute md:absolute top-0 my-20 right-0 px-8 py-8 ${cardClassName}`}>
+            <div className="h-full text-left">
+                <h6 className="primary mb-3 leading-7 tracking-caption2">{caption}</h6>
                 <h1 className="leading-7"> {heading} </h1>
 
-                <p className="my-8 body-1"> {/* 29px 0 25px */}
+                <p className="body-1 font-light mt-10">
                     {text}
                 </p>
 
                 {list
-                    ? (
-                        <div className="mb-8"> {/* 0 0 39px */}
-                            <ul style={{ listStyleType: "circle", padding: "0 20px"}}>
+                    ?
+                        <div className="mb-8">
+                            <ul>
                                 {_.map(list, (item: string, idx: number) => (
                                     <li key={idx} className="body-1">{item}</li>
                                 ))}
                             </ul>
                         </div>
-                    )
                     : null
                 }
-                <Button small outline onClick={onClick}>
-                    {buttonTitle}
-                </Button>
-            </div>
-        </div>
-    ), [caption, heading, list]);
 
-    return (
-        <div id="slide-item" key={key} className="focus:outline-none flex lg:flex-no-wrap flex-wrap">
-            {ImageSlide}
-            {CardSlide}
+                {ButtonTitle}
+            </div>
         </div>
     );
 };
@@ -259,11 +237,11 @@ const ButtonSlick = React.memo(({
         : "w-8 h-8 relative left-0 rounded-full arrows";
 
     return (
-        <button className={style} onClick={onClick}>
+        <button className={`${style} bg-white text-primary-300 hover:bg-primary-300 hover:text-white`} onClick={onClick}>
             {children}
         </button>
     )
-});
+}, (prevProps, nextProps) => _.isEqual(prevProps, nextProps));
 
 CarouselCardText.defaultProps = {
     store: [{
