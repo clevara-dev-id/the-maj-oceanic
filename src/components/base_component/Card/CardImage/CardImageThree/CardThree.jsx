@@ -1,6 +1,6 @@
 import React, { Component, lazy } from 'react';
 import PropTypes from 'prop-types';
-import Img1 from '../../../../../assets/img/home/card-image/1.png';
+import Img1 from '../../../../../assets/img/CardThreeImage/1.png';
 import './style.scss';
 
 /* Components */

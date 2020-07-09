@@ -1,37 +1,65 @@
-#carousel-three{
-    .text-xl{
+
+$layout-min-md: 768px;
+
+#carousel-three {
+    .text-xl {
         margin-top:22px;
         font-size: 22px !important;
     }
-    .slick-dots{
+    
+    .slick-dots {
         bottom: -90px;
     }
-    .arrows{
+    
+    .arrows {
         background-color: #208CB2;
         color: white;
         z-index: 9;
+
+        &:hover {
+            background-color: white;
+            color: #208CB2;
+        }
     }
-    .arrow-left{
-        left: 3rem;
+
+    .arrow-left {
+        left: -2rem;
     }
-    .arrow-right{
-        right: 3rem;
+
+    .arrow-right {
+        right: -2rem;
     }
-    .arrows:hover{
-        background-color: #208CB2;
-        color: white;
-    }
-    .arrow-right,.arrow-left{
+
+    .arrow-right, .arrow-left {
         visibility: visible;
         margin-top: 12rem;
     }
-    @media screen and (max-width:1024px) {
-        .arrow-left,.arrow-right{
-            visibility: hidden;
+    
+    .slick-dots {
+        bottom: -46px;
+        
+        .dots {
+            width: 12px;
+            height: 12px;
+            background: #4E5E79;
+            border-radius: 6px;
+            opacity: .25;
+        }
+
+        .slick-active .dots {
+            background-color: #208CB2;
+            opacity: 1;
         }
     }
-    .arrows-container{
+
+    .arrows-container {
         margin-top: -3rem;
         margin-left: 1rem;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .arrow-left, .arrow-right {
+            visibility: hidden;
+        }
     }
 }

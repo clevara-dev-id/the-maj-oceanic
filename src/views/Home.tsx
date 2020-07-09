@@ -51,7 +51,12 @@ const Home: React.FC<HomeProps> = (props): JSX.Element =>  {
             <CarouselCardText
                 containerClassName="xl:max-w-container-2 relative my-16 z-20"
                 store={source?.carousel!}
-            />
+            >
+                <img src={require('../assets/tmo-stamps-brown.png')}
+                    alt="tmo-stamps-brown"
+                    className="tmo-stamps-brown absolute mx-w-sm top-0 right-0 -mt-20 -mr-3 hidden xl:inline lg:inline md:inline"
+                />
+            </CarouselCardText>
         ),
     [source?.carousel]);
     
@@ -75,7 +80,7 @@ const Home: React.FC<HomeProps> = (props): JSX.Element =>  {
                         p-8
                     "
                     headingClassName="lg:max-w-xl text-center leading-none"
-                    heading={source?.heading}
+                    heading={source?.heading!}
                     text={source?.text}
                     textClassName="mt-8 lg:max-w-xl leading-6"
                 />

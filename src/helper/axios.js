@@ -1,7 +1,7 @@
 import Axios from 'axios';
 
-export const BaseUrl = "https://backend.themajbekasi.com/api/oceanic/pages";
-export const BaseUrlImage = "https://backend.themajbekasi.com/storage/";
+export const BaseUrl = process.env.REACT_APP_BASE_URL;
+export const BaseUrlImage = process.env.REACT_APP_BASE_URL_IMAGE;
 export let TimeOut = 5000;
 const axios = Axios.create();
 

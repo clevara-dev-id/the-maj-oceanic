@@ -1,7 +1,7 @@
 import * as React from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
-import Heading from './Heading';
+import Heading, { HeadingDataProps } from './Heading';
 import './style.scss';
 
 /**
@@ -35,23 +35,22 @@ import './style.scss';
  * caption?: string;
  * ```
  */
-export type HeadingTextProps = {
-    containerClassName?: string;
-    containerStyle?: React.CSSProperties;
+export type HeadingTextDataProps = HeadingDataProps & {
+    text?: string | null,
+    list?: Array<string> | null,
+}
+export type HeadingTextProps = HeadingTextDataProps & {
+    containerClassName?: string | null;
+    containerStyle?: React.CSSProperties | null;
 
-    heading?: string;
-    headingClassName?: string;
+    headingClassName?: string | null;
     headingStyle?: React.CSSProperties;
 
-    text?: string;
-    textClassName?: string;
+    textClassName?: string | null;
     textStyle?: React.CSSProperties;
 
-    list?: Array<string>;
-    children?: React.ReactNode;
-    
+    children?: React.ReactNode;    
     center?: boolean;
-    caption?: string;
 };
 
 /** 
@@ -95,7 +94,7 @@ export const HeadingText: React.FC<HeadingTextProps> = (
                 }
                 heading-text
             `} 
-            style={props.containerStyle}>
+            style={props.containerStyle!}>
 
             <Heading 
                 caption={props.caption}
@@ -105,7 +104,7 @@ export const HeadingText: React.FC<HeadingTextProps> = (
             />
 
             <p style={props.textStyle}
-                title={props.text}
+                title={props.text!}
                 className={`
                     body-1 
                     ${props.center

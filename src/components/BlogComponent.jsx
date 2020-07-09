@@ -8,9 +8,9 @@ import SingleButtonComponent from './SingleButtonComponent'
 import CardThreeComponent from './CardThreeComponent'
 
 import ImgBlog from '../assets/img/blog/content.png'
-import ImgCard from '../assets/img/home/card-image/1.png'
-import ImgCard2 from '../assets/img/home/card-image/2.png'
-import ImgCard3 from '../assets/img/home/card-image/3.png'
+import ImgCard from '../assets/img/CardThreeImage/1.png'
+import ImgCard2 from '../assets/img/CardThreeImage/2.png'
+import ImgCard3 from '../assets/img/CardThreeImage/3.png'
 import ImgHeading from '../assets/img/blog/header.png'
 
 

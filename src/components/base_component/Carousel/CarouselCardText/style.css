@@ -68,30 +68,35 @@
     #carousel-card-text-component #card-text p {
         line-height: 1.5rem;
     }
-}
+} */
 
-#carousel-card-text #dot:hover {
+/* #carousel-card-text-component #dot:hover {
     opacity: 1;
     background: #208CB2;
 }
 
-#carousel-card-text .slick-active #dot {
+#carousel-card-text-component .slick-active #dot {
     background: #208CB2;
     opacity: 1;
 }
 
 
-#carousel-card-text .card-text ul {
+#carousel-card-text-component #card-text ul {
     list-style-type: disc;
     padding-left: 20px;
 }
 
-#carousel-card-text .card-text ul li {
+#carousel-card-text-component #card-text ul li {
     margin: 11px 0;
 } */
 
 .slick-dots li {
     left: -15%;
+}
+
+.slick-dots .dots {
+    background: #4E5E79;
+    opacity: .25;
 }
 
 .slick-dots .slick-active .dots {

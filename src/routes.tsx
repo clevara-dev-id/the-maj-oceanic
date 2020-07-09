@@ -17,6 +17,7 @@ const Cabin = React.lazy(() => import('./views/Cabin'));
 const Spesification = React.lazy(() => import('./views/Spesification'));
 const Contact = React.lazy(() => import('./views/Contact'));
 const Sailing = React.lazy(() => import('./views/SailingSoon'));
+const Vessel = React.lazy(() => import('./views/Vessel'));
 
 const BaseRoute: React.FC = () => {
     return( 
@@ -27,6 +28,7 @@ const BaseRoute: React.FC = () => {
             <Route exact path="/the-vessel/spesification" component={Spesification} />
             <Route exact path="/contact-us" component={Contact} />
             <Route exact path="/sailing-soon" component={Sailing} />
+            <Route exact path="/the-vessel" component={Vessel} />
         </React.Fragment>
     )
 };
