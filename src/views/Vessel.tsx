@@ -2,7 +2,6 @@ import * as React from 'react';
 import _ from 'lodash';
 
 import DefaultProps, { VesselProps } from '../static/vessel';
-import CarouselCardText from '../components/base_component/Carousel/CarouselCardText';
 
 /**
  * Components
@@ -13,6 +12,8 @@ const LargeImage    = React.lazy(() => import('../components/base_component/Larg
 const Heading       = React.lazy(() => import('../components/base_component/Heading/Heading'));
 const CarouselThree = React.lazy(() => import('../components/base_component/Carousel/CarouselThree'));
 const Button        = React.lazy(() => import('../components/base_component/Button/Button'));
+const CarouselCardText = React.lazy(() => import('../components/base_component/Carousel/CarouselCardText'));
+const CardTextImage = React.lazy(() => import('../components/base_component/Card/CardTextImage/CardTextImageRL'));
 
 /**
  * The Vessel Component
@@ -76,9 +77,9 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
      */
     const CarouselCard = React.useMemo<JSX.Element>( 
         () => (
-            <div className="relative container mx-auto px-6 xl:px-0 lg:px-0 md:px-0 xl:py-40 lg:py-32 md:py-24 py-20 xl:max-w-container-2">
+            <div className="relative container mx-auto px-6 xl:px-0 lg:px-0 md:px-0 xl:max-w-container-2 pb- border border-black box-border">
                 <CarouselCardText 
-                    containerClassName="xl:max-w-container-2 relative my-16 z-20 pb-12"
+                    containerClassName="xl:max-w-container-2 relative z-20 pb-12 border border-black"
                     store={props.carousel}
                     isStaticImage
                 />
@@ -86,22 +87,76 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
         )
     ,[]);
 
+    /**
+     * Carousel Three Team 
+     */
+    const CarouselThreeTeam = React.useMemo<JSX.Element>(
+        () => (
+            <React.Fragment>
+                <Heading caption={props.carousel_three_team.caption} heading={props.carousel_three_team.heading} />
+                <CarouselThree
+                    isStaticImage
+                    containerClassName="relative max-w-6xl mx-auto mt-20"
+                    store={props.carousel_three_team.data}
+                />
+            </React.Fragment>
+        )
+    ,[]);
+
+    /**
+     * Card Text Image
+     */
+    const CardText = React.useMemo<JSX.Element>( 
+        () => (
+            <React.Fragment>
+                <CardTextImage 
+                    caption='sustainbility'
+                    heading='Lorem Ipsum Dolor'
+                    text='Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis culpa anim cupidatat elit irure. Nulla nostrud elit quis nostrud sit cupidatat aute sit excepteur nisi. Proident irure proident eiusmod voluptate velit aliquip velit est minim cillum consequat excepteur aliquip esse. Quis adipisicing commodo voluptate esse culpa.'
+                    list={[
+                        'Lorem ipsum dolor sit amet',
+                        'Lorem lar aliquip',
+                        'Lorem ipsum dolor sit amet',
+                        'Lorem lar aliquip',
+                    ]}
+                    image={require('../assets/img/CardTextImage/1.png')}
+                    isStaticImage={true}
+                    to="#"
+                >
+                    <Button mode="outline" to="#">
+                        Learn More
+                    </Button>
+                </CardTextImage>
+            </React.Fragment>
+        )
+    ,[]);
+
+    let border = 'border border-black';
+
     return (
         <div id="vessel">
             <section>
                 {Slider}
             </section>
 
-            <section className={"py-24 "}>
+            <section className={"py-24 " + border}>
                 {HeadingImage}
             </section>
 
-            <section className={"py-20 "}>
+            <section className={"py-20 " + border}>
                 {CarouselThreeHeading}
             </section>
 
-            <section className={"pt-40 pb-56 "}>
+            <section className={"pt-40 pb-48 " + border}>
                 {CarouselCard}
+            </section>
+
+            <section className={"py-20 " + border}>
+                {CarouselThreeTeam}
+            </section>
+
+            <section className={"py-20 " + border}>
+                {CardText}
             </section>
         </div>
     );

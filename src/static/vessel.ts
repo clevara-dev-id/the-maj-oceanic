@@ -11,9 +11,14 @@ export interface VesselProps {
     carousel_three: {
         caption?: string | null,
         heading: string,
-        data: CarouselThreeItem[]
+        data: CarouselThreeItem[],
     },
-    carousel: CarouselCardTextItem[]
+    carousel: CarouselCardTextItem[],
+    carousel_three_team: {
+        caption?: string | null,
+        heading: string,
+        data: CarouselThreeItem[],
+    }
 };
 
 const staticVessel: VesselProps = {
@@ -60,7 +65,27 @@ const staticVessel: VesselProps = {
         heading: 'Lorem Ipsum',
         text: 'Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis.',
         images: require('../assets/img/CarouselCard/1.png'),
-    }]
+    }],
+    carousel_three_team: {
+        caption: 'the team',
+        heading: 'Lorem ipsum dolor',
+        data: [{
+            id: 0,
+            heading: 'Christophe Beltrando',
+            text: 'Hemmed by jungle and lulled by the lap of the Indian Ocean, the hotel is rich in island spirit',
+            image: require('../assets/img/CardThreeImage/4.png'),
+        },{
+            id: 1,
+            heading: 'Mohamad Arief',
+            text: 'Hemmed by jungle and lulled by the lap of the Indian Ocean, the hotel is rich in island spirit',
+            image: require('../assets/img/CardThreeImage/5.png'),
+        },{
+            id: 2,
+            heading: 'Syamsudin',
+            text: 'Hemmed by jungle and lulled by the lap of the Indian Ocean, the hotel is rich in island spirit',
+            image: require('../assets/img/CardThreeImage/5.png'),
+        }]
+    }
 };
 
 export default staticVessel;

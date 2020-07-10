@@ -40,17 +40,19 @@ export type HeadingTextDataProps = HeadingDataProps & {
     list?: Array<string> | null,
 }
 export type HeadingTextProps = HeadingTextDataProps & {
-    containerClassName?: string | null;
-    containerStyle?: React.CSSProperties | null;
+    containerClassName?: string | null,
+    containerStyle?: React.CSSProperties | null,
 
-    headingClassName?: string | null;
-    headingStyle?: React.CSSProperties;
+    headingClassName?: string | null,
+    headingStyle?: React.CSSProperties,
 
-    textClassName?: string | null;
-    textStyle?: React.CSSProperties;
+    textClassName?: string | null,
+    textStyle?: React.CSSProperties,
 
-    children?: React.ReactNode;    
-    center?: boolean;
+    children?: React.ReactNode,    
+    center?: boolean,
+
+    listContainerClassName?: string | null,
 };
 
 /** 
@@ -82,7 +84,9 @@ export const HeadingText: React.FC<HeadingTextProps> = (
 ): JSX.Element => {
 
     const _renderItem = (data: string, index: number) => (
-        <li key={index}>{data}</li>
+        <li key={index} className="py-1">
+            <p className="body-1">{data}</p>
+        </li>
     );
 
     return (
@@ -119,11 +123,11 @@ export const HeadingText: React.FC<HeadingTextProps> = (
             />
 
             {props.list?
-                <React.Fragment>
+                <div className={props.listContainerClassName!}>
                     <ul className="mb-10 pl-4 list-disc">
                         {props.list.map(_renderItem)}
                     </ul>
-                </React.Fragment>
+                </div>
             : null}
             {props.children && props.children}
         </div>
