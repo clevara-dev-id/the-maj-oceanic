@@ -77,9 +77,9 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
      */
     const CarouselCard = React.useMemo<JSX.Element>( 
         () => (
-            <div className="relative container mx-auto px-6 xl:px-0 lg:px-0 md:px-0 xl:max-w-container-2 pb- border border-black box-border">
+            <div className="relative container mx-auto px-6 xl:px-0 lg:px-0 md:px-0 xl:max-w-container-2 box-border">
                 <CarouselCardText 
-                    containerClassName="xl:max-w-container-2 relative z-20 pb-12 border border-black"
+                    containerClassName="xl:max-w-container-2 relative z-20 pb-12"
                     store={props.carousel}
                     isStaticImage
                 />
@@ -110,16 +110,7 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
         () => (
             <React.Fragment>
                 <CardTextImage 
-                    caption='sustainbility'
-                    heading='Lorem Ipsum Dolor'
-                    text='Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis culpa anim cupidatat elit irure. Nulla nostrud elit quis nostrud sit cupidatat aute sit excepteur nisi. Proident irure proident eiusmod voluptate velit aliquip velit est minim cillum consequat excepteur aliquip esse. Quis adipisicing commodo voluptate esse culpa.'
-                    list={[
-                        'Lorem ipsum dolor sit amet',
-                        'Lorem lar aliquip',
-                        'Lorem ipsum dolor sit amet',
-                        'Lorem lar aliquip',
-                    ]}
-                    image={require('../assets/img/CardTextImage/1.png')}
+                    {...props.card_text_image}
                     isStaticImage={true}
                     to="#"
                 >
@@ -131,31 +122,29 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
         )
     ,[]);
 
-    let border = 'border border-black';
-
     return (
         <div id="vessel">
             <section>
                 {Slider}
             </section>
 
-            <section className={"py-24 " + border}>
+            <section className={"py-24"}>
                 {HeadingImage}
             </section>
 
-            <section className={"py-20 " + border}>
+            <section className={"py-20"}>
                 {CarouselThreeHeading}
             </section>
 
-            <section className={"pt-40 pb-48 " + border}>
+            <section className={"pt-40 pb-48 "}>
                 {CarouselCard}
             </section>
 
-            <section className={"py-20 " + border}>
+            <section className={"py-20 "}>
                 {CarouselThreeTeam}
             </section>
 
-            <section className={"py-20 " + border}>
+            <section className={"py-20 "}>
                 {CardText}
             </section>
         </div>

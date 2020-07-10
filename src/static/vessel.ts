@@ -18,6 +18,13 @@ export interface VesselProps {
         caption?: string | null,
         heading: string,
         data: CarouselThreeItem[],
+    },
+    card_text_image: {
+        caption?: string | null,
+        heading: string,
+        text?: string,
+        list?: string[],
+        image: string,
     }
 };
 
@@ -85,6 +92,18 @@ const staticVessel: VesselProps = {
             text: 'Hemmed by jungle and lulled by the lap of the Indian Ocean, the hotel is rich in island spirit',
             image: require('../assets/img/CardThreeImage/5.png'),
         }]
+    },
+    card_text_image: {
+        caption: 'sustainbility',
+        heading: 'Lorem Ipsum Dolor',
+        text: 'Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis culpa anim cupidatat elit irure. Nulla nostrud elit quis nostrud sit cupidatat aute sit excepteur nisi. Proident irure proident eiusmod voluptate velit aliquip velit est minim cillum consequat excepteur aliquip esse. Quis adipisicing commodo voluptate esse culpa.',
+        list: [
+            'Lorem ipsum dolor sit amet',
+            'Lorem lar aliquip',
+            'Lorem ipsum dolor sit amet',
+            'Lorem lar aliquip',
+        ],
+        image: require('../assets/img/CardTextImage/1.png'),
     }
 };
 
