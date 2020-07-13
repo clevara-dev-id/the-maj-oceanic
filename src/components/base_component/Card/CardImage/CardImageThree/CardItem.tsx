@@ -1,7 +1,7 @@
 import * as React from 'react';
 import _ from 'lodash';
 import HeadingText, { HeadingTextProps, HeadingTextDataProps } from '../../../Heading/HeadingText';
-import Button from '../../../Button';
+import Button, { ButtonProps } from '../../../Button/Button';
 
 import './style.scss';
 import { BaseUrlImage } from '../../../../../helper/axios';
@@ -12,7 +12,7 @@ export type CardItemDataProps = HeadingTextDataProps & {
     buttonTitle?: string | null,
 };
 
-export type CardItemProps = HeadingTextProps & {
+export type CardItemProps = HeadingTextProps & ButtonProps & {
     containerClassName?: string,
     containerImageClassName?: string,
     containerHeadingClassName?: string,
@@ -23,27 +23,9 @@ export type CardItemProps = HeadingTextProps & {
     onClick?: () => void,
 };
 /**
- * Card Item
+ * ## Card Item
  * 
- * ## Usage
- * ```js
- *  <CardItem
- *     caption="The Vessel"
- *     heading="Heading Vessel"
- *     text="Text Heading Vessel"
- *     buttonTitle="Text Button Vessel"
- *     image={require('../assets/images/1.png')}
- *      
- *     containerClassName="card-item"
- *     containerImageClassName="bg-auto"
- *     containerHeadingClassName="mx-auto"
- *     headingClassName="uppercase"
- *     textClassName="w-full"
- *     isStaticImage={true}
- *  />
- * ```
- * 
- * ### Property
+ * ### props
  * @param containerClassName string
  * @param containerImageClassName string
  * @param containerHeadingClassName string
@@ -57,6 +39,25 @@ export type CardItemProps = HeadingTextProps & {
  * @param buttonTitle string
  * @param image string
  * @param onClick () => void
+ * 
+ * ## Usage
+ * ```js
+ *  <CardItem
+ *     caption="The Vessel"
+ *     heading="Heading Vessel"
+ *     text="Text Heading Vessel"
+ *     buttonTitle="Text Button Vessel"
+ *     image={require('../assets/images/1.png')}
+ *      
+ *     containerClassName="card-item"
+ *     containerImageClassName="bg-auto"
+ *     containerHeadingClassName="mx-auto"
+ *     captionClassName="primary"
+ *     headingClassName="uppercase"
+ *     textClassName="w-full"
+ *     isStaticImage={true}
+ *  />
+ * ```
  */
 const CardItem: React.FC<CardItemProps> = (props): JSX.Element => {
     const ImageUri: string = props.isStaticImage 
@@ -68,6 +69,7 @@ const CardItem: React.FC<CardItemProps> = (props): JSX.Element => {
     const Heading = React.useMemo(() => (
         <HeadingText
             caption={props.caption}
+            captionClassName={props.captionClassName}
             heading={props.heading}
             text={props.text}
             containerClassName={`mx-auto w-full ${props.containerHeadingClassName} `} 
@@ -75,18 +77,13 @@ const CardItem: React.FC<CardItemProps> = (props): JSX.Element => {
             headingClassName={`${props.headingClassName}`} 
             textClassName={` w-full ${props.textClassName} `}
         />
-    ), [props.heading, props.text]);
+    ), [props.heading, props.text, props.caption]);
     /**
      * Button
      */
     const ButtonText = React.useMemo(() => (
         <div className="text-center mx-auto w-image-1 mt-10">
-            <Button
-                ghost
-                border="2px solid #208CB2"
-                hover={{ color: "#ffffff", backgroundColor:"#208CB2" }}
-                className="uppercase"
-                onClick={props.onClick}>
+            <Button mode={props.mode || "outline"} to={props.to || "#"}>
                 {props.buttonTitle}
             </Button>
         </div>
@@ -96,7 +93,7 @@ const CardItem: React.FC<CardItemProps> = (props): JSX.Element => {
         <ErrorBoundary>
             <div className={`${props.containerClassName} card-item`}>
                 <img src={ImageUri} alt="image-card-item" className={`${props.containerImageClassName} mx-auto`} />
-                {props.heading && Heading}
+                {Heading}
                 {props.buttonTitle && ButtonText}
             </div>
         </ErrorBoundary>

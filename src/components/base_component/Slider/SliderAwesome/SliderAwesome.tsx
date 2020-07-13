@@ -9,17 +9,7 @@ import { BaseUrlImage } from '../../../../helper/axios';
 const CoreStyles = require('react-awesome-slider/src/core/styles.scss');
 const AnimationStyles = require('react-awesome-slider/src/styled/fold-out-animation/fold-out-animation.scss');
 
-
-/**
- * @property SliderItem
- * 
- * @param id number
- * 
- * @param images string
- * 
- * @param text string
- */
-export interface SliderItem {
+export type SliderItem = {
     id?: number;
 
     images: string;
@@ -27,18 +17,7 @@ export interface SliderItem {
     text: string;
 };
 
-/**
- * @property SliderAwesome
- * 
- * @param store Array<{ id: number; images: string; text: string; }>
- * 
- * @param isStaticImage boolean
- * 
- * @param imageClassName string
- * 
- * @param textClassName string
- */
-export interface SliderProps {
+export type SliderProps = {
     isStaticImage?: boolean;
 
     imageClassName?: string;
@@ -59,8 +38,8 @@ export interface SliderProps {
  * 
  * @param textClassName string
  * 
- * @example
- * ```typescript
+ * ### Usage
+ * ```js
  * <SliderAwesome
  *    isStaticImage={true}
  *    store={[{
@@ -68,10 +47,7 @@ export interface SliderProps {
  *      text: "string",
  *       image: require("../asset/images/1.png")
  *    }]
- *    
- * } />
- * 
- * <SliderAwesome 
+ * />
  * ```
  */
 const SliderAwesome: React.FC<SliderProps> = (props): JSX.Element => {

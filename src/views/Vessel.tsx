@@ -42,9 +42,10 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
                     text={props.text}
                     containerClassName="w-full mx-auto max-w-3xl"
                     textClassName="px-6"
+                    headingClassName=" mt-4"
                 />
                 <LargeImage
-                    images={props.images}
+                    images={props.image}
                     imageClassName="max-w-container-2 max-h-large-image mt-16 mx-auto"
                     isStaticImage
                 />
@@ -63,7 +64,8 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
                     isStaticImage
                     containerClassName="relative mt-20 max-w-6xl mx-auto"
                     store={props.carousel_three.data} 
-                    
+                    mode="outline"
+                    to="#"
                 />
                 <Button mode="outline" to="#" className="mt-20">
                     Discover More
@@ -77,13 +79,12 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
      */
     const CarouselCard = React.useMemo<JSX.Element>( 
         () => (
-            <div className="relative container mx-auto px-6 xl:px-0 lg:px-0 md:px-0 xl:max-w-container-2 box-border">
-                <CarouselCardText 
-                    containerClassName="xl:max-w-container-2 relative z-20 pb-12"
-                    store={props.carousel}
-                    isStaticImage
-                />
-            </div>
+            <CarouselCardText 
+                containerClassName="max-w-container-2 relative pb-12 mx-auto"
+                store={props.carousel}
+                isStaticImage
+                containerArrow="mb-16"
+            />
         )
     ,[]);
 
@@ -98,6 +99,8 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
                     isStaticImage
                     containerClassName="relative max-w-6xl mx-auto mt-20"
                     store={props.carousel_three_team.data}
+                    mode="outline"
+                    to="#"
                 />
             </React.Fragment>
         )
@@ -108,17 +111,13 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
      */
     const CardText = React.useMemo<JSX.Element>( 
         () => (
-            <React.Fragment>
-                <CardTextImage 
-                    {...props.card_text_image}
-                    isStaticImage={true}
-                    to="#"
-                >
-                    <Button mode="outline" to="#">
-                        Learn More
-                    </Button>
-                </CardTextImage>
-            </React.Fragment>
+            <CardTextImage 
+                {...props.card_text_image}
+                isStaticImage={true}
+                linkTo="#"
+                mode="outline"
+                buttonTitle="learn more"
+            />
         )
     ,[]);
 
@@ -136,11 +135,11 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
                 {CarouselThreeHeading}
             </section>
 
-            <section className={"pt-40 pb-48 "}>
+            <section className={"pt-40 pb-48"}>
                 {CarouselCard}
             </section>
 
-            <section className={"py-20 "}>
+            <section className={"py-20"}>
                 {CarouselThreeTeam}
             </section>
 

@@ -1,8 +1,8 @@
 $layout-min-md: 768px;
 
-#carousel-card-text-component {
+.carousel-card-text-component {
     .slick-dots {
-        right: 15%;
+        // right: 15%;
 
         .slick-active .dots {
             background-color: #208CB2;
@@ -10,15 +10,9 @@ $layout-min-md: 768px;
         }
     }
 
-    #card-text {
+    .card-text {
         p {
             line-height: 21px !important;
-        }
-
-        ul {
-            padding-left: 12px;
-            list-style-position: outside;
-            list-style-type: disc;
         }
     }
 }

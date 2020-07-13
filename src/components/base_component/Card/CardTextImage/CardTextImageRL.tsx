@@ -1,21 +1,23 @@
 import * as React from 'react';
 import _ from 'lodash';
-import { NavLinkProps } from 'react-router-dom';
 
 import './style.scss';
 import HeadingText, { HeadingTextProps } from '../../Heading/HeadingText';
-import Heading, { HeadingProps } from '../../Heading/Heading';
+import Button from '../../Button/Button';
 
 enum LayoutMobile {
     first,
     second,
 };
-export type CardTextImageRLProps = HeadingTextProps & NavLinkProps & {
+export type CardTextImageRLProps = HeadingTextProps & {
     reverse?: boolean,
     isStaticImage?: boolean,
     image: string,
     children?: React.ReactNode,
     layoutModel?: LayoutMobile.first | LayoutMobile.second,
+    buttonTitle?: string,
+    mode?: "outline" | "contain",
+    linkTo?: string,
 };
 
 /**
@@ -50,24 +52,14 @@ const CardTextImageRL: React.FC<CardTextImageRLProps> = (props): JSX.Element => 
     const ImageUri = props.isStaticImage
         ? props.image : `${process.env.REACT_APP_BASE_URL_IMAGE}/${props.image}`;
 
-    /**
-     * Layout Mobile
-     * 
-     * default layout is layout first
-     */
-    // const LayoutMobileFirst = (): JSX.Element => (
-    //     <img src={ImageUri} alt="card-text-image" className="card-image-rl bg-center bg-cover w-full xl:w-10/12 lg:w-10/12 md:w-10/12" />
-    // );
-    // const LayoutMobileSecond = (): JSX.Element => (
-    //     <ModeImageCenter caption={props.caption} heading={props.heading} text={props.text} list={props.list}>
-    //         <img src={ImageUri} alt="card-text-image" className="card-image-rl mx-auto bg-center bg-cover w-full xl:w-10/12 lg:w-10/12 md:w-10/12" />
-    //     </ModeImageCenter>
-    // );
+    let containerHeadClass: string = 
+        props.reverse
+        ? "mt-10" : "mt-10"
     
     /**
-     * Text Left
+     * Heading Text List
      */
-    const TextLeft = React.useMemo( 
+    const Head = React.useMemo<JSX.Element>(
         (): JSX.Element => (
             <React.Fragment>
                 <HeadingText
@@ -75,114 +67,42 @@ const CardTextImageRL: React.FC<CardTextImageRLProps> = (props): JSX.Element => 
                     heading={props.heading}
                     text={props.text}
                     list={props.list}
-
-                    containerClassName={`mt-32 mb-5 xl:mb-24 lg:mb-24 md:mb-24 text-left max-w-2xl sm:max-w-xl h-auto w-full xl:w-7/12 lg:w-7/12 hidden xl:inline lg:inline md:inline`}
-                    headingClassName={`${props.headingClassName} -mt-4`}
-                    textClassName={`${props.textClassName} mt-3`}
+    
+                    containerClassName={`${containerHeadClass} px-6 xl:px-0 lg:px-0 md:px-6 xl:text-left lg:text-left md:text-left max-w-2xl sm:max-w-xl h-auto w-full xl:w-7/12 lg:w-7/12`}
+                    headingClassName={`${props.headingClassName}`}
+                    textClassName={`${props.textClassName} mt-3`}   
                     listContainerClassName="mt-8"
                 >
-                    {props.children}
-                </HeadingText>
-                <ModeImageCenter caption={props.caption} heading={props.heading} text={props.text} list={props.list}>
-                    <img src={ImageUri} alt="card-text-image" className="card-image-rl mx-auto bg-center bg-cover w-image-1 xl:w-10/12 lg:w-10/12" />
-                </ModeImageCenter>
-            </React.Fragment>
-        )
-    , [props.caption, props.heading, props.text, props.image, props.children]);
-
-    /**
-     * Text Right
-     */
-    const TextRight = React.useMemo(
-        (): JSX.Element => (
-            <React.Fragment>
-                <ModeImageCenter caption={props.caption} heading={props.heading} text={props.text} list={props.list}>
-                    <img src={ImageUri} alt="card-text-image" className="card-image-rl mx-auto bg-center bg-cover w-image-1 xl:w-10/12 lg:w-10/12" />
-                </ModeImageCenter>
-                <HeadingText
-                    caption={props.caption}
-                    heading={props.heading}
-                    text={props.text}
-                    list={props.list}
-
-                    containerClassName={`mt-32 mt-5 xl:mb-24 lg:mb-24 md:mb-24 ml-8 text-left max-w-2xl sm:max-w-xl h-auto w-full xl:w-7/12 lg:w-7/12 hidden xl:inline lg:inline md:inline`}
-                    headingClassName={`${props.headingClassName} -mt-4`}
-                    textClassName={`${props.textClassName} mt-3`}
-                    listContainerClassName="mt-8"
-                >
-                    {props.children}
+                {props.buttonTitle ? (
+                    <Button mode={props.mode || "outline"} to={props.linkTo || "#"}>
+                        {props.buttonTitle}
+                    </Button>
+                ) : null}
                 </HeadingText>
             </React.Fragment>
-        )
-    , [props.caption, props.heading, props.text, props.image, props.children]);
-
-    return (
-        <div className={`flex flex-col xl:flex-row lg:flex-row md:flex-row max-w-container-2 px-6 w-screen mx-auto justify-between items-center ${props.containerClassName}`}>
-            {props.reverse
-                ? TextRight
-                : TextLeft
-            }
-        </div>
-    );
-};
-
-export default CardTextImageRL;
-
-type ModeImageCenterProps = HeadingProps & {
-    containerClassName?: string,
-    containerListName?: string,
-    list?: string[] | null,
-    text?: string | null,
-};
-const ModeImageCenter: React.FC<ModeImageCenterProps> = (props): JSX.Element => {
-    /**
-     * Heading
-     */
-    const Head = React.useMemo(
-        () => (
-            <Heading 
-                caption={props.caption}
-                heading={props.heading}
-                captionClassName="inline xl:hidden lg:hidden md:hidden"
-                headingClassName="inline xl:hidden lg:hidden md:hidden"
-            />
-        )
-    , [props.caption, props.heading]);
-
-    /**
-     * List
-     */
-    const List = React.useMemo(
-        () => (params: string[]) => (
-            <ul className="list-disc pl-4">
-                {_.map(params, (data, index: number) => (
-                    <li key={index} className="py-1">
-                        <p title={data} className="body-1">
-                            {data}
-                        </p>
-                    </li>
-                ))}
-            </ul>
         ),
-    [props.list]);
+    [props.caption, props.heading, props.text, props.list, props.buttonTitle, props.linkTo]);
+
+    /**
+     * Image
+     */
+    const Image = React.useMemo<JSX.Element>(
+        () => (
+            <img src={ImageUri} alt="card-text-image" className="card-image-rl bg-center bg-cover w-5/6" />
+        ),
+    []);
+    
+    let containerClass: string = 
+        props.reverse 
+        ? "flex-col-reverse xl:flex-row-reverse lg:flex-row-reverse md:flex-row-reverse" 
+        : "flex-col xl:flex-row lg:flex-row md:flex-row"
 
     return (
-        <div className="flex flex-col">
+        <div className={`flex ${containerClass} max-w-container-2 w-screen h-auto mx-auto justify-between items-center ${props.containerClassName}`}>
             {Head}
-
-            {props.children}
-
-            <p title={props.text!} className="body-1 text-left mt-6 inline xl:hidden lg:hidden md:hidden">
-                {props.text}
-            </p>
-
-            {
-                props.list && (
-                    <div className={`${props.containerListName} text-left mt-4 inline xl:hidden lg:hidden md:hidden`}>
-                        {List(props.list)}
-                    </div>
-                )
-            }
+            {Image}
         </div>
     );
 };
+
+export default React.memo(CardTextImageRL, (prev, next) => _.isEqual(prev, next));

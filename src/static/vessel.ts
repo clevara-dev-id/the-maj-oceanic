@@ -7,7 +7,7 @@ export interface VesselProps {
     slider: SliderInterface;
     heading: string;
     text: string;
-    images: string;
+    image: string;
     carousel_three: {
         caption?: string | null,
         heading: string,
@@ -36,7 +36,7 @@ const staticVessel: VesselProps = {
     }],
     heading: 'The future of travel, on the traditions of the past',
     text: 'One of our missions is to preserve and introduce to the world the glory of the Indonesian maritime history. The MAJ Oceanic is hand built and handcrafted in Bira, Sulawesi based on the heritage of ancestral knowledge.',
-    images: require('../assets/img/LargeImages/1.png'),
+    image: require('../assets/img/LargeImages/1.png'),
     carousel_three: {
         caption: 'the vessel',
         heading: 'Be inspired by the ancient seamen',

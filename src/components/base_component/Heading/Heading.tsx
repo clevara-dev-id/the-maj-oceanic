@@ -1,27 +1,9 @@
 import * as React from 'react';
 import _ from 'lodash';
-/**
- * @component Heading
- * 
- * @property
- * property with "?" is optional
- * ```
- * caption?: string;
- * 
- * captionClassName?: string;
- * 
- * heading?: string;
- * 
- * headingClassName?: string;
- * 
- * headingStyle?: CSSProperties;
- * 
- * center?: boolean;
- * ```
- */
+
 export type HeadingDataProps = {
     caption?: string | null,
-    heading: string,
+    heading?: string,
 }
 export type HeadingProps = HeadingDataProps & {
     captionClassName?: string | null;
@@ -29,18 +11,26 @@ export type HeadingProps = HeadingDataProps & {
     headingStyle?: React.CSSProperties;
     center?: boolean;
 };
-
-export default React.memo(function Heading(props: HeadingProps): JSX.Element {
+/**
+ * ## Heading
+ * 
+ * ### Usage
+ * ```js
+ * <Heading 
+ *    caption="caption"
+ *    heading="Heading"
+ *    captionClassName="text-bold"
+ *    headingClassName="text-bold"
+ * />
+ * ```
+ */
+const Heading: React.FC<HeadingProps> = (props): JSX.Element => {
     return (
         <React.Fragment>
             {   props.caption
                 ?
                 <h5 title={props.caption}
-                    className={`
-                        primary 
-                        ${props.captionClassName}
-                        ${props.center?`text-center`:null}
-                    `}>
+                    className={`${props.captionClassName}`}>
                         {props.caption}
                 </h5>
                 : null
@@ -48,11 +38,13 @@ export default React.memo(function Heading(props: HeadingProps): JSX.Element {
             <h1
                 style={props.headingStyle}
                 title={props.heading!}
-                className={`${props.caption? "py-4": "pb-4"}
-                ${props.center?`text-center`:null}
-                ${props.headingClassName}`}>
+                className={props.headingClassName!}>
                     {props.heading}
             </h1>
         </React.Fragment>
     );
-}, (prev, next) => _.isEqual(prev, next));
+};
+Heading.defaultProps = {
+    captionClassName: "primary"
+}
+export default React.memo(Heading, (prev, next) => _.isEqual(prev, next));

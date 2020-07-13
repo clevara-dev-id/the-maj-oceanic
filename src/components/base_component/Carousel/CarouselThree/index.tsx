@@ -5,6 +5,7 @@ import _ from 'lodash';
 import './style.scss'
 
 import CardItem, { CardItemProps, CardItemDataProps } from '../../Card/CardImage/CardImageThree/CardItem';
+import { ButtonProps } from '../../Button/Button';
 const Setting: Settings = {
     dots: true,
     lazyLoad: "ondemand",
@@ -30,41 +31,55 @@ const Setting: Settings = {
             dots: true,
             arrows: false
         }
-    },{
-        breakpoint: 426,
+    },
+    {
+        breakpoint: 767,
         settings: {
             slidesToShow: 1,
             slidesToScroll: 1,
-            centerMode: true,
-            centerPadding: "0px",
-            infinite: true,
             dots: true,
-            arrows: false
+            arrows: false,
         }
-    }],
+    }
+    // {
+    //     breakpoint: 426,
+    //     settings: {
+    //         slidesToShow: 1,
+    //         slidesToScroll: 1,
+    //         centerMode: true,
+    //         centerPadding: "0px",
+    //         infinite: true,
+    //         dots: true,
+    //         arrows: false
+    //     }
+    // }
+    ],
 };
 
 export type CarouselThreeItem = CardItemDataProps & {
     id: React.ReactText,
+    linkTo?: string,
 }
 
-export type CarouselThreeProps = {
+export type CarouselThreeProps = ButtonProps & {
     containerClassName?: string,
-    center?: boolean,
+    captionClassName?: string,
     /**
      * ### Example
      * ```js
      * [{
      *   id: 0, // string or number
      *   caption: null, // optional
-     *   heading: 'Heading 1',
-     *   text: 'Text 1', // optional
+     *   heading: 'Heading 1' //optional,
+     *   text: 'Text 1', // optional,
+     *   list: string[],
      *   image: 'storage/aimdafsadf.png'
      * }]
      * ```
      */
     store: Array<CarouselThreeItem>,
     isStaticImage?: boolean,
+    
 };
 
 /**
@@ -85,7 +100,7 @@ export type CarouselThreeProps = {
  * />
  * ```
  * 
- * ### Property
+ * ### props
  * @param containerClassName string
  * @param center boolean
  */
@@ -106,16 +121,19 @@ const CarouselThree: React.FC<CarouselThreeProps> = (props): JSX.Element => {
             <CardItem 
                 key={params.id || index}
                 image={params.image}
+                caption={params.caption}
                 heading={params.heading}
                 text={params.text}
-                center={props.center || false}
-                containerClassName="px-2"
+                containerClassName="px-6"
+                captionClassName={props.captionClassName}
                 headingClassName="text-xl"
                 buttonTitle={params.buttonTitle!}
                 isStaticImage={props.isStaticImage}
+                mode={props.mode || "outline"}
+                to={params.linkTo || props.to || "#"}
             />
         )
-    ,[]);
+    , [props.store]);
 
     /**
      * Button Prev & Next

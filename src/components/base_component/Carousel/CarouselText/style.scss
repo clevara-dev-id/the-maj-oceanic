@@ -1,42 +1,23 @@
-#carousel-text ul.slick-dots {
-    bottom: -65px;
-}
-
-#carousel-text #dots {
-    background: #4E5E79;
-    opacity: 0.25;
-}
-
-
-#carousel-text li.slick-active #dots {
-    background: #208CB2;
-    opacity: 1;
-}
-
-#carousel-text #dots:hover {
-    background: #208CB2;
-    opacity: 1;
-}
-#carousel-text{
-    .buttons{
+$layout-min-md: 768px;
+$layout-min-lg: 1024px;
+.carousel-text {
+    .slick-dots .slick-active .dots {
+        background: #208CB2;                
+        opacity: 1;
+    }
+    
+    .buttons {
         background-color: white;
         color: #208CB2;
     }
-    .buttons:hover{
-        background-color: #208CB2;
-        color: white;
-    }
-    .arrows{
+
+    .arrows {
         background-color: white;
         color: #208CB2;
-        z-index: 9;
-    }
-    .arrows:hover{
-        background-color: #208CB2;
-        color: white;
-    }
-    .arrows-container{
-        margin-top: -3rem;
-        margin-left: 20rem;
+
+        &:hover {
+            background-color: #208CB2;
+            color: white;
+        }
     }
 }
