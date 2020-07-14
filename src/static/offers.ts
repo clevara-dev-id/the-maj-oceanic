@@ -27,7 +27,7 @@ const staticOffers: OffersProps = {
             'Booking confition apply',
         ],
         image: require('../assets/img/CardTextImage/4.png'),
-        linkTo: '/#',
+        linkTo: '#',
     },{
         id: 1,
         heading: 'Exclusive Savings',
@@ -37,7 +37,7 @@ const staticOffers: OffersProps = {
             'Booking confition apply',
         ],
         image: require('../assets/img/CardTextImage/5.png'),
-        linkTo: '/#',
+        linkTo: '#'
     }]
 };
 
