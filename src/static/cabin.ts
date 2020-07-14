@@ -48,39 +48,23 @@ const staticCabin: CabinProps = {
     carousel_text: [{
         id: 1,
         image: require('../assets/img/home/carousel-text/1.png'),
-        caption: "Cabin 1",
-        heading: "Carousel Text 1",
+        caption: "vip suite 1",
+        heading: "Christopher Columbus",
         text: "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis culpa anim cupidatat elit irure. Nulla nostrud elit quis nostrud sit cupidatat aute sit excepteur nisi. Proident irure proident eiusmod voluptate velit aliquip velit est minim cillum consequat excepteur aliquip esse. Quis adipisicing commodo voluptate esse culpa.",
         list: [
             "Lorem ipsum dolor sit amet",
             "Laboris lar aliquip",
             "Lorem ipsum dolor sit amet",
             "Laboris lar aliquip",
-        ]
+        ],
+        linkTo: '#',
     },{
         id: 2,
         image: require('../assets/img/home/carousel-text/1.png'),
-        caption: "Cabin 2",
-        heading: "Carousel Text 2",
+        caption: "vip suite 2",
+        heading: "Christopher Columbus",
         text: "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis culpa anim cupidatat elit irure. Nulla nostrud elit quis nostrud sit cupidatat aute sit excepteur nisi. Proident irure proident eiusmod voluptate velit aliquip velit est minim cillum consequat excepteur aliquip esse. Quis adipisicing commodo voluptate esse culpa.",
-        list: [
-            "Lorem ipsum dolor sit amet",
-            "Laboris lar aliquip",
-            "Lorem ipsum dolor sit amet",
-            "Laboris lar aliquip",
-        ]
-    },{
-        id: 3,
-        image: require('../assets/img/home/carousel-text/1.png'),
-        caption: "Cabin 2",
-        heading: "Carousel Text 2",
-        text: "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis culpa anim cupidatat elit irure. Nulla nostrud elit quis nostrud sit cupidatat aute sit excepteur nisi. Proident irure proident eiusmod voluptate velit aliquip velit est minim cillum consequat excepteur aliquip esse. Quis adipisicing commodo voluptate esse culpa.",
-        list: [
-            "Lorem ipsum dolor sit amet",
-            "Laboris lar aliquip",
-            "Lorem ipsum dolor sit amet",
-            "Laboris lar aliquip",
-        ]
+        linkTo: '#',
     }],
     carousel_three: {
         caption: 'Delux Suite',

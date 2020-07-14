@@ -5,6 +5,7 @@ import Slider, { Settings } from 'react-slick'
 import './style.scss'
 import Img1 from '../../../../assets/img/home/carousel-text/1.png'
 import Button from '../../Button/Button';
+import { HeadingTextItem } from '../../Heading/HeadingText';
 /** Components */
 const HeadingText       = React.lazy(() => import('../../Heading/HeadingText'));
 
@@ -16,13 +17,13 @@ const SETTINGS: Settings = {
     arrows: false,
     centerPadding: '30px'
 };
-export type CarouselTextItem = {
+/**
+ * ## Carousel Text Item
+ */
+export type CarouselTextItem = HeadingTextItem & {
     id: number,
-    caption?: string,
-    heading: string,
-    text: string,
-    list: string[],
     image: string,
+    linkTo?: string
 };
 export type CarouselTextProps = {
     containerClassName?: string,
@@ -94,7 +95,7 @@ const CarouselText: React.FC<CarouselTextProps> = (props): JSX.Element => {
      * Heading Text list
      */
     const HeadText = React.useMemo( 
-        () => (params: any) => (
+        () => (params: CarouselTextItem) => (
             <React.Fragment>
                 <HeadingText
                     caption={params.caption}
@@ -102,10 +103,10 @@ const CarouselText: React.FC<CarouselTextProps> = (props): JSX.Element => {
                     text={params.text}
                     list={params.list}
                     headingClassName="mb-4"
-                    listContainerClassName="mt-4"
+                    textClassName="mb-4"
                 />
                 {props.bottonTitle ? (
-                    <Button mode={props.mode || "outline"} to={params.linkTo || "#"}>
+                    <Button className={params.list ? "" : "mt-6"} mode={props.mode || "outline"} to={params.linkTo || "#"}>
                         {props.bottonTitle}
                     </Button>
                 ) : null}

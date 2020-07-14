@@ -13,7 +13,7 @@ const Heading           = React.lazy(() => import('../components/base_component/
 const CarouselThree     = React.lazy(() => import('../components/base_component/Carousel/CarouselThree'));
 const Button            = React.lazy(() => import('../components/base_component/Button/Button'));
 const CarouselCardText  = React.lazy(() => import('../components/base_component/Carousel/CarouselCardText'));
-const CardTextImage     = React.lazy(() => import('../components/base_component/Card/CardTextImage/CardTextImageRL'));
+const CardText          = React.lazy(() => import('../components/base_component/Card/CardTextImage/CardTextImageRL'));
 
 const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
     // const dispatch = useDispatch();
@@ -103,19 +103,19 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
     [props.carousel_three_team]);
 
     /**
-     * Card Text Image
+     * Card Text // Card Text Image
      */
-    const CardText = React.useMemo<JSX.Element>( 
+    const CardTextImage = React.useMemo<JSX.Element>( 
         () => (
-            <CardTextImage 
-                {...props.card_text_image}
+            <CardText 
+                {...props.card_text}
                 isStaticImage={true}
                 linkTo="#"
                 mode="outline"
                 buttonTitle="learn more"
             />
         ),
-    [props.card_text_image]);
+    [props.card_text]);
 
     return (
         <div id="vessel">
@@ -140,7 +140,7 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
             </section>
 
             <section className={"py-20 "}>
-                {CardText}
+                {CardTextImage}
             </section>
         </div>
     );

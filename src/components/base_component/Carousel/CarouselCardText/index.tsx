@@ -6,7 +6,7 @@ import './style.scss';
 const Button = React.lazy(() => import('../../Button/Button'));
 
 /**
- * ## ItemSlide
+ * ## Carousel Card Text Item
  */
 export type CarouselCardTextItem = {
     id: number,

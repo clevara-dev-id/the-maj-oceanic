@@ -1,10 +1,12 @@
 import * as React from 'react';
+import _ from 'lodash';
 import { connect, useDispatch } from 'react-redux';
 import rafSchedule from 'raf-schd';
 import { RootState } from '../redux';
 import axios from '../helper/axios';
 import { pageNavigationsReceived, pageStatus, pageHomeReceived, pageSpecReceived } from '../redux/pages/reducers';
 import ErrorBoundary from '../helper/ErrorBoundary';
+import { PageItem } from '../redux/pages/types';
 
 /* Component */
 const NavigationBar = React.lazy(() => import('../components/NavigationBar'));
@@ -32,12 +34,19 @@ const AppLayout: React.FC<AppLayoutProp> = (props): JSX.Element => {
     //         ? setScroll(true)
     //         : setScroll(false);
     // }, []);
-    
-    React.useLayoutEffect(() => {
+
+    React.useEffect(() => {
         const scheduleUpdate = rafSchedule<(args: number) => void>(onScroll);
         window.addEventListener("scroll", function() {
             scheduleUpdate(window.scrollY)
         });
+
+        return () => {
+            scheduleUpdate.cancel();
+        };
+    }, [])
+    
+    React.useLayoutEffect(() => {
         /** 
          * get navigation route
          */
@@ -65,11 +74,7 @@ const AppLayout: React.FC<AppLayoutProp> = (props): JSX.Element => {
             dispatch(pageSpecReceived(res.data));
         })
         .catch(err => { throw new Error(err) });
-        
-        return () => {
-            scheduleUpdate.cancel();
-        };
-    },[]);
+    }, []);
 
     const NavStore = React.useMemo(() => props.navigation, [props.navigation]);
     const Navigation = React.useMemo<JSX.Element>(
@@ -112,9 +117,13 @@ const AppLayout: React.FC<AppLayoutProp> = (props): JSX.Element => {
     );
 };
 
-type mapStateProps = { navigation: Array<any> };
+type mapStateProps = { 
+    navigation: Array<any>,
+    pages: PageItem[],
+};
 const mapStateToProps = (state: RootState) => ({
     navigation: state.page.navigations || [],
+    pages: state.page.pages
 });
 
-export default connect(mapStateToProps)(AppLayout);
+export default connect(mapStateToProps)(React.memo(AppLayout, (prev, next) => _.isEqual(prev, next)));

@@ -1,6 +1,7 @@
 import { SliderInterface } from "../redux/pages/types";
 import { CarouselThreeItem } from '../components/base_component/Carousel/CarouselThree';
 import { CarouselCardTextItem } from "../components/base_component/Carousel/CarouselCardText";
+import { CardTextImageRLItem } from "../components/base_component/Card/CardTextImage/CardTextImageRL";
 
 
 export type VesselProps = {
@@ -19,13 +20,7 @@ export type VesselProps = {
         heading: string,
         data: CarouselThreeItem[],
     },
-    card_text_image: {
-        caption?: string | null,
-        heading: string,
-        text?: string,
-        list?: string[],
-        image: string,
-    }
+    card_text: CardTextImageRLItem,
 };
 
 const staticVessel: VesselProps = {
@@ -93,7 +88,7 @@ const staticVessel: VesselProps = {
             image: require('../assets/img/CardThreeImage/6.png'),
         }]
     },
-    card_text_image: {
+    card_text: {
         caption: 'sustainbility',
         heading: 'Lorem Ipsum Dolor',
         text: 'Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis culpa anim cupidatat elit irure. Nulla nostrud elit quis nostrud sit cupidatat aute sit excepteur nisi. Proident irure proident eiusmod voluptate velit aliquip velit est minim cillum consequat excepteur aliquip esse. Quis adipisicing commodo voluptate esse culpa.',
@@ -104,6 +99,7 @@ const staticVessel: VesselProps = {
             'Lorem lar aliquip',
         ],
         image: require('../assets/img/CardTextImage/1.png'),
+        linkTo: '#',
     }
 };
 

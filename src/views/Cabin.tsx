@@ -15,7 +15,7 @@ const Cabin: React.FC<CabinProps> = (props) => {
      * Slider
      */
     const Slider = React.useMemo<JSX.Element>(
-        (): JSX.Element => (
+        () => (
             <SliderAwesome store={props.slider} isStaticImage />
         ),
     [props.slider]);
@@ -24,7 +24,7 @@ const Cabin: React.FC<CabinProps> = (props) => {
      * Carousel
      */
     const Carousel = React.useMemo<JSX.Element>(
-        (): JSX.Element => (
+        () => (
             <CarouselCardText
                 containerClassName="relative max-w-container-2 mx-auto p-0"
                 store={props.carousel_card_text}
@@ -39,19 +39,19 @@ const Cabin: React.FC<CabinProps> = (props) => {
      * Carousel Card Text
      */
     const CarouselCard = React.useMemo<JSX.Element>(
-        (): JSX.Element => (
+        () => (
             <CarouselText
-                bottonTitle="Discover"
+                bottonTitle="discover"
                 store={props.carousel_text}
                 isStaticImage
             />
         ),
-    [props.carousel_text]);
+    [props.carousel_text]); 
 
     /**
      * Carousel Card Three
      */
-    const CarouselThreeHeading = React.useMemo(
+    const CarouselThreeHeading = React.useMemo<JSX.Element>(
         () => (
             <React.Fragment>
                 <Heading

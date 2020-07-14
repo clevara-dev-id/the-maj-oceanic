@@ -17,7 +17,7 @@ const Occasions: React.FC<OccasionsProps> = (props): JSX.Element => {
      * Slider
      */
     const Slider = React.useMemo<JSX.Element>(
-        (): JSX.Element => (
+        () => (
             <SliderAwesome store={props.slider} isStaticImage />
         ),
     [props.slider]);
