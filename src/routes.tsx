@@ -22,6 +22,7 @@ const CabinDetail   = React.lazy(() => import('./views/CabinDetail'));
 const Sustainabiliy = React.lazy(() => import('./views/Sustainabiliy'));
 const Voyages       = React.lazy(() => import('./views/Voyages'));
 const Dining        = React.lazy(() => import('./views/Dining'));
+const Occasions     = React.lazy(() => import('./views/Occasions'));
 
 const BaseRoute: React.FC = () => {
     return( 
@@ -37,6 +38,7 @@ const BaseRoute: React.FC = () => {
             <Route exact path="/voyages" component={Voyages} />
             <Route exact path="/home/sustainability" component={Sustainabiliy} />
             <Route exact path="/home/dining" component={Dining} />
+            <Route exact path="/home/occasions" component={Occasions} />
         </React.Fragment>
     )
 };

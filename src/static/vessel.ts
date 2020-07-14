@@ -3,7 +3,7 @@ import { CarouselThreeItem } from '../components/base_component/Carousel/Carouse
 import { CarouselCardTextItem } from "../components/base_component/Carousel/CarouselCardText";
 
 
-export interface VesselProps {
+export type VesselProps = {
     slider: SliderInterface;
     heading: string;
     text: string;

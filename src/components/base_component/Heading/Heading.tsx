@@ -1,11 +1,18 @@
 import * as React from 'react';
 import _ from 'lodash';
 
-export type HeadingDataProps = {
+/**
+ * ## Heading Item
+ * 
+ * ### PropType
+ * @param caption `string | null | undefined`
+ * @param heading `string | null | undefined`
+ */
+export type HeadingItem = {
     caption?: string | null,
-    heading?: string,
+    heading?: string | null,
 }
-export type HeadingProps = HeadingDataProps & {
+export type HeadingProps = HeadingItem & {
     captionClassName?: string | null;
     headingClassName?: string | null;
     headingStyle?: React.CSSProperties;

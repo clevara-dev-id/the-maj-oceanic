@@ -11,7 +11,7 @@ const SliderAwesome         = React.lazy(() => import('../components/base_compon
 const HeadingText           = React.lazy(() => import('../components/base_component/Heading/HeadingText'));
 const LargeImage            = React.lazy(() => import('../components/base_component/LargeImage/LargeImage'));
 const CardTextImageSmall    = React.lazy(() => import('../components/base_component/Card/CardTextImage/CardTextImageSmall'));
-const CarouselCardText  = React.lazy(() => import('../components/base_component/Carousel/CarouselCardText'));
+const CarouselCardText      = React.lazy(() => import('../components/base_component/Carousel/CarouselCardText'));
 
 const Dining: React.FC<DiningProps> = (props): JSX.Element => {
 
@@ -44,7 +44,7 @@ const Dining: React.FC<DiningProps> = (props): JSX.Element => {
                 />
             </React.Fragment>
         ), 
-    [props.heading, props.text]);
+    [props.heading, props.text, props.image]);
 
     /**
      * Card Text Image Small
@@ -59,13 +59,13 @@ const Dining: React.FC<DiningProps> = (props): JSX.Element => {
                 reverse={is_reverse}
             />
         ),
-    []);
+    [props.card_text_image_small]);
 
     /**
      * Carousel
      */
     const Carousel = React.useMemo<JSX.Element>(
-        (): JSX.Element => (
+        () => (
             <CarouselCardText
                 containerClassName="relative max-w-container-2 mx-auto p-0 z-10"
                 store={props.carousel_card_text}
@@ -78,11 +78,13 @@ const Dining: React.FC<DiningProps> = (props): JSX.Element => {
 
     const ImageFood = React.useMemo<(params: { src: string, className?: string }) => JSX.Element>( 
         () => (params) => (
-            <img src={params.src} className={`absolute bg-auto w-full h-auto max-w-sm ${params.className}`} alt="food-image" />
+            <img src={params.src}
+                className={`absolute bg-auto w-full h-auto max-w-sm hidden xl:inline lg:inline md:inline ${params.className}`}
+                alt="food-image"
+            />
         ),
-    [])
+    []);
 
-    let b = "border border-black"
     return (
         <div id="dining">
             <section>
@@ -100,12 +102,12 @@ const Dining: React.FC<DiningProps> = (props): JSX.Element => {
             <section className={"pt-24 pb-48 box-border max-w-screen-xl mx-auto relative"}>
                 {ImageFood({
                     src: require('../assets/img/CarouselCard/food-1.png'),
-                    className: 'image-food-top top-0 right-0 hidden xl:inline lg:inline md:inline'
+                    className: 'image-food-top top-0 right-0 '
                 })}
                 {Carousel}
                 {ImageFood({
                     src: require('../assets/img/CarouselCard/food-2.png'),
-                    className: 'image-food-bottom hidden xl:inline lg:inline md:inline bottom-0 left-0'
+                    className: 'image-food-bottom  bottom-0 left-0'
                 })}
             </section>
         </div>

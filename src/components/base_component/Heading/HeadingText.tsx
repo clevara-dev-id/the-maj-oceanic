@@ -1,45 +1,23 @@
 import * as React from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
-import Heading, { HeadingDataProps } from './Heading';
+import Heading, { HeadingItem } from './Heading';
 import './style.scss';
 
 /**
- * @component HeadingText component
+ * ## Heading Text Item
  * 
- * @property
- * properties with "?" is optional
- * ```
- * containerClassName?: string;
- * 
- * containerStyle?: string;
- * 
- * heading?: string;
- * 
- * headingClassName?: string;
- * 
- * headingStyle?: CSSProperties;
- * 
- * text?: string;
- * 
- * textClassName?: string;
- * 
- * textStyle?: CSSProperties;
- * 
- * list?: Array<string>;
- * 
- * children?: ReactNode;
- * 
- * center?: boolean;
- * 
- * caption?: string;
- * ```
+ * ### PropType
+ * @param caption `string | null | undefined`
+ * @param heading `string | null | undefined`
+ * @param text `string | null | undefined`
+ * @param list `Array<string> | null | undifined`
  */
-export type HeadingTextDataProps = HeadingDataProps & {
+export type HeadingTextItem = HeadingItem & {
     text?: string | null,
     list?: Array<string> | null,
 }
-export type HeadingTextProps = HeadingTextDataProps & {
+export type HeadingTextProps = HeadingTextItem & {
     containerClassName?: string | null,
     containerStyle?: React.CSSProperties | null,
 
@@ -74,15 +52,15 @@ export type HeadingTextProps = HeadingTextDataProps & {
  * @param center boolean
  * 
  * ### Usage
- * ```js
+ * ```javascript
  * <HeadingText
- *    caption={props.caption}
- *    heading={props.heading}
- *    text={props.text}
- *    containerClassName={`mx-auto w-full ${props.containerHeadingClassName} `} 
- *    center={props.center}
- *    headingClassName={`${props.headingClassName}`} 
- *    textClassName={` w-full ${props.textClassName} `}
+ *      caption={props.caption}
+ *      heading={props.heading}
+ *      text={props.text}
+ *      containerClassName="mx-auto w-full" 
+ *      center={props.center}
+ *      headingClassName="border border-black" 
+ *      textClassName="border border-black"
  * />
  * ```
  */

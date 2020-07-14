@@ -1,13 +1,13 @@
 import * as React from 'react';
 import _ from 'lodash';
-import HeadingText, { HeadingTextProps, HeadingTextDataProps } from '../../../Heading/HeadingText';
+import HeadingText, { HeadingTextProps, HeadingTextItem } from '../../../Heading/HeadingText';
 import Button, { ButtonProps } from '../../../Button/Button';
 
 import './style.scss';
 import { BaseUrlImage } from '../../../../../helper/axios';
 import ErrorBoundary from '../../../../../helper/ErrorBoundary';
 
-export type CardItemDataProps = HeadingTextDataProps & {
+export type CardItemDataProps = HeadingTextItem & {
     image: string,
     buttonTitle?: string | null,
 };

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import _ from 'lodash';
-import { HeadingTextDataProps } from '../Heading/HeadingText';
+import { HeadingTextItem } from '../Heading/HeadingText';
 
 const HeadingText   = React.lazy(() => import('../Heading/HeadingText'));
 const LargeImage    = React.lazy(() => import('../LargeImage/LargeImage'));
@@ -8,7 +8,7 @@ const LargeImage    = React.lazy(() => import('../LargeImage/LargeImage'));
 export type TabSecondItem = {
     id: number,
     title: string,
-    data: HeadingTextDataProps & {
+    data: HeadingTextItem & {
         image: string,
     },
 }

@@ -2,26 +2,36 @@ import * as React from 'react';
 import _ from 'lodash';
 
 import './style.scss';
-import HeadingText, { HeadingTextProps } from '../../Heading/HeadingText';
+import HeadingText, { HeadingTextProps, HeadingTextItem } from '../../Heading/HeadingText';
 import Button from '../../Button/Button';
 
-enum LayoutMobile {
-    first,
-    second,
+/**
+ * ## Card Text Image RL Item
+ * 
+ * ### PropType
+ * @param id `string | number | null | undefined`
+ * @param caption `string | null | undefined`
+ * @param heading `string | null | undefined`
+ * @param text `string | null | undefined`
+ * @param list `Array<string> | null | undefined`
+ * @param linkTo `History | string | null | undefined`
+ */
+export type CardTextImageRLItem = HeadingTextItem & {
+    id?: React.ReactText,
+    image: string,
+    linkTo?: string,
 };
 export type CardTextImageRLProps = HeadingTextProps & {
     reverse?: boolean,
     isStaticImage?: boolean,
     image: string,
-    children?: React.ReactNode,
-    layoutModel?: LayoutMobile.first | LayoutMobile.second,
     buttonTitle?: string,
     mode?: "outline" | "contain",
     linkTo?: string,
 };
 
 /**
- * Card Text Image Right Left
+ * ## Card Text Image Right Left
  * 
  * ## Usage
  * ```js

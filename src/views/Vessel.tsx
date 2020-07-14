@@ -6,20 +6,15 @@ import DefaultProps, { VesselProps } from '../static/vessel';
 /**
  * Components
  */
-const SliderAwesome = React.lazy(() => import('../components/base_component/Slider/SliderAwesome/SliderAwesome'));
-const HeadingText   = React.lazy(() => import('../components/base_component/Heading/HeadingText'));
-const LargeImage    = React.lazy(() => import('../components/base_component/LargeImage/LargeImage'));
-const Heading       = React.lazy(() => import('../components/base_component/Heading/Heading'));
-const CarouselThree = React.lazy(() => import('../components/base_component/Carousel/CarouselThree'));
-const Button        = React.lazy(() => import('../components/base_component/Button/Button'));
-const CarouselCardText = React.lazy(() => import('../components/base_component/Carousel/CarouselCardText'));
-const CardTextImage = React.lazy(() => import('../components/base_component/Card/CardTextImage/CardTextImageRL'));
+const SliderAwesome     = React.lazy(() => import('../components/base_component/Slider/SliderAwesome/SliderAwesome'));
+const HeadingText       = React.lazy(() => import('../components/base_component/Heading/HeadingText'));
+const LargeImage        = React.lazy(() => import('../components/base_component/LargeImage/LargeImage'));
+const Heading           = React.lazy(() => import('../components/base_component/Heading/Heading'));
+const CarouselThree     = React.lazy(() => import('../components/base_component/Carousel/CarouselThree'));
+const Button            = React.lazy(() => import('../components/base_component/Button/Button'));
+const CarouselCardText  = React.lazy(() => import('../components/base_component/Carousel/CarouselCardText'));
+const CardTextImage     = React.lazy(() => import('../components/base_component/Card/CardTextImage/CardTextImageRL'));
 
-/**
- * The Vessel Component
- *
- * ## Usage
- */
 const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
     // const dispatch = useDispatch();
     /**
@@ -51,7 +46,7 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
                 />
             </React.Fragment>
         ), 
-    [props.heading, props.text]);
+    [props.heading, props.text, props.image]);
 
     /**
      * Carousel Three
@@ -72,7 +67,7 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
                 </Button>
             </React.Fragment>
         ),
-    []);
+    [props.carousel_three]);
 
     /**
      * Carousel Card
@@ -86,8 +81,8 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
                 containerArrow="mb-16"
                 buttonTitle="learn more"
             />
-        )
-    ,[]);
+        ),
+    [props.carousel]);
 
     /**
      * Carousel Three Team 
@@ -104,8 +99,8 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
                     to="#"
                 />
             </React.Fragment>
-        )
-    ,[]);
+        ),
+    [props.carousel_three_team]);
 
     /**
      * Card Text Image
@@ -119,8 +114,8 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
                 mode="outline"
                 buttonTitle="learn more"
             />
-        )
-    ,[]);
+        ),
+    [props.card_text_image]);
 
     return (
         <div id="vessel">

@@ -3,7 +3,6 @@ import _ from 'lodash';
 import { NavLink, NavLinkProps } from 'react-router-dom';
 
 export type ButtonProps = NavLinkProps & {
-    children?: React.ReactNode,
     mode: 'outline' | "contain"
 };
 
