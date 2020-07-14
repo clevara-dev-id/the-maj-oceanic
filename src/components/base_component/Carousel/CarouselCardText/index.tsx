@@ -15,6 +15,7 @@ export type CarouselCardTextItem = {
     heading: string,
     text?: string,
     list?: Array<string>,
+    linkTo?: string,
 };
 
 type T = {
@@ -22,7 +23,7 @@ type T = {
     containerArrow?: string,
     store: Array<CarouselCardTextItem>,
     onClick?: () => void,
-    buttonTitle?: string,
+    buttonTitle: string,
     isStaticImage?: boolean,
     className?: {
         cardClassName?: string,
@@ -87,7 +88,7 @@ const CarouselCardText: React.FC<T> = (props): JSX.Element => {
     const _onButtonClick = React.useCallback(() => alert("push to location"), []);
     function _renderCardItem(data: CarouselCardTextItem, index: number): JSX.Element | null {
         if (indexActive === index) {
-            return <CardTextItem key={index} {...data} buttonTitle="discover" onButtonClick={_onButtonClick} />
+            return <CardTextItem key={index} {...data} linkTo={data.linkTo} buttonTitle={props.buttonTitle} onButtonClick={_onButtonClick} />
         };
 
         return null;
@@ -153,14 +154,15 @@ interface CardTextItemProps extends CarouselCardTextItem {
     cardClassName?: string;
     onButtonClick?: () => void;
     buttonTitle: string;
+    linkTo?: string,
 };
 /**
  * ## CardTextItem
  */
 const CardTextItem: React.FC<CardTextItemProps> = (props): JSX.Element => {
     const ButtonTitle = React.useMemo(() => 
-        <Button mode="outline" to="#" className="mt-6">
-            {props.buttonTitle || "discover"}
+        <Button mode="outline" to={props.linkTo || "#"} className="mt-6">
+            {props.buttonTitle}
         </Button>
     ,[]);
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import staticCabinDetail, { CabinDetailProps } from '../static/cabinDetail';
+import staticSustainability, { SustainabilityProps } from '../static/sustainability';
 import { CardTextImageSmallProps } from '../components/base_component/Card/CardTextImage/CardTextImageSmall';
 
 /**
@@ -8,15 +8,12 @@ import { CardTextImageSmallProps } from '../components/base_component/Card/CardT
 const SliderAwesome         = React.lazy(() => import('../components/base_component/Slider/SliderAwesome/SliderAwesome'));
 const HeadingText           = React.lazy(() => import('../components/base_component/Heading/HeadingText'));
 const LargeImage            = React.lazy(() => import('../components/base_component/LargeImage/LargeImage'));
-const Divider               = React.lazy(() => import('../components/Divier'));
 const CardTextImageSmall    = React.lazy(() => import('../components/base_component/Card/CardTextImage/CardTextImageSmall'));
-const CarouselThree         = React.lazy(() => import('../components/base_component/Carousel/CarouselThree'));
-const Heading               = React.lazy(() => import('../components/base_component/Heading/Heading'));
 
-const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
+const Sustainabiliy: React.FC<SustainabilityProps> = (props): JSX.Element => {
     /**
-     * Slider
-     */
+    * Slider
+    */
     const Slider = React.useMemo<JSX.Element>(
         () => (
             <SliderAwesome store={props.slider} isStaticImage />
@@ -24,8 +21,8 @@ const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
     [props.slider]);
 
     /**
-     * Heading Image
-     */
+        * Heading Image
+        */
     const HeadingImage = React.useMemo<JSX.Element>( 
         () => (
             <React.Fragment>
@@ -59,44 +56,16 @@ const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
                 reverse={is_reverse}
             />
         ),
-    [props.card_text_image_small]);
+    []);
 
-    /**
-     * Carousel Three
-     */
-    const CarouselThreeHeading = React.useMemo<JSX.Element>(
-        () => (
-            <React.Fragment>
-                <Heading
-                    caption={props.carousel_three.caption}
-                    heading={props.carousel_three.heading}
-                    headingClassName="mt-4"
-                />
-                <CarouselThree
-                    isStaticImage
-                    containerClassName="relative mt-20 max-w-6xl mx-auto"
-                    captionClassName="text-black capitalize mt-5"
-                    mode="outline"
-                    to="#"
-                    store={props.carousel_three.data}
-                />
-            </React.Fragment>
-        )
-    ,[props.carousel_three]);
-
-    let b = 'border border-black';
     return (
-        <div id="cabin-detail">
+        <div id="sustainabiliy">
             <section>
                 {Slider}
             </section>
-
+            
             <section className={"py-20"}>
                 {HeadingImage}
-            </section>
-
-            <section className="py-20">
-                <Divider containerClassName="px-8 xl:px-0 lg:px-6" fill="#232323" />
             </section>
 
             <section className={"py-20"}>
@@ -106,12 +75,8 @@ const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
             <section className={"py-20"}>
                 {CardTextImage(props.card_text_image_small[1], true)}
             </section>
-
-            <section className={"py-20 mb-20"}>
-                {CarouselThreeHeading}
-            </section>
         </div>
     );
 };
-CabinDetail.defaultProps = staticCabinDetail;
-export default CabinDetail;
+Sustainabiliy.defaultProps = staticSustainability;
+export default Sustainabiliy;

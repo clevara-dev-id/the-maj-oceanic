@@ -1,0 +1,41 @@
+#dining {
+    .image-food-bottom {
+        left: -2.5%;
+        bottom: -12.5rem;
+    }
+
+    .image-food-top {
+        right: -2.5%;
+        top: -9.5rem;
+    }
+
+    @media (min-width: 1280px) {
+        .image-food-bottom {
+            left: -2.5% !important;
+        }
+
+        .image-food-top {
+            right: -4% !important;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .image-food-bottom {
+            left: 0;
+        }
+
+        .image-food-top {
+            right: 0;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .image-food-bottom {
+            left: 0;
+        }
+
+        .image-food-top {
+            right: 0;
+        }
+    }
+}

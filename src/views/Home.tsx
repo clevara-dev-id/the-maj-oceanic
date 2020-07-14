@@ -52,6 +52,7 @@ const Home: React.FC<HomeProps> = (props): JSX.Element =>  {
                 containerClassName="xl:max-w-container-2 relative my-16 z-20"
                 store={source?.carousel!}
                 containerArrow="mb-4"
+                buttonTitle="discover"
             >
                 <img src={require('../assets/tmo-stamps-brown.png')}
                     alt="tmo-stamps-brown"

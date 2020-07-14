@@ -23,7 +23,7 @@ const CardTextImage = React.lazy(() => import('../components/base_component/Card
 const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
     // const dispatch = useDispatch();
     /**
-     * Carousel Memo
+     * Slider
      */
     const Slider = React.useMemo<JSX.Element>(
         (): JSX.Element => (
@@ -32,7 +32,7 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
     [props.slider]);
 
     /**
-     * Heading
+     * Heading Text & Large Image
      */
     const HeadingImage = React.useMemo<JSX.Element>( 
         () => (
@@ -84,6 +84,7 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
                 store={props.carousel}
                 isStaticImage
                 containerArrow="mb-16"
+                buttonTitle="learn more"
             />
         )
     ,[]);

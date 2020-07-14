@@ -10,15 +10,18 @@ import { connect } from 'react-redux';
 // import Img4 from './assets/img/home/carousel-text/1.png'
 // import { getPages } from "./redux/action/actionCreators";
 
-const Home = React.lazy(() => import("./views/Home"));
-const Blogs = React.lazy(() => import('./views/Blogs'));
-const Pages = React.lazy(() => import('./views/Pages'));
-const Cabin = React.lazy(() => import('./views/Cabin'));
+const Home          = React.lazy(() => import("./views/Home"));
+const Blogs         = React.lazy(() => import('./views/Blogs'));
+const Pages         = React.lazy(() => import('./views/Pages'));
+const Cabin         = React.lazy(() => import('./views/Cabin'));
 const Spesification = React.lazy(() => import('./views/Spesification'));
-const Contact = React.lazy(() => import('./views/Contact'));
-const Sailing = React.lazy(() => import('./views/SailingSoon'));
-const Vessel = React.lazy(() => import('./views/Vessel'));
-const CabinDetail = React.lazy(() => import('./views/CabinDetail'));
+const Contact       = React.lazy(() => import('./views/Contact'));
+const Sailing       = React.lazy(() => import('./views/SailingSoon'));
+const Vessel        = React.lazy(() => import('./views/Vessel'));
+const CabinDetail   = React.lazy(() => import('./views/CabinDetail'));
+const Sustainabiliy = React.lazy(() => import('./views/Sustainabiliy'));
+const Voyages       = React.lazy(() => import('./views/Voyages'));
+const Dining        = React.lazy(() => import('./views/Dining'));
 
 const BaseRoute: React.FC = () => {
     return( 
@@ -31,6 +34,9 @@ const BaseRoute: React.FC = () => {
             <Route exact path="/the-vessel/spesification" component={Spesification} />
             <Route exact path="/the-vessel/the-cabin" component={Cabin} />
             <Route exact path="/the-vessel/the-cabin/detail" component={CabinDetail} />
+            <Route exact path="/voyages" component={Voyages} />
+            <Route exact path="/home/sustainability" component={Sustainabiliy} />
+            <Route exact path="/home/dining" component={Dining} />
         </React.Fragment>
     )
 };

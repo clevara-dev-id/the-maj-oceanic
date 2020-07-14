@@ -30,6 +30,7 @@ const Cabin: React.FC<CabinProps> = (props) => {
                 store={props.carousel_card_text}
                 isStaticImage
                 containerArrow="mb-6"
+                buttonTitle="discover"
             />
         ),
     [props.carousel_card_text]);

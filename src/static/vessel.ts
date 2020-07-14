@@ -90,7 +90,7 @@ const staticVessel: VesselProps = {
             id: 2,
             heading: 'Syamsudin',
             text: 'Hemmed by jungle and lulled by the lap of the Indian Ocean, the hotel is rich in island spirit',
-            image: require('../assets/img/CardThreeImage/5.png'),
+            image: require('../assets/img/CardThreeImage/6.png'),
         }]
     },
     card_text_image: {

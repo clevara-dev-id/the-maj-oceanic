@@ -20,7 +20,7 @@ const staticCabin: CabinProps = {
         images: require('../assets/img/header/2.png'),
         text: 'the cabins', 
     }],
-    carousel_card_text:[{
+    carousel_card_text: [{
         id: 0,
         caption: 'presidential suite 1',
         heading: 'Zheng He',

@@ -1,19 +1,20 @@
 import * as React from 'react';
-import staticCabinDetail, { CabinDetailProps } from '../static/cabinDetail';
+import staticDining, { DiningProps } from '../static/dining';
 import { CardTextImageSmallProps } from '../components/base_component/Card/CardTextImage/CardTextImageSmall';
 
 /**
- * Components 
+ * Style & Components 
  */
+import '../styles/dining.style.scss';
+
 const SliderAwesome         = React.lazy(() => import('../components/base_component/Slider/SliderAwesome/SliderAwesome'));
 const HeadingText           = React.lazy(() => import('../components/base_component/Heading/HeadingText'));
 const LargeImage            = React.lazy(() => import('../components/base_component/LargeImage/LargeImage'));
-const Divider               = React.lazy(() => import('../components/Divier'));
 const CardTextImageSmall    = React.lazy(() => import('../components/base_component/Card/CardTextImage/CardTextImageSmall'));
-const CarouselThree         = React.lazy(() => import('../components/base_component/Carousel/CarouselThree'));
-const Heading               = React.lazy(() => import('../components/base_component/Heading/Heading'));
+const CarouselCardText  = React.lazy(() => import('../components/base_component/Carousel/CarouselCardText'));
 
-const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
+const Dining: React.FC<DiningProps> = (props): JSX.Element => {
+
     /**
      * Slider
      */
@@ -30,7 +31,6 @@ const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
         () => (
             <React.Fragment>
                 <HeadingText
-                    caption={props.caption}
                     heading={props.heading}
                     text={props.text}
                     containerClassName="w-full mx-auto max-w-3xl"
@@ -59,34 +59,32 @@ const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
                 reverse={is_reverse}
             />
         ),
-    [props.card_text_image_small]);
+    []);
 
     /**
-     * Carousel Three
+     * Carousel
      */
-    const CarouselThreeHeading = React.useMemo<JSX.Element>(
-        () => (
-            <React.Fragment>
-                <Heading
-                    caption={props.carousel_three.caption}
-                    heading={props.carousel_three.heading}
-                    headingClassName="mt-4"
-                />
-                <CarouselThree
-                    isStaticImage
-                    containerClassName="relative mt-20 max-w-6xl mx-auto"
-                    captionClassName="text-black capitalize mt-5"
-                    mode="outline"
-                    to="#"
-                    store={props.carousel_three.data}
-                />
-            </React.Fragment>
-        )
-    ,[props.carousel_three]);
+    const Carousel = React.useMemo<JSX.Element>(
+        (): JSX.Element => (
+            <CarouselCardText
+                containerClassName="relative max-w-container-2 mx-auto p-0 z-10"
+                store={props.carousel_card_text}
+                isStaticImage
+                containerArrow="mb-6"
+                buttonTitle="book now"
+            />
+        ),
+    [props.carousel_card_text]);
 
-    let b = 'border border-black';
+    const ImageFood = React.useMemo<(params: { src: string, className?: string }) => JSX.Element>( 
+        () => (params) => (
+            <img src={params.src} className={`absolute bg-auto w-full h-auto max-w-sm ${params.className}`} alt="food-image" />
+        ),
+    [])
+
+    let b = "border border-black"
     return (
-        <div id="cabin-detail">
+        <div id="dining">
             <section>
                 {Slider}
             </section>
@@ -95,23 +93,23 @@ const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
                 {HeadingImage}
             </section>
 
-            <section className="py-20">
-                <Divider containerClassName="px-8 xl:px-0 lg:px-6" fill="#232323" />
-            </section>
-
             <section className={"py-20"}>
-                {CardTextImage(props.card_text_image_small[0])}
+                {CardTextImage(props.card_text_image_small[0], true)}
             </section>
 
-            <section className={"py-20"}>
-                {CardTextImage(props.card_text_image_small[1], true)}
-            </section>
-
-            <section className={"py-20 mb-20"}>
-                {CarouselThreeHeading}
+            <section className={"pt-24 pb-48 box-border max-w-screen-xl mx-auto relative"}>
+                {ImageFood({
+                    src: require('../assets/img/CarouselCard/food-1.png'),
+                    className: 'image-food-top top-0 right-0 hidden xl:inline lg:inline md:inline'
+                })}
+                {Carousel}
+                {ImageFood({
+                    src: require('../assets/img/CarouselCard/food-2.png'),
+                    className: 'image-food-bottom hidden xl:inline lg:inline md:inline bottom-0 left-0'
+                })}
             </section>
         </div>
     );
 };
-CabinDetail.defaultProps = staticCabinDetail;
-export default CabinDetail;
+Dining.defaultProps = staticDining;
+export default Dining;
