@@ -18,7 +18,7 @@ const staticDining: DiningProps = {
     slider: [{
         id: 0,
         images: require('../assets/img/header/9.png'),
-        text: 'Voyages'
+        text: 'Dining'
     }],
 
     heading: 'lorem ipsum dolor sit amet',
