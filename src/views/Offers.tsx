@@ -17,7 +17,7 @@ const Offers: React.FC<OffersProps> = (props): JSX.Element => {
      * Slider
      */
     const Slider = React.useMemo<JSX.Element>(
-        (): JSX.Element => (
+        () => (
             <SliderAwesome store={props.slider} isStaticImage />
         ),
     [props.slider]);
@@ -80,7 +80,6 @@ const Offers: React.FC<OffersProps> = (props): JSX.Element => {
         ),
     [props.carousel_card_text]);
 
-    let b = 'border border-black';
     return (
         <div id="offers">
             <section>
