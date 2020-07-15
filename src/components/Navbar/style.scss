@@ -149,8 +149,8 @@ $layout-min-laptop-l-to-4k: 1795px;
     @media (min-width: $layout-min-mobile-s) and (max-width: $layout-max-mobile-s) {
         svg.logo-second {
             // margin-left: 2rem;
-            position: absolute;
-            align-self: center;
+            // position: absolute;
+            // align-self: center;
         };
 
         a.book-link {

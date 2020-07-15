@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { Route } from 'react-router-dom';
 
+/**
+ * component
+ */
 const Home          = React.lazy(() => import("./views/Home"));
 const Blogs         = React.lazy(() => import('./views/Blogs'));
 const Pages         = React.lazy(() => import('./views/Pages'));

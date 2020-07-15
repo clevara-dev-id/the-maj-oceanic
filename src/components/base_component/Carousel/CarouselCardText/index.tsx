@@ -212,7 +212,7 @@ const ButtonSlick = React.memo((props: ButtonSlickProps): JSX.Element => {
         let style = props.mode === "prev" ? "w-8 h-8 relative left-0 rounded-full arrows mr-3" : "w-8 h-8 relative left-0 rounded-full arrows";
 
         return (
-            <button className={`${style} bg-white text-primary-300 hover:bg-primary-300 hover:text-white`} onClick={props.onClick}>
+            <button className={`${style} whitespace-no-wrap bg-white text-primary-300 hover:bg-primary-300 hover:text-white`} onClick={props.onClick}>
                 {props.children}
             </button>
         );

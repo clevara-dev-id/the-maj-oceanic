@@ -59,7 +59,7 @@ const SliderAwesome: React.FC<SliderProps> = (props): JSX.Element => {
             bullets={false}
             cssModule={[CoreStyles, AnimationStyles]}
             infinite={false}
-            className="awesome-slider aws-btn">
+            className="h-screen max-w-screen-4k awesome-slider aws-btn">
             {_.map(store, _renderItem)}
         </AwesomeSlider>
     );

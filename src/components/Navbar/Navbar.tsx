@@ -1,24 +1,40 @@
 import * as React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, LinkProps } from 'react-router-dom';
 import _ from 'lodash';
+
+/**
+ * Image, Svg & Style
+ */
 import './style.scss';
 import { ReactComponent as SearchBlack} from '../../assets/icons/searchBlack.svg';
 import { ReactComponent as Search } from '../../assets/icons/Search.svg'
 import Logo from '../../assets/logo.svg';
 
+/**
+ * component
+ */
 const ErrorBoundary = React.lazy(() => import('../../helper/ErrorBoundary'));
 const LogoSvg = React.lazy(() => import('../../assets/Logo'));
 
+/**
+ * Type State
+ */
 type I = {
     id: number;
     path: string;
     page: string;
 }
-interface NavProps {
+/**
+ * ## NavProps
+ */
+type NavProps = {
     navbarChange?: boolean;
     store: Array<I>;
 };
-
+/**
+ * ## Navbar
+ * @param props 
+ */
 const Navbar: React.FC<NavProps> = (props) => {
     /**
      * localStore
@@ -78,19 +94,15 @@ const Navbar: React.FC<NavProps> = (props) => {
         ),
     [q2]);
 
-    const ImageSecond = React.useMemo<JSX.Element>(
-        () => (
-            <LogoSvg className="logo-second mx-auto" fill={props.navbarChange ? "#000000" : "#ffffff"} />
+    /**
+     * Button Login, Inquire, Image
+     */
+    const ButtonLink = React.useMemo<(linkProp: LinkProps) => JSX.Element>(
+        () => (linkProp) => (
+            <Link {...linkProp}
+            />
         ),
-    [props.navbarChange]);
-
-    const ButtonSecond = React.useMemo<JSX.Element>(
-        () => (
-            <Link to="/" className={`book-link uppercase xl:hidden lg:hidden ${props.navbarChange ? "text-black" : "text-white"}`}>
-                book
-            </Link>
-        ),
-    [props.navbarChange]);
+    []);
 
     return (
         <ErrorBoundary>
@@ -98,23 +110,36 @@ const Navbar: React.FC<NavProps> = (props) => {
                 <div className={`nav-top hidden lg:flex xl:flex lg:w-auto mt-16 mb-32 ${props.navbarChange ? "scroll-active" : null}`}>
                     <div className="w-1/4 flex-grow lg:flex items-center h-20">
                         {SearchInput}
-                        <Link to="/" className="box-border bg-transparent text-white uppercase lg:px-5 py-2 focus:outline-none tracking-wide">
-                            the maj group
-                        </Link>
+                        {ButtonLink({
+                            children: 'the maj group',
+                            itemID: 'button-header',
+                            to: '/',
+                            replace: true,
+                            className: 'box-border whitespace-no-wrap bg-transparent text-white uppercase lg:px-5 py-2 focus:outline-none tracking-wide'
+                        })}
                     </div>
-
-                    <a href='/' className="max-w-xs w-1/4 p-0">
-                        <img src={Logo} className="w-screen mx-auto" />
-                    </a>
+                    
+                    {ButtonLink({
+                        children: <img src={Logo} className="w-screen mx-auto" />,
+                        itemID: 'button-image-1',
+                        to: '/',
+                        replace: true,
+                        className: 'max-w-xs w-1/4 p-0 focus:outline-none'
+                    })}
 
                     <div className="w-1/4 h-20 flex-grow lg:flex items-center justify-end">
-                        <Link to="#" className="box-border bg-transparent text-white hover:text-black uppercase py-2 px-8 focus:outline-none">
-                            login
-                        </Link>
-
-                        <Link to="#" className="border-2 box-border bg-transparent hover:bg-white border-solid border-white hover:border-black text-white hover:text-black uppercase ml-6 px-5 pt-2 pb-3 focus:outline-none">
-                            inquire now
-                        </Link>
+                        {ButtonLink({
+                            children: 'login',
+                            itemID: 'button-login-1',
+                            to: '#',
+                            className: 'button-login whitespace-no-wrap box-border bg-transparent text-white hover:opacity-50 uppercase py-2 px-8 focus:outline-none'
+                        })}
+                        {ButtonLink({
+                            children: 'inquire now',
+                            itemID: 'button-inquire-now-1',
+                            to: '/contact-us',
+                            className: 'border-2 whitespace-no-wrap box-border bg-transparent hover:bg-white border-solid border-white hover:border-white text-white hover:text-black uppercase ml-6 px-5 pt-2 pb-3 focus:outline-none'
+                        })}
                     </div>
                 </div>
 
@@ -134,16 +159,34 @@ const Navbar: React.FC<NavProps> = (props) => {
                         }))}
                     </div>
 
-                    <Link to="#" className="button hidden xl:inline-block lg:inline-block box-border bg-transparent uppercase focus:outline-none text-white mx-4">
-                        login
-                    </Link>
+                    {ButtonLink({
+                        children: 'login',
+                        itemID: 'button-login-2',
+                        to: '#',
+                        className: 'button whitespace-no-wrap hidden xl:inline-block lg:inline-block box-border bg-transparent uppercase focus:outline-none text-white mx-4'
+                    })}
 
-                    <Link to="/" className="button bg-transparent hidden xl:inline-block lg:inline-block border-2 border-solid border-white uppercase ml-6 px-5 pt-2 pb-3 focus:outline-none text-white whitespace-no-wrap">
-                        book now
-                    </Link>
+                    {ButtonLink({
+                        children: 'inquire now',
+                        itemID: 'button-inquire-now-2',
+                        to: '/contact-us',
+                        className: 'button whitespace-no-wrap bg-transparent hidden xl:inline-block lg:inline-block border-2 border-solid border-white uppercase ml-6 px-5 pt-2 pb-3 focus:outline-none text-white whitespace-no-wrap'
+                    })}
 
-                    {ImageSecond}
-                    {ButtonSecond}
+                    {ButtonLink({
+                        children: <LogoSvg className="logo-second" fill={props.navbarChange ? "#000000" : "#ffffff"} />,
+                        itemID: 'button-image-2',
+                        to: '/',
+                        replace: true,
+                        className: 'focus:outline-none mx-auto'
+                    })}
+                    
+                    {ButtonLink({
+                        children: 'login',
+                        itemID: 'button-login-3',
+                        to: '#',
+                        className: `book-link whitespace-no-wrap uppercase xl:hidden lg:hidden ${props.navbarChange ? "text-black" : "text-white"}`
+                    })}
                 </div>
             </nav>
         </ErrorBoundary>
@@ -179,12 +222,11 @@ const DefaultProps = {
             id: 6,
             page: "offers",
             path: "#offers"
-        },
-        // {
-        //     id: 7,
-        //     page: "destinations",
-        //     path: "#destinations"
-        // }
+        },{
+            id: 7,
+            page: "destinations",
+            path: "#destinations"
+        }
     ]
 };
 
