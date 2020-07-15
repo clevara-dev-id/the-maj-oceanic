@@ -10,8 +10,6 @@ export type OffersProps = {
     image: string,
 
     card_text: CardTextImageRLItem[],
-
-    carousel_card_text: CarouselCardTextItem[],
 };
 
 const staticOffers: OffersProps = {
@@ -44,32 +42,6 @@ const staticOffers: OffersProps = {
         ],
         image: require('../assets/img/CardTextImage/5.png'),
         linkTo: '#'
-    }],
-
-    carousel_card_text: [{
-        id: 0,
-        heading: 'Lorem ipsum dolor 1',
-        text: 'Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis.',
-        list: [
-            'Lorem ipsum dolor sit amet',
-            'Laboris lar aliquip',
-            'Lorem ipsum dolor sit amet',
-            'Laboris lar aliquip',
-        ],
-        images: require('../assets/img/CarouselCard/5.png'),
-        linkTo: '#',
-    },{
-        id: 1,
-        heading: 'Lorem ipsum dolor 2',
-        text: 'Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis.',
-        list: [
-            'Lorem ipsum dolor sit amet',
-            'Laboris lar aliquip',
-            'Lorem ipsum dolor sit amet',
-            'Laboris lar aliquip',
-        ],
-        images: require('../assets/img/CarouselCard/5.png'),
-        linkTo: '#',
     }],
 };
 

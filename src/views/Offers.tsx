@@ -10,7 +10,6 @@ const SliderAwesome     = React.lazy(() => import('../components/base_component/
 const HeadingText       = React.lazy(() => import('../components/base_component/Heading/HeadingText'));
 const LargeImage        = React.lazy(() => import('../components/base_component/LargeImage/LargeImage'));
 const CardText          = React.lazy(() => import('../components/base_component/Card/CardTextImage/CardTextImageRL'));
-const CarouselCardText  = React.lazy(() => import('../components/base_component/Carousel/CarouselCardText'));
 
 const Offers: React.FC<OffersProps> = (props): JSX.Element => {
     /**
@@ -65,21 +64,6 @@ const Offers: React.FC<OffersProps> = (props): JSX.Element => {
         ),
     [props.card_text]);
 
-    /**
-     * Carousel Card Text
-     */
-    const CarouselCard = React.useMemo<JSX.Element>( 
-        () => (
-            <CarouselCardText 
-                containerClassName="max-w-container-2 relative pb-12 mx-auto"
-                store={props.carousel_card_text}
-                isStaticImage
-                containerArrow="mb-16"
-                buttonTitle="book now"
-            />
-        ),
-    [props.carousel_card_text]);
-
     return (
         <div id="offers">
             <section>
@@ -91,10 +75,6 @@ const Offers: React.FC<OffersProps> = (props): JSX.Element => {
             </section>
 
             {_.map(props.card_text, CardTextImage)}
-
-            <section className={"py-20 mb-32"}>
-                {CarouselCard}
-            </section>
         </div>
     );
 };
