@@ -1,36 +1,38 @@
 import { SliderItem } from "../components/base_component/Slider/SliderAwesome/SliderAwesome";
-import { CardTextImageSmallProps } from "../components/base_component/Card/CardTextImage/CardTextImageSmall";
 import { CarouselCardTextItem } from "../components/base_component/Carousel/CarouselCardText";
+import { CardTextImageRLItem } from "../components/base_component/Card/CardTextImage/CardTextImageRL";
+import { CardTextImageSmallItem } from "../components/base_component/Card/CardTextImage/CardTextImageSmall";
 
-export type DiningProps = {
+export type OffersDetailProps = {
     slider: SliderItem[],
 
     heading: string;
     text: string;
     image: string;
-    
-    card_text_image_small: CardTextImageSmallProps[],
+
+    card_text_image_small: CardTextImageSmallItem[],
     
     carousel_card_text: CarouselCardTextItem[],
 };
 
-const staticDining: DiningProps = {
+const staticOffersDetail: OffersDetailProps = {
     slider: [{
         id: 0,
-        images: require('../assets/img/header/9.png'),
-        text: 'Dining'
+        images: require('../assets/img/header/11.png'),
+        text: 'offers detail'
     }],
 
-    heading: 'lorem ipsum dolor sit amet',
+    heading: 'exclusive saving',
     text: 'Exercitation cupidatat laboris ea pariatur irure tempor consectetur duis. Id excepteur nisi consequat labore aliqua pariatur ad dolor. Exercitation proident Lorem non proident incididunt sit.',
-    image: require('../assets/img/LargeImages/4.png'),
+    image: require('../assets/img/LargeImages/7.png'),
 
     card_text_image_small: [{
-        heading: 'Lorem Ipsum doloer sit',
+        id: 0,
+        heading: 'Duis commodo',
         text: 'Sunt excepteur laborum reprehenderit duis sunt fugiat eu dolore. Laborum mollit nostrud quis proident esse cillum sint laboris in deserunt eu consectetur ad adipisicing. Mollit nulla in quis nisi elit occaecat eu dolore aliquip.',
-        image: require('../assets/img/CardTextImageSmall/5.png')
+        image: require('../assets/img/CardTextImageSmall/3.png')
     }],
-    
+
     carousel_card_text: [{
         id: 0,
         heading: 'Lorem ipsum dolor 1',
@@ -41,7 +43,7 @@ const staticDining: DiningProps = {
             'Lorem ipsum dolor sit amet',
             'Laboris lar aliquip',
         ],
-        images: require('../assets/img/CarouselCard/4.png'),
+        images: require('../assets/img/CarouselCard/5.png'),
         linkTo: '#',
     },{
         id: 1,
@@ -53,9 +55,9 @@ const staticDining: DiningProps = {
             'Lorem ipsum dolor sit amet',
             'Laboris lar aliquip',
         ],
-        images: require('../assets/img/CarouselCard/4.png'),
+        images: require('../assets/img/CarouselCard/5.png'),
         linkTo: '#',
     }],
-}
+};
 
-export default staticDining;
+export default staticOffersDetail

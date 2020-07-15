@@ -86,10 +86,7 @@ export const HeadingText: React.FC<HeadingTextProps> = (props: HeadingTextProps)
 
             <p style={props.textStyle}
                 title={props.text!}
-                className={`
-                    body-1 
-                    ${props.textClassName}
-                `}
+                className={`body-1 ${props.textClassName} whitespace-normal`}
                 dangerouslySetInnerHTML={_markUp(props.text!)}
             />
 

@@ -37,7 +37,7 @@ const Heading: React.FC<HeadingProps> = (props): JSX.Element => {
             {   props.caption
                 ?
                 <h5 title={props.caption}
-                    className={`${props.captionClassName}`}>
+                    className={`${props.captionClassName} whitespace-normal`}>
                         {props.caption}
                 </h5>
                 : null
@@ -45,7 +45,7 @@ const Heading: React.FC<HeadingProps> = (props): JSX.Element => {
             <h1
                 style={props.headingStyle}
                 title={props.heading!}
-                className={props.headingClassName!}>
+                className={`${props.headingClassName!} whitespace-normal`}>
                     {props.heading}
             </h1>
         </React.Fragment>

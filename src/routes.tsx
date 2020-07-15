@@ -18,6 +18,7 @@ const Voyages       = React.lazy(() => import('./views/Voyages'));
 const Dining        = React.lazy(() => import('./views/Dining'));
 const Occasions     = React.lazy(() => import('./views/Occasions'));
 const Offers        = React.lazy(() => import('./views/Offers'));
+const OffersDetail  = React.lazy(() => import('./views/OffersDetail'));
 
 const BaseRoute: React.FC = () => {
     return( 
@@ -27,7 +28,9 @@ const BaseRoute: React.FC = () => {
             <Route exact path="/sustainability" component={Sustainabiliy} />
             <Route exact path="/dining" component={Dining} />
             <Route exact path="/occasions" component={Occasions} />
+            
             <Route exact path="/offers" component={Offers} />
+            <Route exact path="/offers/detail" component={OffersDetail} />
 
             <Route exact path="/blog/raja-ampat" component={Blogs} />
             <Route exact path="/contact-us" component={Contact} />

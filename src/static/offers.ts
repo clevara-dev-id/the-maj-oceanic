@@ -16,8 +16,9 @@ const staticOffers: OffersProps = {
     slider: [{
         id: 0,
         images: require('../assets/img/header/11.png'),
-        text: 'occasions'
+        text: 'offers'
     }],
+
     heading: 'lorem ipsum dolor sit amet',
     text: 'Exercitation cupidatat laboris ea pariatur irure tempor consectetur duis. Id excepteur nisi consequat labore aliqua pariatur ad dolor. Exercitation proident Lorem non proident incididunt sit.',
     image: require('../assets/img/LargeImages/6.png'),

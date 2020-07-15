@@ -6,38 +6,56 @@ import './style.scss';
 import Img1 from '../../../../assets/img/home/card-text-image/1-small.png';
 import { BaseUrlImage } from '../../../../helper/axios';
 import Button from '../../Button/Button';
+import { HeadingTextItem } from '../../Heading/HeadingText';
 
 const HeadingText = lazy(() => import('../../Heading/HeadingText'));
 
-export type CardTextImageSmallProps = {
+/**
+ * ## Card Text Image Small Item
+ * 
+ * ### PropType
+ * 
+ * @param id `string | number | null | undefined`
+ * @param caption `string | null | undefined`
+ * @param heading `string | null | undefined`
+ * @param text `string | null | undefined`
+ * @param list `Array<string> | null | undifined`
+ * @param image `string`
+ */
+export type CardTextImageSmallItem = HeadingTextItem & {
+    id?: React.ReactText,
+    image: string,
+    linkTo?: string
+};
+
+export type CardTextImageSmallProps = CardTextImageSmallItem & {
     containerClassName?: string,
     isStaticImage?: boolean,
     reverse?: boolean,
 
-    image: string,
-    caption?: string,
-    heading: string,
-    text: string,
-
     buttonTitle?: string,
-    linkTo?: string,
     onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void,
 };
 
 /**
  * ### CardTextImageSmall
- * @param containerClassName string
- * @param isStaticImage boolean
- * @param reverse boolean
  * 
- * @param image string
- * @param caption string 
- * @param heading string
- * @param text string
- * @param buttonTitle string
- * @param onClick (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+ * ### PropType
+ * 
+ * @param containerClassName `string`
+ * @param isStaticImage `boolean`
+ * @param reverse `boolean`
+ * @param id `string | number`
+ * @param image `string`
+ * @param caption `string` 
+ * @param heading `string`
+ * @param text `string`
+ * @param buttonTitle `string`
+ * @param onClick `(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void`
+ * 
  * 
  * ## Usage
+ * 
  * ```js
  * <CardTextImageSmall
  *    containerClassName="border border-black"

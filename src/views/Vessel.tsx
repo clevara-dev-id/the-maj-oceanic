@@ -21,7 +21,7 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
      * Slider
      */
     const Slider = React.useMemo<JSX.Element>(
-        (): JSX.Element => (
+        () => (
             <SliderAwesome store={props.slider} isStaticImage />
         ),
     [props.slider]);
