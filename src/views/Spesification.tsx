@@ -57,7 +57,7 @@ const Spesification: React.FC<SpecProps & MapStateProps> = (props): JSX.Element 
         () => (
             <React.Fragment>
                 <HeadingText
-                    containerClassName="container flex flex-col items-center justify-center mx-auto lg:max-w-4xl text-center p-8"
+                    containerClassName="container select-none flex flex-col items-center justify-center mx-auto lg:max-w-4xl text-center p-8"
                     headingClassName=" text-center leading-none"
                     heading={source?.heading}
                     text={source?.text}
@@ -86,9 +86,9 @@ const Spesification: React.FC<SpecProps & MapStateProps> = (props): JSX.Element 
     const MemoTabItem = React.useMemo<(params: any, index: number) => JSX.Element>(
         () => (params, index) => (
             <div key={index} title={params.label}>
-                <img className="mx-auto bg-contain bg-no-repeat bg-center md:bg-cover xl:bg-cover lg:bg-cover"
+                <img title={params.label} draggable={false} className="mx-auto bg-contain bg-no-repeat bg-center md:bg-cover xl:bg-cover lg:bg-cover"
                     src={params.images} alt="tab-image"/>
-                <p className="whitespace-pre-line text-base pt-10 sm:pt-10 lg:pt-12 xl:pt-24">{params.text}</p>
+                <p title={params.text} className="whitespace-pre-line select-none text-base pt-10 sm:pt-10 lg:pt-12 xl:pt-24">{params.text}</p>
             </div>
         ),
     []);

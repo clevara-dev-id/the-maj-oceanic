@@ -38,7 +38,7 @@ const Table: React.FC<TableProps> = (props): JSX.Element => {
     [props.store]);
 
     return (
-        <div className={`max-w-container-2 mx-auto ${props.containerClassName}`}>
+        <div className={`max-w-container-2 select-none mx-auto ${props.containerClassName}`}>
             <h5 className={`px-4 py-8 ${props.headClassName} text-left`}>Table Of Spesification</h5>
             <table className="w-full">
                 <tbody>
