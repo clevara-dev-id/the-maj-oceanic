@@ -82,8 +82,8 @@ const CardItem: React.FC<CardItemProps> = (props): JSX.Element => {
      * Button
      */
     const ButtonText = React.useMemo(() => (
-        <div className="text-center mx-auto w-image-1 mt-10">
-            <Button mode={props.mode || "outline"} to={props.to || "#"}>
+        <div className="text-center mx-auto my-10">
+            <Button className="mx-auto" mode={props.mode || "outline"} to={props.to || "#"}>
                 {props.buttonTitle}
             </Button>
         </div>
