@@ -49,7 +49,7 @@ const Cabin: React.FC<CabinProps> = (props): JSX.Element => {
                 <Heading
                     caption={props.carousel_three.caption}
                     heading={props.carousel_three.heading}
-                    headingClassName="mt-4"
+                    headingClassName="mt-4 select-none"
                 />
                 <CarouselThree
                     isStaticImage

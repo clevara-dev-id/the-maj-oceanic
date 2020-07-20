@@ -67,7 +67,7 @@ export type HeadingTextProps = HeadingTextItem & {
 export const HeadingText: React.FC<HeadingTextProps> = (props: HeadingTextProps): JSX.Element => {
 
     const _renderItem = (data: string, index: number): JSX.Element => (
-        <li key={index} className="py-1">
+        <li title={data} key={index} className="py-1">
             <p className="body-1">{data}</p>
         </li>
     );
