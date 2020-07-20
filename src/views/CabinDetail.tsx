@@ -34,9 +34,9 @@ const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
                     caption={props.caption}
                     heading={props.heading}
                     text={props.text}
-                    containerClassName="w-full mx-auto max-w-3xl"
+                    containerClassName="select-none w-full mx-auto max-w-3xl"
                     textClassName="px-6"
-                    headingClassName=" mt-4"
+                    headingClassName="mt-4"
                 />
                 <LargeImage
                     images={props.image}
@@ -71,7 +71,7 @@ const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
                 <Heading
                     caption={props.carousel_three.caption}
                     heading={props.carousel_three.heading}
-                    headingClassName="mt-4"
+                    headingClassName="mt-4 select-none"
                 />
                 <CarouselThree
                     isStaticImage
