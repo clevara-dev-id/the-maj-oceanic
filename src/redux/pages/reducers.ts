@@ -12,10 +12,10 @@ import { PageState, NavigationState, PageItem } from './types';
 import StaticTab, { Tabs } from '../../static/tabs';
 
 /** initial value for pages reducer */
-type InitialState = PageState & NavigationState & {
+export type InitialStatePageProps = PageState & NavigationState & {
     tabs?: Tabs 
 };
-const initialState: InitialState = {
+const initialState: InitialStatePageProps = {
     activePage: undefined,
     pages: [{
         id: 0,
@@ -59,7 +59,7 @@ const PageSlice = createSlice({
                     text: action.payload.text,
                     images: action.payload.images,
                     slider: action.payload.slider,
-                    carousel: action.payload.carousel
+                    carousel_card_text: action.payload.carousel_card_text
                 });
             }
         },

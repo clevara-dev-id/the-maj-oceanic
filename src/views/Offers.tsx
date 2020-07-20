@@ -1,21 +1,19 @@
 import * as React from 'react';
 import _ from 'lodash';
 import staticOffers, { OffersProps } from '../static/offers';
-import { CardTextImageRLItem } from '../components/base_component/Card/CardTextImage/CardTextImageRL';
+import { CardTextImageRLItem } from '../components/base/Card/CardTextImage/CardTextImageRL';
 
-/**
- * Components
- */
-const SliderAwesome     = React.lazy(() => import('../components/base_component/Slider/SliderAwesome/SliderAwesome'));
-const HeadingText       = React.lazy(() => import('../components/base_component/Heading/HeadingText'));
-const LargeImage        = React.lazy(() => import('../components/base_component/LargeImage/LargeImage'));
-const CardText          = React.lazy(() => import('../components/base_component/Card/CardTextImage/CardTextImageRL'));
+/** Components */
+const SliderAwesome     = React.lazy(() => import('../components/base/Slider/SliderAwesome'));
+const HeadingText       = React.lazy(() => import('../components/base/Heading/HeadingText'));
+const LargeImage        = React.lazy(() => import('../components/base/LargeImage/LargeImage'));
+const CardTextImage     = React.lazy(() => import('../components/base/Card/CardTextImage/CardTextImageRL'));
 
 const Offers: React.FC<OffersProps> = (props): JSX.Element => {
     /**
-     * Slider
+     * Slider Awesome
      */
-    const Slider = React.useMemo<JSX.Element>(
+    const MemoSliderAwesome = React.useMemo<JSX.Element>(
         () => (
             <SliderAwesome store={props.slider} isStaticImage />
         ),
@@ -24,7 +22,7 @@ const Offers: React.FC<OffersProps> = (props): JSX.Element => {
     /**
      * Heading Text & Large Image
      */
-    const HeadingImage = React.useMemo<JSX.Element>( 
+    const MemoHeadingTextLargeImage = React.useMemo<JSX.Element>( 
         () => (
             <React.Fragment>
                 <HeadingText
@@ -46,10 +44,10 @@ const Offers: React.FC<OffersProps> = (props): JSX.Element => {
     /**
      * Card Text // Card Text Image
      */
-    const CardTextImage = React.useMemo<(params: CardTextImageRLItem, index: number) => JSX.Element>( 
+    const MemoCardTextImage = React.useMemo<(params: CardTextImageRLItem, index: number) => JSX.Element>( 
         () => (params, index) => (
             <section key={index} className={"py-20"}>
-                <CardText 
+                <CardTextImage 
                     heading={params.heading}
                     text={params.text}
                     list={params.list}
@@ -67,16 +65,17 @@ const Offers: React.FC<OffersProps> = (props): JSX.Element => {
     return (
         <div id="offers">
             <section>
-                {Slider}
+                {MemoSliderAwesome}
             </section>
 
             <section className={"py-20"}>
-                {HeadingImage}
+                {MemoHeadingTextLargeImage}
             </section>
 
-            {_.map(props.card_text, CardTextImage)}
+            {_.map(props.card_text, MemoCardTextImage)}
         </div>
     );
 };
+
 Offers.defaultProps = staticOffers;
-export default Offers;
+export default React.memo(Offers, (prevProp, nextProp) => _.isEqual(prevProp, nextProp));

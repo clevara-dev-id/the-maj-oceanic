@@ -26,3 +26,5 @@ yarn.lock
 jsconfig.json
 
 tsconfig.json
+"build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
+/un_used

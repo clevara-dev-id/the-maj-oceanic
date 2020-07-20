@@ -1,22 +1,19 @@
 import * as React from 'react';
 import _ from 'lodash';
 import staticOccasions, { OccasionsProps } from '../static/occasions';
-import { CardTextImageRLItem } from '../components/base_component/Card/CardTextImage/CardTextImageRL';
+import { CardTextImageRLItem } from '../components/base/Card/CardTextImage/CardTextImageRL';
 
-/**
- * Components
- */
-const SliderAwesome     = React.lazy(() => import('../components/base_component/Slider/SliderAwesome/SliderAwesome'));
-const HeadingText       = React.lazy(() => import('../components/base_component/Heading/HeadingText'));
-const LargeImage        = React.lazy(() => import('../components/base_component/LargeImage/LargeImage'));
-const CardTextImage     = React.lazy(() => import('../components/base_component/Card/CardTextImage/CardTextImageRL'));
+/** Components */
+const SliderAwesome     = React.lazy(() => import('../components/base/Slider/SliderAwesome'));
+const HeadingText       = React.lazy(() => import('../components/base/Heading/HeadingText'));
+const LargeImage        = React.lazy(() => import('../components/base/LargeImage/LargeImage'));
+const CardTextImage     = React.lazy(() => import('../components/base/Card/CardTextImage/CardTextImageRL'));
 
 const Occasions: React.FC<OccasionsProps> = (props): JSX.Element => {
-
     /**
-     * Slider
+     * Slider Awesome
      */
-    const Slider = React.useMemo<JSX.Element>(
+    const MemoSliderAwesome = React.useMemo<JSX.Element>(
         () => (
             <SliderAwesome store={props.slider} isStaticImage />
         ),
@@ -25,7 +22,7 @@ const Occasions: React.FC<OccasionsProps> = (props): JSX.Element => {
     /**
      * Heading Text & Large Image
      */
-    const HeadingImage = React.useMemo<JSX.Element>( 
+    const MemoHeadingTextLargeImage = React.useMemo<JSX.Element>( 
         () => (
             <React.Fragment>
                 <HeadingText
@@ -47,11 +44,11 @@ const Occasions: React.FC<OccasionsProps> = (props): JSX.Element => {
     /**
      * Card Text Image (Right/Left)
      */
-    const CardText = React.useMemo<(params: CardTextImageRLItem, index: number) => JSX.Element>( 
+    const MemoCardTextImage = React.useMemo<(params: CardTextImageRLItem, index: number) => JSX.Element>( 
         () => (params, index) => {
             const is_reverse = index % 2 ? false : true;
             return (
-                <section className={"py-20 "}>
+                <section className={"py-20"}>
                     <CardTextImage 
                         key={index}
                         heading={params.heading}
@@ -69,16 +66,17 @@ const Occasions: React.FC<OccasionsProps> = (props): JSX.Element => {
     return (
         <div id="occasions">
             <section>
-                {Slider}
+                {MemoSliderAwesome}
             </section>
 
             <section className={"py-20 "}>
-                {HeadingImage}
+                {MemoHeadingTextLargeImage}
             </section>
 
-            {_.map(props.card_text_image, CardText)}
+            {_.map(props.card_text_image, MemoCardTextImage)}
         </div>
     );
 };
+
 Occasions.defaultProps = staticOccasions;
-export default Occasions;
+export default React.memo(Occasions, (prevProp, nextProp) => _.isEqual(prevProp, nextProp));

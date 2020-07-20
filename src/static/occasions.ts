@@ -1,5 +1,5 @@
-import { SliderItem } from "../components/base_component/Slider/SliderAwesome/SliderAwesome";
-import { CardTextImageRLItem } from "../components/base_component/Card/CardTextImage/CardTextImageRL";
+import { SliderItem } from "../components/base/Slider/SliderAwesome";
+import { CardTextImageRLItem } from "../components/base/Card/CardTextImage/CardTextImageRL";
 
 export type OccasionsProps = {
     slider: SliderItem[];

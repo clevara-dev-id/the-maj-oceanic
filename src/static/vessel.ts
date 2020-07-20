@@ -1,11 +1,11 @@
-import { SliderInterface } from "../redux/pages/types";
-import { CarouselThreeItem } from '../components/base_component/Carousel/CarouselThree';
-import { CarouselCardTextItem } from "../components/base_component/Carousel/CarouselCardText";
-import { CardTextImageRLItem } from "../components/base_component/Card/CardTextImage/CardTextImageRL";
+import { CarouselThreeItem } from '../components/base/Carousel/CarouselThree';
+import { CarouselCardTextItem } from "../components/base/Carousel/CarouselCardText";
+import { CardTextImageRLItem } from "../components/base/Card/CardTextImage/CardTextImageRL";
+import { SliderItem } from '../components/base/Slider/SliderAwesome';
 
 
 export type VesselProps = {
-    slider: SliderInterface;
+    slider: SliderItem[];
     heading: string;
     text: string;
     image: string;

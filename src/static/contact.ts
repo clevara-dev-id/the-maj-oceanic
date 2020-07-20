@@ -1,4 +1,4 @@
-import { SliderItem } from '../components/base_component/Slider/SliderAwesome/SliderAwesome';
+import { SliderItem } from '../components/base/Slider/SliderAwesome';
 
 type slider_awesome = {
     slider: Array<SliderItem>;

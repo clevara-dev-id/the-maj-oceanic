@@ -81,7 +81,7 @@ $layout-min-laptop-l-to-4k: 1795px;
             };
         };
 
-        a.button, div.button {
+        a.button-2, div.button {
             display: none;
             opacity: 0;
             transition: display .8s ease-in-out, opacity 2s ease-in-out;
@@ -128,7 +128,7 @@ $layout-min-laptop-l-to-4k: 1795px;
                 -o-transition: color .5s ease-in-out;
             };
 
-            a.button {
+            a.button-2 {
                 border-color: #ffffff;
                 transition: border-color .5s ease-in-out;
                 -moz-transition: border-color .5s ease-in-out;
@@ -147,11 +147,6 @@ $layout-min-laptop-l-to-4k: 1795px;
     };
 
     @media (min-width: $layout-min-mobile-s) and (max-width: $layout-max-mobile-s) {
-        svg.logo-second {
-            // margin-left: 2rem;
-            // position: absolute;
-            // align-self: center;
-        };
 
         a.book-link {
             position: absolute;
@@ -186,9 +181,9 @@ $layout-min-laptop-l-to-4k: 1795px;
     
     // laptop or lg
     @media (min-width: $layout-min-lg) {
-        transform: translateY(-17.2rem);
+        transform: translateY(-15rem);
 
-        a.button, div.button {
+        a.button-2, div.button {
             display: inline-block;
             opacity: 1;
         };
@@ -210,7 +205,13 @@ $layout-min-laptop-l-to-4k: 1795px;
     
             a { color: #000000 };
 
-            a.button { 
+            a.button-login-2 {
+                &:hover{
+                    opacity: .25;
+                }
+            }
+
+            a.inquire-now-2 { 
                 border-color: #000000;
 
                 &:hover {
@@ -227,15 +228,13 @@ $layout-min-laptop-l-to-4k: 1795px;
         div.nav-list.scroll-active {
             background-color: #ffffff;
 
-            a.button { 
-                // border-width: 0;
-                border-color: #000000;
-                color: #000000;
+            a.inquire-now-2 { 
+                border-color: #232323;
+                color: #232322;
 
                 &:hover {
-                    border-color: transparent;
                     color: #ffffff;
-                    background-color: #000000;
+                    background-color: rgb(35, 35, 35);
                 }
             }
         };

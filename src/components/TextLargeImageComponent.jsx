@@ -1,7 +1,7 @@
 import React, { lazy, Fragment } from 'react';
 
-const LargeImage = lazy(() => import('./base_component/LargeImage/LargeImage'));
-const HeadingText = lazy(() => import('./base_component/Heading/HeadingText'));
+const LargeImage = lazy(() => import('./base/LargeImage/LargeImage'));
+const HeadingText = lazy(() => import('./base/Heading/HeadingText'));
 
 const TextLargeImageComponent = props => {
     

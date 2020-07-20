@@ -18602,6 +18602,70 @@ video {
   transition-delay: 1000ms;
 }
 
+.rotate-0 {
+  transform: rotate(0deg);
+}
+
+.rotate-90 {
+  transform: rotate(90deg);
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.rotate-270 {
+  transform: rotate(270deg);
+}
+
+.max-h-container-tabs {
+  max-height: 43.75rem;
+}
+
+.bg-tabs-deck {
+  background-color: rgb(239, 225, 220);
+}
+
+.tracking-heading-slides {
+  letter-spacing: 3.4375rem;
+}
+
+.bg-nero {
+  background-color: rgb(35, 35, 35);
+}
+
+.hover\:rotate-0:hover {
+  transform: rotate(0deg);
+}
+
+.hover\:rotate-90:hover {
+  transform: rotate(90deg);
+}
+
+.hover\:rotate-180:hover {
+  transform: rotate(180deg);
+}
+
+.hover\:rotate-270:hover {
+  transform: rotate(270deg);
+}
+
+.hover\:max-h-container-tabs:hover {
+  max-height: 43.75rem;
+}
+
+.hover\:bg-tabs-deck:hover {
+  background-color: rgb(239, 225, 220);
+}
+
+.hover\:tracking-heading-slides:hover {
+  letter-spacing: 3.4375rem;
+}
+
+.hover\:bg-nero:hover {
+  background-color: rgb(35, 35, 35);
+}
+
 @import "./App.css";
 
 @media (min-width: 640px) {
@@ -36556,6 +36620,70 @@ video {
 
   .sm\:delay-1000 {
     transition-delay: 1000ms;
+  }
+
+  .sm\:rotate-0 {
+    transform: rotate(0deg);
+  }
+
+  .sm\:rotate-90 {
+    transform: rotate(90deg);
+  }
+
+  .sm\:rotate-180 {
+    transform: rotate(180deg);
+  }
+
+  .sm\:rotate-270 {
+    transform: rotate(270deg);
+  }
+
+  .sm\:max-h-container-tabs {
+    max-height: 43.75rem;
+  }
+
+  .sm\:bg-tabs-deck {
+    background-color: rgb(239, 225, 220);
+  }
+
+  .sm\:tracking-heading-slides {
+    letter-spacing: 3.4375rem;
+  }
+
+  .sm\:bg-nero {
+    background-color: rgb(35, 35, 35);
+  }
+
+  .sm\:hover\:rotate-0:hover {
+    transform: rotate(0deg);
+  }
+
+  .sm\:hover\:rotate-90:hover {
+    transform: rotate(90deg);
+  }
+
+  .sm\:hover\:rotate-180:hover {
+    transform: rotate(180deg);
+  }
+
+  .sm\:hover\:rotate-270:hover {
+    transform: rotate(270deg);
+  }
+
+  .sm\:hover\:max-h-container-tabs:hover {
+    max-height: 43.75rem;
+  }
+
+  .sm\:hover\:bg-tabs-deck:hover {
+    background-color: rgb(239, 225, 220);
+  }
+
+  .sm\:hover\:tracking-heading-slides:hover {
+    letter-spacing: 3.4375rem;
+  }
+
+  .sm\:hover\:bg-nero:hover {
+    background-color: rgb(35, 35, 35);
   }
 }
 
@@ -54512,6 +54640,70 @@ video {
   .md\:delay-1000 {
     transition-delay: 1000ms;
   }
+
+  .md\:rotate-0 {
+    transform: rotate(0deg);
+  }
+
+  .md\:rotate-90 {
+    transform: rotate(90deg);
+  }
+
+  .md\:rotate-180 {
+    transform: rotate(180deg);
+  }
+
+  .md\:rotate-270 {
+    transform: rotate(270deg);
+  }
+
+  .md\:max-h-container-tabs {
+    max-height: 43.75rem;
+  }
+
+  .md\:bg-tabs-deck {
+    background-color: rgb(239, 225, 220);
+  }
+
+  .md\:tracking-heading-slides {
+    letter-spacing: 3.4375rem;
+  }
+
+  .md\:bg-nero {
+    background-color: rgb(35, 35, 35);
+  }
+
+  .md\:hover\:rotate-0:hover {
+    transform: rotate(0deg);
+  }
+
+  .md\:hover\:rotate-90:hover {
+    transform: rotate(90deg);
+  }
+
+  .md\:hover\:rotate-180:hover {
+    transform: rotate(180deg);
+  }
+
+  .md\:hover\:rotate-270:hover {
+    transform: rotate(270deg);
+  }
+
+  .md\:hover\:max-h-container-tabs:hover {
+    max-height: 43.75rem;
+  }
+
+  .md\:hover\:bg-tabs-deck:hover {
+    background-color: rgb(239, 225, 220);
+  }
+
+  .md\:hover\:tracking-heading-slides:hover {
+    letter-spacing: 3.4375rem;
+  }
+
+  .md\:hover\:bg-nero:hover {
+    background-color: rgb(35, 35, 35);
+  }
 }
 
 @media (min-width: 1024px) {
@@ -72466,6 +72658,70 @@ video {
 
   .lg\:delay-1000 {
     transition-delay: 1000ms;
+  }
+
+  .lg\:rotate-0 {
+    transform: rotate(0deg);
+  }
+
+  .lg\:rotate-90 {
+    transform: rotate(90deg);
+  }
+
+  .lg\:rotate-180 {
+    transform: rotate(180deg);
+  }
+
+  .lg\:rotate-270 {
+    transform: rotate(270deg);
+  }
+
+  .lg\:max-h-container-tabs {
+    max-height: 43.75rem;
+  }
+
+  .lg\:bg-tabs-deck {
+    background-color: rgb(239, 225, 220);
+  }
+
+  .lg\:tracking-heading-slides {
+    letter-spacing: 3.4375rem;
+  }
+
+  .lg\:bg-nero {
+    background-color: rgb(35, 35, 35);
+  }
+
+  .lg\:hover\:rotate-0:hover {
+    transform: rotate(0deg);
+  }
+
+  .lg\:hover\:rotate-90:hover {
+    transform: rotate(90deg);
+  }
+
+  .lg\:hover\:rotate-180:hover {
+    transform: rotate(180deg);
+  }
+
+  .lg\:hover\:rotate-270:hover {
+    transform: rotate(270deg);
+  }
+
+  .lg\:hover\:max-h-container-tabs:hover {
+    max-height: 43.75rem;
+  }
+
+  .lg\:hover\:bg-tabs-deck:hover {
+    background-color: rgb(239, 225, 220);
+  }
+
+  .lg\:hover\:tracking-heading-slides:hover {
+    letter-spacing: 3.4375rem;
+  }
+
+  .lg\:hover\:bg-nero:hover {
+    background-color: rgb(35, 35, 35);
   }
 }
 
@@ -90422,6 +90678,70 @@ video {
   .xl\:delay-1000 {
     transition-delay: 1000ms;
   }
+
+  .xl\:rotate-0 {
+    transform: rotate(0deg);
+  }
+
+  .xl\:rotate-90 {
+    transform: rotate(90deg);
+  }
+
+  .xl\:rotate-180 {
+    transform: rotate(180deg);
+  }
+
+  .xl\:rotate-270 {
+    transform: rotate(270deg);
+  }
+
+  .xl\:max-h-container-tabs {
+    max-height: 43.75rem;
+  }
+
+  .xl\:bg-tabs-deck {
+    background-color: rgb(239, 225, 220);
+  }
+
+  .xl\:tracking-heading-slides {
+    letter-spacing: 3.4375rem;
+  }
+
+  .xl\:bg-nero {
+    background-color: rgb(35, 35, 35);
+  }
+
+  .xl\:hover\:rotate-0:hover {
+    transform: rotate(0deg);
+  }
+
+  .xl\:hover\:rotate-90:hover {
+    transform: rotate(90deg);
+  }
+
+  .xl\:hover\:rotate-180:hover {
+    transform: rotate(180deg);
+  }
+
+  .xl\:hover\:rotate-270:hover {
+    transform: rotate(270deg);
+  }
+
+  .xl\:hover\:max-h-container-tabs:hover {
+    max-height: 43.75rem;
+  }
+
+  .xl\:hover\:bg-tabs-deck:hover {
+    background-color: rgb(239, 225, 220);
+  }
+
+  .xl\:hover\:tracking-heading-slides:hover {
+    letter-spacing: 3.4375rem;
+  }
+
+  .xl\:hover\:bg-nero:hover {
+    background-color: rgb(35, 35, 35);
+  }
 }
 
 @media (min-width: 2560px) {
@@ -108376,5 +108696,69 @@ video {
 
   .\34k\:delay-1000 {
     transition-delay: 1000ms;
+  }
+
+  .\34k\:rotate-0 {
+    transform: rotate(0deg);
+  }
+
+  .\34k\:rotate-90 {
+    transform: rotate(90deg);
+  }
+
+  .\34k\:rotate-180 {
+    transform: rotate(180deg);
+  }
+
+  .\34k\:rotate-270 {
+    transform: rotate(270deg);
+  }
+
+  .\34k\:max-h-container-tabs {
+    max-height: 43.75rem;
+  }
+
+  .\34k\:bg-tabs-deck {
+    background-color: rgb(239, 225, 220);
+  }
+
+  .\34k\:tracking-heading-slides {
+    letter-spacing: 3.4375rem;
+  }
+
+  .\34k\:bg-nero {
+    background-color: rgb(35, 35, 35);
+  }
+
+  .\34k\:hover\:rotate-0:hover {
+    transform: rotate(0deg);
+  }
+
+  .\34k\:hover\:rotate-90:hover {
+    transform: rotate(90deg);
+  }
+
+  .\34k\:hover\:rotate-180:hover {
+    transform: rotate(180deg);
+  }
+
+  .\34k\:hover\:rotate-270:hover {
+    transform: rotate(270deg);
+  }
+
+  .\34k\:hover\:max-h-container-tabs:hover {
+    max-height: 43.75rem;
+  }
+
+  .\34k\:hover\:bg-tabs-deck:hover {
+    background-color: rgb(239, 225, 220);
+  }
+
+  .\34k\:hover\:tracking-heading-slides:hover {
+    letter-spacing: 3.4375rem;
+  }
+
+  .\34k\:hover\:bg-nero:hover {
+    background-color: rgb(35, 35, 35);
   }
 }

@@ -1,5 +1,3 @@
-import Tabs from "../components/base_component/Tab/Tabs";
-
 export interface TabItem {
     id: number;
     label: string;

@@ -3,17 +3,15 @@ import _ from 'lodash';
 
 import DefaultProps, { VesselProps } from '../static/vessel';
 
-/**
- * Components
- */
-const SliderAwesome     = React.lazy(() => import('../components/base_component/Slider/SliderAwesome/SliderAwesome'));
-const HeadingText       = React.lazy(() => import('../components/base_component/Heading/HeadingText'));
-const LargeImage        = React.lazy(() => import('../components/base_component/LargeImage/LargeImage'));
-const Heading           = React.lazy(() => import('../components/base_component/Heading/Heading'));
-const CarouselThree     = React.lazy(() => import('../components/base_component/Carousel/CarouselThree'));
-const Button            = React.lazy(() => import('../components/base_component/Button/Button'));
-const CarouselCardText  = React.lazy(() => import('../components/base_component/Carousel/CarouselCardText'));
-const CardText          = React.lazy(() => import('../components/base_component/Card/CardTextImage/CardTextImageRL'));
+/** Components */
+const SliderAwesome     = React.lazy(() => import('../components/base/Slider/SliderAwesome'));
+const HeadingText       = React.lazy(() => import('../components/base/Heading/HeadingText'));
+const LargeImage        = React.lazy(() => import('../components/base/LargeImage/LargeImage'));
+const Heading           = React.lazy(() => import('../components/base/Heading/Heading'));
+const CarouselThree     = React.lazy(() => import('../components/base/Carousel/CarouselThree'));
+const Button            = React.lazy(() => import('../components/base/Button/Button'));
+const CarouselCardText  = React.lazy(() => import('../components/base/Carousel/CarouselCardText'));
+const CardText          = React.lazy(() => import('../components/base/Card/CardTextImage/CardTextImageRL'));
 
 const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
     // const dispatch = useDispatch();

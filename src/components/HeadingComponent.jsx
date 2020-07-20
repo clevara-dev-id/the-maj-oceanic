@@ -1,6 +1,6 @@
 import React, {lazy} from 'react';
 
-const Heading = lazy(()=>import('./base_component/Heading/Heading'));
+const Heading = lazy(()=>import('./base/Heading/Heading'));
 
 const HeadingComponent = props => {
     return props.properties.map((data, i) => {

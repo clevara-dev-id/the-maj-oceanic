@@ -1,5 +1,5 @@
 import React, { lazy } from 'react';
-const HeadingText = lazy(() => import('./base_component/Heading/HeadingText'));
+const HeadingText = lazy(() => import('./base/Heading/HeadingText'));
 
 const TextHeadingComponent = props => {
     const _renderItem = (data, index) => (

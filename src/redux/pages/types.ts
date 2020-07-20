@@ -1,52 +1,18 @@
-/**
- * Slider Interface
- * 
- * Type Array with property:
- * 
- * @param id number
- * @param images string
- * @param text string
- * @param created_at string
- * @param updated_at string
- */
-export type SliderInterface = Array<{
-    id: number;
-    images: string;
-    text: string;
-    created_at?: string;
-    updated_at?: string;
-}>;
-/**
- * Carousel Interface
- * 
- * Type Array with property:
- * 
- * @param id number
- * @param caption string (optional)
- * @param heading string 
- * @param text string (optional)
- * @param images string
- * @param created_at string
- * @param updated_at string
- */
-export type CarouselInterface = Array<{
-    id: number;
-    caption?: string;
-    heading: string;
-    text?: string;
-    images: string;
-    created_at: string;
-    updated_at: string;
-}>;
+import { SliderItem } from "../../components/base/Slider/SliderAwesome";
+import { CarouselCardTextItem } from "../../components/base/Carousel/CarouselCardText";
 
 export interface PageItem {
-    id: number;
-    page_name: string;
+    id?: React.ReactText;
+    page_name?: string;
+    
     heading: string;
     text: string;
     images: string;
-    slider?: SliderInterface;
-    carousel?: CarouselInterface;
+
+    slider?: SliderItem[];
+
+    carousel_card_text?: CarouselCardTextItem[];
+    
     data?: Array<{
         id: number;
         title: string;

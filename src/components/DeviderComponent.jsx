@@ -1,6 +1,6 @@
 import React, { lazy } from 'react';
 
-const Devider = lazy(() => import('./base_component/Heading/Devider'));
+const Devider = lazy(() => import('./base/Heading/Devider'));
 
 const DeviderComponent = props => {
     const _renderItem = data => (

@@ -1,7 +1,6 @@
-import { SliderItem } from "../components/base_component/Slider/SliderAwesome/SliderAwesome";
-import { CarouselCardTextItem } from "../components/base_component/Carousel/CarouselCardText";
-import { CardTextImageRLItem } from "../components/base_component/Card/CardTextImage/CardTextImageRL";
-import { CardTextImageSmallItem } from "../components/base_component/Card/CardTextImage/CardTextImageSmall";
+import { SliderItem } from "../components/base/Slider/SliderAwesome";
+import { CarouselCardTextItem } from "../components/base/Carousel/CarouselCardText";
+import { CardTextImageSmallItem } from "../components/base/Card/CardTextImage/CardTextImageSmall";
 
 export type OffersDetailProps = {
     slider: SliderItem[],

@@ -1,6 +1,6 @@
-import { SliderItem } from "../components/base_component/Slider/SliderAwesome/SliderAwesome";
-import { CardTextImageSmallItem } from "../components/base_component/Card/CardTextImage/CardTextImageSmall";
-import { CarouselThreeItem } from "../components/base_component/Carousel/CarouselThree";
+import { SliderItem } from "../components/base/Slider/SliderAwesome";
+import { CardTextImageSmallItem } from "../components/base/Card/CardTextImage/CardTextImageSmall";
+import { CarouselThreeItem } from "../components/base/Carousel/CarouselThree";
 
 export type CabinDetailProps = {
     slider: SliderItem[],

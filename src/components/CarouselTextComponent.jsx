@@ -1,6 +1,6 @@
 import React, { lazy } from 'react'
 
-const CarouselText = lazy(()=>import('./base_component/Carousel/CarouselText/'))
+const CarouselText = lazy(()=>import('./base/Carousel/CarouselText'))
 
 const CarouselTextComponent = props => {
     return(

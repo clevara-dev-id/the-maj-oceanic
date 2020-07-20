@@ -1,15 +1,13 @@
 import * as React from 'react';
 import staticOffersDetail, { OffersDetailProps } from '../static/offersDetail';
-import { CardTextImageSmallItem } from '../components/base_component/Card/CardTextImage/CardTextImageSmall';
+import { CardTextImageSmallItem } from '../components/base/Card/CardTextImage/CardTextImageSmall';
 
-/**
- * Components
- */
-const SliderAwesome         = React.lazy(() => import('../components/base_component/Slider/SliderAwesome/SliderAwesome'));
-const HeadingText           = React.lazy(() => import('../components/base_component/Heading/HeadingText'));
-const LargeImage            = React.lazy(() => import('../components/base_component/LargeImage/LargeImage'));
-const CardTextImageSmall    = React.lazy(() => import('../components/base_component/Card/CardTextImage/CardTextImageSmall'));
-const CarouselCardText      = React.lazy(() => import('../components/base_component/Carousel/CarouselCardText'));
+/** Components */
+const SliderAwesome         = React.lazy(() => import('../components/base/Slider/SliderAwesome'));
+const HeadingText           = React.lazy(() => import('../components/base/Heading/HeadingText'));
+const LargeImage            = React.lazy(() => import('../components/base/LargeImage/LargeImage'));
+const CardTextImageSmall    = React.lazy(() => import('../components/base/Card/CardTextImage/CardTextImageSmall'));
+const CarouselCardText      = React.lazy(() => import('../components/base/Carousel/CarouselCardText'));
 
 const OffersDetail: React.FC<OffersDetailProps> = (props): JSX.Element => {
     /**
@@ -59,7 +57,7 @@ const OffersDetail: React.FC<OffersDetailProps> = (props): JSX.Element => {
     [props.card_text_image_small]);
 
     /**
-     * Carousel Card
+     * Carousel Card Text
      */
     const MemoCarouselCardText = React.useMemo<JSX.Element>( 
         () => (

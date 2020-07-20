@@ -1,6 +1,6 @@
 import React, { lazy, Fragment } from 'react';
 
-const CarouselCardText = lazy(() => import('./base_component/Carousel/CarouselCardText'));
+const CarouselCardText = lazy(() => import('./base/Carousel/CarouselCardText'));
 
 const CarouselCardTextComponent = props => {
     return (

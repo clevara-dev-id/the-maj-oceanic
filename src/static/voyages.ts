@@ -1,6 +1,6 @@
-import { SliderItem } from "../components/base_component/Slider/SliderAwesome/SliderAwesome";
-import { CarouselThreeItem } from "../components/base_component/Carousel/CarouselThree";
-import { CarouselCardTextItem } from "../components/base_component/Carousel/CarouselCardText";
+import { SliderItem } from "../components/base/Slider/SliderAwesome";
+import { CarouselThreeItem } from "../components/base/Carousel/CarouselThree";
+import { CarouselCardTextItem } from "../components/base/Carousel/CarouselCardText";
 
 export type VoyagesProps = {
     slider: SliderItem[],

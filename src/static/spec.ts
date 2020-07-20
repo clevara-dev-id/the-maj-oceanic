@@ -1,35 +1,4 @@
-import { SliderItem } from '../components/base_component/Slider/SliderAwesome/SliderAwesome';
-
-type text_large_image = {
-    heading: string;
-    text: string;
-    images: string;
-}
-
-type slider_awesome = {
-    slider: Array<SliderItem>;
-};
-
-type tabs_images = {
-    tabs: Array<{
-        id: number;
-        label: string;
-        images: string;
-        width?: number | string;
-        text?: string;
-    }>
-};
-
-type tables = {
-    table: {
-        head: string,
-        data: Array<{
-            id: number;
-            title: string;
-            value: string | Array<string>;
-        }>
-    }
-}
+import { SliderItem } from '../components/base/Slider/SliderAwesome';
 
 /**
  * @property Spesification View
@@ -46,28 +15,44 @@ type tables = {
  * 
  * @param table `{ head: string, data: Array<{id: number, title: string, value: string | Array<string>}>}`
  */
-export interface SpecProps extends slider_awesome, text_large_image, tabs_images, tables {}
 
-/**
- * @example
- * slider: [{
- *  id: 0,
- *  images: require("../assets/img/header/6.png"),
- *  text: "Spesification",
- * }],
- * heading: "The future of travel, on the traditions of the past",
- * text: " One of our missions is to preserve and introduce to the world the glory of the Indonesian maritime history. The MAJ Oceanic is hand built and handcrafted in Bira, Sulawesi based on the heritage of ancestral knowledge.",
- * images: require("../assets/img/spesification/1.png"),
- */
+export type SpecProps = {
+    slider: SliderItem[],
+
+    heading: string,
+    text: string,
+    images: string,
+
+    tabs: Array<{
+        id: React.ReactText;
+        label: string;
+        images: string;
+        width?: number | string;
+        text?: string;
+    }>,
+
+    table: {
+        head: string
+        data: Array<{
+            id: number;
+            title: string;
+            value: string;
+        }>
+    }
+}
+
 const staticSpecProps: SpecProps = {
     slider: [{
         id: 0,
         images: require("../assets/img/header/6.png"),
         text: "Spesification",
     }],
+
     heading: "The future of travel, on the traditions of the past",
     text: " One of our missions is to preserve and introduce to the world the glory of the Indonesian maritime history. The MAJ Oceanic is hand built and handcrafted in Bira, Sulawesi based on the heritage of ancestral knowledge.",
+
     images: require("../assets/img/spesification/1.png"),
+
     tabs: [{
         id: 0,
         label: "Main Deck",
@@ -84,6 +69,7 @@ const staticSpecProps: SpecProps = {
         images: require("../assets/img/spesification/LayoutDeck-3.png"),
         text: "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis culpa anim cupidatat elit irure. Nulla nostrud elit quis nostrud sit cupidatat aute sit excepteur nisi.",
     }],
+
     table: {
         head: "Table Of Sepesification",
 
@@ -164,13 +150,7 @@ const staticSpecProps: SpecProps = {
 
             title: "Watersports Equipment",
 
-            value: [
-                "6 Paddle board",
-                "6 Sea Kayaks",
-                "Fishing Gear",
-                "Complete diving equipment",
-                "Complete Snorkeling equipment"
-            ]
+            value: "6 Paddle board\n6 Sea Kayaks\nFishing Gear\nComplete diving equipment\nComplete Snorkeling equipment"
         }]
     }
 };

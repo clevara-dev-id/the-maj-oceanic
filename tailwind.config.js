@@ -1,5 +1,7 @@
+const plugin = require('tailwindcss/plugin');
+
 module.exports = {
-  important: true,
+  // important: true,
   prefix: '',
   important: false,
   separator: ':',
@@ -711,5 +713,50 @@ module.exports = {
     transitionDuration: ['responsive'],
   },
   corePlugins: {},
-  plugins: [],
+  plugins: [
+    plugin(function({ addUtilities }) {
+      const newUtilities = {
+        '.rotate-0': {
+          transform: 'rotate(0deg)',
+        },
+        '.rotate-90': {
+          transform: 'rotate(90deg)',
+        },
+        '.rotate-180': {
+          transform: 'rotate(180deg)',
+        },
+        '.rotate-270': {
+          transform: 'rotate(270deg)',
+        },
+      };
+
+      const Tabs = {
+        '.max-h-container-tabs': {
+          maxHeight: '43.75rem',
+        },
+        '.bg-tabs-deck': {
+          backgroundColor: 'rgb(239, 225, 220)',
+        },
+      };
+
+      const Slider = {
+        '.tracking-heading-slides': {
+          letterSpacing: '3.4375rem',
+        }
+      };
+
+      const Fotter = {
+        '.bg-nero': {
+          backgroundColor: 'rgb(35, 35, 35)',
+        },
+      };
+      
+      addUtilities({
+        ...newUtilities,
+        ...Tabs,
+        ...Slider,
+        ...Fotter,
+      }, ['responsive', 'hover'])
+    })
+  ],
 }

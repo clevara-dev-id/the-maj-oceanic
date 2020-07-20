@@ -1,6 +1,6 @@
 import React, {lazy, memo} from 'react';
 
-const CardThree = lazy(() => import('./base_component/Card/CardImage/CardImageThree/CardThree'));
+const CardThree = lazy(() => import('./base/Card/CardImage/CardImageThree/CardThree'));
 
 const CardThreeComponent = props => {
     return(

@@ -1,16 +1,72 @@
-import { SliderInterface } from '../redux/pages/types';
-import { CarouselCardTextItem } from '../components/base_component/Carousel/CarouselCardText';
-import { CarouselTextItem } from '../components/base_component/Carousel/CarouselText';
-import { CarouselThreeItem } from '../components/base_component/Carousel/CarouselThree';
+import { CarouselCardTextItem } from '../components/base/Carousel/CarouselCardText';
+import { CarouselTextItem } from '../components/base/Carousel/CarouselText';
+import { CarouselThreeItem } from '../components/base/Carousel/CarouselThree';
+import { SliderItem } from '../components/base/Slider/SliderAwesome';
+
 
 export type CabinProps = {
-    slider: SliderInterface,
-    carousel_card_text: CarouselCardTextItem[],
-    carousel_text: CarouselTextItem[],
+    /**
+     * @typedef `SliderItem[]`
+     * @description
+     * ```js
+     * [{
+     *    id?: string | number | undefined;
+     *    images: string;
+     *    text: string;
+     * }];
+     * ```
+     */
+    slider: Array<SliderItem>,
+    /**
+     * @typedef `CarouselCardTextItem[]`
+     * @description
+     * ```js
+     * [{
+     *    id?: string | number | undefined;
+     *    images: string;
+     *    caption?: string | undefined;
+     *    heading: string;
+     *    text?: string | undefined;
+     *    list?: string[] | undefined;
+     *    linkTo?: string | undefined;
+     * }]
+     * ```
+     */
+    carousel_card_text: Array<CarouselCardTextItem>,
+    /**
+     * @typedef `CarouselTextItem[]`
+     * @description
+     * ```js
+     * [{
+     *    id?: string | number | undefined;
+     *    caption?: string | null | undefined;
+     *    heading?: string | null | undefined;
+     *    text?: string | null | undefined;
+     *    list?: string[] | null | undefined;
+     *    image: string;
+     *    linkTo?: string | undefined;
+     * }]
+     * ```
+     */
+    carousel_text: Array<CarouselTextItem>,
+    /**
+     * @typedef `CarouselThreeItem[]`
+     * @description
+     * ```js
+     * [{
+     *    id?: string | number | undefined;
+     *    caption?: string | null | undefined;
+     *    caption?: string | null | undefined;
+     *    text?: string | null | undefined;
+     *    text?: string | null | undefined;
+     *    linkTo?: string | undefined;
+     * }]
+     * ```
+     */
     carousel_three: {
         caption?: string | null,
         heading: string,
-        data: CarouselThreeItem[],
+        data: Array<CarouselThreeItem>,
     }
 };
 
@@ -20,6 +76,7 @@ const staticCabin: CabinProps = {
         images: require('../assets/img/header/2.png'),
         text: 'the cabins', 
     }],
+
     carousel_card_text: [{
         id: 0,
         caption: 'presidential suite 1',
@@ -45,6 +102,7 @@ const staticCabin: CabinProps = {
         ],
         images: require('../assets/img/CarouselCard/1.png')
     }],
+
     carousel_text: [{
         id: 1,
         image: require('../assets/img/home/carousel-text/1.png'),
@@ -66,6 +124,7 @@ const staticCabin: CabinProps = {
         text: "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis culpa anim cupidatat elit irure. Nulla nostrud elit quis nostrud sit cupidatat aute sit excepteur nisi. Proident irure proident eiusmod voluptate velit aliquip velit est minim cillum consequat excepteur aliquip esse. Quis adipisicing commodo voluptate esse culpa.",
         linkTo: '#',
     }],
+    
     carousel_three: {
         caption: 'Delux Suite',
         heading: 'Lorem ipsum dolor',

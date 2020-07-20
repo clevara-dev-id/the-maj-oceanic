@@ -1,6 +1,6 @@
 import React, { lazy, Fragment } from 'react';
 
-const CardTextImage = lazy(() => import('./base_component/Card/CardTextImage/CardTextImage'));
+const CardTextImage = lazy(() => import('./base/Card/CardTextImage/CardTextImage'));
 
 const CardTextImageComponent = props => {
     const _renderItem = data => (

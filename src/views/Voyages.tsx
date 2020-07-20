@@ -1,16 +1,14 @@
 import * as React from 'react';
 import staticVoyages, { VoyagesProps } from '../static/voyages';
 
-/**
- * Components 
- */
-const SliderAwesome     = React.lazy(() => import('../components/base_component/Slider/SliderAwesome/SliderAwesome'));
-const TabSecond         = React.lazy(() => import('../components/base_component/Tab/TabSecond'));
-const HeadingText       = React.lazy(() => import('../components/base_component/Heading/HeadingText'));
-const LargeImage        = React.lazy(() => import('../components/base_component/LargeImage/LargeImage'));
-const Heading           = React.lazy(() => import('../components/base_component/Heading/Heading'));
-const CarouselThree     = React.lazy(() => import('../components/base_component/Carousel/CarouselThree'));
-const CarouselCardText  = React.lazy(() => import('../components/base_component/Carousel/CarouselCardText'));
+/** Components */
+const SliderAwesome     = React.lazy(() => import('../components/base/Slider/SliderAwesome'));
+const TabSecond         = React.lazy(() => import('../components/base/Tab/Tabs'));
+const HeadingText       = React.lazy(() => import('../components/base/Heading/HeadingText'));
+const LargeImage        = React.lazy(() => import('../components/base/LargeImage/LargeImage'));
+const Heading           = React.lazy(() => import('../components/base/Heading/Heading'));
+const CarouselThree     = React.lazy(() => import('../components/base/Carousel/CarouselThree'));
+const CarouselCardText  = React.lazy(() => import('../components/base/Carousel/CarouselCardText'));
 
 const StaticVideoSvg =  
     <svg width="1110" height="400" viewBox="0 0 1110 400" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,9 +47,7 @@ const Voyages: React.FC<VoyagesProps> = (props): JSX.Element => {
     const Tabs = React.useMemo<JSX.Element>(
         () => (
             <TabSecond
-                customChild
                 isStaticImage
-
             >
                 <div title="Flores sea">
                     <HeadingText

@@ -1,6 +1,6 @@
-import { SliderItem } from "../components/base_component/Slider/SliderAwesome/SliderAwesome";
-import { CardTextImageSmallProps } from "../components/base_component/Card/CardTextImage/CardTextImageSmall";
-import { CarouselCardTextItem } from "../components/base_component/Carousel/CarouselCardText";
+import { SliderItem } from "../components/base/Slider/SliderAwesome";
+import { CardTextImageSmallProps } from "../components/base/Card/CardTextImage/CardTextImageSmall";
+import { CarouselCardTextItem } from "../components/base/Carousel/CarouselCardText";
 
 export type DiningProps = {
     slider: SliderItem[],

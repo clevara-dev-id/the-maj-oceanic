@@ -1,14 +1,12 @@
 import * as React from 'react';
 import staticSustainability, { SustainabilityProps } from '../static/sustainability';
-import { CardTextImageSmallProps } from '../components/base_component/Card/CardTextImage/CardTextImageSmall';
+import { CardTextImageSmallProps } from '../components/base/Card/CardTextImage/CardTextImageSmall';
 
-/**
- * Components 
- */
-const SliderAwesome         = React.lazy(() => import('../components/base_component/Slider/SliderAwesome/SliderAwesome'));
-const HeadingText           = React.lazy(() => import('../components/base_component/Heading/HeadingText'));
-const LargeImage            = React.lazy(() => import('../components/base_component/LargeImage/LargeImage'));
-const CardTextImageSmall    = React.lazy(() => import('../components/base_component/Card/CardTextImage/CardTextImageSmall'));
+/** Components */
+const SliderAwesome         = React.lazy(() => import('../components/base/Slider/SliderAwesome'));
+const HeadingText           = React.lazy(() => import('../components/base/Heading/HeadingText'));
+const LargeImage            = React.lazy(() => import('../components/base/LargeImage/LargeImage'));
+const CardTextImageSmall    = React.lazy(() => import('../components/base/Card/CardTextImage/CardTextImageSmall'));
 
 const Sustainabiliy: React.FC<SustainabilityProps> = (props): JSX.Element => {
     /**

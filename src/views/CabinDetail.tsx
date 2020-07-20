@@ -1,17 +1,18 @@
 import * as React from 'react';
 import staticCabinDetail, { CabinDetailProps } from '../static/cabinDetail';
-import { CardTextImageSmallProps } from '../components/base_component/Card/CardTextImage/CardTextImageSmall';
+import { CardTextImageSmallProps } from '../components/base/Card/CardTextImage/CardTextImageSmall';
+import { isEqual } from 'lodash';
 
 /**
  * Components 
  */
-const SliderAwesome         = React.lazy(() => import('../components/base_component/Slider/SliderAwesome/SliderAwesome'));
-const HeadingText           = React.lazy(() => import('../components/base_component/Heading/HeadingText'));
-const LargeImage            = React.lazy(() => import('../components/base_component/LargeImage/LargeImage'));
+const SliderAwesome         = React.lazy(() => import('../components/base/Slider/SliderAwesome'));
+const HeadingText           = React.lazy(() => import('../components/base/Heading/HeadingText'));
+const LargeImage            = React.lazy(() => import('../components/base/LargeImage/LargeImage'));
 const Divider               = React.lazy(() => import('../components/Divier'));
-const CardTextImageSmall    = React.lazy(() => import('../components/base_component/Card/CardTextImage/CardTextImageSmall'));
-const CarouselThree         = React.lazy(() => import('../components/base_component/Carousel/CarouselThree'));
-const Heading               = React.lazy(() => import('../components/base_component/Heading/Heading'));
+const CardTextImageSmall    = React.lazy(() => import('../components/base/Card/CardTextImage/CardTextImageSmall'));
+const CarouselThree         = React.lazy(() => import('../components/base/Carousel/CarouselThree'));
+const Heading               = React.lazy(() => import('../components/base/Heading/Heading'));
 
 const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
     /**
@@ -24,9 +25,9 @@ const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
     [props.slider]);
 
     /**
-     * Heading Image
+     * Heading Text & Large Image
      */
-    const HeadingImage = React.useMemo<JSX.Element>( 
+    const MemoHeadingTextLargeImage = React.useMemo<JSX.Element>( 
         () => (
             <React.Fragment>
                 <HeadingText
@@ -49,7 +50,7 @@ const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
     /**
      * Card Text Image Small
      */
-    const CardTextImage = React.useMemo<(params: CardTextImageSmallProps, is_reverse?: boolean) => JSX.Element>(
+    const MemoCardTextImageSmall = React.useMemo<(params: CardTextImageSmallProps, is_reverse?: boolean) => JSX.Element>(
         () => (params, is_reverse = false) => (
             <CardTextImageSmall
                 heading={params.heading}
@@ -62,9 +63,9 @@ const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
     [props.card_text_image_small]);
 
     /**
-     * Carousel Three
+     * Heading & Carousel Three
      */
-    const CarouselThreeHeading = React.useMemo<JSX.Element>(
+    const MemoHeadingCarouselThree = React.useMemo<JSX.Element>(
         () => (
             <React.Fragment>
                 <Heading
@@ -83,8 +84,7 @@ const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
             </React.Fragment>
         )
     ,[props.carousel_three]);
-
-    let b = 'border border-black';
+    
     return (
         <div id="cabin-detail">
             <section>
@@ -92,7 +92,7 @@ const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
             </section>
 
             <section className={"py-20"}>
-                {HeadingImage}
+                {MemoHeadingTextLargeImage}
             </section>
 
             <section className="py-20">
@@ -100,18 +100,19 @@ const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
             </section>
 
             <section className={"py-20"}>
-                {CardTextImage(props.card_text_image_small[0])}
+                {MemoCardTextImageSmall(props.card_text_image_small[0])}
             </section>
 
             <section className={"py-20"}>
-                {CardTextImage(props.card_text_image_small[1], true)}
+                {MemoCardTextImageSmall(props.card_text_image_small[1], true)}
             </section>
 
             <section className={"py-20 mb-20"}>
-                {CarouselThreeHeading}
+                {MemoHeadingCarouselThree}
             </section>
         </div>
     );
 };
+
 CabinDetail.defaultProps = staticCabinDetail;
-export default CabinDetail;
+export default React.memo(CabinDetail, (prevProp, nextProp) => isEqual(prevProp, nextProp));

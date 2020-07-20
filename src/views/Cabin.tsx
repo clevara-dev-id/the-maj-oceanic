@@ -1,29 +1,25 @@
 import * as React from 'react';
 import staticCabin, { CabinProps } from '../static/cabin';
+import { isEqual } from 'lodash';
 
-/**
- * Component
- */
-const SliderAwesome     = React.lazy(() => import('../components/base_component/Slider/SliderAwesome/SliderAwesome'));
-const CarouselCardText  = React.lazy(() => import('../components/base_component/Carousel/CarouselCardText'));
-const CarouselText      = React.lazy(() => import('../components/base_component/Carousel/CarouselText'));
-const CarouselThree     = React.lazy(() => import('../components/base_component/Carousel/CarouselThree'));
-const Heading           = React.lazy(() => import('../components/base_component/Heading/Heading'));
+/** Component */
+const SliderAwesome     = React.lazy(() => import('../components/base/Slider/SliderAwesome'));
+const CarouselCardText  = React.lazy(() => import('../components/base/Carousel/CarouselCardText'));
+const CarouselText      = React.lazy(() => import('../components/base/Carousel/CarouselText'));
+const CarouselThree     = React.lazy(() => import('../components/base/Carousel/CarouselThree'));
+const Heading           = React.lazy(() => import('../components/base/Heading/Heading'));
 
-const Cabin: React.FC<CabinProps> = (props) => {
-    /**
-     * Slider
-     */
-    const Slider = React.useMemo<JSX.Element>(
+
+const Cabin: React.FC<CabinProps> = (props): JSX.Element => {
+    /** SliderAwesome */
+    const MemoSliderAwesome = React.useMemo<JSX.Element>(
         () => (
             <SliderAwesome store={props.slider} isStaticImage />
         ),
     [props.slider]);
 
-    /**
-     * Carousel
-     */
-    const Carousel = React.useMemo<JSX.Element>(
+    /** Carousel Card Text */
+    const MemoCarouselCardText = React.useMemo<JSX.Element>(
         () => (
             <CarouselCardText
                 containerClassName="relative max-w-container-2 mx-auto p-0"
@@ -35,10 +31,8 @@ const Cabin: React.FC<CabinProps> = (props) => {
         ),
     [props.carousel_card_text]);
 
-    /**
-     * Carousel Card Text
-     */
-    const CarouselCard = React.useMemo<JSX.Element>(
+    /** Carousel Text */
+    const MemoCarouselText = React.useMemo<JSX.Element>(
         () => (
             <CarouselText
                 bottonTitle="discover"
@@ -48,10 +42,8 @@ const Cabin: React.FC<CabinProps> = (props) => {
         ),
     [props.carousel_text]); 
 
-    /**
-     * Carousel Card Three
-     */
-    const CarouselThreeHeading = React.useMemo<JSX.Element>(
+    /** Heading & CarouselThree */
+    const MemoHeadingCarouselCardThree = React.useMemo<JSX.Element>(
         () => (
             <React.Fragment>
                 <Heading
@@ -73,22 +65,23 @@ const Cabin: React.FC<CabinProps> = (props) => {
     return (
         <div id="vessel">
             <section>
-                {Slider}
+                {MemoSliderAwesome}
             </section>
 
             <section className={`py-20`}>
-                {Carousel}
+                {MemoCarouselCardText}
             </section>
             
             <section className={`py-20`}>
-                {CarouselCard}
+                {MemoCarouselText}
             </section>
 
             <section className={`py-24`} style={{background: '#EFE1DC'}}>
-                {CarouselThreeHeading}
+                {MemoHeadingCarouselCardThree}
             </section>
         </div>
     );
 };
+
 Cabin.defaultProps = staticCabin;
-export default Cabin;
+export default React.memo(Cabin, (prev, next) => isEqual(prev, next));

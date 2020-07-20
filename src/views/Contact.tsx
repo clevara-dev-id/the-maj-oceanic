@@ -3,11 +3,11 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 
 import * as DataContact from '../static/contact';
-import Heading from '../components/base_component/Heading/Heading';
 
-const Breadcrumb = React.lazy(() => import("../components/BreadcrumbComponent"));
-
-const SliderAwesome = React.lazy(() => import("../components/base_component/Slider/SliderAwesome/SliderAwesome"));
+/** Component */
+const SliderAwesome = React.lazy(() => import("../components/base/Slider/SliderAwesome"));
+const Heading       = React.lazy(() => import('../components/base/Heading/Heading'));
+const Breadcrumb    = React.lazy(() => import("../components/BreadcrumbComponent"));
 
 interface S {
     name: string | undefined;
