@@ -33,9 +33,9 @@ const Dining: React.FC<DiningProps> = (props): JSX.Element => {
                 <HeadingText
                     heading={props.heading}
                     text={props.text}
-                    containerClassName="w-full mx-auto max-w-3xl"
+                    containerClassName="w-full mx-auto max-w-3xl select-none"
                     textClassName="px-6"
-                    headingClassName=" mt-4"
+                    headingClassName="mt-4"
                 />
                 <LargeImage
                     images={props.image}
@@ -81,7 +81,7 @@ const Dining: React.FC<DiningProps> = (props): JSX.Element => {
      */
     const MemoImageFood = React.useMemo<(params: { src: string, className?: string }) => JSX.Element>( 
         () => (params) => (
-            <img src={params.src}
+            <img src={params.src} draggable={false}
                 className={`absolute bg-auto w-full h-auto max-w-sm hidden xl:inline lg:inline md:inline ${params.className}`}
                 alt="food-image"
             />
