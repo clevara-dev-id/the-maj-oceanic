@@ -103,7 +103,7 @@ const Navbar: React.FC<NavProps> = (props) => {
                     </div>
                     
                     {ButtonLink({
-                        children: <img src={Logo} className="w-screen mx-auto" />,
+                        children: <img src={Logo} className="w-screen mx-auto" alt="oceanic-logo" />,
                         itemID: 'button-image-1',
                         to: '/',
                         replace: true,
