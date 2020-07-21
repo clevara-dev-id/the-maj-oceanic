@@ -109,42 +109,42 @@ const CarouselCardText: React.FC<T> = (props): JSX.Element => {
     []);
 
     return (
-        <div className={`carousel-card-text-component ${props.containerClassName}`}>
-        <div className="slide-item focus:outline-none flex lg:flex-no-wrap flex-wrap">
-            <div className="w-full lg:w-2/3 md:w-9/12">
-                <Slider 
-                    lazyLoad="progressive"
-                    dots={true}
-                    // fade={true}
-                    slidesToShow={1}
-                    slidesToScroll={1}
-                    arrows={false}
-                    ref={carousel}
-                    dotsClass="slick-dots center"
-                    useCSS={true}
-                    customPaging={i => <div 
-                        className="dots mt-6 rounded-full w-3 h-3 bg-dot-100 opacity-25 hover:bg-primary-300 hover:opacity-100" 
-                    />}
-                    afterChange={(currentSlide: number) => setIndexActive(currentSlide)}>
-                    {!_.isEmpty(localStore) && _.map(localStore, _renderSlideItem)}
-                </Slider>
+        <div className={`carousel-card-text-component max-w-container-2 mx-auto px-6 xl:px-0 lg:px-4 md:px-5 ${props.containerClassName}`}>
+            <div className="slide-item focus:outline-none flex lg:flex-no-wrap flex-wrap">
+                <div className="w-full lg:w-2/3 md:w-9/12">
+                    <Slider 
+                        lazyLoad="progressive"
+                        dots={true}
+                        // fade={true}
+                        slidesToShow={1}
+                        slidesToScroll={1}
+                        arrows={false}
+                        ref={carousel}
+                        dotsClass="slick-dots center"
+                        useCSS={true}
+                        customPaging={i => <div 
+                            className="dots mt-6 rounded-full w-3 h-3 bg-dot-100 opacity-25 hover:bg-primary-300 hover:opacity-100" 
+                        />}
+                        afterChange={(currentSlide: number) => setIndexActive(currentSlide)}>
+                        {!_.isEmpty(localStore) && _.map(localStore, _renderSlideItem)}
+                    </Slider>
 
-                <div className={`absolute hidden xl:inline lg:inline md:inline arrows-container bottom-0 left-0 ml-5 ${props.containerArrow}`}>
-                    {MemoButtonSlick({
-                        mode: 'prev',
-                        children: <i className="fas fa-angle-left text-base"></i>,
-                        onClick: _prev,
-                        buttonClassName: `${props.buttonClassName} ${props.prevButtonClassName}`,
-                    })}
-                    {MemoButtonSlick({
-                        mode: 'next',
-                        children: <i className="fas fa-angle-right text-base"></i>,
-                        onClick: _next,
-                        buttonClassName: `${props.buttonClassName} ${props.nextButtonClassName}`,
-                    })}
+                    <div className={`absolute hidden xl:inline lg:inline md:inline arrows-container bottom-0 left-0 ml-5 ${props.containerArrow}`}>
+                        {MemoButtonSlick({
+                            mode: 'prev',
+                            children: <i className="fas fa-angle-left text-base"></i>,
+                            onClick: _prev,
+                            buttonClassName: `${props.buttonClassName} ${props.prevButtonClassName}`,
+                        })}
+                        {MemoButtonSlick({
+                            mode: 'next',
+                            children: <i className="fas fa-angle-right text-base"></i>,
+                            onClick: _next,
+                            buttonClassName: `${props.buttonClassName} ${props.nextButtonClassName}`,
+                        })}
+                    </div>
                 </div>
             </div>
-        </div>
 
             {props.children}
             {localStore && _.map(localStore, _renderCardItem)}

@@ -1,6 +1,7 @@
 
 $layout-min-md: 768px;
 
+$primary: rgb(32, 140, 178);
 #carousel-three {
     .text-xl {
         margin-top:22px;
@@ -10,29 +11,56 @@ $layout-min-md: 768px;
     .slick-dots {
         bottom: -90px;
     }
-    
-    .arrows {
-        background-color: #208CB2;
-        color: white;
-        z-index: 9;
 
-        &:hover {
-            background-color: white;
-            color: #208CB2;
+    .slick-arrow {
+        background-color: white;
+        width: 32px;
+        height: 32px;
+        border-radius: 9999px;
+        z-index: 10;
+
+        &.slick-disabled {
+            opacity: .75;
+            cursor: not-allowed;
+
+            &:hover {
+                background-color: white;
+
+                &::before {
+                    color: $primary;
+
+                }
+            }
         }
-    }
 
-    .arrow-left {
-        left: -2rem;
-    }
+        &:before {
+            font-family: FontAwesome;
+            font-size: 16px;
+            font-weight: bold;
+            color: $primary;
+        }
+        
+        &:hover {
+            background-color: $primary;
 
-    .arrow-right {
-        right: -2rem;
-    }
+            &::before {
+                color: white;
+            }
+        }
 
-    .arrow-right, .arrow-left {
-        visibility: visible;
-        margin-top: 12rem;
+        &.slick-prev {
+            left: -40px;
+            &::before {
+                content: "\f104";
+            }
+        }
+
+        &.slick-next {
+            right: -40px;
+            &::before {
+                content: "\f105";
+            }
+        }
     }
     
     .slick-dots {
@@ -49,17 +77,6 @@ $layout-min-md: 768px;
         .slick-active .dots {
             background-color: #208CB2;
             opacity: 1;
-        }
-    }
-
-    .arrows-container {
-        margin-top: -3rem;
-        margin-left: 1rem;
-    }
-
-    @media screen and (max-width: 1024px) {
-        .arrow-left, .arrow-right {
-            visibility: hidden;
         }
     }
 }

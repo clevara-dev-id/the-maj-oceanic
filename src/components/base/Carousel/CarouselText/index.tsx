@@ -1,5 +1,5 @@
 import * as React from 'react';
-import _, { reverse } from 'lodash';
+import _ from 'lodash';
 import Slider, { Settings } from 'react-slick'
 
 import './style.scss'
@@ -27,6 +27,7 @@ export type CarouselTextItem = HeadingTextItem & {
 };
 export type CarouselTextProps = {
     containerClassName?: string,
+    containerArrow?: string,
     isStaticImage?: boolean | null,
     reverse?: boolean | null,
     store: any[],
@@ -52,31 +53,7 @@ export type CarouselTextProps = {
  *            "Lorem ipsum dolor sit amet",
  *            "Laboris lar aliquip",
  *        ]
- *      },{
- *        id: 2,
- *        image: require('./assets/1.png'),
- *        caption: "Cabin 2",
- *        heading: "Carousel Text 2",
- *        text: "Laboris esse culpa.",
- *        list: [
- *            "Lorem ipsum dolor sit amet",
- *            "Laboris lar aliquip",
- *            "Lorem ipsum dolor sit amet",
- *            "Laboris lar aliquip",
- *        ]
- *      },{
- *        id: 3,
- *        image: require('./assets/1.png'),
- *        caption: "Cabin 2",
- *        heading: "Carousel Text 2",
- *        text: "Laboris esse culpa.",
- *        list: [
- *            "Lorem ipsum dolor sit amet",
- *            "Laboris lar aliquip",
- *            "Lorem ipsum dolor sit amet",
- *            "Laboris lar aliquip",
- *        ]
-        }]}
+ *      }]}
         isStaticImage
     />
  *```
@@ -102,11 +79,11 @@ const CarouselText: React.FC<CarouselTextProps> = (props): JSX.Element => {
                     heading={params.heading}
                     text={params.text}
                     list={params.list}
-                    headingClassName="mb-4"
+                    headingClassName="mb-4 whitespace-no-wrap"
                     textClassName="mb-4"
                 />
                 {props.bottonTitle ? (
-                    <Button className={params.list ? "" : "mt-6"} mode={props.mode || "outline"} to={params.linkTo || "#"}>
+                    <Button className={`mx-6 xl:mx-0 lg:mx-0 md:mx-5 ${params.list ? "" : "mt-6"}`} mode={props.mode || "outline"} to={params.linkTo || "#"}>
                         {props.bottonTitle}
                     </Button>
                 ) : null}
@@ -166,7 +143,7 @@ const CarouselText: React.FC<CarouselTextProps> = (props): JSX.Element => {
             ? "mb-16 xl:mb-0 lg:mb-0 md:mb-0" : "mt-6 xl:mt-0 lg:mt-0 md:mt-0"
     return (
         <div className={`carousel-text relative max-w-container-2 mx-auto h-auto box-border focus:outline-none flex ${containerClass} flex-wrap ${props.containerClassName}`}>
-            <div className={"xl:text-left select-none lg:text-left md:text-left px-0 xl:px-4 lg:px-4 md:px-4 my-auto mx-auto xl:mx-0 lg:mx-0 md:mx-0 w-screen xl:w-3/5 lg:w-3/5 md:w-3/5 max-w-md xl:max-w-full lg:max-w-full md:max-w-full"}>
+            <div className={"xl:text-left select-none lg:text-left md:text-left my-auto mx-auto xl:mx-0 lg:mx-0 md:mx-0 w-screen xl:w-3/5 lg:w-3/5 md:w-1/2 max-w-md xl:max-w-full lg:max-w-full md:max-w-full"}>
                 {source && _.map(source, (data, index: number) => {
                     if (activeIndex === index) {
                         return HeadText(data)
@@ -175,7 +152,7 @@ const CarouselText: React.FC<CarouselTextProps> = (props): JSX.Element => {
                 })}
             </div>
 
-            <div className={`relative w-full xl:w-2/5 lg:w-2/5 md:w-2/5 ${marginTop}`}>
+            <div className={`relative w-full xl:w-2/5 lg:w-2/5 md:w-1/2 px-6 xl:px-0 lg:px-4 md:px-5 ${marginTop}`}>
                 <Slider
                     className="max-w-md mx-auto"
                     ref={carousel}
@@ -187,7 +164,7 @@ const CarouselText: React.FC<CarouselTextProps> = (props): JSX.Element => {
                 >
                     {source && _.map(source, DataItem)}
                 </Slider>
-                <div className="absolute hidden xl:inline lg:inline md:inline bottom-0 left-0 mb-8 ml-8">
+                <div className={`absolute hidden xl:inline lg:inline md:inline bottom-0 left-0 ${props.containerArrow}`}>
                     {ButtonPrev}
                     {ButtonNext}
                 </div>

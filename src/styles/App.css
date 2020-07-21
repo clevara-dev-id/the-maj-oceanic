@@ -3,6 +3,11 @@ body {
 }
 
 @font-face {
+  font-family: FontAwesome;
+  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/FontAwesome.otf');
+}
+
+@font-face {
   font-family: Sentinel SB;
   font-style: normal;
   src: url('../assets/font/Sentinel/Sentinel-Book.otf');

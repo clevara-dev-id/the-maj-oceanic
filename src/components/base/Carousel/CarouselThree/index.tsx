@@ -1,60 +1,11 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import Slider, { Settings } from 'react-slick';
+import Slider, { Settings, CustomArrowProps } from 'react-slick';
 import _ from 'lodash';
 import './style.scss'
 
 import CardItem, { CardItemProps, CardItemDataProps } from '../../Card/CardImage/CardImageThree/CardItem';
 import { ButtonProps } from '../../Button/Button';
-const Setting: Settings = {
-    dots: true,
-    lazyLoad: "ondemand",
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    arrows: false,
-    centerPadding: "30px",
-    responsive: [{
-        breakpoint: 1025,
-        settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            infinite: true,
-            dots: true,
-            arrows: false
-        }
-    },{
-        breakpoint: 768,
-        settings: {
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            infinite: true,
-            dots: true,
-            arrows: false
-        }
-    },
-    {
-        breakpoint: 767,
-        settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            dots: true,
-            arrows: false,
-        }
-    }
-    // {
-    //     breakpoint: 426,
-    //     settings: {
-    //         slidesToShow: 1,
-    //         slidesToScroll: 1,
-    //         centerMode: true,
-    //         centerPadding: "0px",
-    //         infinite: true,
-    //         dots: true,
-    //         arrows: false
-    //     }
-    // }
-    ],
-};
 
 export type CarouselThreeItem = CardItemDataProps & {
     id?: React.ReactText,
@@ -114,83 +65,81 @@ const CarouselThree: React.FC<CarouselThreeProps> = (props): JSX.Element => {
     }, [props.store]);
 
     /** 
-     * Card Item
+     * Card Item / Slide Item
      */
-    const Item = React.useMemo( 
-        () => (params: CarouselThreeItem, index: number): JSX.Element => (
-            <CardItem 
-                key={params.id || index}
-                image={params.image}
-                caption={params.caption}
-                heading={params.heading}
-                text={params.text}
-                containerClassName="px-6"
-                captionClassName={props.captionClassName}
-                headingClassName="text-xl"
-                buttonTitle={params.buttonTitle!}
-                isStaticImage={props.isStaticImage}
-                mode={props.mode || "outline"}
-                to={params.linkTo || props.to || "#"}
-            />
-        )
-    , [props.store]);
+    const MemoSlideItem = React.useMemo( 
+        () => (params: CarouselThreeItem, index: number): JSX.Element => {
+            return (
+                <CardItem 
+                    key={params.id || index}
+                    image={params.image}
+                    caption={params.caption}
+                    heading={params.heading}
+                    text={params.text}
+                    containerClassName={`p-1`}
+                    captionClassName={props.captionClassName}
+                    headingClassName="text-xl"
+                    buttonTitle={params.buttonTitle!}
+                    isStaticImage={props.isStaticImage}
+                    mode={props.mode || "outline"}
+                    to={params.linkTo || props.to || "#"}
+                />
+            )
+        },
+    [props.store]);
+    // <div className="lg:"></div>
 
-    /**
-     * Button Prev & Next
-     */
-    const _Prev = React.useCallback(() => {
-        carousel.current.slickPrev();
-    }, []);
-    const _Next = React.useCallback(() => {
-        carousel.current.slickNext();
-    }, []);
-    const ButtonPrev = React.useMemo(() => (
-        <ButtonSlick mode="prev" onClick={_Prev}>
-            <i className="fas fa-angle-left text-base"></i>
-        </ButtonSlick>
-    ), []);
-    const ButtonNext = React.useMemo(() => (
-        <ButtonSlick mode="next" onClick={_Next}>
-            <i className="fas fa-angle-right text-base"></i>
-        </ButtonSlick>
-    ), []);
+    type SlickArrow = CustomArrowProps & { children?: React.ReactNode };
+    const SlickArrow = React.useMemo<(params?: SlickArrow) => JSX.Element>(
+        () => (params) => <button {...params} />,
+    []);
+
+    const Setting: Settings = {
+        dots: true,
+        infinite: false,
+        lazyLoad: "ondemand",
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        arrows: true,
+        nextArrow: SlickArrow(),
+        prevArrow: SlickArrow(),
+        customPaging: (index): JSX.Element => <div className="dots" />,
+        responsive: [{
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+            }
+        },{
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                infinite: false,
+                arrows: false
+            }
+        },{
+            breakpoint: 767,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false,
+            }
+        }],
+    };
 
     return (
-        <div id="carousel-three" className={props.containerClassName}>
-            {ButtonPrev}
-            {ButtonNext}
+        <div id="carousel-three" className={`${props.containerClassName} max-w-container-2 relative mx-auto `}>
 
             <Slider
                 {...Setting}
-                customPaging={() => <div className="dots" />}
+                className="px-6 xl:px-0 lg:px-0 md:px-4 max-w-4xl mx-auto"
                 ref={carousel}
             >
-                {source && _.map(source, Item)}
+                {source && _.map(source, MemoSlideItem)}
             </Slider>
         </div>
     );
 };
 
 export default CarouselThree;
-
-
-/**
- * Button Slick
- */
-const ButtonSlick = React.memo(({
-    mode,
-    onClick,
-    children
-}: {
-    mode: "prev" | "next",
-    onClick?: () => void,
-    children?: React.ReactNode,
-}): JSX.Element => {
-    let style = mode == "prev"
-        ? "arrow-left mr-3" : "arrow-right";
-    return (
-        <button onClick={onClick} className={`absolute w-8 h-8 rounded-full arrows ${style}`}>
-            {children}
-        </button>
-    );
-});

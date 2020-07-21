@@ -73,7 +73,7 @@ export const HeadingText: React.FC<HeadingTextProps> = (props: HeadingTextProps)
     );
 
     return (
-        <div className={`${props.containerClassName} heading-text`} 
+        <div className={`${props.containerClassName} heading-text px-6 xl:px-0 lg:px-0 md:px-5`} 
             style={props.containerStyle!}>
 
             <Heading 

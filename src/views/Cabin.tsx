@@ -22,10 +22,10 @@ const Cabin: React.FC<CabinProps> = (props): JSX.Element => {
     const MemoCarouselCardText = React.useMemo<JSX.Element>(
         () => (
             <CarouselCardText
-                containerClassName="relative max-w-container-2 mx-auto p-0"
+                containerClassName="relative p-0"
                 store={props.carousel_card_text}
                 isStaticImage
-                containerArrow="mb-6"
+                containerArrow="mb-6 ml-10 xl:ml-6 lg:ml-6"
                 buttonTitle="discover"
             />
         ),
@@ -37,6 +37,7 @@ const Cabin: React.FC<CabinProps> = (props): JSX.Element => {
             <CarouselText
                 bottonTitle="discover"
                 store={props.carousel_text}
+                containerArrow="mb-6 ml-10 xl:ml-6 lg:ml-6"
                 isStaticImage
             />
         ),
@@ -53,7 +54,7 @@ const Cabin: React.FC<CabinProps> = (props): JSX.Element => {
                 />
                 <CarouselThree
                     isStaticImage
-                    containerClassName="relative mt-20 max-w-6xl mx-auto"
+                    containerClassName="mt-20"
                     mode="outline"
                     to="#"
                     store={props.carousel_three.data}
@@ -68,11 +69,11 @@ const Cabin: React.FC<CabinProps> = (props): JSX.Element => {
                 {MemoSliderAwesome}
             </section>
 
-            <section className={`py-20`}>
+            <section className={`py-20 mb-0 xl:mb-20 lg:mb-20 md:mb-20`}>
                 {MemoCarouselCardText}
             </section>
             
-            <section className={`py-20`}>
+            <section className={`py-20 my-0 xl:my-20 lg:my-20 md:my-20`}>       
                 {MemoCarouselText}
             </section>
 

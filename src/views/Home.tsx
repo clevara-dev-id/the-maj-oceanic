@@ -48,7 +48,7 @@ const Home: React.FC<HomeProps & mapStateProps> = (props): JSX.Element =>  {
     const MemoHeadingTextLargeImage = React.useMemo<JSX.Element>( 
         () => (
             <React.Fragment>
-                <HeadingText containerClassName="container select-none flex flex-col items-center justify-center mx-auto lg:max-w-4xl text-center p-8"
+                <HeadingText containerClassName="container select-none flex flex-col items-center justify-center mx-auto lg:max-w-4xl text-center"
                     headingClassName="lg:max-w-xl text-center leading-none"
                     heading={source?.heading!}
                     text={source?.text}
@@ -66,20 +66,18 @@ const Home: React.FC<HomeProps & mapStateProps> = (props): JSX.Element =>  {
     /** Carousel Card Text */
     const MemoCarouselCardText = React.useMemo<JSX.Element>(
         () => (
-            <div className="relative container mx-auto px-6 xl:px-0 lg:px-0 md:px-0 xl:py-40 lg:py-32 md:py-24 py-20 xl:max-w-container-2">
-                <CarouselCardText
-                    containerClassName="xl:max-w-container-2 relative my-16 z-20"
-                    store={source?.carousel_card_text!}
-                    containerArrow="mb-4"
-                    buttonTitle="discover"
-                    isStaticImage
-                >
-                    <img draggable={false} src={require('../assets/tmo-stamps-brown.png')}
-                        alt="tmo-stamps-brown"
-                        className="tmo-stamps-brown select-none absolute mx-w-sm top-0 right-0 -mt-20 -mr-3 hidden xl:inline lg:inline md:inline"
-                    />
-                </CarouselCardText>
-            </div>
+            <CarouselCardText
+                containerClassName="relative z-20"
+                store={source?.carousel_card_text!}
+                containerArrow="mb-6 ml-10 xl:ml-6 lg:ml-6"
+                buttonTitle="discover"
+                isStaticImage
+            >
+                <img draggable={false} src={require('../assets/tmo-stamps-brown.png')}
+                    className="tmo-stamps-brown select-none absolute mx-w-sm top-0 right-0 -mt-24 -mr-6 hidden xl:inline lg:inline md:inline"
+                    alt="tmo-stamps-brown"
+                />
+            </CarouselCardText>
         ),
     [source?.carousel_card_text]);
     
@@ -89,11 +87,11 @@ const Home: React.FC<HomeProps & mapStateProps> = (props): JSX.Element =>  {
                 {MemoSliderAwesome}
             </section>
 
-            <section>
+            <section className="py-20 mb-0 xl:mb-20 lg:mb-20 md:mb-20">
                 {MemoHeadingTextLargeImage}
             </section>
 
-            <section className="h-full">
+            <section className="py-20 mb-20">
                 {MemoCarouselCardText}
             </section>
         </div>
