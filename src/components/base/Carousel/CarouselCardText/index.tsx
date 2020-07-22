@@ -95,14 +95,14 @@ const CarouselCardText: React.FC<T> = (props): JSX.Element => {
         () => (params, index) => (
             <HeadingText
                 key={index}
-                containerClassName={`xl:text-left lg:text-left md:text-left bg-white shadow-xl inline-flex flex-col xl:absolute lg:absolute md:absolute top-0 right-0 select-none h-full pb-20 ${props.cardClassName}`}
+                containerClassName={`xl:text-left lg:text-left md:text-left bg-white shadow-xl inline-block xl:absolute lg:absolute md:absolute top-0 right-0 select-none h-auto pb-10 ${props.cardClassName}`}
                 captionClassName={props.captionClassName}
                 headingClassName={props.headingClassName}
                 textClassName={props.textClassName}
                 listContainerClassName={props.listContainerClassName}
                 {...params}
             >
-                <Button title={props.buttonTitle} mode="outline" to={params.linkTo!} className={props.buttonClassName}>
+                <Button title={props.buttonTitle} mode="outline" to={params.linkTo!} className={`${props.buttonClassName}`}>
                     {props.buttonTitle}
                 </Button>
             </HeadingText>
@@ -139,16 +139,16 @@ const CarouselCardText: React.FC<T> = (props): JSX.Element => {
     }
 
     return (
-        <div className={`carousel-card-text-component relative max-w-container-2 mx-auto px-6 xl:px-0 lg:px-4 md:px-5 ${props.containerClassName}`}>
+        <div className={`carousel-card-text-component relative max-w-container-2 mx-auto max-h-full px-6 xl:px-0 lg:px-4 md:px-5 ${props.containerClassName}`}>
             <div className="slide-item focus:outline-none flex lg:flex-no-wrap flex-wrap">
-                <div className="w-full lg:w-2/3 md:w-9/12">
+                <div className="w-full lg:w-2/3 md:w-9/12 relative">
                     <Slider 
                         {...SettingSlider}
                         ref={carousel}>
                         {!_.isEmpty(localStore) && _.map(localStore, _renderSlideItem)}
                     </Slider>
 
-                    <div className={`absolute hidden xl:inline lg:inline md:inline arrows-container bottom-0 left-0 ml-5 ${props.containerArrow}`}>
+                    <div className={`absolute hidden xl:inline lg:inline md:inline arrows-container ml-6 mb-6 bottom-0 left-0 ${props.containerArrow}`}>
                         {MemoButtonSlick({
                             mode: 'prev',
                             children: <i className="fas fa-angle-left text-base"></i>,

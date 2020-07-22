@@ -72,14 +72,12 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
     const CarouselCard = React.useMemo<JSX.Element>( 
         () => (
             <CarouselCardText 
-                cardClassName="ml-auto mr-auto xl:mr-0 lg:mr-4 md:mr-5 top-0 mt-12 right-0 px-8 pt-8 w-full max-w-md md:w-6/12"
+                cardClassName="ml-auto mr-auto xl:mr-0 lg:mr-4 md:mr-5 top-0 mt-12 right-0 px-8 pt-8 w-full max-w-md md:w-6/12 xl:pb-12 lg:pb-12 md:pb-12"
                 store={props.carousel}
                 isStaticImage
-                containerArrow="mb-6"
                 listContainerClassName="mt-5"
-                prevButtonClassName="ml-4"
                 buttonTitle="learn more"
-                buttonClassName="mx-auto xl:mx-0 lg:mx-0 md:mx-0"
+                buttonClassName="mx-auto xl:mx-0 lg:mx-0 md:mx-0 block"
             />
         ),
     [props.carousel]);
