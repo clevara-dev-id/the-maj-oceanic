@@ -70,16 +70,7 @@ const Spesification: React.FC<SpecProps & MapStateProps> = (props): JSX.Element 
         ),
     [source?.heading, source?.text, source?.images]);
 
-    /** Tabs & tab item */
-    const MemoTabs = React.useMemo<({ children }: {
-        children: any;
-    }) => JSX.Element>(
-        () => ({children}) => (
-            <Tabs
-                children={children}
-            />
-        ),
-    [props.page.tabs]);
+    /** tab item */
     const MemoTabItem = React.useMemo<(params: any, index: number) => JSX.Element>(
         () => (params, index) => (
             <div key={index} title={params.label}>
@@ -94,9 +85,8 @@ const Spesification: React.FC<SpecProps & MapStateProps> = (props): JSX.Element 
     const MemoTable = React.useMemo(
         () => (
             <Table
-                containerClassName="pb-20"
                 store={source?.table.data!}
-                headClassName="mt-24 mb-8 leading-normal"
+                headClassName="mb-8 leading-normal"
                 dataTableClassName="py-6"
             />
         ),
@@ -112,17 +102,17 @@ const Spesification: React.FC<SpecProps & MapStateProps> = (props): JSX.Element 
                 <Breadcrumb page='spesification' />
             </section>
 
-            <section className="py-20 mb-16">
+            <section className="pt-6 md:pt-16 lg:pt-24 xl:pt-24 pb-20 md:pb-24 lg:pb-32 xl:pb-32">
                 {MemoHeadingTextLargeImage}
             </section>
 
-            <section className="py-20 flex items-stretch bg-tabs-deck h-auto xl:h-screen lg:h-screen max-h-container-tabs">
-                <Tabs>
+            <section className="py-10 md:py-12 lg:py-20 bg-tabs-deck h-auto xl:h-screen lg:h-screen max-h-container-tabs">
+                <Tabs tabContentClassName="pt-10 md:pt-16">
                     {_.map(props.page.tabs, MemoTabItem)}
                 </Tabs>
             </section>
 
-            <section className="py-20" >
+            <section className="pb-24 pt-10 md:pt-12 lg:pt-16 xl:pt-16">
                 {MemoTable}
             </section>
         </div>
