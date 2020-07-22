@@ -12,7 +12,7 @@ const Sustainabiliy: React.FC<SustainabilityProps> = (props): JSX.Element => {
     /**
     * Slider
     */
-    const Slider = React.useMemo<JSX.Element>(
+    const MemoSliderAwesome = React.useMemo<JSX.Element>(
         () => (
             <SliderAwesome store={props.slider} isStaticImage />
         ),
@@ -21,7 +21,7 @@ const Sustainabiliy: React.FC<SustainabilityProps> = (props): JSX.Element => {
     /**
         * Heading Image
         */
-    const HeadingImage = React.useMemo<JSX.Element>( 
+    const MemoHeadingTextImage = React.useMemo<JSX.Element>( 
         () => (
             <div className="px-6 xl:px-0 lg:px-4 md:px-5">
                 <HeadingText
@@ -44,7 +44,7 @@ const Sustainabiliy: React.FC<SustainabilityProps> = (props): JSX.Element => {
     /**
      * Card Text Image Small
      */
-    const CardTextImage = React.useMemo<(params: CardTextImageSmallProps, is_reverse?: boolean) => JSX.Element>(
+    const MemoCardTextImageSmall = React.useMemo<(params: CardTextImageSmallProps, is_reverse?: boolean) => JSX.Element>(
         () => (params, is_reverse = false) => (
             <CardTextImageSmall
                 heading={params.heading}
@@ -59,19 +59,19 @@ const Sustainabiliy: React.FC<SustainabilityProps> = (props): JSX.Element => {
     return (
         <div id="sustainabiliy">
             <section>
-                {Slider}
+                {MemoSliderAwesome}
             </section>
             
-            <section className={"py-20"}>
-                {HeadingImage}
+            <section className={"pt-20 pb-12 md:pb-16 lg:pb-24 xl:pb-24"}>
+                {MemoHeadingTextImage}
             </section>
 
-            <section className={"py-20"}>
-                {CardTextImage(props.card_text_image_small[0])}
+            <section className={"pb-12 md:pb-16 lg:pb-24 xl:pb-24 pt-10 md:pt-16 lg:pt-24 xl:pt-24"}>
+                {MemoCardTextImageSmall(props.card_text_image_small[0])}
             </section>
 
-            <section className={"py-20"}>
-                {CardTextImage(props.card_text_image_small[1], true)}
+            <section className={"pt-12 md:pt-16 lg:pt-24 xl:pt-24 pb-20"}>
+                {MemoCardTextImageSmall(props.card_text_image_small[1], true)}
             </section>
         </div>
     );

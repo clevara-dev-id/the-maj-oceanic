@@ -78,7 +78,7 @@ const CardTextImageSmall: React.FC<CardTextImageSmallProps> = (props) => {
         ? "flex-col-reverse xl:flex-row-reverse lg:flex-row-reverse md:flex-row-reverse" : "flex-col xl:flex-row lg:flex-row md:flex-row"
 
     let containerHeadClass: string =
-        props.reverse ? "pr-4" : "pl-4 mt-8"
+        props.reverse ? "xl:pr-4 lg:pr-4 md:pr-4" : "xl:pl-4 lg:pl-4 md:pl-4 mt-8"
         // ? "pl-8 xl:pl-0 lg:pl-4 md:pl-8 pr-8 xl:pr-8 lg:pr-6 md:pr-4" : "mt-8 pr-8 xl:pr-0 lg:pr-4 md:pr-8 pl-8 xl:pl-8 lg:pl-6 md:pl-4"
     const HeadText = React.useMemo<JSX.Element>( 
         () => (
