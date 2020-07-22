@@ -69,7 +69,7 @@ const Home: React.FC<HomeProps & mapStateProps> = (props): JSX.Element =>  {
             <CarouselCardText
                 store={source?.carousel_card_text!}
                 containerClassName="relative"
-                cardClassName="ml-auto mr-auto xl:mr-0 lg:mr-4 md:mr-5 top-0 mt-16 xl:mt-16 lg:mt-16 md:mt-12 right-0 pl-8 pr-10 pt-8 xl:pb-40 lg:pb-40 md:pb-40 w-full max-w-md md:w-6/12"
+                cardClassName="ml-auto mr-auto xl:mr-0 lg:mr-4 md:mr-5 top-0 mt-16 xl:mt-16 lg:mt-16 md:mt-12 right-0 pl-8 pr-10 xl:pt-12 lg:pt-12 md:pt-12 pt-8 xl:pb-40 lg:pb-40 md:pb-20 w-full max-w-md md:w-6/12"
                 headingClassName="mt-4"
                 textClassName="pr-4"
                 containerArrow="mb-6 ml-10 xl:ml-6 lg:ml-6"
