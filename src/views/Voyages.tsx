@@ -1,9 +1,10 @@
 import * as React from 'react';
+import _ from 'lodash';
 import staticVoyages, { VoyagesProps } from '../static/voyages';
 
 /** Components */
 const SliderAwesome     = React.lazy(() => import('../components/base/Slider/SliderAwesome'));
-const TabSecond         = React.lazy(() => import('../components/base/Tab/Tabs'));
+const Tab         = React.lazy(() => import('../components/base/Tab/Tabs'));
 const HeadingText       = React.lazy(() => import('../components/base/Heading/HeadingText'));
 const LargeImage        = React.lazy(() => import('../components/base/LargeImage/LargeImage'));
 const Heading           = React.lazy(() => import('../components/base/Heading/Heading'));
@@ -44,9 +45,9 @@ const Voyages: React.FC<VoyagesProps> = (props): JSX.Element => {
     /**
      * Tabs
      */
-    const Tabs = React.useMemo<JSX.Element>(
+    const MemoTabs = React.useMemo<JSX.Element>(
         () => (
-            <TabSecond
+            <Tab
                 isStaticImage
             >
                 <div title="Flores sea">
@@ -74,9 +75,25 @@ const Voyages: React.FC<VoyagesProps> = (props): JSX.Element => {
                         {StaticVideoSvg}
                     </div>
                 </div>
-            </TabSecond>
+            </Tab>
         ),
     []);
+
+    /** Memo Video */
+    const VideoTabItem = React.useMemo<(params: React.DetailedHTMLProps<React.VideoHTMLAttributes<HTMLVideoElement>, HTMLVideoElement>) => any>(
+        () => (params) => 
+            <video
+                className="max-w-container-2 px-6 xl:px-0 lg:px-4 md:px-5 mt-10"
+                width="100%"
+                height="auto"
+                style={{maxHeight: 400}}
+                controls={true}
+                defaultValue={require('../assets/video/videoplayback.mp4')}
+                {...params}>
+                Your device doesn't support
+            </video>
+        ,
+    [props.tabs]);
 
     /**
      * Carousel Three
@@ -104,15 +121,13 @@ const Voyages: React.FC<VoyagesProps> = (props): JSX.Element => {
     /**
      * Carousel Card Text
      */
-    const Carousel = React.useMemo<JSX.Element>(
+    const MemoCarouselCardText = React.useMemo<JSX.Element>(
         (): JSX.Element => (
             <CarouselCardText
-                cardClassName="ml-auto mr-auto xl:mr-0 lg:mr-4 md:mr-5 top-0 mt-12 right-0 px-8 pt-8 w-full max-w-md md:w-6/12"
-                listContainerClassName="mt-5"
+                cardClassName="ml-auto mr-auto xl:mr-0 lg:mr-4 md:mr-5 top-0 mt-12 right-0 px-8 pt-8 xl:pb-20 lg:pb-20 md::pb-16 w-full max-w-md md:w-6/12"
+                listContainerClassName="mt-4 p-0"
                 store={props.carousel_card_text}
                 isStaticImage
-                containerArrow="mb-6"
-                prevButtonClassName="ml-4"
                 buttonTitle="book now"
             />
         ),
@@ -124,16 +139,34 @@ const Voyages: React.FC<VoyagesProps> = (props): JSX.Element => {
                 {Slider}
             </section>
             
-            <section className={"py-20"}>
-                {Tabs}
-            </section>
+            <section className={"py-20 h-full"}>
+                <Tab isStaticImage>
+                    {_.map(props.tabs, (data, index) => {
+                        return (
+                            <div title={data.label} key={index}>
+                                <HeadingText
+                                    containerClassName="max-w-container-2 px-6 xl:px-0 lg:px-4 md:px-5"
+                                    heading={data.heading}
+                                    text={data.text}
+                                />
 
+                                {VideoTabItem({
+                                    key: data.video,
+                                    src: data.video,
+                                    poster: require('../assets/video-poster.png'),
+                                })}
+                            </div>
+                        )
+                    })}
+                </Tab>
+            </section>
+            
             <section className={"py-20"}>
                 {CarouselThreeHeading}
             </section>
 
             <section className={"py-20 mb-6 xl:mb-40 lg:mb-40 md:mb-40"}>
-                {Carousel}
+                {MemoCarouselCardText}
             </section>
         </div>
     );

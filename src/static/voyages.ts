@@ -3,13 +3,24 @@ import { CarouselThreeItem } from "../components/base/Carousel/CarouselThree";
 import { CarouselCardTextItem } from "../components/base/Carousel/CarouselCardText";
 
 export type VoyagesProps = {
-    slider: SliderItem[],
+    slider: Array<SliderItem>,
+
+    tabs: Array<{
+        id: React.ReactText,
+        label: string,
+        heading?: string,
+        text?: string,
+        video?: any,
+        image?: string,
+    }>,
+
     carousel_three: {
         caption?: string | null,
         heading: string,
-        data: CarouselThreeItem[],
+        data: Array<CarouselThreeItem>,
     },
-    carousel_card_text: CarouselCardTextItem[],
+
+    carousel_card_text: Array<CarouselCardTextItem>,
 };
 
 const staticVoyages: VoyagesProps = {
@@ -18,6 +29,21 @@ const staticVoyages: VoyagesProps = {
         images: require('../assets/img/header/8.png'),
         text: 'Voyages'
     }],
+
+    tabs: [{
+        id: 0,
+        label: 'Flores Sea',
+        heading: 'lorem ipsum dolor sit amet (flores sea)',
+        text: 'Exercitation cupidatat laboris ea pariatur irure tempor consectetur duis. Id excepteur nisi consequat labore aliqua pariatur ad dolor. Exercitation proident Lorem non proident incididunt sit.',
+        video: require('../assets/video/videoplayback.mp4'),
+    },{
+        id: 1,
+        label: 'Raja Ampat',
+        heading: 'lorem ipsum dolor sit amet (raja ampat)',
+        text: 'Exercitation cupidatat laboris ea pariatur irure tempor consectetur duis. Id excepteur nisi consequat labore aliqua pariatur ad dolor. Exercitation proident Lorem non proident incididunt sit.',
+        video: require('../assets/video/videoplayback.mp4'),
+    }],
+
     carousel_three: {
         caption: 'Gallery',
         heading: 'Excertation Commodo',
@@ -39,6 +65,7 @@ const staticVoyages: VoyagesProps = {
             image: require('../assets/img/CardThreeImage/8.png'),
         }]
     },
+
     carousel_card_text: [{
         id: 0,
         heading: 'Lorem ipsum dolor',
