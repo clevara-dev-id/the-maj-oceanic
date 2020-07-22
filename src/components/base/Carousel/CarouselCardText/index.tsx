@@ -90,17 +90,12 @@ const CarouselCardText: React.FC<T> = (props): JSX.Element => {
         return ImageContain(image, index)
     };
 
-    /** 
-     * Render Card Item
-     */
-    const _onButtonClick = React.useCallback(() => alert("push to location"), []);
-
     /** Memo Heading Text */
     const MemoHeadingText = React.useMemo<(params: HeadingTextItem & {linkTo?: string}, index: number) => JSX.Element>(
         () => (params, index) => (
             <HeadingText
                 key={index}
-                containerClassName={`${props.cardClassName} card-text xl:text-left lg:text-left md:text-left bg-white shadow-xl inline-flex flex-col xl:absolute lg:absolute md:absolute top-0 right-0 select-none`}
+                containerClassName={`xl:text-left lg:text-left md:text-left bg-white shadow-xl inline-flex flex-col xl:absolute lg:absolute md:absolute top-0 right-0 select-none h-full pb-20 ${props.cardClassName}`}
                 captionClassName={props.captionClassName}
                 headingClassName={props.headingClassName}
                 textClassName={props.textClassName}
