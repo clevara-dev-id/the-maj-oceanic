@@ -29,7 +29,7 @@ const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
      */
     const MemoHeadingTextLargeImage = React.useMemo<JSX.Element>( 
         () => (
-            <div className="px-6 xl:px-0 lg:px-4 md:px-5">
+            <div className="px-6 xl:px-0 lg:px-4 md:px-5 py-0">
                 <HeadingText
                     containerClassName="max-w-3xl"
                     headingClassName="mt-4"
@@ -72,10 +72,11 @@ const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
                     caption={props.carousel_three.caption}
                     heading={props.carousel_three.heading}
                     headingClassName="mt-4 select-none"
+                    captionClassName="m-0 p-0 text-primary-300"
                 />
                 <CarouselThree
                     isStaticImage
-                    containerClassName="mt-20 mx-auto"
+                    containerClassName="xl:mt-16 lg:mt-16 md:mt-10 mt-8"
                     captionClassName="text-black capitalize mt-5"
                     mode="outline"
                     to="#"
@@ -84,30 +85,30 @@ const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
             </React.Fragment>
         )
     ,[props.carousel_three]);
-    
+
     return (
         <div id="cabin-detail">
             <section>
                 {Slider}
             </section>
 
-            <section className={"py-20"}>
+            <section className={"pb-0 md:pb-6 lg:pb-10 xl:pb-10 pt-20"}>
                 {MemoHeadingTextLargeImage}
             </section>
 
-            <section className="py-20">
+            <section className={"py-0 md:my-10 lg:my-20 xl:my-20"}>
                 <Divider containerClassName="px-8 xl:px-0 lg:px-6" fill="#232323" />
             </section>
 
-            <section className={"py-20"}>
+            <section className={"pt-0 md:pt-6 lg:pt-10 xl:pt-10 pb-8 md:pb-20 lg:pb-24 xl:pb-24 mb-0 md:mb-12 lg:mb-20 xl:mb-20"}>
                 {MemoCardTextImageSmall(props.card_text_image_small[0])}
             </section>
 
-            <section className={"py-20"}>
+            <section className={"pb-20 pt-8 md:pt-20 lg:pt-24 xl:pt-24 my-0 md:my-12 lg:my-20 xl:my-20"}>
                 {MemoCardTextImageSmall(props.card_text_image_small[1], true)}
             </section>
 
-            <section className={"py-20 mb-20"}>
+            <section className={"pt-20 pb-32 bg-bizarre mt-0 md:mt-32 lg:mt-40 xl:mt-40"}>
                 {MemoHeadingCarouselThree}
             </section>
         </div>
