@@ -47,19 +47,19 @@ const Home: React.FC<HomeProps & mapStateProps> = (props): JSX.Element =>  {
     /** Heading Text & Large Image */
     const MemoHeadingTextLargeImage = React.useMemo<JSX.Element>( 
         () => (
-            <React.Fragment>
-                <HeadingText containerClassName="container select-none flex flex-col items-center justify-center mx-auto lg:max-w-4xl text-center"
-                    headingClassName="lg:max-w-xl text-center leading-none"
+            <div className="px-6 xl:px-0 lg:px-4 md:px-5">
+                <HeadingText 
+                    containerClassName="lg:max-w-xl md:max-w-lg max-w-md"
                     heading={source?.heading!}
                     text={source?.text}
-                    textClassName="mt-8 lg:max-w-xl leading-6"
+                    textClassName="px-6 mt-8"
                 />
                 <LargeImage
                     isStaticImage
                     images={source?.images}
                     imageClassName="max-w-container-2 max-h-large-image mx-auto mt-16"
                 />
-            </React.Fragment>
+            </div>
         ),
     [source?.heading, source?.text, source?.images]);
 
@@ -67,10 +67,13 @@ const Home: React.FC<HomeProps & mapStateProps> = (props): JSX.Element =>  {
     const MemoCarouselCardText = React.useMemo<JSX.Element>(
         () => (
             <CarouselCardText
-                containerClassName="relative z-20"
                 store={source?.carousel_card_text!}
+                cardClassName="ml-auto mr-auto xl:mr-0 lg:mr-4 md:mr-5 top-0 mt-16 xl:mt-16 lg:mt-16 md:mt-12 right-0 pl-8 pr-10 pt-8 w-full max-w-md md:w-6/12 h-40"
+                headingClassName="mt-4"
+                textClassName="pr-4"
                 containerArrow="mb-6 ml-10 xl:ml-6 lg:ml-6"
                 buttonTitle="discover"
+                buttonClassName="mt-6 mx-auto xl:mx-0 lg:mx-0 md:mx-0"
                 isStaticImage
             >
                 <img draggable={false} src={require('../assets/tmo-stamps-brown.png')}
@@ -91,7 +94,7 @@ const Home: React.FC<HomeProps & mapStateProps> = (props): JSX.Element =>  {
                 {MemoHeadingTextLargeImage}
             </section>
 
-            <section className="py-20 mb-20">
+            <section className="pt-20 pb-40 xl:mb-20 lg:mb-20 mb-40">
                 {MemoCarouselCardText}
             </section>
         </div>

@@ -62,11 +62,9 @@ const CardTextImageRL: React.FC<CardTextImageRLProps> = (props): JSX.Element => 
     const ImageUri = props.isStaticImage
         ? props.image : `${process.env.REACT_APP_BASE_URL_IMAGE}/${props.image}`;
 
-    let containerHeadTextClass: string = 
+    let containerHeadTextClass:string = 
         props.reverse
-        ? "pl-0 pr-0 xl:pr-0 lg:pr-0 md:pr-6 mt-6 xl:mt-0 lg:mt-0 md:mt-0" : "pr-0 pl-0 xl:pl-0 lg:pl-0 md:pl-6 mb-6 xl:mb-0 lg:mb-0 md:mb-0";
-
-    let paddingX: string ="px-6 xl:px-0 lg:px-0 md:px-0";
+        ? "mt-6 xl:mt-0 lg:mt-0 md:mt-0" : "mb-6 xl:mb-0 lg:mb-0 md:mb-0";
     /**
      * Heading Text List
      */
@@ -78,10 +76,10 @@ const CardTextImageRL: React.FC<CardTextImageRLProps> = (props): JSX.Element => 
                     heading={props.heading}
                     text={props.text}
                     list={props.list}
-    
+                    
                     containerClassName={`${containerHeadTextClass} xl:text-left lg:text-left md:text-left max-w-2xl sm:max-w-xl h-auto w-full xl:w-7/12 lg:w-7/12`}
-                    headingClassName={`${props.headingClassName} ${paddingX}`}
-                    textClassName={`${props.textClassName} ${paddingX} mt-3`}   
+                    headingClassName={`${props.headingClassName}`}
+                    textClassName={`${props.textClassName} mt-3`}   
                     listContainerClassName="mt-8"
                 >
                 {props.buttonTitle ? (
@@ -109,7 +107,7 @@ const CardTextImageRL: React.FC<CardTextImageRLProps> = (props): JSX.Element => 
         : "flex-col xl:flex-row lg:flex-row md:flex-row"
 
     return (
-        <div className={`flex ${containerClass} max-w-container-2 w-screen h-auto mx-auto justify-between items-center ${props.containerClassName}`}>
+        <div className={`flex ${containerClass} max-w-container-2 w-screen h-auto mx-auto px-6 xl:px-0 lg:px-4 md:px-5 justify-between items-center ${props.containerClassName}`}>
             {Head}
             {Image}
         </div>

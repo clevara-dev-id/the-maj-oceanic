@@ -24,11 +24,11 @@ const Table: React.FC<TableProps> = (props): JSX.Element => {
     const RenderItem = React.useMemo<(args: TableItem, index: number) => JSX.Element>(
         () => (args, index) => (
                 <tr key={index}>
-                    <td className="px-4 py-2 w-1/2"> 
+                    <td className="px-2 py-2 w-1/2"> 
                         <h6 className="tracking-widest leading-normal text-left">{args.title}</h6> 
                     </td>
 
-                    <td className={`px-4 py-2 w-1/2 ${props.dataTableClassName}`}> 
+                    <td className={`px-2 py-2 w-1/2 ${props.dataTableClassName}`}> 
                         {args.value && _.map(args.value.split('\n'), (item, i) => (
                             <p key={i} className={`body-1 text-left ${i? 'mt-4' : 'mt-0'}`}>{item}</p>
                         ))}
@@ -38,8 +38,8 @@ const Table: React.FC<TableProps> = (props): JSX.Element => {
     [props.store]);
 
     return (
-        <div className={`max-w-container-2 select-none mx-auto ${props.containerClassName}`}>
-            <h5 className={`px-4 py-8 ${props.headClassName} text-left`}>Table Of Spesification</h5>
+        <div className={`max-w-container-2 select-none mx-auto px-8 xl:px-0 lg:px-4 md:px-6 ${props.containerClassName}`}>
+            <h5 className={`py-8 ${props.headClassName} text-left`}>Table Of Spesification</h5>
             <table className="w-full">
                 <tbody>
                     {_.map(props.store, RenderItem)}

@@ -54,7 +54,7 @@ const staticVessel: VesselProps = {
         caption: 'spesification',
         heading: 'Lorem Ipsum',
         text: 'Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis.',
-        images: require('../assets/img/CarouselCard/1.png'),
+        image: require('../assets/img/CarouselCard/1.png'),
         list: [
             'Lorem ipsum dolor sit amet',
             'Laboris lar aliquip',
@@ -66,7 +66,7 @@ const staticVessel: VesselProps = {
         caption: 'spesification',
         heading: 'Lorem Ipsum',
         text: 'Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis.',
-        images: require('../assets/img/CarouselCard/1.png'),
+        image: require('../assets/img/CarouselCard/1.png'),
     }],
     carousel_three_team: {
         caption: 'the team',

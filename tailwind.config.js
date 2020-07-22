@@ -15,6 +15,10 @@ module.exports = {
     },
     colors: {
       transparent: 'transparent',
+      /* custom color */
+      bizarre: '#EFE1DC',
+      nero: 'rgb(35, 35, 35)',
+
       primary: {
         100: "#C7E2EC",
         200: "#58A9C6",
@@ -268,6 +272,10 @@ module.exports = {
       '4xl': '2.25rem',
       '5xl': '3rem',
       '6xl': '4rem',
+      // custom
+      '34px': '2.125rem',
+      '32px': '2rem',
+      '22px': '1.375rem',
     },
     fontWeight: {
       hairline: '100',
@@ -298,6 +306,7 @@ module.exports = {
       wide: '0.025em',
       wider: '0.05em',
       widest: '0.1em',
+      // custom
       caption2: '0.188em',
     },
     lineHeight: {
@@ -745,6 +754,12 @@ module.exports = {
         }
       };
 
+      const CardText = {
+        '.card-text': {
+          height: '32.8125rem',
+        }
+      };
+
       const Fotter = {
         '.bg-nero': {
           backgroundColor: 'rgb(35, 35, 35)',
@@ -755,6 +770,7 @@ module.exports = {
         ...newUtilities,
         ...Tabs,
         ...Slider,
+        ...CardText,
         ...Fotter,
       }, ['responsive', 'hover'])
     })

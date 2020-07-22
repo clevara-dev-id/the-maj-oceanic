@@ -40,13 +40,13 @@ const staticHome: HomeProps = {
         caption: "the vessel 1",
         heading: "Craftmanship lives on 1",
         text: "Sailing 1 on a modern-take of the Phinisi is the best way to enjoy the beauty of the Indonesian archipelago. An icon of Indonesia's seafaring tradition, the Phinisi boat-building is recognized by UNESCO as a Masterpiece of Oral and Intangible Heritage of Humanity.",
-        images: require("../assets/img/home/carousel-text-image/1.png"),
+        image: require("../assets/img/home/carousel-text-image/1.png"),
     },{
         id: 1,
         caption: "the vessel 2",
         heading: "Craftmanship lives on 2",
         text: "Sailing 2 on a modern-take of the Phinisi is the best way to enjoy the beauty of the Indonesian archipelago. An icon of Indonesia's seafaring tradition, the Phinisi boat-building is recognized by UNESCO as a Masterpiece of Oral and Intangible Heritage of Humanity.",
-        images: require("../assets/img/home/carousel-text-image/1.png"),
+        image: require("../assets/img/home/carousel-text-image/1.png"),
     }]
 };
 

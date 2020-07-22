@@ -58,7 +58,7 @@ export default class LargeImage extends React.PureComponent<LargeImageProps, {}>
             alt 
         } = this.props;
         return <img draggable={false}
-            className={`w-full h-auto px-6 xl:px-0 lg:px-0 md:px-5 ${imageClassName}`}
+            className={`w-full h-auto ${imageClassName}`}
             style={imageStyle}
             src={isStaticImage ? images :  `${process.env.REACT_APP_BASE_URL_IMAGE}/${images}`}
             alt={alt ? alt : "large-image"}

@@ -21,10 +21,14 @@ const Destination: React.FC<DestinationProps> = (props): JSX.Element => {
     const MemoCarouselCardText = React.useMemo<JSX.Element>( 
         () => (
             <CarouselCardText 
-                containerClassName="max-w-container-2 relative pb-12 mx-auto"
-                store={props.carousel_card_text}
                 isStaticImage
-                containerArrow="mb-24"
+                cardClassName="ml-auto mr-auto xl:mr-0 lg:mr-4 md:mr-5 top-0 mt-16 xl:mt-16 lg:mt-16 md:mt-12 right-0 pl-8 pr-8 pt-12 w-full max-w-md md:w-6/12"
+                captionClassName="mt-2 text-primary-300"
+                headingClassName="mt-2"
+                buttonClassName="mt-10 mx-auto xl:mx-0 lg:mx-0 md:mx-0"
+                store={props.carousel_card_text}
+                containerArrow="mb-12"
+                prevButtonClassName="ml-4"
                 buttonTitle="learn more"
             />
         ),
@@ -51,7 +55,7 @@ const Destination: React.FC<DestinationProps> = (props): JSX.Element => {
                 {MemoSliderAwesome}
             </section>
 
-            <section className={"py-20 "}>
+            <section className={"py-20 xl:mb-20 lg:mb-20 md:mb-20 mb-0 "}>
                 {MemoCarouselCardText}
             </section>
 

@@ -27,14 +27,14 @@ const staticDestination: DestinationProps = {
         caption: 'Flores Sea 1',
         heading: 'Title',
         text: 'Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis.\n\nLaboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis.',
-        images: require('../assets/img/CarouselCard/6.png'),
+        image: require('../assets/img/CarouselCard/6.png'),
         linkTo: '#',
     },{
         id: 1,
         caption: 'Flores Sea 2',
         heading: 'Title',
         text: 'Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis.\n\nLaboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis.',
-        images: require('../assets/img/CarouselCard/5.png'),
+        image: require('../assets/img/CarouselCard/5.png'),
         linkTo: '#',
     }],
 

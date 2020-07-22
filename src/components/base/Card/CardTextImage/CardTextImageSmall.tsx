@@ -78,12 +78,12 @@ const CardTextImageSmall: React.FC<CardTextImageSmallProps> = (props) => {
         ? "flex-col-reverse xl:flex-row-reverse lg:flex-row-reverse md:flex-row-reverse" : "flex-col xl:flex-row lg:flex-row md:flex-row"
 
     let containerHeadClass: string =
-        props.reverse
-        ? "pl-8 xl:pl-0 lg:pl-4 md:pl-8 pr-8 xl:pr-8 lg:pr-6 md:pr-4" : "mt-8 pr-8 xl:pr-0 lg:pr-4 md:pr-8 pl-8 xl:pl-8 lg:pl-6 md:pl-4"
+        props.reverse ? "pr-4" : "pl-4 mt-8"
+        // ? "pl-8 xl:pl-0 lg:pl-4 md:pl-8 pr-8 xl:pr-8 lg:pr-6 md:pr-4" : "mt-8 pr-8 xl:pr-0 lg:pr-4 md:pr-8 pl-8 xl:pl-8 lg:pl-6 md:pl-4"
     const HeadText = React.useMemo<JSX.Element>( 
         () => (
             <HeadingText 
-                containerClassName={`w-full select-none lg:w-2/4 md:w-1/2 xl:text-left lg:text-left md:text-left ${containerHeadClass}`}
+                containerClassName={`select-none w-full lg:w-2/4 md:w-1/2 xl:text-left lg:text-left md:text-left ${containerHeadClass}`}
                 caption={props.caption} 
                 heading={props.heading}
                 text={props.text}
@@ -99,10 +99,12 @@ const CardTextImageSmall: React.FC<CardTextImageSmallProps> = (props) => {
     , [props.caption, props.heading, props.text, props.linkTo, props.reverse]);
 
     return (
-        <div className={`card-text-image-small flex ${containerClass} flex-wrap max-w-container-2 mx-auto items-center justify-between ${props.containerClassName}`}>
-            <img src={ImageUri} draggable={false}
-                className="bg-no-repeat bg-cover max-w-screen-sm h-auto w-full md:w-1/2 mx-auto xl:mx-0 lg:mx-0 md:mx-0" 
-            />
+        <div className={`card-text-image-small flex ${containerClass} px-6 xl:px-0 lg:px-4 md:px-5 flex-wrap max-w-container-2 mx-auto items-center justify-between ${props.containerClassName}`}>
+            <div className="w-full md:w-1/2 max-w-screen-sm">
+                <img src={ImageUri} draggable={false}
+                    className="bg-no-repeat bg-cover  h-auto mx-auto xl:mx-0 lg:mx-0 md:mx-0" 
+                />
+            </div>
             
             {HeadText}
         </div>

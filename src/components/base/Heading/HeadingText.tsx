@@ -73,7 +73,7 @@ export const HeadingText: React.FC<HeadingTextProps> = (props: HeadingTextProps)
     );
 
     return (
-        <div className={`${props.containerClassName} heading-text px-6 xl:px-0 lg:px-0 md:px-5`} 
+        <div className={`${props.containerClassName} heading-text select-none w-full mx-auto`} 
             style={props.containerStyle!}>
 
             <Heading 
@@ -86,7 +86,7 @@ export const HeadingText: React.FC<HeadingTextProps> = (props: HeadingTextProps)
 
             <p style={props.textStyle}
                 title={props.text!}
-                className={`body-1 ${props.textClassName} whitespace-normal`}
+                className={`body-1 mt-4 ${props.textClassName} whitespace-pre-line`}
                 dangerouslySetInnerHTML={_markUp(props.text!)}
             />
 

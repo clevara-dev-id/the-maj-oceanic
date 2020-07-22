@@ -42,7 +42,7 @@ const staticOffersDetail: OffersDetailProps = {
             'Lorem ipsum dolor sit amet',
             'Laboris lar aliquip',
         ],
-        images: require('../assets/img/CarouselCard/5.png'),
+        image: require('../assets/img/CarouselCard/5.png'),
         linkTo: '#',
     },{
         id: 1,
@@ -54,7 +54,7 @@ const staticOffersDetail: OffersDetailProps = {
             'Lorem ipsum dolor sit amet',
             'Laboris lar aliquip',
         ],
-        images: require('../assets/img/CarouselCard/5.png'),
+        image: require('../assets/img/CarouselCard/5.png'),
         linkTo: '#',
     }],
 };

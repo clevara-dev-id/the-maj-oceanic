@@ -24,20 +24,19 @@ const Offers: React.FC<OffersProps> = (props): JSX.Element => {
      */
     const MemoHeadingTextLargeImage = React.useMemo<JSX.Element>( 
         () => (
-            <React.Fragment>
+            <div className="px-6 xl:px-0 lg:px-4 md:px-5">
                 <HeadingText
-                    heading={props.heading}
+                    heading={(props.heading)}
                     text={props.text}
-                    containerClassName="w-full mx-auto max-w-3xl"
+                    containerClassName="max-w-3xl"
                     textClassName="px-6"
-                    headingClassName=" mt-4"
                 />
                 <LargeImage
                     images={props.image}
                     imageClassName="max-w-container-2 max-h-large-image mt-16 mx-auto"
                     isStaticImage
                 />
-            </React.Fragment>
+            </div>
         ), 
     [props.heading, props.text, props.image]);
 

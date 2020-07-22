@@ -55,19 +55,18 @@ const Spesification: React.FC<SpecProps & MapStateProps> = (props): JSX.Element 
     /** Heading Text & Large Image */
     const MemoHeadingTextLargeImage = React.useMemo<JSX.Element>(
         () => (
-            <React.Fragment>
+            <div className="px-6 xl:px-0 lg:px-4 md:px-5">
                 <HeadingText
-                    containerClassName="container select-none flex flex-col items-center justify-center mx-auto lg:max-w-4xl text-center p-8"
-                    headingClassName=" text-center leading-none"
+                    containerClassName="max-w-3xl"
+                    textClassName="mt-6 px-8"
                     heading={source?.heading}
                     text={source?.text}
-                    textClassName="mt-8 xl:px-16 lg:px-16 md:px-10 leading-6"
                 />
                 <LargeImage
                     images={source?.images}
-                    imageClassName="max-w-container-2 max-h-large-image mx-auto xl:mt-16 lg:mt-16"
+                    imageClassName="max-w-container-2 max-h-large-image mx-auto mt-16"
                 />
-            </React.Fragment>
+            </div>
         ),
     [source?.heading, source?.text, source?.images]);
 
@@ -77,8 +76,6 @@ const Spesification: React.FC<SpecProps & MapStateProps> = (props): JSX.Element 
     }) => JSX.Element>(
         () => ({children}) => (
             <Tabs
-                containerClassName="my-auto py-12"
-                tabUlClassName="pb-8 xl:pb-20 whitespace-pre-line"
                 children={children}
             />
         ),
@@ -86,9 +83,9 @@ const Spesification: React.FC<SpecProps & MapStateProps> = (props): JSX.Element 
     const MemoTabItem = React.useMemo<(params: any, index: number) => JSX.Element>(
         () => (params, index) => (
             <div key={index} title={params.label}>
-                <img title={params.label} draggable={false} className="mx-auto bg-contain bg-no-repeat bg-center md:bg-cover xl:bg-cover lg:bg-cover"
+                <img title={params.label} draggable={false} className="px-8 xl:px-0 lg:px-4 md:px-6 mx-auto bg-contain bg-no-repeat bg-center md:bg-cover xl:bg-cover lg:bg-cover"
                     src={params.images} alt="tab-image"/>
-                <p title={params.text} className="whitespace-pre-line select-none text-base pt-10 sm:pt-10 lg:pt-12 xl:pt-24">{params.text}</p>
+                <p title={params.text} className="whitespace-pre-line select-none px-8 xl:px-0 lg:px-4 md:px-6 pt-10 sm:pt-10 lg:pt-12 xl:pt-24">{params.text}</p>
             </div>
         ),
     []);
@@ -97,7 +94,7 @@ const Spesification: React.FC<SpecProps & MapStateProps> = (props): JSX.Element 
     const MemoTable = React.useMemo(
         () => (
             <Table
-                containerClassName="pb-20 px-8 xl:px-0 lg:px-0"
+                containerClassName="pb-20"
                 store={source?.table.data!}
                 headClassName="mt-24 mb-8 leading-normal"
                 dataTableClassName="py-6"
@@ -115,17 +112,17 @@ const Spesification: React.FC<SpecProps & MapStateProps> = (props): JSX.Element 
                 <Breadcrumb page='spesification' />
             </section>
 
-            <section>
+            <section className="py-20 mb-16">
                 {MemoHeadingTextLargeImage}
             </section>
 
-            <section className="flex mt-56 items-stretch bg-tabs-deck h-auto xl:h-screen lg:h-screen max-h-container-tabs">
-                {MemoTabs({
-                    children: _.map(props.page.tabs, MemoTabItem)
-                })}
+            <section className="py-20 flex items-stretch bg-tabs-deck h-auto xl:h-screen lg:h-screen max-h-container-tabs">
+                <Tabs>
+                    {_.map(props.page.tabs, MemoTabItem)}
+                </Tabs>
             </section>
 
-            <section className="pb-16" >
+            <section className="py-20" >
                 {MemoTable}
             </section>
         </div>

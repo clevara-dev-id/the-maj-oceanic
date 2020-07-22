@@ -22,10 +22,12 @@ const Cabin: React.FC<CabinProps> = (props): JSX.Element => {
     const MemoCarouselCardText = React.useMemo<JSX.Element>(
         () => (
             <CarouselCardText
-                containerClassName="relative p-0"
+                cardClassName="ml-auto mr-auto xl:mr-0 lg:mr-4 md:mr-5 top-0 mt-16 xl:mt-16 lg:mt-16 md:mt-12 right-0 pl-8 pr-8 pt-8 w-full max-w-md md:w-6/12"
+                headingClassName="mt-2"
+                listContainerClassName="mt-6"
+                containerArrow="mb-6 ml-10 xl:ml-6 lg:ml-6"
                 store={props.carousel_card_text}
                 isStaticImage
-                containerArrow="mb-6 ml-10 xl:ml-6 lg:ml-6"
                 buttonTitle="discover"
             />
         ),
@@ -69,15 +71,15 @@ const Cabin: React.FC<CabinProps> = (props): JSX.Element => {
                 {MemoSliderAwesome}
             </section>
 
-            <section className={`py-20 mb-0 xl:mb-20 lg:mb-20 md:mb-20`}>
+            <section className={`py-20 mb-0 xl:mb-48 lg:mb-48 md:mb-48 card-text`}>
                 {MemoCarouselCardText}
             </section>
             
-            <section className={`py-20 my-0 xl:my-20 lg:my-20 md:my-20`}>       
+            <section className={`py-20 mt-0 xl:mt-20 lg:mt-20 md:mt-40 mb-0 xl:mb-20 lg:mb-20 md:mb-20`}>       
                 {MemoCarouselText}
             </section>
 
-            <section className={`py-24`} style={{background: '#EFE1DC'}}>
+            <section className={`py-24 bg-bizarre`}>
                 {MemoHeadingCarouselCardThree}
             </section>
         </div>

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import _ from 'lodash';
 import staticOffersDetail, { OffersDetailProps } from '../static/offersDetail';
 import { CardTextImageSmallItem } from '../components/base/Card/CardTextImage/CardTextImageSmall';
 
@@ -24,20 +25,19 @@ const OffersDetail: React.FC<OffersDetailProps> = (props): JSX.Element => {
      */
     const MemoHeadingTextLargeImage = React.useMemo<JSX.Element>( 
         () => (
-            <React.Fragment>
+            <div className="px-6 xl:px-0 lg:px-4 md:px-5">
                 <HeadingText
-                    heading={props.heading}
+                    heading={_.capitalize(props.heading)} 
                     text={props.text}
-                    containerClassName="w-full mx-auto max-w-3xl"
-                    headingClassName="capitalize mb-2"
-                    textClassName="px-6 mt-4"
+                    containerClassName="max-w-3xl"
+                    textClassName="px-6"
                 />
                 <LargeImage
                     images={props.image}
                     imageClassName="max-w-container-2 max-h-large-image mt-16 mx-auto"
                     isStaticImage
                 />
-            </React.Fragment>
+            </div>
         ), 
     [props.heading, props.text, props.image]);
 
@@ -62,11 +62,14 @@ const OffersDetail: React.FC<OffersDetailProps> = (props): JSX.Element => {
     const MemoCarouselCardText = React.useMemo<JSX.Element>( 
         () => (
             <CarouselCardText 
-                containerClassName="max-w-container-2 relative pb-12 mx-auto"
+                cardClassName="ml-auto mr-auto xl:mr-0 lg:mr-4 md:mr-5 top-0 mt-16 xl:mt-16 lg:mt-16 md:mt-12 right-0 px-8 pt-12 w-full max-w-md md:w-6/12"
                 store={props.carousel_card_text}
                 isStaticImage
-                containerArrow="mb-16"
-                buttonTitle="learn more"
+                containerArrow="mb-6"
+                listContainerClassName="mt-5"
+                prevButtonClassName="ml-4"
+                buttonTitle="book now"
+                buttonClassName="mx-auto xl:mx-0 lg:mx-0 md:mx-0"
             />
         ),
     [props.carousel_card_text]);
@@ -85,7 +88,7 @@ const OffersDetail: React.FC<OffersDetailProps> = (props): JSX.Element => {
                 {MemoCardTextImageSmall(props.card_text_image_small[0])}
             </section>
 
-            <section className={"py-20 mb-32"}>
+            <section className={"py-20 mb-0 xl:mb-40 lg:mb-48 md:mb-48"}>
                 {MemoCarouselCardText}
             </section>
         </div>

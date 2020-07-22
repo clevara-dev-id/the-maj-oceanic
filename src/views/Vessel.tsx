@@ -29,20 +29,19 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
      */
     const HeadingImage = React.useMemo<JSX.Element>( 
         () => (
-            <React.Fragment>
+            <div className="px-6 xl:px-0 lg:px-4 md:px-5">
                 <HeadingText
                     heading={props.heading}
                     text={props.text}
-                    containerClassName="w-full mx-auto max-w-3xl"
+                    containerClassName="max-w-3xl"
                     textClassName="px-6"
-                    headingClassName=" mt-4"
                 />
                 <LargeImage
                     images={props.image}
                     imageClassName="max-w-container-2 max-h-large-image mt-16 mx-auto"
                     isStaticImage
                 />
-            </React.Fragment>
+            </div>
         ), 
     [props.heading, props.text, props.image]);
 
@@ -73,11 +72,14 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
     const CarouselCard = React.useMemo<JSX.Element>( 
         () => (
             <CarouselCardText 
-                containerClassName="max-w-container-2 relative pb-12 mx-auto"
+                cardClassName="ml-auto mr-auto xl:mr-0 lg:mr-4 md:mr-5 top-0 mt-12 right-0 px-8 pt-8 w-full max-w-md md:w-6/12"
                 store={props.carousel}
                 isStaticImage
-                containerArrow="mb-16"
+                containerArrow="mb-6"
+                listContainerClassName="mt-5"
+                prevButtonClassName="ml-4"
                 buttonTitle="learn more"
+                buttonClassName="mx-auto xl:mx-0 lg:mx-0 md:mx-0"
             />
         ),
     [props.carousel]);
@@ -129,7 +131,7 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
                 {CarouselThreeHeading}
             </section>
 
-            <section className={"pt-40 pb-48"}>
+            <section className={"py-20 mb-6 xl:mb-40 lg:mb-40 md:mb-40"}>
                 {CarouselCard}
             </section>
 

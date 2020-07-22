@@ -29,21 +29,21 @@ const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
      */
     const MemoHeadingTextLargeImage = React.useMemo<JSX.Element>( 
         () => (
-            <React.Fragment>
+            <div className="px-6 xl:px-0 lg:px-4 md:px-5">
                 <HeadingText
+                    containerClassName="max-w-3xl"
+                    headingClassName="mt-4"
+                    textClassName="px-6"
                     caption={props.caption}
                     heading={props.heading}
                     text={props.text}
-                    containerClassName="select-none w-full mx-auto max-w-3xl"
-                    textClassName="px-6"
-                    headingClassName="mt-4"
                 />
                 <LargeImage
                     images={props.image}
                     imageClassName="max-w-container-2 max-h-large-image mt-16 mx-auto"
                     isStaticImage
                 />
-            </React.Fragment>
+            </div>
         ), 
     [props.heading, props.text]);
 
@@ -75,7 +75,7 @@ const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
                 />
                 <CarouselThree
                     isStaticImage
-                    containerClassName="relative mt-20 max-w-6xl mx-auto"
+                    containerClassName="mt-20 mx-auto"
                     captionClassName="text-black capitalize mt-5"
                     mode="outline"
                     to="#"

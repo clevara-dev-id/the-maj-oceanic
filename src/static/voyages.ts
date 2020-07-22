@@ -49,7 +49,7 @@ const staticVoyages: VoyagesProps = {
             'Lorem ipsum dolor sit amet',
             'Laboris lar aliquip',
         ],
-        images: require('../assets/img/CarouselCard/3.png'),
+        image: require('../assets/img/CarouselCard/3.png'),
         linkTo: '#',
     },{
         id: 1,
@@ -61,7 +61,7 @@ const staticVoyages: VoyagesProps = {
             'Lorem ipsum dolor sit amet',
             'Laboris lar aliquip',
         ],
-        images: require('../assets/img/CarouselCard/3.png'),
+        image: require('../assets/img/CarouselCard/3.png'),
         linkTo: '#',
     }],
 }

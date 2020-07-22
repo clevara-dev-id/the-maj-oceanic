@@ -73,7 +73,7 @@ const SliderAwesome: React.FC<SliderProps> = ({
             return (
                 <div key={index} className={`z-10 mt-48 max-w-2xl container-text-class ${imageClassName}`} data-src={ImageUri}>
                     {params.text 
-                    ?       <h1 className={`text-white text-center capitalize whitespace-pre-line px-4 xl:px-0 lg:px-0 leading-10 ${textClassName}`}>
+                    ?       <h1 className={`text-white text-34px xl:text-5xl lg:text-5xl md:text-4xl text-center capitalize whitespace-pre-line px-4 xl:px-0 lg:px-0 leading-10 ${textClassName}`}>
                                 {params.text}
                             </h1>
                     : null}

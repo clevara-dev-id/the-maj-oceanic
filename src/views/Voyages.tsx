@@ -91,7 +91,7 @@ const Voyages: React.FC<VoyagesProps> = (props): JSX.Element => {
                 />
                 <CarouselThree
                     isStaticImage
-                    containerClassName="relative mt-20 max-w-6xl mx-auto"
+                    containerClassName="mx-auto"
                     captionClassName="text-black capitalize mt-5"
                     mode="outline"
                     to="#"
@@ -107,10 +107,12 @@ const Voyages: React.FC<VoyagesProps> = (props): JSX.Element => {
     const Carousel = React.useMemo<JSX.Element>(
         (): JSX.Element => (
             <CarouselCardText
-                containerClassName="relative max-w-container-2 mx-auto p-0"
+                cardClassName="ml-auto mr-auto xl:mr-0 lg:mr-4 md:mr-5 top-0 mt-12 right-0 px-8 pt-8 w-full max-w-md md:w-6/12"
+                listContainerClassName="mt-5"
                 store={props.carousel_card_text}
                 isStaticImage
                 containerArrow="mb-6"
+                prevButtonClassName="ml-4"
                 buttonTitle="book now"
             />
         ),
@@ -130,7 +132,7 @@ const Voyages: React.FC<VoyagesProps> = (props): JSX.Element => {
                 {CarouselThreeHeading}
             </section>
 
-            <section className={"py-20 mb-24"}>
+            <section className={"py-20 mb-6 xl:mb-40 lg:mb-40 md:mb-40"}>
                 {Carousel}
             </section>
         </div>

@@ -88,7 +88,7 @@ const staticCabin: CabinProps = {
             'Lorem ipsum dolor sit amet',
             'Laboris lar aliquip',
         ],
-        images: require('../assets/img/CarouselCard/2.png')
+        image: require('../assets/img/CarouselCard/2.png')
     },{
         id: 1,
         caption: 'presidential suite 2',
@@ -100,7 +100,7 @@ const staticCabin: CabinProps = {
             'Lorem ipsum dolor sit amet',
             'Laboris lar aliquip',
         ],
-        images: require('../assets/img/CarouselCard/1.png')
+        image: require('../assets/img/CarouselCard/1.png')
     }],
 
     carousel_text: [{
