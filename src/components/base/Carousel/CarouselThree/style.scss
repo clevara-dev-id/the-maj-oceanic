@@ -7,10 +7,6 @@ $primary: rgb(32, 140, 178);
         margin-top:22px;
         font-size: 22px !important;
     }
-    
-    .slick-dots {
-        bottom: -90px;
-    }
 
     .slick-arrow {
         background-color: $primary;
@@ -64,7 +60,9 @@ $primary: rgb(32, 140, 178);
     }
     
     .slick-dots {
-        bottom: -46px;
+        bottom: -40px;
+        left: 4px;
+        right: 0;
         
         .dots {
             width: 12px;

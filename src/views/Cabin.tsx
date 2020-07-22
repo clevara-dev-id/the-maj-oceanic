@@ -22,10 +22,9 @@ const Cabin: React.FC<CabinProps> = (props): JSX.Element => {
     const MemoCarouselCardText = React.useMemo<JSX.Element>(
         () => (
             <CarouselCardText
-                cardClassName="ml-auto mr-auto xl:mr-0 lg:mr-4 md:mr-5 top-0 mt-16 xl:mt-16 lg:mt-16 md:mt-12 right-0 pl-8 pr-8 pt-8 w-full max-w-md md:w-6/12"
+                cardClassName="ml-auto mr-auto xl:mr-0 lg:mr-4 md:mr-5 top-0 mt-12 right-0 px-8 pt-8 xl:pb-20 lg:pb-20 md::pb-16 w-full max-w-md md:w-6/12"
                 headingClassName="mt-2"
-                listContainerClassName="mt-6"
-                containerArrow="mb-6 ml-10 xl:ml-6 lg:ml-6"
+                listContainerClassName="mt-4 p-0"
                 store={props.carousel_card_text}
                 isStaticImage
                 buttonTitle="discover"
@@ -39,7 +38,7 @@ const Cabin: React.FC<CabinProps> = (props): JSX.Element => {
             <CarouselText
                 bottonTitle="discover"
                 store={props.carousel_text}
-                containerArrow="mb-6 ml-10 xl:ml-6 lg:ml-6"
+                containerArrow="mb-6 ml-6"
                 isStaticImage
             />
         ),
@@ -56,7 +55,7 @@ const Cabin: React.FC<CabinProps> = (props): JSX.Element => {
                 />
                 <CarouselThree
                     isStaticImage
-                    containerClassName="mt-20"
+                    containerClassName="xl:mt-16 lg:mt-16 md:mt-10 mt-8"
                     mode="outline"
                     to="#"
                     store={props.carousel_three.data}
@@ -71,15 +70,15 @@ const Cabin: React.FC<CabinProps> = (props): JSX.Element => {
                 {MemoSliderAwesome}
             </section>
 
-            <section className={`py-20 mb-0 xl:mb-48 lg:mb-48 md:mb-48 card-text`}>
+            <section className={`py-20 mb-0 xl:mb-24 lg:mb-24 md:mb-24`}>
                 {MemoCarouselCardText}
             </section>
             
-            <section className={`py-20 mt-0 xl:mt-20 lg:mt-20 md:mt-40 mb-0 xl:mb-20 lg:mb-20 md:mb-20`}>       
+            <section className={`py-20 mt-0 xl:mt-24 lg:mt-24 md:mt-24 mb-24 xl:mb-24 lg:mb-24 md:mb-24`}>       
                 {MemoCarouselText}
             </section>
 
-            <section className={`py-24 bg-bizarre`}>
+            <section className={`pt-20 pb-32 mt-24 bg-bizarre`}>
                 {MemoHeadingCarouselCardThree}
             </section>
         </div>

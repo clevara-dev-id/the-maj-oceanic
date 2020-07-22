@@ -140,12 +140,14 @@ const CarouselText: React.FC<CarouselTextProps> = (props): JSX.Element => {
     let containerClass: string = 
         props.reverse 
             ? "flex-col-reverse xl:flex-row-reverse lg:flex-row-reverse md:flex-row-reverse" : "flex-col xl:flex-row lg:flex-row md:flex-row";
+
     let marginTop: string = 
         props.reverse
-            ? "mb-16 xl:mb-0 lg:mb-0 md:mb-0" : "mt-6 xl:mt-0 lg:mt-0 md:mt-0"
+            ? "mb-12 xl:mb-0 lg:mb-0 md:mb-0" : "mt-12 xl:mt-0 lg:mt-0 md:mt-0";
+
     return (
         <div className={`carousel-text flex flex-wrap items-center relative max-w-container-2 mx-auto box-border focus:outline-none px-6 xl:px-0 lg:px-4 md:px-5 ${containerClass} ${props.containerClassName}`}>
-            <div className={"select-none xl:text-left lg:text-left md:text-left pr-0 md:pr-4 mx-auto xl:mx-0 lg:mx-0 md:mx-0 w-screen xl:w-3/5 lg:w-3/5 md:w-1/2 max-w-md xl:max-w-full lg:max-w-full md:max-w-full"}>
+            <div className={"select-none xl:text-left lg:text-left md:text-left mx-auto xl:mx-0 lg:mx-0 md:mx-0 w-full xl:w-3/5 lg:w-3/5 md:w-1/2 max-w-md xl:max-w-full lg:max-w-full md:max-w-full"}>
                 {source && _.map(source, (data, index: number) => {
                     if (activeIndex === index) {
                         return HeadText(data)

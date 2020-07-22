@@ -92,7 +92,7 @@ export const HeadingText: React.FC<HeadingTextProps> = (props: HeadingTextProps)
 
             {props.list?
                 <div className={props.listContainerClassName!}>
-                    <ul className="mb-10 pl-4 list-none xl:list-disc lg:list-disc md:list-disc">
+                    <ul className="mb-10 p-0 xl:pl-4 lg:pl-4 md:pl-4 list-none xl:list-disc lg:list-disc md:list-disc">
                         {props.list.map(_renderItem)}
                     </ul>
                 </div>
