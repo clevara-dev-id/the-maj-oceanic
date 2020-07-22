@@ -54,7 +54,7 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
                 <Heading caption={props.carousel_three.caption} heading={props.carousel_three.heading} />
                 <CarouselThree
                     isStaticImage
-                    containerClassName="relative mt-20 max-w-6xl mx-auto"
+                    containerClassName="mt-20 max-w-6xl"
                     store={props.carousel_three.data} 
                     mode="outline"
                     to="#"
@@ -93,7 +93,7 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
                 <Heading caption={props.carousel_three_team.caption} heading={props.carousel_three_team.heading} />
                 <CarouselThree
                     isStaticImage
-                    containerClassName="relative max-w-6xl mx-auto mt-20"
+                    containerClassName="max-w-6xl mx-auto mt-20"
                     store={props.carousel_three_team.data}
                     mode="outline"
                     to="#"

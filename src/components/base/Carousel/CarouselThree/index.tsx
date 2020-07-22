@@ -133,7 +133,7 @@ const CarouselThree: React.FC<CarouselThreeProps> = (props): JSX.Element => {
 
             <Slider
                 {...Setting}
-                className="px-6 xl:px-0 lg:px-0 md:px-4 max-w-4xl mx-auto"
+                className="px-6 xl:px-0 lg:px-0 md:px-4 max-w-full xl:max-w-full lg:max-w-4xl mx-auto"
                 ref={carousel}
             >
                 {source && _.map(source, MemoSlideItem)}
