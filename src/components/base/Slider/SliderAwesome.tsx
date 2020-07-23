@@ -4,6 +4,9 @@ import AwesomeSlider from 'react-awesome-slider';
 
 import './style.scss'
 import { BaseUrlImage } from '../../../helper/axios';
+import useIntersection from '../../../helper/useInterSection';
+import { useDispatch } from 'react-redux';
+import { navbarGotFire } from '../../../redux/animates/reducers';
 
 const CoreStyles = require('react-awesome-slider/src/core/styles.scss');
 const AnimationStyles = require('react-awesome-slider/src/styled/fold-out-animation/fold-out-animation.scss');
@@ -61,19 +64,30 @@ const SliderAwesome: React.FC<SliderProps> = ({
     textClassName=null,
     store,
 }): JSX.Element => {
+
+    const ref = React.useRef(null);
+    const navChange = useIntersection(ref, '-100px');
+    const dispatch = useDispatch();
+
+    React.useEffect(() => {
+        dispatch(navbarGotFire(navChange));
+    }, [navChange]);
+
     /**
      * Render Slide Item
      */
     const MemoRenderItem = React.useMemo<(params: SliderItem, index: number) => JSX.Element>(
         () => (params, index) => {
-            const ImageUri: string = isStaticImage 
-            ?   params.images
-            :   `${BaseUrlImage}/${params.images}`;
+            const ImageUri: string = 
+                isStaticImage 
+                    ?   params.images
+                    :   `${BaseUrlImage}/${params.images}`;
 
+                    // mt-12 xl:mt-48 lg:mt-48 md:mt-32
             return (
-                <div key={index} className={`z-10 mt-12 xl:mt-48 lg:mt-48 md:mt-32 max-w-2xl container-text-class ${imageClassName}`} data-src={ImageUri}>
+                <div key={index} className={`z-10 mt-16 lg:mt-56 max-w-2xl container-text-class ${imageClassName}`} data-src={ImageUri}>
                     {params.text 
-                    ?       <h1 className={`text-white text-34px xl:text-5xl lg:text-5xl md:text-4xl text-center capitalize whitespace-pre-line px-4 xl:px-0 lg:px-0 leading-10 ${textClassName}`}>
+                    ?       <h1 ref={ref} className={`text-white text-34px xl:text-5xl lg:text-5xl md:text-4xl text-center capitalize whitespace-pre-line px-4 xl:px-0 lg:px-0 leading-10 ${textClassName}`}>
                                 {params.text}
                             </h1>
                     : null}
@@ -88,7 +102,7 @@ const SliderAwesome: React.FC<SliderProps> = ({
             bullets={false}
             cssModule={[CoreStyles, AnimationStyles]}
             infinite={false}
-            className="h-auto xl:h-screen max-w-screen-xl mx-auto awesome-slider aws-btn select-none">
+            className="flex items-end h-auto xl:h-screen max-w-screen-xl mx-auto awesome-slider aws-btn select-none">
             {_.map(store, MemoRenderItem)}
         </AwesomeSlider>
     );

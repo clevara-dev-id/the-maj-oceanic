@@ -16,7 +16,6 @@ const Sidebar = React.lazy(() => import('../components/Sidebar'));
 export interface AppLayoutProp extends mapStateProps {};
 const AppLayout: React.FC<AppLayoutProp> = (props): JSX.Element => {
     const dispatch = useDispatch();
-    const [isScroll, setScroll] = React.useState<boolean>(false);
     
     React.useLayoutEffect(() => {
         async function fetchAll() {
@@ -47,30 +46,12 @@ const AppLayout: React.FC<AppLayoutProp> = (props): JSX.Element => {
         dispatch(pageStatus("pending"));
         
         fetchAll();
-        window.addEventListener("scroll", function() {
-            schedule(window.scrollY)
-        }, { passive: true });
-
-        return () => {
-            schedule.cancel();
-        };
     }, []);
-
-    /**
-     * Listener scroll for Nav & Side bar
-     */
-    const MAX_SCROLL: number = 100;
-    const _onScroll = React.useCallback<(params: number) => void>(
-        params => {
-            params > MAX_SCROLL ? setScroll(true) : setScroll(false);
-        },
-    []);
-    const schedule = rafSchd(_onScroll);
 
     const NavStore = React.useMemo(() => props.navigation, [props.navigation]);
     const Navigation = React.useMemo<JSX.Element>(
-        () => <Navbar navbarChange={isScroll} store={NavStore} />,
-    [isScroll, NavStore]);
+        () => <Navbar navbarChange={!props.navbar.isFire} store={NavStore} />,
+    [props.navbar.isFire, NavStore]);
 
     /**
      * searching
@@ -85,12 +66,12 @@ const AppLayout: React.FC<AppLayoutProp> = (props): JSX.Element => {
         () => (
             <Sidebar
                 store={NavStore}
-                styles={{bmBurgerBars: { background: isScroll ? "#000000" : "#ffffff" }}}
+                styles={{bmBurgerBars: { background: !props.navbar.isFire ? "#000000" : "#ffffff" }}}
                 value={search}
                 onChange={searching}
             />
         ), 
-    [isScroll]);
+    [props.navbar.isFire]);
 
     return (
         <ErrorBoundary>
@@ -111,10 +92,12 @@ const AppLayout: React.FC<AppLayoutProp> = (props): JSX.Element => {
 type mapStateProps = { 
     navigation: Array<any>,
     pages: PageItem[],
+    navbar: { isFire: boolean },
 };
 const mapStateToProps = (state: RootState) => ({
     navigation: state.page.navigations || [],
-    pages: state.page.pages
+    pages: state.page.pages,
+    navbar: state.anim.navbar,
 });
 
 export default connect(mapStateToProps)(AppLayout);

@@ -16,6 +16,7 @@ const CarouselCardText  = React.lazy(() => import('../components/base/Carousel/C
 const Home: React.FC<HomeProps & mapStateProps> = (props): JSX.Element =>  {
     const dispatch = useDispatch();
     const [source, setSource] = React.useState<PageItem|undefined>(undefined);
+    const section1 = React.useRef(null);
 
     React.useLayoutEffect(() =>  {
         if (!source && _.isEmpty(props) === false) {
@@ -36,6 +37,29 @@ const Home: React.FC<HomeProps & mapStateProps> = (props): JSX.Element =>  {
     //         dispatch(pageSetActive(source));
     //     }
     // }, [source]);
+
+    /* anim effect will be fire */
+    React.useEffect(() => {
+        const _observer = new IntersectionObserver(
+            // callback
+            ([entry]) => {
+                console.log(entry);
+            },
+            // option
+            {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0,
+            }
+        );
+
+        if (section1.current!)
+            _observer.observe(section1.current!);
+
+        return () => {
+            _observer.unobserve(section1.current!);
+        };
+    }, []);
 
     /** Slider Awesome */
     const MemoSliderAwesome = React.useMemo<JSX.Element>(
@@ -87,11 +111,11 @@ const Home: React.FC<HomeProps & mapStateProps> = (props): JSX.Element =>  {
     
     return (
         <div id="home">
-            <section className="leading">
+            <section className="box-border">
                 {MemoSliderAwesome}
             </section>
 
-            <section className="py-20 mb-0 xl:mb-20 lg:mb-20 md:mb-20">
+            <section ref={section1} className="py-20 mb-0 xl:mb-20 lg:mb-20 md:mb-20">
                 {MemoHeadingTextLargeImage}
             </section>
 

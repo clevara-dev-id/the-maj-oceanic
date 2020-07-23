@@ -78,7 +78,7 @@ const CarouselCardText: React.FC<T> = (props): JSX.Element => {
      * Image memo
      */
     const ImageContain = React.useMemo(() => 
-        (image: string, index: number) => <img key={index} src={image} className="w-full" alt="carousel-card-text-image"/>
+        (image: string, index: number) => <img key={index} src={image} className="w-full" alt="carousel-card-text-image" loading="lazy" />
     ,[]);
 
     /**
@@ -129,7 +129,7 @@ const CarouselCardText: React.FC<T> = (props): JSX.Element => {
 
     /** Setting Slider */
     const SettingSlider: Settings = {
-        lazyLoad: "progressive",
+        lazyLoad: "ondemand",
         dots: true,
         slidesToScroll: 1,
         slidesToShow: 1,

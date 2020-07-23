@@ -8,9 +8,11 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
  * reducers
  */
 import Page from './pages/reducers';
+import AnimSlice from './animates/reducers';
 
 const rootReducer = combineReducers({
     page: Page,
+    anim: AnimSlice,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

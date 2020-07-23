@@ -92,7 +92,7 @@ const CardItem: React.FC<CardItemProps> = (props): JSX.Element => {
     return (
         <ErrorBoundary>
             <div className={`${props.containerClassName} card-item`}>
-                <img src={ImageUri} alt="image-card-item" className={`${props.containerImageClassName} mx-auto`} />
+                <img src={ImageUri} alt="image-card-item" className={`${props.containerImageClassName} mx-auto`} loading="lazy" />
                 {Heading}
                 {props.buttonTitle && ButtonText}
             </div>

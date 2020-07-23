@@ -1,10 +1,9 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import Slider, { Settings, CustomArrowProps } from 'react-slick';
 import _ from 'lodash';
 import './style.scss'
 
-import CardItem, { CardItemProps, CardItemDataProps } from '../../Card/CardImage/CardImageThree/CardItem';
+import CardItem, { CardItemDataProps } from '../../Card/CardImage/CardImageThree/CardItem';
 import { ButtonProps } from '../../Button/Button';
 
 export type CarouselThreeItem = CardItemDataProps & {
@@ -87,7 +86,6 @@ const CarouselThree: React.FC<CarouselThreeProps> = (props): JSX.Element => {
             )
         },
     [props.store]);
-    // <div className="lg:"></div>
 
     type SlickArrow = CustomArrowProps & { children?: React.ReactNode };
     const SlickArrow = React.useMemo<(params?: SlickArrow) => JSX.Element>(

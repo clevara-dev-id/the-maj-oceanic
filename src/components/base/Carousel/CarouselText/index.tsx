@@ -95,6 +95,7 @@ const CarouselText: React.FC<CarouselTextProps> = (props): JSX.Element => {
                         className="bg-no-repeat mx-auto xl:float-right lg:float-right md:float-right"
                         width="445px"
                         height="716px"
+                        loading="lazy"
                     />
                 </div>
             )

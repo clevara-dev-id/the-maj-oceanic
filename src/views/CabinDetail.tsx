@@ -9,7 +9,7 @@ import { isEqual } from 'lodash';
 const SliderAwesome         = React.lazy(() => import('../components/base/Slider/SliderAwesome'));
 const HeadingText           = React.lazy(() => import('../components/base/Heading/HeadingText'));
 const LargeImage            = React.lazy(() => import('../components/base/LargeImage/LargeImage'));
-const Divider               = React.lazy(() => import('../components/Divier'));
+const Divider               = React.lazy(() => import('../components/Divider'));
 const CardTextImageSmall    = React.lazy(() => import('../components/base/Card/CardTextImage/CardTextImageSmall'));
 const CarouselThree         = React.lazy(() => import('../components/base/Carousel/CarouselThree'));
 const Heading               = React.lazy(() => import('../components/base/Heading/Heading'));
