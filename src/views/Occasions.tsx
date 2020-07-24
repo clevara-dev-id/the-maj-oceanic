@@ -1,13 +1,13 @@
 import * as React from 'react';
 import _ from 'lodash';
 import staticOccasions, { OccasionsProps } from '../static/occasions';
-import { CardTextImageRLItem } from '../components/base/Card/CardTextImage/CardTextImageRL';
+import { CardTextImageItem } from '../components/base/Card/CardTextImage/CardTextImage';
 
 /** Components */
 const SliderAwesome     = React.lazy(() => import('../components/base/Slider/SliderAwesome'));
 const HeadingText       = React.lazy(() => import('../components/base/Heading/HeadingText'));
 const LargeImage        = React.lazy(() => import('../components/base/LargeImage/LargeImage'));
-const CardTextImage     = React.lazy(() => import('../components/base/Card/CardTextImage/CardTextImageRL'));
+const CardTextImage     = React.lazy(() => import('../components/base/Card/CardTextImage/CardTextImage'));
 
 const Occasions: React.FC<OccasionsProps> = (props): JSX.Element => {
     /**
@@ -43,7 +43,7 @@ const Occasions: React.FC<OccasionsProps> = (props): JSX.Element => {
     /**
      * Card Text Image (Right/Left)
      */
-    const MemoCardTextImage = React.useMemo<(params: CardTextImageRLItem, index: number) => JSX.Element>( 
+    const MemoCardTextImage = React.useMemo<(params: CardTextImageItem, index: number) => JSX.Element>( 
         () => (params, index) => {
             const is_reverse = index % 2 ? false : true;
             return (

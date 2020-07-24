@@ -47,4 +47,4 @@ class Divider extends React.PureComponent<DividerProps, {}> {
     }
 };
 
-export default Divider;
+export default React.memo(Divider, (prevProps, nextProps) => _.isEqual(prevProps, nextProps));

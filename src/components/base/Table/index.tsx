@@ -1,5 +1,7 @@
 import * as React from 'react';
 import _ from 'lodash';
+import { withErrorBoundary } from 'react-error-boundary';
+import ErrorFallback from '../../../helper/ErrorFallback';
 import './styles.css';
 
 export type TableItem = {id: number, title: string, value: string};
@@ -11,7 +13,7 @@ export type TableProps = {
 }
 
 /**
- * ## Module Table
+ * ## Table
  *
  * @param {TableProps} props
  * @see TableProps
@@ -35,7 +37,7 @@ const Table: React.FC<TableProps> = (props): JSX.Element => {
                     </td>
                 </tr>
             ),
-    [props.store]);
+    [props.dataTableClassName]);
 
     return (
         <div className={`max-w-container-2 select-none mx-auto px-8 xl:px-0 lg:px-4 md:px-6 ${props.containerClassName}`}>
@@ -72,4 +74,6 @@ Table.defaultProps = {
         value: `6 Paddle board\n6 Sea Kayaks \nFishing Gear \nComplete diving equipment\nComplete snorkeling equipment`
     }]
 };
-export default React.memo(Table, (prevProps, nextProps) => _.isEqual(prevProps, nextProps));
+
+const TableWithErrorBoundary = withErrorBoundary(Table, {FallbackComponent: ErrorFallback});
+export default React.memo(TableWithErrorBoundary, (prevProps, nextProps) => _.isEqual(prevProps, nextProps));

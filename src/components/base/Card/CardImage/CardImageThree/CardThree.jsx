@@ -1,11 +1,12 @@
 import React, { Component, lazy } from 'react';
 import PropTypes from 'prop-types';
+import { withErrorBoundary } from 'react-error-boundary';
 import Img1 from '../../../../../assets/img/CardThreeImage/1.png';
 import './style.scss';
+import ErrorFallback from '../../../../../helper/ErrorFallback';
 
 /* Components */
 const CardItem = lazy(() => import('./CardItem'))
-
 
 class CardThree extends Component {
     constructor(props) {
@@ -96,4 +97,5 @@ CardThree.propTypes = {
     onClick: PropTypes.func.isRequired,
 };
 
-export default CardThree;
+const CardThreeWithErrorBoundary = withErrorBoundary(CardThree, { FallbackComponent: ErrorFallback });
+export default CardThreeWithErrorBoundary;

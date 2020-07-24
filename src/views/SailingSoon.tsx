@@ -2,6 +2,8 @@ import React, { ImgHTMLAttributes } from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 import { isEqual } from 'lodash';
 import staticSailing, { SailingSoonProps } from '../static/sailing';
+import { withErrorBoundary } from 'react-error-boundary';
+import ErrorFallback from '../helper/ErrorFallback';
 
 /** Component */
 const HeadingText = React.lazy(() => import('../components/base/Heading/HeadingText'));
@@ -11,7 +13,7 @@ const HeadingText = React.lazy(() => import('../components/base/Heading/HeadingT
  *
  * @param {SailingSoonProps} props
  * @see SailingSoonProps
- * @returns {JSX.Element}
+ * @returns {JSX.Element} JSX Element
  */
 const SailingSoon = (props: SailingSoonProps): JSX.Element => {
     /**
@@ -19,9 +21,9 @@ const SailingSoon = (props: SailingSoonProps): JSX.Element => {
      */
     const MemoImage = React.useMemo<(params: ImgHTMLAttributes<HTMLImageElement>) => JSX.Element>(
         () => (params) => (
-            <img {...params} />
+            <img className={params.className} src={params.src} alt={params.alt} loading="lazy" />
         ),
-    [props]);
+    []);
 
     /**
      * Heading Text
@@ -88,4 +90,5 @@ const SailingSoon = (props: SailingSoonProps): JSX.Element => {
 };
 
 SailingSoon.defaultProps = staticSailing;
-export default React.memo(SailingSoon, (prevProps, nextProps) => isEqual(prevProps, nextProps));
+const SailingSoonWithErrorBoundary = withErrorBoundary(SailingSoon, {FallbackComponent: ErrorFallback});
+export default React.memo(SailingSoonWithErrorBoundary, (prevProps, nextProps) => isEqual(prevProps, nextProps));

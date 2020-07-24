@@ -3,6 +3,7 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 
 import * as DataContact from '../static/contact';
+import { RootState } from '../redux';
 
 /** Component */
 const SliderAwesome = React.lazy(() => import("../components/base/Slider/SliderAwesome"));
@@ -27,9 +28,20 @@ export class Contact extends React.Component<DataContact.ContactProps, S> {
         message: undefined,
     };
 
-    onSubmit = () => {
+    onSubmit: (event: 
+        React.FormEvent<HTMLFormElement> | 
+        React.MouseEvent<HTMLButtonElement, MouseEvent>
+    ) => void = (e) => {
+        e.preventDefault();
         let value: S;
         value = {...this.state};
+        console.log(value);
+    };
+
+    get value(): S {
+        return {
+            ...this.state
+        };
     };
 
     render() {
@@ -114,7 +126,7 @@ export class Contact extends React.Component<DataContact.ContactProps, S> {
                                 </div>
                             </form>
 
-                            <button className="uppercase border-2 bg-primary-300 text-white text-base py-2 w-32 hover:bg-transparent hover:border-primary-300 hover:text-primary-300"
+                            <button type="submit" className="uppercase border-2 bg-primary-300 text-white text-base py-2 w-32 hover:bg-transparent hover:border-primary-300 hover:text-primary-300"
                                 onClick={this.onSubmit}
                             >
                                 submit
@@ -143,12 +155,7 @@ export class Contact extends React.Component<DataContact.ContactProps, S> {
     };
 };
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: RootState) => ({
     
 });
-
-const mapDispatchToProps = {
-    
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Contact);
+export default connect(mapStateToProps)(Contact);

@@ -1,12 +1,7 @@
-import _ from 'lodash';
 import { 
-    createReducer,
     PayloadAction,
     createSlice,
-    createAsyncThunk,
-    createEntityAdapter
 } from '@reduxjs/toolkit';
-import { normalize, schema } from 'normalizr';
 /** types and action */
 import { PageState, NavigationState, PageItem } from './types';
 import StaticTab, { Tabs } from '../../static/tabs';

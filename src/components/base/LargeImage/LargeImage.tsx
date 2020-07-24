@@ -1,27 +1,9 @@
 import * as React from 'react';
 import _ from 'lodash';
 import { BaseUrlImage } from '../../../helper/axios';
+import { withErrorBoundary } from 'react-error-boundary';
+import ErrorFallback from '../../../helper/ErrorFallback';
 
-/**
- * @component LargeImage
- * 
- * @property
- * 
- * properties with "?" is optional
- * ```
- * imageClassName?: string;
- * 
- * imageStyle?: CSSProperties;
- * 
- * // set to true if the data is static
- * isStaticImage?: boolean;
- * 
- * images: string;
- * // if the alt not set, 
- * // default alt is the name of component it self
- * alt?: string;
- * ```
- */
 export type LargeImageProps = {
     imageClassName?: string | null;
     imageStyle?: React.CSSProperties;
@@ -49,8 +31,12 @@ export type LargeImageProps = {
  * />
  * ```
  */
-export default class LargeImage extends React.PureComponent<LargeImageProps, {}> {
-    static defaultProps = defaultProps;
+class LargeImage extends React.PureComponent<LargeImageProps, {}> {
+    static defaultProps = {
+        images: require("../../../assets/img/header/4.png"),
+        alt: "large-image"
+    };
+
     render() {
         const { 
             imageClassName,
@@ -63,7 +49,7 @@ export default class LargeImage extends React.PureComponent<LargeImageProps, {}>
             <img draggable={false}
                 className={`w-full h-auto ${imageClassName}`}
                 style={imageStyle}
-                src={isStaticImage ? images :  `${process.env.REACT_APP_BASE_URL_IMAGE}/${images}`}
+                src={isStaticImage ? images :  `${BaseUrlImage}/${images}`}
                 alt={alt ? alt : "large-image"}
                 loading="lazy"
             />
@@ -71,7 +57,5 @@ export default class LargeImage extends React.PureComponent<LargeImageProps, {}>
     };
 };
 
-var defaultProps: LargeImageProps = {
-    images: require("../../../assets/img/header/4.png"),
-    alt: "large-image"
-};
+const LargeImageWithErrorBoundary = withErrorBoundary(LargeImage, {FallbackComponent: ErrorFallback});
+export default React.memo(LargeImageWithErrorBoundary, (prevProps, nextProps) => _.isEqual(prevProps, nextProps));

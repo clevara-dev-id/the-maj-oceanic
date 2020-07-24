@@ -1,11 +1,15 @@
 import * as React from 'react';
 import _ from 'lodash';
-import HeadingText, { HeadingTextProps, HeadingTextItem } from '../../../Heading/HeadingText';
-import Button, { ButtonProps } from '../../../Button/Button';
-
-import './style.scss';
+import { withErrorBoundary } from 'react-error-boundary';
+import { HeadingTextProps, HeadingTextItem } from '../../../Heading/HeadingText';
+import { ButtonProps } from '../../../Button/Button';
+import ErrorFallback from '../../../../../helper/ErrorFallback';
 import { BaseUrlImage } from '../../../../../helper/axios';
-import ErrorBoundary from '../../../../../helper/ErrorBoundary';
+import './style.scss';
+
+/** Component */
+const HeadingText   = React.lazy(() => import('../../../Heading/HeadingText'));
+const Button        = React.lazy(() => import('../../../Button/Button'));
 
 export type CardItemDataProps = HeadingTextItem & {
     image: string,
@@ -90,19 +94,13 @@ const CardItem: React.FC<CardItemProps> = (props): JSX.Element => {
     ), [props.buttonTitle]);
 
     return (
-        <ErrorBoundary>
-            <div className={`${props.containerClassName} card-item`}>
-                <img src={ImageUri} alt="image-card-item" className={`${props.containerImageClassName} mx-auto`} loading="lazy" />
-                {Heading}
-                {props.buttonTitle && ButtonText}
-            </div>
-        </ErrorBoundary>
+        <div className={`${props.containerClassName} card-item`}>
+            <img src={ImageUri} alt="image-card-item" className={`${props.containerImageClassName} mx-auto`} loading="lazy" />
+            {Heading}
+            {props.buttonTitle && ButtonText}
+        </div>
     );
 };
 
-export default React.memo(CardItem, (prev, next) => _.isEqual(prev, next));
-
-{/* <div 
-    className={`bg-auto bg-no-repeat bg-center w-screen h-64 lg:h-image-1 ${props.containerImageClassName}`} 
-    style={{backgroundImage: `url(${ImageUri})`}}
-/> */}
+const CardItemWithErrorBoundary = withErrorBoundary(CardItem, { FallbackComponent: ErrorFallback });
+export default React.memo(CardItemWithErrorBoundary, (prev, next) => _.isEqual(prev, next));

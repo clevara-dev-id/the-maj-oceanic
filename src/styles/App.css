@@ -2,29 +2,6 @@ body {
   background-color: #fafafa;
 }
 
-@font-face {
-  font-family: FontAwesome;
-  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/FontAwesome.otf');
-}
-
-@font-face {
-  font-family: Sentinel SB;
-  font-style: normal;
-  src: url('../assets/font/Sentinel/Sentinel-Book.otf');
-}
-
-@font-face {
-  font-family: Verlag B;
-  font-style: normal;
-  src: url('../assets/font/Verlag/Verlag-Book.ttf');
-}
-
-@font-face {
-  font-family: Ideal Sans L;
-  font-style: normal;
-  src: url('../assets/font/Ideal_Sans/IdealSans-Light-Pro.otf');
-}
-
 h1, h2, h3, h4 {
   font-family: Sentinel SB;
   font-style: normal;

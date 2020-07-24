@@ -1,7 +1,8 @@
 import * as React from 'react';
 import '../styles/style.scss';
+import { isEqual } from 'lodash';
 
-class SuspenseLoader extends React.PureComponent {
+class SuspenseLoader extends React.PureComponent<{}> {
     render() {
         return(
             <div className="w-full h-screen suspense">
@@ -12,4 +13,4 @@ class SuspenseLoader extends React.PureComponent {
     };
 };
 
-export default SuspenseLoader;
+export default React.memo(SuspenseLoader, (prevProps, nextProps) => isEqual(prevProps, nextProps));

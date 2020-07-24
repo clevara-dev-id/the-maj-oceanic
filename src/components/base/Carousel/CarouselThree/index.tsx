@@ -1,39 +1,33 @@
 import * as React from 'react';
 import Slider, { Settings, CustomArrowProps } from 'react-slick';
 import _ from 'lodash';
+import { withErrorBoundary } from 'react-error-boundary';
+import ErrorFallback from '../../../../helper/ErrorFallback';
+import { CardItemDataProps } from '../../Card/CardImage/CardImageThree/CardItem';
+import { ButtonProps } from '../../Button/Button';
 import './style.scss'
 
-import CardItem, { CardItemDataProps } from '../../Card/CardImage/CardImageThree/CardItem';
-import { ButtonProps } from '../../Button/Button';
+/** Components */
+const CardItem = React.lazy(() => import('../../Card/CardImage/CardImageThree/CardItem'));
 
 export type CarouselThreeItem = CardItemDataProps & {
     id?: React.ReactText,
     linkTo?: string,
-}
-
-export type CarouselThreeProps = ButtonProps & {
+};
+export type CarouselThreeProps = {
     containerClassName?: string,
     captionClassName?: string,
-    /**
-     * ### Example
-     * ```js
-     * [{
-     *   id: 0, // string or number
-     *   caption: null, // optional
-     *   heading: 'Heading 1' //optional,
-     *   text: 'Text 1', // optional,
-     *   list: string[],
-     *   image: 'storage/aimdafsadf.png'
-     * }]
-     * ```
-     */
     store: Array<CarouselThreeItem>,
     isStaticImage?: boolean,
-    
+    buttonMode?: "outline" | "contain" | "custom",
 };
 
 /**
- * Carousel Three
+ * ## Carousel Three
+ * 
+ * @param {CarouselThreeProps} props
+ * @see `CarouselThreeProps`
+ * @returns {JSX.Element} JSX Element
  * 
  * ## Usage
  * ```js
@@ -49,10 +43,6 @@ export type CarouselThreeProps = ButtonProps & {
  *    }]}
  * />
  * ```
- * 
- * ### props
- * @param containerClassName string
- * @param center boolean
  */
 const CarouselThree: React.FC<CarouselThreeProps> = (props): JSX.Element => {
     const carousel = React.useRef<any>(null);
@@ -80,8 +70,8 @@ const CarouselThree: React.FC<CarouselThreeProps> = (props): JSX.Element => {
                     headingClassName="text-xl"
                     buttonTitle={params.buttonTitle!}
                     isStaticImage={props.isStaticImage}
-                    mode={props.mode || "outline"}
-                    to={params.linkTo || props.to || "#"}
+                    mode={props.buttonMode || "outline"}
+                    to={params.linkTo || "#"}
                 />
             )
         },
@@ -140,4 +130,5 @@ const CarouselThree: React.FC<CarouselThreeProps> = (props): JSX.Element => {
     );
 };
 
-export default CarouselThree;
+const CarouselThreeWithErrorBoundary = withErrorBoundary(CarouselThree, {FallbackComponent: ErrorFallback});
+export default React.memo(CarouselThreeWithErrorBoundary, (prevProps, nextProps) => _.isEqual(prevProps, nextProps));

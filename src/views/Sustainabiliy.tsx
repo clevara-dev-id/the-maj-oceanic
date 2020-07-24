@@ -39,7 +39,7 @@ const Sustainabiliy: React.FC<SustainabilityProps> = (props): JSX.Element => {
                 />
             </div>
         ), 
-    [props.heading, props.text]);
+    [props.caption, props.heading, props.text, props.image]);
 
     /**
      * Card Text Image Small

@@ -15,18 +15,14 @@ const CarouselThree         = React.lazy(() => import('../components/base/Carous
 const Heading               = React.lazy(() => import('../components/base/Heading/Heading'));
 
 const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
-    /**
-     * Slider
-     */
-    const Slider = React.useMemo<JSX.Element>(
+    /** Slider Awesome*/
+    const MemoSliderAwesome = React.useMemo<JSX.Element>(
         () => (
             <SliderAwesome store={props.slider} isStaticImage />
         ),
     [props.slider]);
 
-    /**
-     * Heading Text & Large Image
-     */
+    /** Heading Text & Large Image */
     const MemoHeadingTextLargeImage = React.useMemo<JSX.Element>( 
         () => (
             <div className="px-6 xl:px-0 lg:px-4 md:px-5 py-0">
@@ -45,11 +41,9 @@ const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
                 />
             </div>
         ), 
-    [props.heading, props.text]);
+    [props.caption, props.heading, props.text, props.image]);
 
-    /**
-     * Card Text Image Small
-     */
+    /** Card Text Image Small */
     const MemoCardTextImageSmall = React.useMemo<(params: CardTextImageSmallProps, is_reverse?: boolean) => JSX.Element>(
         () => (params, is_reverse = false) => (
             <CardTextImageSmall
@@ -62,9 +56,7 @@ const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
         ),
     [props.card_text_image_small]);
 
-    /**
-     * Heading & Carousel Three
-     */
+    /** Heading & Carousel Three */
     const MemoHeadingCarouselThree = React.useMemo<JSX.Element>(
         () => (
             <React.Fragment>
@@ -78,8 +70,6 @@ const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
                     isStaticImage
                     containerClassName="xl:mt-16 lg:mt-16 md:mt-10 mt-8"
                     captionClassName="text-black capitalize mt-5"
-                    mode="outline"
-                    to="#"
                     store={props.carousel_three.data}
                 />
             </React.Fragment>
@@ -89,7 +79,7 @@ const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
     return (
         <div id="cabin-detail">
             <section>
-                {Slider}
+                {MemoSliderAwesome}
             </section>
 
             <section className={"pb-0 md:pb-6 lg:pb-10 xl:pb-10 pt-20"}>

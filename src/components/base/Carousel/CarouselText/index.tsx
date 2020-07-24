@@ -1,14 +1,14 @@
 import * as React from 'react';
 import _ from 'lodash';
 import Slider, { Settings } from 'react-slick'
-
-import './style.scss'
-import Img1 from '../../../../assets/img/home/carousel-text/1.png'
-import Button from '../../Button/Button';
+import { withErrorBoundary } from 'react-error-boundary';
 import { HeadingTextItem } from '../../Heading/HeadingText';
+import ErrorFallback from '../../../../helper/ErrorFallback';
+import './style.scss'
 
 /** Components */
 const HeadingText   = React.lazy(() => import('../../Heading/HeadingText'));
+const Button        = React.lazy(() => import('../../Button/Button'));
 
 /** ## Carousel Text Item */
 export type CarouselTextItem = HeadingTextItem & {
@@ -28,25 +28,26 @@ export type CarouselTextProps = {
 /**
  * ## Carousel Text
  * 
+ * @param {CarouselTextProps} props
+ * @see `CarouselTextProps`
+ * @returns {JSX.Element} JSX Element
+ * 
  * ## Usage
  * ```js
  * <CarouselText
- *   bottonTitle="Discover"
- *   store={[{
+ *   store={[
+ *      {
  *        id: 1,
  *        image: require('./assets/1.png'),
  *        caption: "Cabin 1",
  *        heading: "Carousel Text 1",
  *        text: "Laboris esse culpa.",
- *        list: [
- *            "Lorem ipsum dolor sit amet",
- *            "Laboris lar aliquip",
- *            "Lorem ipsum dolor sit amet",
- *            "Laboris lar aliquip",
- *        ]
- *      }]}
-        isStaticImage
-    />
+ *        list: ["Lorem ipsum dolor sit amet", "Laboris lar aliquip"]
+ *      },
+ *   ]}
+ *   bottonTitle="Discover"
+ *   isStaticImage
+ * />
  *```
  */
 const CarouselText: React.FC<CarouselTextProps> = (props): JSX.Element => {
@@ -182,7 +183,8 @@ const CarouselText: React.FC<CarouselTextProps> = (props): JSX.Element => {
     )
 };
 
-export default CarouselText
+const CarouselTextWithErrorBoundary = withErrorBoundary(CarouselText, {FallbackComponent: ErrorFallback});
+export default React.memo(CarouselTextWithErrorBoundary, (prevProps, nextProps) => _.isEqual(prevProps, nextProps));
 
 /**
  * Button Slick

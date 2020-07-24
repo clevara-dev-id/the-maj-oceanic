@@ -43,7 +43,7 @@ const Home: React.FC<HomeProps & mapStateProps> = (props): JSX.Element =>  {
         const _observer = new IntersectionObserver(
             // callback
             ([entry]) => {
-                console.log(entry);
+                // console.log(entry);
             },
             // option
             {
@@ -80,7 +80,7 @@ const Home: React.FC<HomeProps & mapStateProps> = (props): JSX.Element =>  {
                 />
                 <LargeImage
                     isStaticImage
-                    images={source?.images}
+                    images={source?.images!}
                     imageClassName="max-w-container-2 max-h-large-image mx-auto mt-16"
                 />
             </div>
@@ -101,9 +101,10 @@ const Home: React.FC<HomeProps & mapStateProps> = (props): JSX.Element =>  {
                 buttonClassName="mt-10 xl:mt-8 lg:mt-8 md:mt-8 mx-auto xl:mx-0 lg:mx-0 md:mx-0"
                 isStaticImage
             >
-                <img draggable={false} src={require('../assets/tmo-stamps-brown.png')}
+                <img draggable={false} src={require('../assets/logo/tmo-stamps-brown.png')}
                     className="tmo-stamps-brown select-none absolute mx-w-sm top-0 right-0 -mt-24 -mr-6 hidden xl:inline lg:inline md:inline"
                     alt="tmo-stamps-brown"
+                    loading="lazy"
                 />
             </CarouselCardText>
         ),

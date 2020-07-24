@@ -1,9 +1,13 @@
 import * as React from 'react';
 import _ from 'lodash';
-
+import { withErrorBoundary } from 'react-error-boundary';
+import { HeadingTextProps, HeadingTextItem } from '../../Heading/HeadingText';
+import ErrorFallback from '../../../../helper/ErrorFallback';
 import './style.scss';
-import HeadingText, { HeadingTextProps, HeadingTextItem } from '../../Heading/HeadingText';
-import Button from '../../Button/Button';
+
+/* Component */
+const HeadingText   = React.lazy(() => import('../../Heading/HeadingText'));
+const Button        = React.lazy(() => import('../../Button/Button'));
 
 /**
  * ## Card Text Image RL Item
@@ -16,15 +20,16 @@ import Button from '../../Button/Button';
  * @param list `Array<string> | null | undefined`
  * @param linkTo `History | string | null | undefined`
  */
-export type CardTextImageRLItem = HeadingTextItem & {
+export type CardTextImageItem = HeadingTextItem & {
     id?: React.ReactText,
     image: string,
     linkTo?: string,
 };
-export type CardTextImageRLProps = HeadingTextProps & {
+export type CardTextImageProps = HeadingTextProps & {
     reverse?: boolean,
     isStaticImage?: boolean,
     image: string,
+    altName?: string,
     buttonTitle?: string,
     mode?: "outline" | "contain",
     linkTo?: string,
@@ -58,7 +63,7 @@ export type CardTextImageRLProps = HeadingTextProps & {
  * </CardTextImage>
  * ```
  */
-const CardTextImageRL: React.FC<CardTextImageRLProps> = (props): JSX.Element => {
+const CardTextImage: React.FC<CardTextImageProps> = (props): JSX.Element => {
     const ImageUri = props.isStaticImage
         ? props.image : `${process.env.REACT_APP_BASE_URL_IMAGE}/${props.image}`;
 
@@ -97,7 +102,12 @@ const CardTextImageRL: React.FC<CardTextImageRLProps> = (props): JSX.Element => 
      */
     const Image = React.useMemo<JSX.Element>(
         () => (
-            <img src={ImageUri} alt="card-text-image" className="card-image-rl bg-center bg-cover w-5/6" />
+            <img 
+                src={ImageUri}
+                className="card-image-rl bg-center bg-cover w-5/6" 
+                loading="lazy"
+                alt={props.altName || 'card-text-image'}
+            />
         ),
     []);
     
@@ -114,4 +124,5 @@ const CardTextImageRL: React.FC<CardTextImageRLProps> = (props): JSX.Element => 
     );
 };
 
-export default React.memo(CardTextImageRL, (prev, next) => _.isEqual(prev, next));
+const CardTextImageWithErrorBoundary = withErrorBoundary(CardTextImage, { FallbackComponent: ErrorFallback });
+export default React.memo(CardTextImageWithErrorBoundary, (prev, next) => _.isEqual(prev, next));

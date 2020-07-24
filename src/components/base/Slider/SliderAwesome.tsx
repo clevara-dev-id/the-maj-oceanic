@@ -1,13 +1,13 @@
 import * as React from 'react';
 import _ from 'lodash';
 import AwesomeSlider from 'react-awesome-slider';
-
-import './style.scss'
-import { BaseUrlImage } from '../../../helper/axios';
+import { withErrorBoundary } from 'react-error-boundary';
+import ErrorFallback from '../../../helper/ErrorFallback';
 import useIntersection from '../../../helper/useInterSection';
 import { useDispatch } from 'react-redux';
 import { navbarGotFire } from '../../../redux/animates/reducers';
-
+import { BaseUrlImage } from '../../../helper/axios';
+import './style.scss'
 const CoreStyles = require('react-awesome-slider/src/core/styles.scss');
 const AnimationStyles = require('react-awesome-slider/src/styled/fold-out-animation/fold-out-animation.scss');
 
@@ -108,4 +108,5 @@ const SliderAwesome: React.FC<SliderProps> = ({
     );
 };
 
-export default React.memo(SliderAwesome, (prev, next) => _.isEqual(prev, next));
+const SliderAwesomeWithErrorBoundary = withErrorBoundary(SliderAwesome, {FallbackComponent: ErrorFallback});
+export default React.memo(SliderAwesomeWithErrorBoundary, (prev, next) => _.isEqual(prev, next));

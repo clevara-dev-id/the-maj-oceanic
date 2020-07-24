@@ -1,6 +1,6 @@
 import { CarouselThreeItem } from '../components/base/Carousel/CarouselThree';
 import { CarouselCardTextItem } from "../components/base/Carousel/CarouselCardText";
-import { CardTextImageRLItem } from "../components/base/Card/CardTextImage/CardTextImageRL";
+import { CardTextImageItem } from "../components/base/Card/CardTextImage/CardTextImage";
 import { SliderItem } from '../components/base/Slider/SliderAwesome';
 
 
@@ -20,7 +20,7 @@ export type VesselProps = {
         heading: string,
         data: CarouselThreeItem[],
     },
-    card_text: CardTextImageRLItem,
+    card_text: CardTextImageItem,
 };
 
 const staticVessel: VesselProps = {

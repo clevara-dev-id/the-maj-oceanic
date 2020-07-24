@@ -66,8 +66,6 @@ const Voyages: React.FC<VoyagesProps> = (props): JSX.Element => {
                     isStaticImage
                     containerClassName="mx-auto mt-6"
                     captionClassName="text-black capitalize mt-5"
-                    mode="outline"
-                    to="#"
                     store={props.carousel_three.data}
                 />
             </React.Fragment>

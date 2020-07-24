@@ -1,5 +1,4 @@
 import * as React from 'react';
-import _ from 'lodash';
 
 import DefaultProps, { VesselProps } from '../static/vessel';
 
@@ -11,14 +10,21 @@ const Heading           = React.lazy(() => import('../components/base/Heading/He
 const CarouselThree     = React.lazy(() => import('../components/base/Carousel/CarouselThree'));
 const Button            = React.lazy(() => import('../components/base/Button/Button'));
 const CarouselCardText  = React.lazy(() => import('../components/base/Carousel/CarouselCardText'));
-const CardText          = React.lazy(() => import('../components/base/Card/CardTextImage/CardTextImageRL'));
+const CardText          = React.lazy(() => import('../components/base/Card/CardTextImage/CardTextImage'));
 
+/**
+ * ## Vessel
+ *
+ * @param {VesselProps} props
+ * @see `VesselProps`
+ * @returns {JSX.Element} JSX Element
+ */
 const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
     // const dispatch = useDispatch();
     /**
      * Slider
      */
-    const Slider = React.useMemo<JSX.Element>(
+    const MemoSliderAwesome = React.useMemo<JSX.Element>(
         () => (
             <SliderAwesome store={props.slider} isStaticImage />
         ),
@@ -27,7 +33,7 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
     /**
      * Heading Text & Large Image
      */
-    const HeadingImage = React.useMemo<JSX.Element>( 
+    const MemoHeadingTextLargeImage = React.useMemo<JSX.Element>( 
         () => (
             <div className="px-6 xl:px-0 lg:px-4 md:px-5">
                 <HeadingText
@@ -48,16 +54,14 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
     /**
      * Carousel Three
      */
-    const CarouselThreeHeading = React.useMemo<JSX.Element>(
+    const MemoHeadingCarouselThree = React.useMemo<JSX.Element>(
         () => (
             <React.Fragment>
                 <Heading caption={props.carousel_three.caption} heading={props.carousel_three.heading} />
                 <CarouselThree
                     isStaticImage
                     containerClassName="mt-20 max-w-6xl"
-                    store={props.carousel_three.data} 
-                    mode="outline"
-                    to="#"
+                    store={props.carousel_three.data}
                 />
                 <Button mode="outline" to="#" className="mt-20">
                     Discover More
@@ -69,7 +73,7 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
     /**
      * Carousel Card
      */
-    const CarouselCard = React.useMemo<JSX.Element>( 
+    const MemoCarouselCardText = React.useMemo<JSX.Element>( 
         () => (
             <CarouselCardText 
                 cardClassName="ml-auto mr-auto xl:mr-0 lg:mr-4 md:mr-5 top-0 mt-12 right-0 px-8 pt-8 w-full max-w-md md:w-6/12 xl:pb-12 lg:pb-12 md:pb-12"
@@ -85,7 +89,7 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
     /**
      * Carousel Three Team 
      */
-    const CarouselThreeTeam = React.useMemo<JSX.Element>(
+    const MemoCarouselThreeTeam = React.useMemo<JSX.Element>(
         () => (
             <React.Fragment>
                 <Heading caption={props.carousel_three_team.caption} heading={props.carousel_three_team.heading} />
@@ -93,8 +97,6 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
                     isStaticImage
                     containerClassName="max-w-6xl mx-auto mt-20"
                     store={props.carousel_three_team.data}
-                    mode="outline"
-                    to="#"
                 />
             </React.Fragment>
         ),
@@ -118,23 +120,23 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
     return (
         <div id="vessel">
             <section>
-                {Slider}
+                {MemoSliderAwesome}
             </section>
 
             <section className={"py-24"}>
-                {HeadingImage}
+                {MemoHeadingTextLargeImage}
             </section>
 
             <section className={"py-20"}>
-                {CarouselThreeHeading}
+                {MemoHeadingCarouselThree}
             </section>
 
             <section className={"py-20 mb-6 xl:mb-40 lg:mb-40 md:mb-40"}>
-                {CarouselCard}
+                {MemoCarouselCardText}
             </section>
 
             <section className={"py-20"}>
-                {CarouselThreeTeam}
+                {MemoCarouselThreeTeam}
             </section>
 
             <section className={"py-20 "}>

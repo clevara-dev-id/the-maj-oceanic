@@ -1,12 +1,12 @@
 import { SliderItem } from "../components/base/Slider/SliderAwesome";
-import { CardTextImageRLItem } from "../components/base/Card/CardTextImage/CardTextImageRL";
+import { CardTextImageItem } from "../components/base/Card/CardTextImage/CardTextImage";
 
 export type OccasionsProps = {
     slider: SliderItem[];
     heading: string;
     text: string;
     image: string;
-    card_text_image: CardTextImageRLItem[],
+    card_text_image: CardTextImageItem[],
 };
 
 const staticOccasions: OccasionsProps = {

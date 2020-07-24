@@ -1,4 +1,3 @@
-import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { reduxBatch } from '@manaflair/redux-batch';
 import { combineReducers } from 'redux';

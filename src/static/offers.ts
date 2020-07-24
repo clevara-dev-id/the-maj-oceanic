@@ -1,6 +1,6 @@
 import { SliderItem } from "../components/base/Slider/SliderAwesome";
-import { CardTextImageRLItem } from "../components/base/Card/CardTextImage/CardTextImageRL";
-import { CarouselCardTextItem } from "../components/base/Carousel/CarouselCardText";
+import { CardTextImageItem } from "../components/base/Card/CardTextImage/CardTextImage";
+// import { CarouselCardTextItem } from "../components/base/Carousel/CarouselCardText";
 
 export type OffersProps = {
     slider: SliderItem[],
@@ -9,7 +9,7 @@ export type OffersProps = {
     text: string,
     image: string,
 
-    card_text: CardTextImageRLItem[],
+    card_text: CardTextImageItem[],
 };
 
 const staticOffers: OffersProps = {

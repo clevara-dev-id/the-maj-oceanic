@@ -6,6 +6,7 @@ const useInterSection: (ref: any, rootMargin?: string) => boolean =
         const [isIntersecting, setIntersecting] = React.useState<boolean>(false);
 
         React.useEffect(() => {
+            const { current: refCurrent } = ref;
             const _observer = new IntersectionObserver(
                 ([entry]) => {
                     setIntersecting(entry.isIntersecting);
@@ -14,13 +15,13 @@ const useInterSection: (ref: any, rootMargin?: string) => boolean =
                 }
             );
             
-            if (ref.current) 
-                _observer.observe(ref.current);
+            if (refCurrent) 
+                _observer.observe(refCurrent);
             
             return () => {
-                _observer.unobserve(ref.current);
+                _observer.unobserve(refCurrent);
             };
-        }, []);
+        }, [ref, rootMargin]);
 
         return isIntersecting;
     };

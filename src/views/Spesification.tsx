@@ -1,11 +1,11 @@
 import * as React from 'react';
 import _ from 'lodash';
 import { connect, useDispatch } from 'react-redux';
-import { pageSetActive, InitialStatePageProps, pageSpecReceived, pageStatus } from '../redux/pages/reducers';
+import { InitialStatePageProps, pageSpecReceived, pageStatus } from '../redux/pages/reducers';
 import staticSpecProps, { SpecProps } from '../static/spec';
 import { RootState } from '../redux';
 import { useLocation } from 'react-router-dom';
-import { PageItem } from '../redux/pages/types';
+// import { PageItem } from '../redux/pages/types';
 import axios, { BaseUrl } from '../helper/axios';
 
 /** Components */
@@ -63,7 +63,7 @@ const Spesification: React.FC<SpecProps & MapStateProps> = (props): JSX.Element 
                     text={source?.text}
                 />
                 <LargeImage
-                    images={source?.images}
+                    images={source?.images!}
                     imageClassName="max-w-container-2 max-h-large-image mx-auto mt-16"
                 />
             </div>
@@ -74,8 +74,13 @@ const Spesification: React.FC<SpecProps & MapStateProps> = (props): JSX.Element 
     const MemoTabItem = React.useMemo<(params: any, index: number) => JSX.Element>(
         () => (params, index) => (
             <div key={index} title={params.label}>
-                <img title={params.label} draggable={false} className="px-8 xl:px-0 lg:px-4 md:px-6 mx-auto bg-contain bg-no-repeat bg-center md:bg-cover xl:bg-cover lg:bg-cover"
-                    src={params.images} alt="tab-image"/>
+                <img title={params.label} 
+                    draggable={false}
+                    className="px-8 xl:px-0 lg:px-4 md:px-6 mx-auto bg-contain bg-no-repeat bg-center md:bg-cover xl:bg-cover lg:bg-cover"
+                    src={params.images}
+                    alt={params.label}
+                    loading="lazy"
+                />
                 <p title={params.text} className="whitespace-pre-line select-none px-8 xl:px-0 lg:px-4 md:px-6 pt-10 sm:pt-10 lg:pt-12 xl:pt-24">{params.text}</p>
             </div>
         ),
@@ -90,7 +95,7 @@ const Spesification: React.FC<SpecProps & MapStateProps> = (props): JSX.Element 
                 dataTableClassName="py-6"
             />
         ),
-    []);
+    [source?.table.data]);
 
     return (
         <div id="spesification">

@@ -44,6 +44,9 @@ const Destination: React.FC<DestinationProps> = (props): JSX.Element => {
                 image={params.image} 
                 isStaticImage
                 reverse={is_reverse}
+                buttonTitle="read more"
+                buttonMode="custom"
+                buttonClassName="text-primary-300 hover:opacity-50"
             />
         ),
     []);

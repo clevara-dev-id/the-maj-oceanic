@@ -1,9 +1,8 @@
 import * as React from 'react';
 import _ from 'lodash';
+import { withErrorBoundary } from 'react-error-boundary';
 import { HeadingTextItem } from '../Heading/HeadingText';
-
-const HeadingText   = React.lazy(() => import('../Heading/HeadingText'));
-const LargeImage    = React.lazy(() => import('../LargeImage/LargeImage'));
+import ErrorFallback from '../../../helper/ErrorFallback';
 
 export type TabItem = {
     id: number,
@@ -119,4 +118,5 @@ const Tabs: React.FC<TabsProps> = ({
     );
 };
 
-export default React.memo(Tabs, (prev, next) => _.isEqual(prev, next));
+const TabsWithErrorBoundary = withErrorBoundary(Tabs, { FallbackComponent: ErrorFallback });
+export default React.memo(TabsWithErrorBoundary, (prev, next) => _.isEqual(prev, next));

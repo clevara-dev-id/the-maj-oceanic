@@ -56,8 +56,6 @@ const Cabin: React.FC<CabinProps> = (props): JSX.Element => {
                 <CarouselThree
                     isStaticImage
                     containerClassName="xl:mt-16 lg:mt-16 md:mt-10 mt-8"
-                    mode="outline"
-                    to="#"
                     store={props.carousel_three.data}
                 />
             </React.Fragment>

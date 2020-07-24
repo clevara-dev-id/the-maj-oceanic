@@ -1,12 +1,15 @@
 import * as React from 'react';
 import _ from 'lodash';
 import { Link, LinkProps } from 'react-router-dom';
+import { withErrorBoundary } from 'react-error-boundary';
+import ErrorFallback from '../helper/ErrorFallback';
 
-import ImgLogo from '../assets/logo.svg'
-import ImgLogoXp from '../assets/logo_the_maj_experience.svg'
-import ImgLogoG from '../assets/logo_the_maj_group.svg'
+import ImgLogo from '../assets/logo/logo.svg'
+import ImgLogoXp from '../assets/logo/logo_the_maj_experience.svg'
+import ImgLogoG from '../assets/logo/logo_the_maj_group.svg'
 import './style.scss'
 
+/** Components */
 const Button = React.lazy(() => import('./base/Button/Button'));
 
 /** Sosial Media */
@@ -28,7 +31,14 @@ const Footer: React.FC = (props): JSX.Element => {
         params: React.AnchorHTMLAttributes<HTMLAnchorElement>
     ) => JSX.Element>(
         () => (params) => (
-            <a key={params.title} {...params} />
+            <a key={params.title}
+                href={params.href}
+                title={params.title}
+                className={`outline-none ${params.className}`}
+                target="_blank"
+                rel="noreferrer noopener"
+                children={params.children}
+            />
         ),
     []);
 
@@ -61,7 +71,7 @@ const Footer: React.FC = (props): JSX.Element => {
     const MemoImage = React.useMemo<(
         params: React.ImgHTMLAttributes<HTMLImageElement>
     ) => JSX.Element>(
-        () => (params) => <img draggable={false} {...params} />,
+        () => (params) => <img draggable={false} {...params} loading="lazy" />,
     []);
     
     return (
@@ -81,8 +91,7 @@ const Footer: React.FC = (props): JSX.Element => {
                                     MemoSocialMediaAnchor({
                                         href: data.href,
                                         title: data.iconName,
-                                        target: "_blank",
-                                        className: data.id <= 2 ? "mr-5 outline-none" : "outline-none",
+                                        className: data.id <= 2 ? "mr-5" : "",
                                         children: <i className={`fa fa-${data.iconName}`}></i>
                                     })
                                 ))
@@ -232,4 +241,5 @@ const Footer: React.FC = (props): JSX.Element => {
     );
 };
 
-export default Footer;
+const FooterWithErrorBoundary = withErrorBoundary(Footer, {FallbackComponent: ErrorFallback});
+export default React.memo(FooterWithErrorBoundary, (prevProps, nextProps) => _.isEqual(prevProps, nextProps));

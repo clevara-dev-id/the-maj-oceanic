@@ -1,14 +1,15 @@
 import * as React from 'react';
 import _ from 'lodash';
 import Slider, { Settings } from 'react-slick';
-
+import { withErrorBoundary } from 'react-error-boundary';
+import ErrorFallback from '../../../../helper/ErrorFallback';
+import { HeadingTextItem } from '../../Heading/HeadingText';
 import './style.scss';
-import { HeadingText, HeadingTextItem } from '../../Heading/HeadingText';
-const Button = React.lazy(() => import('../../Button/Button'));
 
-/**
- * ## Carousel Card Text Item
- */
+/** Component */
+const Button        = React.lazy(() => import('../../Button/Button'));
+const HeadingText   = React.lazy(() => import('../../Heading/HeadingText'));
+
 export type CarouselCardTextItem = {
     id?: React.ReactText,
     image: string,
@@ -19,7 +20,7 @@ export type CarouselCardTextItem = {
     linkTo?: string,
 };
 
-type T = {
+type CarouselCardTextItemProps = {
     containerClassName?: string,
     containerArrow?: string,
     cardClassName?: string,
@@ -40,30 +41,31 @@ type T = {
 };
 
 /**
- * Carousel Card Text
+ * ## Carousel Card Text
+ *
+ * @param {CarouselCardTextItemProps} props
+ * @see `CarouselCardTextItemProps`
+ * @returns {JSX.Element}
  * 
  * ### Usage
  * ```js
  *  <CarouselCardText
  *      containerClassName="relative max-w-container-2 mx-auto p-0"
- *      store={[{
- *          id: 0,
- *          caption: 'presidential suite 1',
- *          heading: 'Zheng He',
- *          text: 'Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis.',
- *          list: [
- *              'Lorem ipsum dolor sit amet',
- *              'Laboris lar aliquip',
- *              'Lorem ipsum dolor sit amet',
- *              'Laboris lar aliquip',
-            ],
-            image: require('../assets/img/CarouselCard/1.png')
-        }]}        
-        isStaticImage{true}
+ *      store={[
+ *          {
+ *              id: 0,
+ *              caption: 'presidential suite 1',
+ *              heading: 'Zheng He', 
+ *              text: 'Laboris dolore laborum sit',
+ *              list: ['Lorem ipsum dolor sit amet', 'Laboris lar aliquip'], 
+ *              image: require('../assets/img/CarouselCard/1.png')
+ *          },
+ *      ]}        
+ *      isStaticImage{true}
     />
  * ```
  */
-const CarouselCardText: React.FC<T> = (props): JSX.Element => {
+const CarouselCardText: React.FC<CarouselCardTextItemProps> = (props): JSX.Element => {
     const carousel = React.useRef<any>(null);
     const [localStore, setLocalStore] = React.useState<Array<CarouselCardTextItem>>([])
     const [indexActive, setIndexActive] = React.useState<number>(0);
@@ -178,7 +180,8 @@ const CarouselCardText: React.FC<T> = (props): JSX.Element => {
     );
 };
 
-export default CarouselCardText;
+const CarouselCardTextWithErrorBoundary = withErrorBoundary(CarouselCardText, {FallbackComponent: ErrorFallback});
+export default React.memo(CarouselCardTextWithErrorBoundary, (prevProps, nextProps) => _.isEqual(prevProps, nextProps));
 
 type ButtonSlickProps = {
     mode: "prev" | "next",

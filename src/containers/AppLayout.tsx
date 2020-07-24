@@ -1,11 +1,8 @@
 import * as React from 'react';
-import _ from 'lodash';
 import { connect, useDispatch } from 'react-redux';
-import rafSchd from 'raf-schd';
 import { RootState } from '../redux';
 import axios, { BaseUrl } from '../helper/axios';
-import { pageNavigationsReceived, pageStatus, pageHomeReceived, pageSpecReceived } from '../redux/pages/reducers';
-import ErrorBoundary from '../helper/ErrorBoundary';
+import { pageNavigationsReceived, pageStatus, pageHomeReceived } from '../redux/pages/reducers';
 import { PageItem } from '../redux/pages/types';
 
 /* Component */
@@ -13,7 +10,13 @@ const Navbar = React.lazy(() => import('../components/Navbar/Navbar'));
 const Footer = React.lazy(()=> import('../components/Footer'));
 const Sidebar = React.lazy(() => import('../components/Sidebar'));
 
-export interface AppLayoutProp extends mapStateProps {};
+export type AppLayoutProp = mapStateProps & {};
+/**
+ * ## App Layout
+ *
+ * @param {AppLayoutProp} props
+ * @returns {JSX.Element} JSX Element
+ */
 const AppLayout: React.FC<AppLayoutProp> = (props): JSX.Element => {
     const dispatch = useDispatch();
     
@@ -48,6 +51,9 @@ const AppLayout: React.FC<AppLayoutProp> = (props): JSX.Element => {
         fetchAll();
     }, []);
 
+    /**
+     * navigation & data navigation
+     */
     const NavStore = React.useMemo(() => props.navigation, [props.navigation]);
     const Navigation = React.useMemo<JSX.Element>(
         () => <Navbar navbarChange={!props.navbar.isFire} store={NavStore} />,
@@ -74,7 +80,7 @@ const AppLayout: React.FC<AppLayoutProp> = (props): JSX.Element => {
     [props.navbar.isFire]);
 
     return (
-        <ErrorBoundary>
+        <React.Fragment>
             {NavigationSide}
             {Navigation}
 
@@ -85,7 +91,7 @@ const AppLayout: React.FC<AppLayoutProp> = (props): JSX.Element => {
             <footer>
                 <Footer />
             </footer>
-        </ErrorBoundary>
+        </React.Fragment>
     );
 };
 

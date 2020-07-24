@@ -1,16 +1,17 @@
 import * as React from 'react';
 import { NavLink, Link, LinkProps } from 'react-router-dom';
 import _ from 'lodash';
+import { withErrorBoundary } from 'react-error-boundary';
 
 /** Image, Svg & Style */
 import './style.scss';
 import { ReactComponent as SearchBlack} from '../../assets/icons/searchBlack.svg';
 import { ReactComponent as Search } from '../../assets/icons/Search.svg'
-import Logo from '../../assets/logo.svg';
+import Logo from '../../assets/logo/logo.svg';
+import ErrorFallback from '../../helper/ErrorFallback';
 
 /** component */
-const ErrorBoundary = React.lazy(() => import('../../helper/ErrorBoundary'));
-const LogoSvg = React.lazy(() => import('../../assets/Logo'));
+const LogoSvg = React.lazy(() => import('../../assets/logo/Logo'));
 
 /** Type State */
 type I = {
@@ -23,7 +24,8 @@ type NavProps = {
     navbarChange?: boolean;
     store: Array<I>;
 };
-/** Navbar  */
+
+
 const Navbar: React.FC<NavProps> = (props) => {
     /** localStore */
     const [localStore, setStore] = React.useState<I[]>(DefaultProps.store);
@@ -32,7 +34,7 @@ const Navbar: React.FC<NavProps> = (props) => {
             setStore(props.store)
         };
 
-    }, [props.store]);
+    }, [props.store, localStore]);
 
     /** search input first */
     const [q1, setQ1] = React.useState<string>("");
@@ -82,101 +84,99 @@ const Navbar: React.FC<NavProps> = (props) => {
      */
     const ButtonLink = React.useMemo<(linkProp: LinkProps) => JSX.Element>(
         () => (linkProp) => (
-            <Link {...linkProp}
-            />
+            <Link {...linkProp}/>
         ),
     []);
 
     return (
-        <ErrorBoundary>
-            <nav id="nav" className={`w-screen h-auto fixed flex flex-col z-50 mx-auto select-none ${props.navbarChange ? "scroll-active" : null}`}>
-                <div className={`nav-top hidden lg:flex xl:flex lg:w-auto mt-16 mb-20 xl:mb-24 ${props.navbarChange ? "scroll-active" : null}`}>
-                    <div className="w-1/4 flex-grow lg:flex items-center h-20">
-                        {SearchInput}
-                        {ButtonLink({
-                            children: 'the maj group',
-                            itemID: 'button-header',
-                            to: '/',
-                            replace: true,
-                            className: 'box-border whitespace-no-wrap bg-transparent text-white uppercase lg:px-5 py-2 focus:outline-none tracking-wide'
-                        })}
-                    </div>
-                    
+        <nav id="nav" className={`w-screen h-auto fixed flex flex-col z-50 mx-auto select-none ${props.navbarChange ? "scroll-active" : null}`}>
+            <div className={`nav-top hidden lg:flex xl:flex lg:w-auto mt-16 mb-20 xl:mb-24 ${props.navbarChange ? "scroll-active" : null}`}>
+                <div className="w-1/4 flex-grow lg:flex items-center h-20">
+                    {SearchInput}
                     {ButtonLink({
-                        children: <img src={Logo} className="w-screen mx-auto" alt="oceanic-logo" loading="lazy" />,
-                        itemID: 'button-image-1',
+                        children: 'the maj group',
+                        itemID: 'button-header',
                         to: '/',
                         replace: true,
-                        className: 'max-w-xs w-1/4 p-0 focus:outline-none'
+                        className: 'box-border whitespace-no-wrap bg-transparent text-white uppercase lg:px-5 py-2 focus:outline-none tracking-wide'
                     })}
-
-                    <div className="w-1/4 h-20 flex-grow lg:flex items-center justify-end">
-                        {ButtonLink({
-                            children: 'login',
-                            itemID: 'button-login-1',
-                            to: '#',
-                            className: 'button-login whitespace-no-wrap box-border bg-transparent text-white hover:opacity-50 uppercase py-2 px-8 focus:outline-none'
-                        })}
-                        {ButtonLink({
-                            children: 'inquire now',
-                            itemID: 'button-inquire-now-1',
-                            to: '/contact-us',
-                            className: 'border-2 whitespace-no-wrap box-border bg-transparent hover:bg-white border-solid border-white hover:border-white text-white hover:text-black uppercase ml-6 px-5 pt-2 pb-3 focus:outline-none'
-                        })}
-                    </div>
                 </div>
+                
+                {ButtonLink({
+                    children: <img src={Logo} className="w-screen mx-auto" alt="oceanic-logo" loading="lazy" />,
+                    itemID: 'button-image-1',
+                    to: '/',
+                    replace: true,
+                    className: 'max-w-xs w-1/4 p-0 focus:outline-none'
+                })}
 
-                <div className={`nav-list flex xl:border-t xl:border-solid xl:border-white lg:border-t lg:border-solid lg:border-white items-center justify-around px-4 h-24 ${props.navbarChange ? "scroll-active shadow-xl" : null}`}>
-                    {SearchInputSecond}
-                    
-                    <div className="hidden w-full justify-evenly my-auto xl:flex lg:flex flex-wrap">
-                        {_.map(localStore, ((data: I) => {
-                            if (data.page !== 'home') return (
-                                <NavLink
-                                    key={data.id}
-                                    to={data.path}
-                                    className="text-center uppercase font-bold outline-none transition-opacity duration-500 ease-in-out hover:opacity-25">
-                                    {data.page}
-                                </NavLink>
-                            )
-                        }))}
-                    </div>
-
+                <div className="w-1/4 h-20 flex-grow lg:flex items-center justify-end">
                     {ButtonLink({
                         children: 'login',
-                        itemID: 'button-login-2',
+                        itemID: 'button-login-1',
                         to: '#',
-                        className: 'button-2 button-login-2 whitespace-no-wrap hidden xl:inline-block lg:inline-block box-border bg-transparent uppercase focus:outline-none text-white mx-4'
+                        className: 'button-login whitespace-no-wrap box-border bg-transparent text-white hover:opacity-50 uppercase py-2 px-8 focus:outline-none'
                     })}
-
                     {ButtonLink({
                         children: 'inquire now',
-                        itemID: 'button-inquire-now-2',
+                        itemID: 'button-inquire-now-1',
                         to: '/contact-us',
-                        className: 'button-2 inquire-now-2 whitespace-no-wrap bg-transparent border-2 hidden xl:inline-block lg:inline-block uppercase ml-6 px-5 pt-2 pb-3 focus:outline-none'
-                    })}
-
-                    {ButtonLink({
-                        children: <LogoSvg className="logo-second" fill={props.navbarChange ? "#000000" : "#ffffff"} />,
-                        itemID: 'button-image-2',
-                        to: '/',
-                        replace: true,
-                        className: 'focus:outline-none mx-auto'
-                    })}
-                    
-                    {ButtonLink({
-                        children: 'login',
-                        itemID: 'button-login-3',
-                        to: '#',
-                        className: `book-link whitespace-no-wrap uppercase xl:hidden lg:hidden ${props.navbarChange ? "text-black" : "text-white"}`
+                        className: 'border-2 whitespace-no-wrap box-border bg-transparent hover:bg-white border-solid border-white hover:border-white text-white hover:text-black uppercase ml-6 px-5 pt-2 pb-3 focus:outline-none'
                     })}
                 </div>
-            </nav>
-        </ErrorBoundary>
+            </div>
+
+            <div className={`nav-list flex xl:border-t xl:border-solid xl:border-white lg:border-t lg:border-solid lg:border-white items-center justify-around px-4 h-24 ${props.navbarChange ? "scroll-active shadow-xl" : null}`}>
+                {SearchInputSecond}
+                
+                <div className="hidden w-full justify-evenly my-auto xl:flex lg:flex flex-wrap">
+                    {_.map(localStore, ((data: I) => {
+                        if (data.page !== 'home') return (
+                            <NavLink
+                                key={data.id}
+                                to={data.path}
+                                className="text-center uppercase font-bold outline-none transition-opacity duration-500 ease-in-out hover:opacity-25">
+                                {data.page}
+                            </NavLink>
+                        )
+                    }))}
+                </div>
+
+                {ButtonLink({
+                    children: 'login',
+                    itemID: 'button-login-2',
+                    to: '#',
+                    className: 'button-2 button-login-2 whitespace-no-wrap hidden xl:inline-block lg:inline-block box-border bg-transparent uppercase focus:outline-none text-white mx-4'
+                })}
+
+                {ButtonLink({
+                    children: 'inquire now',
+                    itemID: 'button-inquire-now-2',
+                    to: '/contact-us',
+                    className: 'button-2 inquire-now-2 whitespace-no-wrap bg-transparent border-2 hidden xl:inline-block lg:inline-block uppercase ml-6 px-5 pt-2 pb-3 focus:outline-none'
+                })}
+
+                {ButtonLink({
+                    children: <LogoSvg className="logo-second" fill={props.navbarChange ? "#000000" : "#ffffff"} />,
+                    itemID: 'button-image-2',
+                    to: '/',
+                    replace: true,
+                    className: 'focus:outline-none mx-auto'
+                })}
+                
+                {ButtonLink({
+                    children: 'login',
+                    itemID: 'button-login-3',
+                    to: '#',
+                    className: `book-link whitespace-no-wrap uppercase xl:hidden lg:hidden ${props.navbarChange ? "text-black" : "text-white"}`
+                })}
+            </div>
+        </nav>
     )
 };
 
-export default React.memo(Navbar, (prev, next) => _.isEqual(prev, next));
+const NavbarWithErrorBoundary = withErrorBoundary(Navbar, {FallbackComponent: ErrorFallback});
+export default React.memo(NavbarWithErrorBoundary, (prev, next) => _.isEqual(prev, next));
 
 const DefaultProps = {
     navbarChange: false,

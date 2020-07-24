@@ -1,14 +1,14 @@
-import React, { lazy, Fragment, memo } from 'react';
-import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
-
-import './style.scss';
-import Img1 from '../../../../assets/img/home/card-text-image/1-small.png';
+import * as React from 'react';
+import _ from 'lodash';
+import { withErrorBoundary } from 'react-error-boundary';
+import ErrorFallback from '../../../../helper/ErrorFallback';
 import { BaseUrlImage } from '../../../../helper/axios';
-import Button from '../../Button/Button';
 import { HeadingTextItem } from '../../Heading/HeadingText';
+import './style.scss';
 
-const HeadingText = lazy(() => import('../../Heading/HeadingText'));
+/* Component */
+const HeadingText   = React.lazy(() => import('../../Heading/HeadingText'));
+const Button        = React.lazy(() => import('../../Button/Button'));
 
 /**
  * ## Card Text Image Small Item
@@ -31,9 +31,12 @@ export type CardTextImageSmallItem = HeadingTextItem & {
 export type CardTextImageSmallProps = CardTextImageSmallItem & {
     containerClassName?: string,
     isStaticImage?: boolean,
+    altName?: string,
     reverse?: boolean,
 
     buttonTitle?: string,
+    buttonMode?: "outline" | "contain" | "custom",
+    buttonClassName?: HTMLAnchorElement["className"],
     onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void,
 };
 
@@ -47,6 +50,7 @@ export type CardTextImageSmallProps = CardTextImageSmallItem & {
  * @param reverse `boolean`
  * @param id `string | number`
  * @param image `string`
+ * @param altName `string`
  * @param caption `string` 
  * @param heading `string`
  * @param text `string`
@@ -63,6 +67,7 @@ export type CardTextImageSmallProps = CardTextImageSmallItem & {
  *    heading={props.heading}
  *    text={props.text}
  *    image={props.card_text_image_small.image} 
+ *    altName={props.heading}
  *    isStaticImage={true}
  *    reverse={true}
  * />
@@ -90,19 +95,23 @@ const CardTextImageSmall: React.FC<CardTextImageSmallProps> = (props) => {
                 textClassName="mt-2 mb-8"
             >
                 {props.buttonTitle ? (
-                    <Button mode="outline" to={props.linkTo! || "#"} onClick={props.onClick}>
+                    <Button mode={props.buttonMode || "outline"} className={props.buttonClassName} to={props.linkTo! || "#"} onClick={props.onClick}>
                         {props.buttonTitle}
                     </Button>
                 ) : null}
             </HeadingText>
         )
-    , [props.caption, props.heading, props.text, props.linkTo, props.reverse]);
+    , []);
 
     return (
         <div className={`card-text-image-small flex ${containerClass} px-6 xl:px-0 lg:px-4 md:px-5 flex-wrap max-w-container-2 mx-auto items-center justify-between ${props.containerClassName}`}>
             <div className="w-full md:w-1/2 max-w-screen-sm">
-                <img src={ImageUri} draggable={false}
+                <img 
+                    src={ImageUri}
+                    draggable={false}
                     className="bg-no-repeat bg-cover  h-auto mx-auto xl:mx-0 lg:mx-0 md:mx-0" 
+                    loading="lazy"
+                    alt={props.altName || "card-text-image-small"}
                 />
             </div>
             
@@ -111,22 +120,5 @@ const CardTextImageSmall: React.FC<CardTextImageSmallProps> = (props) => {
     );
 };
 
-CardTextImageSmall.propTypes = {
-    containerClassName: PropTypes.string,
-    image: PropTypes.string.isRequired,
-    caption: PropTypes.string,
-    heading: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired,
-    buttonTitle: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired
-}
-
-CardTextImageSmall.defaultProps = {
-    image: Img1,
-    heading: "Card Text Image Small",
-    onClick: () => {
-        alert("clicked")
-    }
-}
-
-export default memo(CardTextImageSmall)
+const CardTextImageSmallWithErrorBoundary = withErrorBoundary(CardTextImageSmall, { FallbackComponent: ErrorFallback });
+export default React.memo(CardTextImageSmallWithErrorBoundary, (prevProps, nextProps) => _.isEqual(prevProps, nextProps))
