@@ -216,7 +216,7 @@ const Footer: React.FC = (props): JSX.Element => {
                         </div>
 
                         <div className="grid select-none grid-rows-1 mb-4" id="buttonrowrform">
-                            <Button className="bg-white border-2 border-white hover:bg-nero hover:text-white" mode="custom" to={{ hash: "#" }}>
+                            <Button className="py-2 px-6 w-40 bg-white border-2 border-white hover:bg-nero hover:text-white" mode="custom" to={{ hash: "#" }}>
                                 subscribe
                             </Button>
                         </div>
