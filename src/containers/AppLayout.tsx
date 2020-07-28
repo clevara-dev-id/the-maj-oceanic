@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { connect, useDispatch } from 'react-redux';
+import { BrowserRouter as Router} from 'react-router-dom';
 import { RootState } from '../redux';
 import axios, { BaseUrl } from '../helper/axios';
 import { pageNavigationsReceived, pageStatus, pageHomeReceived } from '../redux/pages/reducers';
@@ -81,16 +82,17 @@ const AppLayout: React.FC<AppLayoutProp> = (props): JSX.Element => {
 
     return (
         <React.Fragment>
-            {NavigationSide}
-            {Navigation}
+            <Router>
+                {NavigationSide}
+                {Navigation}
 
-            <main id="page-wrap">
-                {props.children}
-            </main>
-
-            <footer>
-                <Footer />
-            </footer>
+                <main id="page-wrap">
+                    {props.children}
+                </main>
+                <footer>
+                    <Footer />
+                </footer>
+            </Router>
         </React.Fragment>
     );
 };

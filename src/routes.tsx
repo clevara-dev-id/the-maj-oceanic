@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 /**
  * component
@@ -22,7 +22,7 @@ const Destination   = React.lazy(() => import('./views/Destination'));
 
 const BaseRoute: React.FC = () => {
     return( 
-        <React.Fragment>
+        <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/voyages" component={Voyages} />
             <Route exact path="/sustainability" component={Sustainabiliy} />
@@ -42,7 +42,8 @@ const BaseRoute: React.FC = () => {
             <Route exact path="/the-vessel/spesification" component={Spesification} />
             <Route exact path="/the-vessel/the-cabin" component={Cabin} />
             <Route exact path="/the-vessel/the-cabin/detail" component={CabinDetail} />
-        </React.Fragment>
+            <Route path="*" component={Sailing} />
+        </Switch>
     )
 };
 
