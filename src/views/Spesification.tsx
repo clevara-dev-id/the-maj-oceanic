@@ -18,27 +18,25 @@ const Breadcrumb        = React.lazy(() => import('../components/BreadcrumbCompo
 
 const Spesification: React.FC<SpecProps & MapStateProps> = (props): JSX.Element => {
     const dispatch = useDispatch();
-    const location = useLocation();
-    const [source, setSource] = React.useState<SpecProps | undefined>(undefined);
+    const [source, setSource] = React.useState<SpecProps | undefined>({...props});
 
     React.useLayoutEffect(() => {
-        console.log(location);
         
         async function fetchAll() {
             /** fetch spesification */
-            async function fetchSpesification() {
-                const specResult = await axios.get(`${BaseUrl}/get_spesification_page`);
-                dispatch(pageSpecReceived(specResult.data));
-                setSource(specResult.data);
-            };
+            // async function fetchSpesification() {
+            //     const specResult = await axios.get(`${BaseUrl}/get_spesification_page`);
+            //     dispatch(pageSpecReceived(specResult.data));
+            //     setSource(specResult.data);
+            // };
 
-            try {
-                await Promise.all([fetchSpesification()]);
-            } catch (err) {
-                console.error(err);
-            } finally {
-                dispatch(pageStatus("done"))
-            };
+            // try {
+            //     await Promise.all([fetchSpesification()]);
+            // } catch (err) {
+            //     console.error(err);
+            // } finally {
+            //     dispatch(pageStatus("done"))
+            // };
         };
 
         dispatch(pageStatus("pending"));
@@ -48,7 +46,7 @@ const Spesification: React.FC<SpecProps & MapStateProps> = (props): JSX.Element 
     /** Slider Awesome */
     const MemoSliderAwesome = React.useMemo<JSX.Element>(
         () => (
-            <SliderAwesome store={source?.slider!} />
+            <SliderAwesome store={source?.slider!} isStaticImage />
         ),
     [source?.slider]);
 
@@ -65,6 +63,7 @@ const Spesification: React.FC<SpecProps & MapStateProps> = (props): JSX.Element 
                 <LargeImage
                     images={source?.images!}
                     imageClassName="max-w-container-2 max-h-large-image mx-auto mt-16"
+                    isStaticImage
                 />
             </div>
         ),
@@ -103,7 +102,7 @@ const Spesification: React.FC<SpecProps & MapStateProps> = (props): JSX.Element 
                 {MemoSliderAwesome}
             </section>
 
-            <section className="text-left px-4 md:px-6 xl:px-0 lg:px-0">
+            <section className="max-w-container-2 mx-auto text-left px-4 md:px-6 xl:px-0 lg:px-0">
                 <Breadcrumb page='spesification' />
             </section>
 
