@@ -12,12 +12,18 @@ module.exports = {
       lg: '1024px',
       xl: '1280px',
       '4k': '2560px',
+      // custom
+      xs: '320px',
+      'mobile_l': '425px',
+      'mobile_m': '375px',
     },
     colors: {
       transparent: 'transparent',
       /* custom color */
       bizarre: '#EFE1DC',
-      nero: 'rgb(35, 35, 35)',
+      nero: '#232323',
+      froth: '#fafafa',
+
 
       primary: {
         100: "#C7E2EC",
@@ -260,6 +266,10 @@ module.exports = {
       ],
       serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
       mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
+      // custom
+      sentinel: ['"Sentinel SB"'],
+      verlag: ['"Verlag B"'],
+      ideal: ['"Ideal Sans L"'],
     },
     fontSize: {
       xs: '0.75rem',
@@ -276,6 +286,9 @@ module.exports = {
       '34px': '2.125rem',
       '32px': '2rem',
       '22px': '1.375rem',
+      '17px': '1.0625rem',
+      '15px': '0.9375rem',
+      '11px': '0.6875rem',
     },
     fontWeight: {
       hairline: '100',
@@ -308,6 +321,7 @@ module.exports = {
       widest: '0.1em',
       // custom
       caption2: '0.188em',
+      '3px': '0.188em',
     },
     lineHeight: {
       none: '1',
@@ -324,6 +338,10 @@ module.exports = {
       '8': '2rem',
       '9': '2.25rem',
       '10': '2.5rem',
+      // custom
+      '21px': '1.3125',
+      '41px': '2.5625rem',
+      '26px': '1.625rem',
     },
     listStyleType: {
       none: 'none',
@@ -354,6 +372,7 @@ module.exports = {
       '6xl': '72rem',
       full: '100%',
       'container-2': '1110px',
+      '1110px': '69.375rem',
       ...breakpoints(theme('screens')),
     }),
     minHeight: {
@@ -765,7 +784,7 @@ module.exports = {
           backgroundColor: 'rgb(35, 35, 35)',
         },
       };
-      
+
       addUtilities({
         ...newUtilities,
         ...Tabs,

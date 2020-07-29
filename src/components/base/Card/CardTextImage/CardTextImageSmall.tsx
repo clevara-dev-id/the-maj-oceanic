@@ -104,14 +104,14 @@ const CardTextImageSmall: React.FC<CardTextImageSmallProps> = (props) => {
     , []);
 
     return (
-        <div className={`card-text-image-small flex ${containerClass} px-6 xl:px-0 lg:px-4 md:px-5 flex-wrap max-w-container-2 mx-auto items-center justify-between ${props.containerClassName}`}>
+        <div className={`card-text-image-small tmo__container_component flex ${containerClass} flex-wrap mx-auto items-center justify-between ${props.containerClassName}`}>
             <div className="w-full md:w-1/2 max-w-screen-sm">
                 <img 
                     src={ImageUri}
                     draggable={false}
-                    className="bg-no-repeat bg-cover  h-auto mx-auto xl:mx-0 lg:mx-0 md:mx-0" 
+                    className="bg-no-repeat bg-cover h-auto mx-auto xl:mx-0 lg:mx-0 md:mx-0" 
                     loading="lazy"
-                    alt={props.altName || "card-text-image-small"}
+                    alt={props.altName || props.image}
                 />
             </div>
             

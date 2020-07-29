@@ -41,7 +41,7 @@
     "tslib": "^2.0.0"
   },
   "scripts": {
-    "build:style": "tailwind build src/styles/index.css -c tailwind.config.js -o src/styles/tailwind.css",
+    "build:style": "postcss src/styles/index.css -o src/styles/tailwind.css",
     "start": "npm run build:style && react-scripts start",
     "host": "HOST=0.0.0.0 npm run start",
     "build": "npm run build:style && react-scripts build",
@@ -65,12 +65,17 @@
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.9.0",
+    "@fullhuman/postcss-purgecss": "^2.3.0",
     "@manaflair/redux-batch": "^1.0.0",
     "@types/intl": "^1.2.0",
     "@types/node": "^14.0.23",
     "@types/react": "^16.9.43",
     "autoprefixer": "^9.7.4",
+    "cssnano": "^4.1.10",
     "postcss-cli": "^7.1.0",
+    "postcss-import": "^12.0.1",
+    "postcss-nested": "^4.2.3",
+    "precss": "^4.0.0",
     "typescript": "^3.9.6"
   }
 }

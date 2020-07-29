@@ -40,7 +40,7 @@ const Table: React.FC<TableProps> = (props): JSX.Element => {
     [props.dataTableClassName]);
 
     return (
-        <div className={`max-w-container-2 select-none mx-auto px-8 xl:px-0 lg:px-4 md:px-6 ${props.containerClassName}`}>
+        <div className={`tmo__container_component select-none ${props.containerClassName}`}>
             <h5 className={`py-8 ${props.headClassName} text-left`}>Table Of Spesification</h5>
             <table className="w-full">
                 <tbody>

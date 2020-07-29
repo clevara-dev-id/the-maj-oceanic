@@ -23,6 +23,7 @@ export type CardItemProps = HeadingTextProps & ButtonProps & {
 
     isStaticImage?: boolean,
     image: string,
+    alt?: string,
     buttonTitle?: string,
     onClick?: () => void,
 };
@@ -76,10 +77,9 @@ const CardItem: React.FC<CardItemProps> = (props): JSX.Element => {
             captionClassName={props.captionClassName}
             heading={props.heading}
             text={props.text}
-            containerClassName={`mx-auto w-full ${props.containerHeadingClassName} `} 
-            center={props.center}
+            containerClassName={props.containerHeadingClassName} 
             headingClassName={`${props.headingClassName}`} 
-            textClassName={` w-full ${props.textClassName} `}
+            textClassName={`w-full ${props.textClassName} `}
         />
     ), [props.heading, props.text, props.caption]);
     /**
@@ -94,8 +94,8 @@ const CardItem: React.FC<CardItemProps> = (props): JSX.Element => {
     ), [props.buttonTitle]);
 
     return (
-        <div className={`${props.containerClassName} card-item`}>
-            <img src={ImageUri} alt="image-card-item" className={`${props.containerImageClassName} mx-auto`} loading="lazy" />
+        <div className={`${props.containerClassName}`}>
+            <img src={ImageUri} className={`${props.containerImageClassName} mx-auto`} loading="lazy" alt={props.alt || props.image} />
             {Heading}
             {props.buttonTitle && ButtonText}
         </div>

@@ -71,7 +71,7 @@ const Home: React.FC<HomeProps & mapStateProps> = (props): JSX.Element =>  {
     /** Heading Text & Large Image */
     const MemoHeadingTextLargeImage = React.useMemo<JSX.Element>( 
         () => (
-            <div className="px-6 xl:px-0 lg:px-4 md:px-5">
+            <div className="tmo__container_component">
                 <HeadingText 
                     containerClassName="lg:max-w-xl md:max-w-lg max-w-md"
                     heading={source?.heading!}
@@ -81,7 +81,7 @@ const Home: React.FC<HomeProps & mapStateProps> = (props): JSX.Element =>  {
                 <LargeImage
                     isStaticImage
                     images={source?.images!}
-                    imageClassName="max-w-container-2 max-h-large-image mx-auto mt-16"
+                    imageClassName="max-h-large-image mx-auto mt-16"
                 />
             </div>
         ),
@@ -92,10 +92,9 @@ const Home: React.FC<HomeProps & mapStateProps> = (props): JSX.Element =>  {
         () => (
             <CarouselCardText
                 store={source?.carousel_card_text!}
-                containerClassName="relative"
                 cardClassName="ml-auto mr-auto xl:mr-0 lg:mr-4 md:mr-5 top-0 mt-16 xl:mt-16 lg:mt-16 md:mt-12 right-0 pl-8 pr-10 xl:pt-12 lg:pt-12 md:pt-12 pt-8 xl:pb-40 lg:pb-40 md:pb-20 w-full max-w-md md:w-6/12"
                 headingClassName="mt-4"
-                textClassName="pr-4"
+                textClassName="pr-0 xl:pr-4 lg:pr-4 md:pr-4"
                 containerArrow="mb-6 ml-10 xl:ml-6 lg:ml-6"
                 buttonTitle="discover"
                 buttonClassName="mt-10 xl:mt-8 lg:mt-8 md:mt-8 mx-auto xl:mx-0 lg:mx-0 md:mx-0"

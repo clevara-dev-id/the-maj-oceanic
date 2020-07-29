@@ -2,11 +2,7 @@
 $layout-min-md: 768px;
 
 $primary: rgb(32, 140, 178);
-#carousel-three {
-    .text-xl {
-        margin-top:22px;
-        font-size: 22px !important;
-    }
+.carousel-three {
 
     .slick-arrow {
         background-color: $primary;

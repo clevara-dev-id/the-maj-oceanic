@@ -65,9 +65,9 @@ const CarouselThree: React.FC<CarouselThreeProps> = (props): JSX.Element => {
                     caption={params.caption}
                     heading={params.heading}
                     text={params.text}
-                    containerClassName={`p-1`}
+                    containerClassName="px-0 xl:px-4 lg:px-4 md:px-4"
                     captionClassName={props.captionClassName}
-                    headingClassName="text-xl"
+                    headingClassName="mt-6"
                     buttonTitle={params.buttonTitle!}
                     isStaticImage={props.isStaticImage}
                     mode={props.buttonMode || "outline"}
@@ -96,7 +96,7 @@ const CarouselThree: React.FC<CarouselThreeProps> = (props): JSX.Element => {
             breakpoint: 1024,
             settings: {
                 slidesToShow: 3,
-                slidesToScroll: 3,
+                slidesToScroll: 1,
             }
         },{
             breakpoint: 768,
@@ -117,11 +117,11 @@ const CarouselThree: React.FC<CarouselThreeProps> = (props): JSX.Element => {
     };
 
     return (
-        <div id="carousel-three" className={`${props.containerClassName} max-w-container-2 relative mx-auto `}>
+        <div className={`carousel-three ${props.containerClassName} tmo__container_component w-screen relative`}>
 
             <Slider
                 {...Setting}
-                className="px-6 xl:px-0 lg:px-0 md:px-4 max-w-full xl:max-w-full lg:max-w-4xl mx-auto"
+                className="mx-6"
                 ref={carousel}
             >
                 {source && _.map(source, MemoSlideItem)}

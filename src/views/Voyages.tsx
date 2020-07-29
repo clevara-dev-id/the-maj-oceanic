@@ -23,7 +23,6 @@ const Voyages: React.FC<VoyagesProps> = (props): JSX.Element => {
     const MemoTabItem = React.useMemo<(params: any) => JSX.Element>(
         () => (params) => (
             <HeadingText
-                containerClassName="max-w-container-2 px-6 xl:px-0 lg:px-4 md:px-5"
                 heading={params.heading}
                 text={params.text}
             />
@@ -38,7 +37,7 @@ const Voyages: React.FC<VoyagesProps> = (props): JSX.Element => {
         () => (params) => 
             <video
                 key={params.key}
-                className="max-w-container-2 px-6 xl:px-0 lg:px-4 md:px-5 mt-12"
+                className=" mt-12"
                 width="100%"
                 height="20%"
                 defaultValue={require('../assets/video/videoplayback.mp4')}
@@ -95,7 +94,9 @@ const Voyages: React.FC<VoyagesProps> = (props): JSX.Element => {
                 <Tab isStaticImage>
                     {_.map(props.tabs, (data, index) => {
                         return (
-                            <div title={data.label} key={index}>
+                            <div 
+                                title={data.label}
+                                key={index}>
                                 {MemoTabItem(data)}
                                 {MemoVideoTabItem({
                                     key: data.video,

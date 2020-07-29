@@ -1,0 +1,51 @@
+.tmo__container_component {
+    @apply mx-auto px-8 w-full;
+}
+
+@screen xs {
+    .tmo__container_component {
+        @apply max-w-screen-xs px-8;
+    }
+}
+
+@screen mobile_m {
+    .tmo__container_component {
+        @apply max-w-screen-mobile_m px-8;
+    }
+}
+
+@screen mobile_l {
+    .tmo__container_component {
+        @apply max-w-screen-mobile_l px-8;
+    }
+}
+
+@screen sm {
+    .tmo__container_component {
+        @apply max-w-screen-sm px-8;
+    }
+}
+
+@screen md {
+    .tmo__container_component {
+        @apply max-w-screen-md px-6;
+    }
+}
+
+@screen lg {
+    .tmo__container_component {
+        @apply max-w-1110px px-4;
+    }
+}
+
+@screen xl {
+    .tmo__container_component {
+        @apply max-w-1110px px-0;
+    }
+}
+
+@screen 4k {
+    .tmo__container_component {
+        @apply max-w-1110px px-0;
+    }
+}

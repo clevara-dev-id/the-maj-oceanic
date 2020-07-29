@@ -4,10 +4,12 @@ import Slider, { Settings } from 'react-slick';
 import { withErrorBoundary } from 'react-error-boundary';
 import ErrorFallback from '../../../../helper/ErrorFallback';
 import { HeadingTextItem } from '../../Heading/HeadingText';
-import './style.scss';
+import { BaseUrlImage } from '../../../../helper/axios';
+import './style.css';
 
 /** Component */
 const Button        = React.lazy(() => import('../../Button/Button'));
+const ButtonSlick   = React.lazy(() => import('../../Button/ButtonSlick'));
 const HeadingText   = React.lazy(() => import('../../Heading/HeadingText'));
 
 export type CarouselCardTextItem = {
@@ -24,11 +26,11 @@ type CarouselCardTextItemProps = {
     containerClassName?: string,
     containerArrow?: string,
     cardClassName?: string,
-    captionClassName?: string | null,
-    headingClassName?: string | null,
-    textClassName?: string | null,
-    listContainerClassName?: string | null,
-    slickButtonClassName?: string | null,
+    captionClassName?: string,
+    headingClassName?: string,
+    textClassName?: string,
+    listContainerClassName?: string,
+    slickButtonClassName?: string,
 
     store: Array<CarouselCardTextItem>,
     onClick?: () => void,
@@ -80,17 +82,14 @@ const CarouselCardText: React.FC<CarouselCardTextItemProps> = (props): JSX.Eleme
      * Image memo
      */
     const ImageContain = React.useMemo(() => 
-        (image: string, index: number) => <img key={index} src={image} className="w-full" alt="carousel-card-text-image" loading="lazy" />
+        (image: string, index: number) => 
+            <img 
+                key={index}
+                src={image}
+                className="bg-cover bg-no-repeat" alt="carousel_card_text_image" 
+                loading="lazy"
+            />
     ,[]);
-
-    /**
-     * Render Slide Item
-     */
-    function _renderSlideItem(data: CarouselCardTextItem, index: number): JSX.Element {
-        const image: string = props.isStaticImage ? data.image : `${process.env.REACT_APP_BASE_URL_IMAGE}/${data.image}`;
-
-        return ImageContain(image, index)
-    };
 
     /** Memo Heading Text */
     const MemoHeadingText = React.useMemo<(params: HeadingTextItem & {linkTo?: string}, index: number) => JSX.Element>(
@@ -104,7 +103,7 @@ const CarouselCardText: React.FC<CarouselCardTextItemProps> = (props): JSX.Eleme
                 listContainerClassName={props.listContainerClassName}
                 {...params}
             >
-                <Button title={props.buttonTitle} mode="outline" to={params.linkTo!} className={`${props.buttonClassName}`}>
+                <Button title={props.buttonTitle} mode="outline" to={params.linkTo!} className={`${props.buttonClassName} mt-4`}>
                     {props.buttonTitle}
                 </Button>
             </HeadingText>
@@ -112,20 +111,14 @@ const CarouselCardText: React.FC<CarouselCardTextItemProps> = (props): JSX.Eleme
     [])
 
     /** 
-     * Prev and Next Button Action
+     * Button Action
      */
-    const _prev = React.useCallback(function() { carousel.current.slickPrev() }, []);
-    const _next = React.useCallback(function() { carousel.current.slickNext() }, []);
-    const MemoButtonSlick = React.useMemo<(params: ButtonSlickProps) => JSX.Element>(
-        () => (params) => (
-            <ButtonSlick {...params} />
-        ),
-    []);
+    const _onClick = React.useCallback((callback) => { callback() }, []);
 
     /** MemoDots */
     const Dots = React.useMemo<(index: number) => JSX.Element>(
         () => (index) => (
-            <div className="dots mt-6 rounded-full w-3 h-3 bg-dot-100 opacity-25 hover:bg-primary-300 hover:opacity-100" />
+            <div className="dots mt-6" />
         ),
     []);
 
@@ -141,30 +134,31 @@ const CarouselCardText: React.FC<CarouselCardTextItemProps> = (props): JSX.Eleme
     }
 
     return (
-        <div className={`carousel-card-text-component relative max-w-container-2 mx-auto max-h-full px-6 xl:px-0 lg:px-4 md:px-5 ${props.containerClassName}`}>
-            <div className="slide-item focus:outline-none flex lg:flex-no-wrap flex-wrap">
-                <div className="w-full lg:w-2/3 md:w-9/12 relative">
+        <div className={`tmo__container_component relative ${props.containerClassName}`}>
+            <div className="slide-item focus:outline-none w-full lg:w-2/3 md:w-9/12 relative">
                     <Slider 
                         {...SettingSlider}
                         ref={carousel}>
-                        {!_.isEmpty(localStore) && _.map(localStore, _renderSlideItem)}
+                        {!_.isEmpty(localStore) && _.map(localStore, (data, index) => {
+                            const image: string = props.isStaticImage 
+                                ? data.image 
+                                : `${BaseUrlImage}/${data.image}`;
+                            return ImageContain(image, index)
+                        })}
                     </Slider>
 
-                    <div className={`absolute hidden xl:inline lg:inline md:inline arrows-container ml-6 mb-6 bottom-0 left-0 ${props.containerArrow}`}>
-                        {MemoButtonSlick({
-                            mode: 'prev',
-                            children: <i className="fas fa-angle-left text-base"></i>,
-                            onClick: _prev,
-                            buttonClassName: `${props.slickButtonClassName} ${props.prevButtonClassName}`,
-                        })}
-                        {MemoButtonSlick({
-                            mode: 'next',
-                            children: <i className="fas fa-angle-right text-base"></i>,
-                            onClick: _next,
-                            buttonClassName: `${props.slickButtonClassName} ${props.nextButtonClassName}`,
-                        })}
+                    <div className={`arrows_container ${props.containerArrow}`}>
+                        <ButtonSlick 
+                            mode="prev"
+                            onClick={() => _onClick(carousel.current.slickPrev)}
+                            buttonClassName={`${props.slickButtonClassName} ${props.prevButtonClassName}`}
+                        />
+                        <ButtonSlick 
+                            mode="next"
+                            onClick={() => _onClick(carousel.current.slickNext)}
+                            buttonClassName={`${props.slickButtonClassName} ${props.nextButtonClassName}`}
+                        />
                     </div>
-                </div>
             </div>
 
             {props.children}
@@ -180,26 +174,9 @@ const CarouselCardText: React.FC<CarouselCardTextItemProps> = (props): JSX.Eleme
     );
 };
 
+CarouselCardText.defaultProps = {
+    captionClassName: "text-primary-300"
+}
 const CarouselCardTextWithErrorBoundary = withErrorBoundary(CarouselCardText, {FallbackComponent: ErrorFallback});
 export default React.memo(CarouselCardTextWithErrorBoundary, (prevProps, nextProps) => _.isEqual(prevProps, nextProps));
 
-type ButtonSlickProps = {
-    mode: "prev" | "next",
-    onClick?: () => void,
-    children?: React.ReactNode,
-    buttonClassName?: string | null,
-};
-/**
- * ## Button Slick
- */
-const ButtonSlick = React.memo((props: ButtonSlickProps): JSX.Element => {
-        let style = props.mode === "prev" ? "w-8 h-8 relative left-0 rounded-full arrows mr-3" : "w-8 h-8 relative left-0 rounded-full arrows";
-
-        return (
-            <button title={_.capitalize(props.mode)} className={`${style} whitespace-no-wrap bg-white text-primary-300 hover:bg-primary-300 hover:text-white ${props.buttonClassName}`} onClick={props.onClick}>
-                {props.children}
-            </button>
-        );
-    }, 
-    (prevProps, nextProps) => _.isEqual(prevProps, nextProps)
-);

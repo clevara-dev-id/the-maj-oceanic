@@ -1,0 +1,39 @@
+.tmo__head_slider {
+    @apply text-5xl !important;
+}
+
+@screen xs {
+    .tmo__head_slider {
+        @apply text-34px !important;
+    }
+}
+
+@screen sm {
+    .tmo__head_slider {
+        @apply text-34px !important;
+    }
+}
+
+@screen md {
+    .tmo__head_slider {
+        @apply text-4xl !important;
+    }
+}
+
+@screen lg {
+    .tmo__head_slider {
+        @apply text-5xl !important;
+    }
+}
+
+@screen xl {
+    .tmo__head_slider {
+        @apply text-5xl !important;
+    }
+}
+
+@screen 4k {
+    .tmo__head_slider {
+        @apply text-5xl !important;
+    }
+}

@@ -1,0 +1,128 @@
+.divider {
+    letter-spacing: 6px;
+    @apply not-italic font-semibold text-primary-300;
+}
+
+@screen xs {
+    .tmo__caption {
+        @apply hidden;
+    }
+
+    .tmo__caption2 {
+        @apply block;
+    }
+    
+    .tmo__heading {
+        @apply hidden;
+    }
+
+    .tmo__heading2 {
+        @apply block;
+    }
+
+    .tmo__ul {
+        /* li::before {
+            content: "\2022";
+        } */
+        @apply list-none;
+    }
+
+    .divider {
+        @apply text-5xl;
+    }
+}
+
+@screen sm {
+    .tmo__caption {
+        @apply hidden;
+    }
+
+    .tmo__caption2 {
+        @apply block;
+    }
+
+    .tmo__heading {
+        @apply hidden;
+    }
+
+    .tmo__heading2 {
+        @apply block;
+    }
+
+    .divider {
+        @apply text-5xl;
+    }
+}
+
+@screen md {
+    .tmo__caption {
+        @apply hidden;
+    }
+
+    .tmo__caption2 {
+        @apply block;
+    }
+
+    .tmo__heading {
+        @apply hidden;
+    }
+
+    .tmo__heading2 {
+        @apply block;
+    }
+
+    .tmo__ul {
+        /* li::before {
+            content: "\2022";
+        } */
+        @apply list-disc;
+    }
+
+    .divider {
+        @apply text-5xl;
+    }
+}
+
+@screen lg {
+    .tmo__caption {
+        @apply block;
+    }
+
+    .tmo__caption2 {
+        @apply hidden;
+    }
+
+    .tmo__heading {
+        @apply block;
+    }
+
+    .tmo__heading2 {
+        @apply hidden;
+    }
+
+    .divider {
+        font-size: 72px;
+    }
+}
+
+@screen xl {
+    .tmo__caption {
+        @apply block;
+    }
+
+    .tmo__caption2 {
+        @apply hidden;
+    }
+
+    .tmo__heading {
+        @apply block;
+    }
+
+    .tmo__heading2 {
+        @apply hidden;
+    }
+
+    .divider {
+        font-size: 72px;
+    }
+}

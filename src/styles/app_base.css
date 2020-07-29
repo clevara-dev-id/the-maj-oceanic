@@ -1,0 +1,77 @@
+@font-face {
+    font-family: Sentinel SB;
+    font-style: normal;
+    src: local('SentinelSemibold'), local('Sentinel Semibold'), local('Sentinel-Semibold'), url('../assets/font/Sentinel/Sentinel-Semibold.otf') format('opentype');
+    font-display: swap;
+}
+@font-face {
+    font-family: Verlag B;
+    font-style: normal;
+    src: local('VerlagBold'), local('Verlag Bold'), local('Verlag-Bold'), url('../assets/font/Verlag/Verlag-Bold.ttf') format('truetype');
+    font-display: swap;
+}
+@font-face {
+    font-family: Ideal Sans L;
+    font-style: normal;
+    src: local('IdealSansLightPro'), local('Ideal Sans Light Pro'), local('Ideal-Sans-Light-Pro'), url('../assets/font/Ideal_Sans/IdealSans-Light-Pro.otf') format('opentype');
+    font-display: swap;
+}
+@font-face {
+    font-family: FontAwesome;
+    src: local('FontAwesome'), local('Font Awesome'), local('Font-Awesome'), url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/FontAwesome.otf') format("opentype");
+    font-display: swap;
+}
+
+body {
+    @apply bg-froth;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    @apply font-sentinel not-italic text-nero;
+}
+
+h1,
+h2 {
+    @apply font-medium;
+}
+
+h3,
+h4 {
+    @apply font-normal;
+}
+
+h5,
+h6 {
+    @apply font-verlag not-italic font-bold text-nero uppercase;
+}
+
+h1 {
+    @apply text-34px leading-41px;
+}
+
+h2 {
+    @apply text-22px leading-26px;
+}
+
+h3 {
+    @apply text-17px;
+}
+
+h4 {
+    @apply text-15px;
+}
+
+h5 {
+    @apply text-sm tracking-3px whitespace-normal;
+}
+
+h6 {
+    @apply text-11px tracking-normal whitespace-normal;
+}
+
+p {
+    @apply font-ideal text-base font-light leading-21px whitespace-pre-line text-nero;
+}

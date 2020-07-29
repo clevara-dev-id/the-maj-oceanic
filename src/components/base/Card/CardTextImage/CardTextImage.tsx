@@ -3,7 +3,8 @@ import _ from 'lodash';
 import { withErrorBoundary } from 'react-error-boundary';
 import { HeadingTextProps, HeadingTextItem } from '../../Heading/HeadingText';
 import ErrorFallback from '../../../../helper/ErrorFallback';
-import './style.scss';
+import { BaseUrlImage } from '../../../../helper/axios';
+// import './style.scss';
 
 /* Component */
 const HeadingText   = React.lazy(() => import('../../Heading/HeadingText'));
@@ -65,7 +66,7 @@ export type CardTextImageProps = HeadingTextProps & {
  */
 const CardTextImage: React.FC<CardTextImageProps> = (props): JSX.Element => {
     const ImageUri = props.isStaticImage
-        ? props.image : `${process.env.REACT_APP_BASE_URL_IMAGE}/${props.image}`;
+        ? props.image : `${BaseUrlImage}/${props.image}`;
 
     let containerHeadTextClass:string = 
         props.reverse
@@ -75,25 +76,25 @@ const CardTextImage: React.FC<CardTextImageProps> = (props): JSX.Element => {
      */
     const Head = React.useMemo<JSX.Element>(
         (): JSX.Element => (
-            <React.Fragment>
+            <div className="px-4">
                 <HeadingText
                     caption={props.caption}
                     heading={props.heading}
                     text={props.text}
                     list={props.list}
-                    
-                    containerClassName={`${containerHeadTextClass} xl:text-left lg:text-left md:text-left max-w-2xl sm:max-w-xl h-auto w-full xl:w-7/12 lg:w-7/12`}
-                    headingClassName={`${props.headingClassName}`}
+                    // max-w-2xl sm:max-w-xl h-auto w-full xl:w-7/12 lg:w-7/12
+                    containerClassName={`${containerHeadTextClass} xl:text-left lg:text-left md:text-left`}
+                    headingClassName={`${props.headingClassName} mt-4`}
                     textClassName={`${props.textClassName} mt-3`}   
                     listContainerClassName="mt-8"
                 >
                 {props.buttonTitle ? (
-                    <Button mode={props.mode || "outline"} to={props.linkTo || "#"}>
+                    <Button mode={props.mode || "outline"} className="mt-5" to={props.linkTo || "#"}>
                         {props.buttonTitle}
                     </Button>
                 ) : null}
                 </HeadingText>
-            </React.Fragment>
+            </div>
         ),
     [props.caption, props.heading, props.text, props.list, props.buttonTitle, props.linkTo]);
 
@@ -104,9 +105,8 @@ const CardTextImage: React.FC<CardTextImageProps> = (props): JSX.Element => {
         () => (
             <img 
                 src={ImageUri}
-                className="card-image-rl bg-center bg-cover w-5/6" 
                 loading="lazy"
-                alt={props.altName || 'card-text-image'}
+                alt={props.altName || props.image}
             />
         ),
     []);
@@ -117,7 +117,7 @@ const CardTextImage: React.FC<CardTextImageProps> = (props): JSX.Element => {
         : "flex-col xl:flex-row lg:flex-row md:flex-row"
 
     return (
-        <div className={`flex ${containerClass} max-w-container-2 w-screen h-auto mx-auto px-6 xl:px-0 lg:px-4 md:px-5 justify-between items-center ${props.containerClassName}`}>
+        <div className={`tmo__card_text_image ${containerClass} flex tmo__container_component justify-between items-center ${props.containerClassName}`}>
             {Head}
             {Image}
         </div>

@@ -1,0 +1,42 @@
+@screen xs {
+    .tmo__card_text_image {
+        img {
+            max-width: 325px;
+            @apply h-auto;
+        }
+    }
+}
+
+@screen sm {
+    .tmo__card_text_image {
+        img {
+            max-width: 325px;
+            @apply h-auto;
+        }
+    }
+}
+
+@screen md {
+    .tmo__card_text_image {
+        img {
+            max-width: 362px;
+            @apply h-auto;
+        }
+    }
+}
+
+@screen lg {
+    .tmo__card_text_image {
+        img {
+            @apply max-w-full h-auto;
+        }
+    }
+}
+
+@screen xl {
+    .tmo__card_text_image {
+        img {
+            @apply max-w-full h-auto;
+        }
+    }
+}

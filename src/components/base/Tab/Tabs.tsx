@@ -106,7 +106,7 @@ const Tabs: React.FC<TabsProps> = ({
     , [active]);
 
     return (
-        <div className={`max-w-container-2 mx-auto box-border ${containerClassName}`}>
+        <div className={`tmo__container_component box-border ${containerClassName}`}>
             <ul className={`flex mb-8 px-8 xl:px-0 lg:px-4 md:px-6 justify-around xl:justify-start lg:justify-start md:justify-start ${tabUlClassName}`}>
                 {children && _.map(children, ChildList)}
             </ul>

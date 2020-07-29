@@ -1,0 +1,31 @@
+@import "../components/base/Heading/";
+@import "../components/base/Slider/style.css";
+@import "../components/base/Card/CardTextImage/style.css";
+
+.arrows_container {
+    @apply hidden absolute left-0 bottom-0 ml-6 mb-6;
+}
+
+@screen md {
+    .arrows_container {
+        @apply inline;
+    }
+}
+
+@screen lg {
+    .arrows_container {
+        @apply inline;
+    }
+}
+
+@screen xl {
+    .arrows_container {
+        @apply inline;
+    }
+}
+
+@screen 4k {
+    .arrows_container {
+        @apply inline;
+    }
+}

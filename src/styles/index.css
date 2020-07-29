@@ -1,34 +1,9 @@
 @import "tailwindcss/base";
-
-@font-face {
-    font-family: Sentinel SB;
-    font-style: normal;
-    src: local('SentinelSemibold'), local('Sentinel Semibold'), local('Sentinel-Semibold'),
-        url('../assets/font/Sentinel/Sentinel-Semibold.otf') format('opentype');
-    font-display: swap;
-}
-@font-face {
-    font-family: Verlag B;
-    font-style: normal;
-    src: local('VerlagBold'), local('Verlag Bold'), local('Verlag-Bold'),
-        url('../assets/font/Verlag/Verlag-Bold.ttf') format('truetype');
-    font-display: swap;
-}
-@font-face {
-    font-family: Ideal Sans L;
-    font-style: normal;
-    src: local('IdealSansLightPro'), local('Ideal Sans Light Pro'), local('Ideal-Sans-Light-Pro'),
-        url('../assets/font/Ideal_Sans/IdealSans-Light-Pro.otf') format('opentype');
-    font-display: swap;
-}
-@font-face {
-    font-family: FontAwesome;
-    src: local('FontAwesome'), local('Font Awesome'), local('Font-Awesome'),
-        url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/FontAwesome.otf') format("opentype");
-    font-display: swap;
-}
+@import "./app_base.css";
 
 @import "tailwindcss/components";
+@import "./app_components.css";
+/* @import "./App.css"; */
 
 @import "tailwindcss/utilities";
-@import "./App.css";
+@import "./app_utilities.css";

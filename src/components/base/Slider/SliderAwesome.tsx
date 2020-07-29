@@ -85,9 +85,9 @@ const SliderAwesome: React.FC<SliderProps> = ({
 
                     // mt-12 xl:mt-48 lg:mt-48 md:mt-32
             return (
-                <div key={index} className={`z-10 mt-16 lg:mt-56 max-w-2xl container-text-class ${imageClassName}`} data-src={ImageUri}>
+                <div key={index} className={`z-10 mt-16 lg:mt-56 container-text-class ${imageClassName}`} data-src={ImageUri}>
                     {params.text 
-                    ?       <h1 ref={ref} className={`text-white text-34px xl:text-5xl lg:text-5xl md:text-4xl text-center capitalize whitespace-pre-line px-4 xl:px-0 lg:px-0 leading-10 ${textClassName}`}>
+                    ?       <h1 ref={ref} className={`text-white tmo__head_slider text-center capitalize whitespace-pre-line px-4 xl:px-0 lg:px-0 leading-10 ${textClassName}`}>
                                 {params.text}
                             </h1>
                     : null}
@@ -102,7 +102,7 @@ const SliderAwesome: React.FC<SliderProps> = ({
             bullets={false}
             cssModule={[CoreStyles, AnimationStyles]}
             infinite={false}
-            className="flex items-end h-auto xl:h-screen max-w-screen-xl mx-auto awesome-slider aws-btn select-none">
+            className="h-auto container xl:h-screen mx-auto awesome-slider aws-btn select-none">
             {_.map(store, MemoRenderItem)}
         </AwesomeSlider>
     );

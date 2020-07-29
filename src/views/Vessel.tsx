@@ -10,7 +10,7 @@ const Heading           = React.lazy(() => import('../components/base/Heading/He
 const CarouselThree     = React.lazy(() => import('../components/base/Carousel/CarouselThree'));
 const Button            = React.lazy(() => import('../components/base/Button/Button'));
 const CarouselCardText  = React.lazy(() => import('../components/base/Carousel/CarouselCardText'));
-const CardText          = React.lazy(() => import('../components/base/Card/CardTextImage/CardTextImage'));
+const CardTextImage          = React.lazy(() => import('../components/base/Card/CardTextImage/CardTextImage'));
 
 /**
  * ## Vessel
@@ -95,7 +95,7 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
                 <Heading caption={props.carousel_three_team.caption} heading={props.carousel_three_team.heading} />
                 <CarouselThree
                     isStaticImage
-                    containerClassName="max-w-6xl mx-auto mt-20"
+                    containerClassName="mt-20"
                     store={props.carousel_three_team.data}
                 />
             </React.Fragment>
@@ -105,9 +105,9 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
     /**
      * Card Text // Card Text Image
      */
-    const CardTextImage = React.useMemo<JSX.Element>( 
+    const MemoCardTextImage = React.useMemo<JSX.Element>( 
         () => (
-            <CardText 
+            <CardTextImage 
                 {...props.card_text}
                 isStaticImage={true}
                 linkTo="#"
@@ -140,7 +140,7 @@ const Vessel: React.FC<VesselProps> = (props): JSX.Element => {
             </section>
 
             <section className={"py-20 "}>
-                {CardTextImage}
+                {MemoCardTextImage}
             </section>
         </div>
     );

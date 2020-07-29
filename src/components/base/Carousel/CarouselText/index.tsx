@@ -9,6 +9,7 @@ import './style.scss'
 /** Components */
 const HeadingText   = React.lazy(() => import('../../Heading/HeadingText'));
 const Button        = React.lazy(() => import('../../Button/Button'));
+const ButtonSlick   = React.lazy(() => import('../../Button/ButtonSlick'));
 
 /** ## Carousel Text Item */
 export type CarouselTextItem = HeadingTextItem & {
@@ -70,12 +71,13 @@ const CarouselText: React.FC<CarouselTextProps> = (props): JSX.Element => {
                     caption={params.caption}
                     heading={params.heading}
                     text={params.text}
+                    textClassName="pr-8"
                     list={params.list}
-                    headingClassName="mb-4 whitespace-no-wrap"
-                    textClassName="mb-4"
+                    headingClassName="mb-4 mt-3 whitespace-no-wrap"
+                    listContainerClassName="mt-4"
                 />
                 {props.bottonTitle ? (
-                    <Button className={`mx-6 xl:mx-0 lg:mx-0 md:mx-5 ${params.list ? "" : "mt-6"}`} mode={props.mode || "outline"} to={params.linkTo || "#"}>
+                    <Button className={`mx-6 xl:mx-0 lg:mx-0 md:mx-5 mt-5`} mode={props.mode || "outline"} to={params.linkTo || "#"}>
                         {props.bottonTitle}
                     </Button>
                 ) : null}
@@ -103,24 +105,10 @@ const CarouselText: React.FC<CarouselTextProps> = (props): JSX.Element => {
         },
     [props.store]);
 
-    /** OnClick Prev / Next */
-    const _Prev = React.useCallback<(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void>(
-        (e) => {
-            e.preventDefault();
-            carousel.current.slickPrev();
-        }, 
-    []);
-    const _Next = React.useCallback<(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void>(
-        (e) => {
-            e.preventDefault();
-            carousel.current.slickNext();
-        }, 
-    []);
-
-    /** Button Prev Next */
-    const ArrowButton = React.useMemo<(params: ButtonSlickProps) => JSX.Element>(
-        () => (params) => <ButtonSlick {...params} />,
-    []);
+    /** 
+     * Button Action
+     */
+    const _onClick = React.useCallback((callback) => { callback() }, []);
 
     /** Custom Button */
     const Dots = React.useMemo<(index: number) => JSX.Element>(
@@ -148,7 +136,7 @@ const CarouselText: React.FC<CarouselTextProps> = (props): JSX.Element => {
             ? "mb-12 xl:mb-0 lg:mb-0 md:mb-0" : "mt-12 xl:mt-0 lg:mt-0 md:mt-0";
 
     return (
-        <div className={`carousel-text flex flex-wrap items-center relative max-w-container-2 mx-auto box-border focus:outline-none px-6 xl:px-0 lg:px-4 md:px-5 ${containerClass} ${props.containerClassName}`}>
+        <div className={`carousel-text tmo__container_component flex flex-wrap items-center relative focus:outline-none ${containerClass} ${props.containerClassName}`}>
             <div className={"select-none xl:text-left lg:text-left md:text-left mx-auto xl:mx-0 lg:mx-0 md:mx-0 w-full xl:w-3/5 lg:w-3/5 md:w-1/2 max-w-md xl:max-w-full lg:max-w-full md:max-w-full"}>
                 {source && _.map(source, (data, index: number) => {
                     if (activeIndex === index) {
@@ -158,7 +146,7 @@ const CarouselText: React.FC<CarouselTextProps> = (props): JSX.Element => {
                 })}
             </div>
 
-            <div className={`relative w-full xl:w-2/5 lg:w-2/5 md:w-1/2 ${marginTop}`}>
+            <div className={`relative w-full xl:w-2/5 lg:w-2/5 md:w-1/2  ${marginTop}`}>
                 <Slider
                     ref={carousel}
                     {...SettingSlider}
@@ -166,17 +154,15 @@ const CarouselText: React.FC<CarouselTextProps> = (props): JSX.Element => {
                     {source && _.map(source, DataItem)}
                 </Slider>
 
-                <div className={`absolute hidden xl:inline lg:inline md:inline bottom-0 left-0 ${props.containerArrow}`}>
-                    {ArrowButton({
-                        mode: "prev",
-                        children: <i className="fas fa-angle-left text-base"></i>,
-                        onClick: _Prev,
-                    })}
-                    {ArrowButton({
-                        mode: "next",
-                        children: <i className="fas fa-angle-right text-base"></i>,
-                        onClick: _Next,
-                    })}
+                <div className={`arrows_container ${props.containerArrow}`}>
+                    <ButtonSlick 
+                        mode="prev"
+                        onClick={() => _onClick(carousel.current.slickPrev)}
+                    />
+                    <ButtonSlick 
+                        mode="next"
+                        onClick={() => _onClick(carousel.current.slickNext)}
+                    />
                 </div>
             </div>
         </div>
@@ -185,25 +171,3 @@ const CarouselText: React.FC<CarouselTextProps> = (props): JSX.Element => {
 
 const CarouselTextWithErrorBoundary = withErrorBoundary(CarouselText, {FallbackComponent: ErrorFallback});
 export default React.memo(CarouselTextWithErrorBoundary, (prevProps, nextProps) => _.isEqual(prevProps, nextProps));
-
-/**
- * Button Slick
- */
-type ButtonSlickProps = {
-    mode: "prev" | "next",
-    onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void,
-    children?: React.ReactNode,
-}
-const ButtonSlick = React.memo(({
-    mode,
-    onClick,
-    children
-}: ButtonSlickProps): JSX.Element => {
-    let style = mode == "prev"
-        ? "arrow-left mr-3" : "arrow-right";
-    return (
-        <button onClick={onClick} className={` w-8 h-8 rounded-full arrows ${style}`}>
-            {children}
-        </button>
-    );
-});

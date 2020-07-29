@@ -50,7 +50,7 @@ class LargeImage extends React.PureComponent<LargeImageProps, {}> {
                 className={`w-full h-auto ${imageClassName}`}
                 style={imageStyle}
                 src={isStaticImage ? images :  `${BaseUrlImage}/${images}`}
-                alt={alt ? alt : "large-image"}
+                alt={alt ? alt : images}
                 loading="lazy"
             />
         )
