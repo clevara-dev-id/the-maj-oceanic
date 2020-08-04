@@ -22,9 +22,9 @@ const Occasions: React.FC<OccasionsProps> = (props): JSX.Element => {
     /**
      * Heading Text & Large Image
      */
-    const MemoHeadingTextLargeImage = React.useMemo<JSX.Element>( 
+    const MemoHeadingTextLargeImage = React.useMemo<JSX.Element>(
         () => (
-            <div className="px-6 xl:px-0 lg:px-4 md:px-5">
+            <div className="tmo__container_component">
                 <HeadingText
                     heading={props.heading}
                     text={props.text}
@@ -37,18 +37,18 @@ const Occasions: React.FC<OccasionsProps> = (props): JSX.Element => {
                     isStaticImage
                 />
             </div>
-        ), 
+        ),
     [props.heading, props.text, props.image]);
 
     /**
      * Card Text Image (Right/Left)
      */
-    const MemoCardTextImage = React.useMemo<(params: CardTextImageItem, index: number) => JSX.Element>( 
+    const MemoCardTextImage = React.useMemo<(params: CardTextImageItem, index: number) => JSX.Element>(
         () => (params, index) => {
             const is_reverse = index % 2 ? false : true;
             return (
                 <section className={"py-20"}>
-                    <CardTextImage 
+                    <CardTextImage
                         key={index}
                         heading={params.heading}
                         text={params.text}
