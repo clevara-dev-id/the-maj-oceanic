@@ -80,7 +80,7 @@ const Spesification: React.FC<SpecProps & MapStateProps> = (props): JSX.Element 
                     alt={params.label}
                     loading="lazy"
                 />
-                <p title={params.text} className="whitespace-pre-line select-none px-8 xl:px-0 lg:px-4 md:px-6 pt-10 sm:pt-10 lg:pt-12 xl:pt-24">{params.text}</p>
+                <p title={params.text} className="whitespace-pre-line select-none px-0 xl:px-8 lg:px-8 md:px-6 pt-10 sm:pt-10 lg:pt-12 xl:pt-24">{params.text}</p>
             </div>
         ),
     []);
