@@ -63,7 +63,7 @@ const Destination: React.FC<DestinationProps> = (props): JSX.Element => {
             </section>
 
             <section className={"py-20 "}>
-                <Tabs>
+                <Tabs removeContainer tabUlClassName="tmo__container_component">
                     {_.map(props.tabs_card_text_image_small, (data, index) => (
                         <div key={index} title={data.label}>
                             {MemoTabItemCardTextImageSmall(data)}

@@ -111,7 +111,7 @@ const Spesification: React.FC<SpecProps & MapStateProps> = (props): JSX.Element 
             </section>
 
             <section className="py-10 md:py-12 lg:py-20 bg-tabs-deck h-auto xl:h-screen lg:h-screen max-h-container-tabs">
-                <Tabs tabContentClassName="pt-10 md:pt-16">
+                <Tabs tabUlClassName="px-0 xl:px-8 lg:px-8 md:px-6" tabContentClassName="pt-10 md:pt-16">
                     {_.map(props.page.tabs, MemoTabItem)}
                 </Tabs>
             </section>

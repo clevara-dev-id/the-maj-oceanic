@@ -28,6 +28,7 @@ export type TabsProps = {
      * @default 'false'
      */
     isStaticImage?: boolean,
+    removeContainer?: boolean,
     /**
      * if the children customChild is true,
      * HTMLAttribute children must contain attr `title`
@@ -59,6 +60,7 @@ const Tabs: React.FC<TabsProps> = ({
     tabUlClassName=null,
     tabContentClassName=null,
     isStaticImage=false,
+    removeContainer=false,
 }): JSX.Element => {
     /**
      * State hook
@@ -81,7 +83,7 @@ const Tabs: React.FC<TabsProps> = ({
             let containerLiClass: string =
                 active === params?.props?.title
                 ? "text-primary-300 border border-b-2 border-primary-300 active" : "";
-            
+
             return (
                 <li key={index} title={params?.props?.title} className={containerLiClass + ` select-none pb-2 font-bold xl:mr-8 lg:mr-8 md:mr-8 border-t-0 border-r-0 border-l-0`} onClick={(e) => _onClick(e, params?.props?.title)}>
                     {params?.props?.title}
@@ -106,8 +108,8 @@ const Tabs: React.FC<TabsProps> = ({
     , [active]);
 
     return (
-        <div className={`tmo__container_component box-border ${containerClassName}`}>
-            <ul className={`flex mb-8 px-0 xl:px-8 lg:px-8 md:px-6 justify-around xl:justify-start lg:justify-start md:justify-start ${tabUlClassName}`}>
+        <div className={`${removeContainer ? '' : 'tmo__container_component'} box-border ${containerClassName}`}>
+            <ul className={`flex mb-8 justify-around xl:justify-start lg:justify-start md:justify-start ${tabUlClassName}`}>
                 {children && _.map(children, ChildList)}
             </ul>
 
