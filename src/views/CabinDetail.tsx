@@ -25,7 +25,7 @@ const CabinDetail: React.FC<CabinDetailProps> = (props): JSX.Element => {
     /** Heading Text & Large Image */
     const MemoHeadingTextLargeImage = React.useMemo<JSX.Element>( 
         () => (
-            <div className="px-6 xl:px-0 lg:px-4 md:px-5 py-0">
+            <div className="tmo__container_component">
                 <HeadingText
                     containerClassName="max-w-3xl"
                     headingClassName="mt-4"
