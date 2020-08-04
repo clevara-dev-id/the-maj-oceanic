@@ -64,14 +64,14 @@ const CarouselText: React.FC<CarouselTextProps> = (props): JSX.Element => {
     /**
      * Heading Text list
      */
-    const HeadText = React.useMemo( 
+    const HeadText = React.useMemo(
         () => (params: CarouselTextItem) => (
             <React.Fragment>
                 <HeadingText
                     caption={params.caption}
                     heading={params.heading}
                     text={params.text}
-                    textClassName="pr-8"
+                    textClassName="lg:pr-8 md:pr-8"
                     list={params.list}
                     headingClassName="mb-4 mt-3 whitespace-no-wrap"
                     listContainerClassName="mt-4"
@@ -88,7 +88,7 @@ const CarouselText: React.FC<CarouselTextProps> = (props): JSX.Element => {
     /**
      * Data Item
      */
-    const DataItem = React.useMemo( 
+    const DataItem = React.useMemo(
         () => (params: any, index: number) => {
             const ImgUri = props.isStaticImage ? params.image : `${process.env.REACT_APP_BASE_URL_IMAGE}/${params.image}`;
             return (
@@ -112,7 +112,7 @@ const CarouselText: React.FC<CarouselTextProps> = (props): JSX.Element => {
 
     /** Custom Button */
     const Dots = React.useMemo<(index: number) => JSX.Element>(
-        () => (index) => 
+        () => (index) =>
             <div className="dots mt-4 rounded-full w-3 h-3 bg-dot-100 opacity-25 hover:bg-primary-300 hover:opacity-100" />,
     []);
 
@@ -126,12 +126,12 @@ const CarouselText: React.FC<CarouselTextProps> = (props): JSX.Element => {
         afterChange: (currentSlide) => setActive(currentSlide),
         customPaging: Dots,
     };
-    
-    let containerClass: string = 
-        props.reverse 
+
+    let containerClass: string =
+        props.reverse
             ? "flex-col-reverse xl:flex-row-reverse lg:flex-row-reverse md:flex-row-reverse" : "flex-col xl:flex-row lg:flex-row md:flex-row";
 
-    let marginTop: string = 
+    let marginTop: string =
         props.reverse
             ? "mb-12 xl:mb-0 lg:mb-0 md:mb-0" : "mt-12 xl:mt-0 lg:mt-0 md:mt-0";
 
@@ -141,7 +141,7 @@ const CarouselText: React.FC<CarouselTextProps> = (props): JSX.Element => {
                 {source && _.map(source, (data, index: number) => {
                     if (activeIndex === index) {
                         return HeadText(data)
-                        
+
                     }
                 })}
             </div>
@@ -155,11 +155,11 @@ const CarouselText: React.FC<CarouselTextProps> = (props): JSX.Element => {
                 </Slider>
 
                 <div className={`arrows_container ${props.containerArrow}`}>
-                    <ButtonSlick 
+                    <ButtonSlick
                         mode="prev"
                         onClick={() => _onClick(carousel.current.slickPrev)}
                     />
-                    <ButtonSlick 
+                    <ButtonSlick
                         mode="next"
                         onClick={() => _onClick(carousel.current.slickNext)}
                     />
