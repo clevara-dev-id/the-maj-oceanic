@@ -18,7 +18,7 @@ export type RootState = ReturnType<typeof rootReducer>;
 
 const store = configureStore({
     reducer: rootReducer,
-    middleware: getDefaultMiddleware().concat(logger),
+    middleware: getDefaultMiddleware(),
     devTools: process.env.NODE_ENV !== "production",
     enhancers: [reduxBatch],
 });

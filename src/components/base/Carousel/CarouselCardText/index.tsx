@@ -48,7 +48,7 @@ type CarouselCardTextItemProps = {
  * @param {CarouselCardTextItemProps} props
  * @see `CarouselCardTextItemProps`
  * @returns {JSX.Element}
- * 
+ *
  * ### Usage
  * ```js
  *  <CarouselCardText
@@ -57,12 +57,12 @@ type CarouselCardTextItemProps = {
  *          {
  *              id: 0,
  *              caption: 'presidential suite 1',
- *              heading: 'Zheng He', 
+ *              heading: 'Zheng He',
  *              text: 'Laboris dolore laborum sit',
- *              list: ['Lorem ipsum dolor sit amet', 'Laboris lar aliquip'], 
+ *              list: ['Lorem ipsum dolor sit amet', 'Laboris lar aliquip'],
  *              image: require('../assets/img/CarouselCard/1.png')
  *          },
- *      ]}        
+ *      ]}
  *      isStaticImage{true}
     />
  * ```
@@ -78,15 +78,15 @@ const CarouselCardText: React.FC<CarouselCardTextItemProps> = (props): JSX.Eleme
         };
     }, [props.store]);
 
-    /** 
+    /**
      * Image memo
      */
-    const ImageContain = React.useMemo(() => 
-        (image: string, index: number) => 
-            <img 
+    const ImageContain = React.useMemo(() =>
+        (image: string, index: number) =>
+            <img
                 key={index}
                 src={image}
-                className="bg-cover bg-no-repeat" alt="carousel_card_text_image" 
+                className="bg-cover bg-no-repeat" alt="carousel_card_text_image"
                 loading="lazy"
             />
     ,[]);
@@ -110,7 +110,7 @@ const CarouselCardText: React.FC<CarouselCardTextItemProps> = (props): JSX.Eleme
         ),
     [])
 
-    /** 
+    /**
      * Button Action
      */
     const _onClick = React.useCallback((callback) => { callback() }, []);
@@ -136,24 +136,24 @@ const CarouselCardText: React.FC<CarouselCardTextItemProps> = (props): JSX.Eleme
     return (
         <div className={`tmo__container_component relative ${props.containerClassName}`}>
             <div className="slide-item focus:outline-none w-full lg:w-2/3 md:w-9/12 relative">
-                    <Slider 
+                    <Slider
                         {...SettingSlider}
                         ref={carousel}>
                         {!_.isEmpty(localStore) && _.map(localStore, (data, index) => {
-                            const image: string = props.isStaticImage 
-                                ? data.image 
+                            const image: string = props.isStaticImage
+                                ? data.image
                                 : `${BaseUrlImage}/${data.image}`;
                             return ImageContain(image, index)
                         })}
                     </Slider>
 
                     <div className={`arrows_container ${props.containerArrow}`}>
-                        <ButtonSlick 
+                        <ButtonSlick
                             mode="prev"
                             onClick={() => _onClick(carousel.current.slickPrev)}
                             buttonClassName={`${props.slickButtonClassName} ${props.prevButtonClassName}`}
                         />
-                        <ButtonSlick 
+                        <ButtonSlick
                             mode="next"
                             onClick={() => _onClick(carousel.current.slickNext)}
                             buttonClassName={`${props.slickButtonClassName} ${props.nextButtonClassName}`}
@@ -164,9 +164,9 @@ const CarouselCardText: React.FC<CarouselCardTextItemProps> = (props): JSX.Eleme
             {props.children}
             {localStore && _.map<CarouselCardTextItem, JSX.Element | null>(
                 localStore, (data, index) => {
-                    if (indexActive === index) 
+                    if (indexActive === index)
                         return MemoHeadingText(data, index)
-                    
+
                     return null;
                 }
             )}

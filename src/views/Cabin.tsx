@@ -42,7 +42,7 @@ const Cabin: React.FC<CabinProps> = (props): JSX.Element => {
                 isStaticImage
             />
         ),
-    [props.carousel_text]); 
+    [props.carousel_text]);
 
     /** Heading & CarouselThree */
     const MemoHeadingCarouselCardThree = React.useMemo<JSX.Element>(
@@ -71,8 +71,8 @@ const Cabin: React.FC<CabinProps> = (props): JSX.Element => {
             <section className={`py-20 mb-0 xl:mb-24 lg:mb-24 md:mb-24`}>
                 {MemoCarouselCardText}
             </section>
-            
-            <section className={`py-20 mt-0 xl:mt-24 lg:mt-24 md:mt-24 mb-24 xl:mb-24 lg:mb-24 md:mb-24`}>       
+
+            <section className={`py-20 mt-0 xl:mt-24 lg:mt-24 md:mt-24 mb-24 xl:mb-24 lg:mb-24 md:mb-24`}>
                 {MemoCarouselText}
             </section>
 
