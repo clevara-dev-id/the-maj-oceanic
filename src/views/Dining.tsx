@@ -29,7 +29,7 @@ const Dining: React.FC<DiningProps> = (props): JSX.Element => {
      */
     const MemoHeadingTextLargeImage = React.useMemo<JSX.Element>( 
         () => (
-            <div className="px-6 xl:px-0 lg:px-4 md:px-5">
+            <div className="tmo__container_component">
                 <HeadingText
                     heading={props.heading}
                     text={props.text}
