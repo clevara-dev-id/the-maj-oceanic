@@ -489,31 +489,31 @@ video {
 }
 
 @font-face {
-  font-family: Sentinel SB;
+  font-family: "Sentinel SB";
 
   font-style: normal;
 
-  src: local('SentinelSemibold'), local('Sentinel Semibold'), local('Sentinel-Semibold'), url('../assets/font/Sentinel/Sentinel-Semibold.otf') format('opentype');
+  src: local('SentinelSemibold'), local('Sentinel Semibold'), local('Sentinel-Semibold'), url('../assets/font/Sentinel/Sentinel-Semibold.otf') format('otf');
 
   font-display: swap;
 }
 
 @font-face {
-  font-family: Verlag B;
+  font-family: "Verlag B";
 
   font-style: normal;
 
-  src: local('VerlagBold'), local('Verlag Bold'), local('Verlag-Bold'), url('../assets/font/Verlag/Verlag-Bold.ttf') format('truetype');
+  src: local('VerlagBold'), local('Verlag Bold'), local('Verlag-Bold'), url('../assets/font/Verlag/Verlag-Bold.ttf') format('ttf');
 
   font-display: swap;
 }
 
 @font-face {
-  font-family: Ideal Sans L;
+  font-family: "Ideal Sans L";
 
   font-style: normal;
 
-  src: local('IdealSansLightPro'), local('Ideal Sans Light Pro'), local('Ideal-Sans-Light-Pro'), url('../assets/font/Ideal_Sans/IdealSans-Light-Pro.otf') format('opentype');
+  src: local('IdealSansLightPro'), local('Ideal Sans Light Pro'), local('Ideal-Sans-Light-Pro'), url('../assets/font/Ideal_Sans/IdealSans-Light-Pro.otf') format('otf');
 
   font-display: swap;
 }
@@ -521,7 +521,7 @@ video {
 @font-face {
   font-family: FontAwesome;
 
-  src: local('FontAwesome'), local('Font Awesome'), local('Font-Awesome'), url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/FontAwesome.otf') format("opentype");
+  src: local('FontAwesome'), local('Font Awesome'), local('Font-Awesome'), url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/FontAwesome.otf') format("otf");
 
   font-display: swap;
 }
@@ -534,7 +534,7 @@ body {
 
 h1,
 h2 {
-  font-family: "Sentinel SB";
+  font-family: "Sentinel SB", serif;
   font-style: normal;
   --text-opacity: 1;
   color: #232323;
@@ -548,7 +548,7 @@ h2 {
 
 h5,
 h6 {
-  font-family: "Verlag B";
+  font-family: "Verlag B", sans-serif;
   font-style: normal;
   font-weight: 700;
   --text-opacity: 1;
@@ -580,7 +580,7 @@ h6 {
 }
 
 p {
-  font-family: "Ideal Sans L";
+  font-family: "Ideal Sans L", sans-serif;
   font-size: 1rem;
   font-weight: 300;
   line-height: 1.3125;
@@ -588,6 +588,13 @@ p {
   --text-opacity: 1;
   color: #232323;
   color: rgba(35, 35, 35, var(--text-opacity));
+}
+
+header {
+  position: relative;
+  align-items: center;
+  justify-items: center;
+  place-items: center;
 }
 
 .container {
@@ -1131,7 +1138,7 @@ p {
 }
 
 .font-ideal {
-  font-family: "Ideal Sans L";
+  font-family: "Ideal Sans L", sans-serif;
 }
 
 .font-light {

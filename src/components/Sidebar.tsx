@@ -40,7 +40,7 @@ const Sidebar = (props: T) => {
     const SearchForm = React.useMemo<JSX.Element>(
         () => (
             <form className="inline-block ml-2" onSubmit={_onSubmit}>
-                <input className="appearance-none w-full px-2 py-2 bg-transparent"
+                <input className="appearance-none w-auto px-0 sm:px-2 md:px-2 py-2 bg-transparent"
                     value={q}
                     onChange={_onChange}
                     type="text"
@@ -69,15 +69,15 @@ const Sidebar = (props: T) => {
             className="lg:hidden xl:hidden"
             styles={props.styles}
             burgerButtonClassName="lg:hidden sm:w-6 sm:h-6 w-4 h-4 box-border">
-            
-            <img className="focus:outline-none bg-contain bg-center bg-no-repeat" 
+
+            <img className="focus:outline-none bg-contain bg-center bg-no-repeat"
                 src={require("../assets/logo/oceanic-blue.png")}
                 width="50%"
                 alt="oceanic-blue"
                 loading="lazy"
             />
-            
-            <div className="w-full items-center border-t h-16 py-4 my-8 border-b border-solid border-gray-400 focus:outline-none">
+
+            <div className="w-full flex-no-wrap items-center border-t h-16 py-4 my-8 border-b border-solid border-gray-400 focus:outline-none">
                 <IconSearch
                     size={30}
                     fill="rgb(160, 174, 192)"
@@ -86,7 +86,7 @@ const Sidebar = (props: T) => {
                 />
                 {SearchForm}
             </div>
-            
+
             {!_.isEmpty(localStore)
                 ? _.map(localStore, (data: I, idx: number) => (
                     NavLink({

@@ -83,8 +83,10 @@ const AppLayout: React.FC<AppLayoutProp> = (props): JSX.Element => {
     return (
         <React.Fragment>
             <Router>
-                {NavigationSide}
-                {Navigation}
+                <header>
+                  {NavigationSide}
+                  {Navigation}
+                </header>
 
                 <main id="page-wrap">
                     {props.children}

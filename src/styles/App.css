@@ -76,13 +76,13 @@ button {
   text-transform: uppercase;
 }
 
-button.btn-1 {
+.btn-1 {
   font-size: 17px;
   font-weight: bold;
   line-height: 22px;
 }
 
-button.btn-2 {
+.btn-2 {
   font-size: 12px;
   font-weight: bold;
   line-height: 18px;

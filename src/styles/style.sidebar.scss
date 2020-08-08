@@ -7,7 +7,6 @@
 
 /* Individual item */
 .bm-item {
-    font-family: Verlag B;
     display: inline-block;
 
     /* Our sidebar item styling */
@@ -22,7 +21,7 @@
 .bm-item:hover {
     color: #208CB2;
 }
-  
+
 /* The rest copied directly from react-burger-menu docs */
 @media screen and (min-width: 1024px) {
 /* Position and sizing of burger button */
@@ -38,8 +37,12 @@
     position: fixed;
     left: 3%;
     top: 8%;
+
+    @media (min-height: 1024px) and (max-height: 1024px) {
+      top: 5%;
+    }
 }
-  
+
 /* Color/shape of burger icon bars */
 .bm-burger-bars:hover {
     background: #208CB2;
@@ -59,9 +62,10 @@
 
 /* General sidebar styles */
 .bm-menu {
+    font-family: 'Verlag B', sans-serif;
     background: #EFE1DC;
     padding: 1.5em 1.5em 0;
-    font-size: 1.15em;
+    font-size: 1.063em;
 }
 
 /* Morph shape necessary with bubble or elastic */

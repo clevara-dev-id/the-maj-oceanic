@@ -31,12 +31,11 @@ $layout-min-laptop-l-to-4k: 1795px;
     };
 
     svg { display: inline-block };
-    
 
     a {
         font-size: 13px;
         letter-spacing: 2px;
-        font-weight: bold;
+        font-family: 'Verlag Bold', sans-serif !important;
     };
 
 
@@ -62,7 +61,7 @@ $layout-min-laptop-l-to-4k: 1795px;
             };
         };
     };
-    
+
     // laptop or lg
     @media (min-width: $layout-min-lg) {
         -webkit-transition: transform .8s ease-in-out, padding 1s ease-in-out;

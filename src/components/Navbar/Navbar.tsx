@@ -98,10 +98,10 @@ const Navbar: React.FC<NavProps> = (props) => {
                         itemID: 'button-header',
                         to: '/',
                         replace: true,
-                        className: 'box-border whitespace-no-wrap bg-transparent text-white uppercase lg:px-5 py-2 focus:outline-none tracking-wide'
+                        className: 'box-border font-bold whitespace-no-wrap bg-transparent text-white uppercase lg:px-5 py-2 focus:outline-none tracking-wide'
                     })}
                 </div>
-                
+
                 {ButtonLink({
                     children: <img src={Logo} className="w-screen mx-auto" alt="oceanic-logo" loading="lazy" />,
                     itemID: 'button-image-1',
@@ -115,20 +115,20 @@ const Navbar: React.FC<NavProps> = (props) => {
                         children: 'login',
                         itemID: 'button-login-1',
                         to: '#',
-                        className: 'button-login whitespace-no-wrap box-border bg-transparent text-white hover:opacity-50 uppercase py-2 px-8 focus:outline-none'
+                        className: 'button-login font-bold whitespace-no-wrap box-border bg-transparent text-white hover:opacity-50 uppercase py-2 px-8 focus:outline-none'
                     })}
                     {ButtonLink({
                         children: 'inquire now',
                         itemID: 'button-inquire-now-1',
                         to: '/contact-us',
-                        className: 'border-2 whitespace-no-wrap box-border bg-transparent hover:bg-white border-solid border-white hover:border-white text-white hover:text-black uppercase ml-6 px-5 pt-2 pb-3 focus:outline-none'
+                        className: 'border-2 font-bold whitespace-no-wrap box-border bg-transparent hover:bg-white border-solid border-white hover:border-white text-white hover:text-black uppercase ml-6 px-5 pt-2 pb-3 focus:outline-none'
                     })}
                 </div>
             </div>
 
             <div className={`nav-list flex xl:border-t xl:border-solid xl:border-white lg:border-t lg:border-solid lg:border-white items-center justify-around px-4 h-24 ${props.navbarChange ? "scroll-active shadow-xl" : null}`}>
                 {SearchInputSecond}
-                
+
                 <div className="hidden w-full justify-evenly my-auto xl:flex lg:flex flex-wrap">
                     {_.map(localStore, ((data: I) => {
                         if (data.page !== 'home') return (
@@ -146,14 +146,14 @@ const Navbar: React.FC<NavProps> = (props) => {
                     children: 'login',
                     itemID: 'button-login-2',
                     to: '#',
-                    className: 'button-2 button-login-2 whitespace-no-wrap hidden xl:inline-block lg:inline-block box-border bg-transparent uppercase focus:outline-none text-white mx-4'
+                    className: 'button-2 button-login-2 font-bold whitespace-no-wrap hidden xl:inline-block lg:inline-block box-border bg-transparent uppercase focus:outline-none text-white mx-4'
                 })}
 
                 {ButtonLink({
                     children: 'inquire now',
                     itemID: 'button-inquire-now-2',
                     to: '/contact-us',
-                    className: 'button-2 inquire-now-2 whitespace-no-wrap bg-transparent border-2 hidden xl:inline-block lg:inline-block uppercase ml-6 px-5 pt-2 pb-3 focus:outline-none'
+                    className: 'button-2 inquire-now-2 font-bold whitespace-no-wrap bg-transparent border-2 hidden xl:inline-block lg:inline-block uppercase ml-6 px-5 pt-2 pb-3 focus:outline-none'
                 })}
 
                 {ButtonLink({
@@ -163,12 +163,12 @@ const Navbar: React.FC<NavProps> = (props) => {
                     replace: true,
                     className: 'focus:outline-none mx-auto'
                 })}
-                
+
                 {ButtonLink({
                     children: 'login',
                     itemID: 'button-login-3',
                     to: '#',
-                    className: `book-link whitespace-no-wrap uppercase xl:hidden lg:hidden ${props.navbarChange ? "text-black" : "text-white"}`
+                    className: `book-link font-bold whitespace-no-wrap uppercase xl:hidden lg:hidden ${props.navbarChange ? "text-black" : "text-white"}`
                 })}
             </div>
         </nav>
